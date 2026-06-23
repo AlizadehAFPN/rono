@@ -56,8 +56,9 @@ services:
       INTERNAL_API_URL: http://backend:8000
       NODE_ENV: production
     # Published only on localhost — the host's existing nginx reverse-proxies to it.
+    # Port 3200 (Synapse uses 3100) so both stacks run side by side on one host.
     ports:
-      - "127.0.0.1:3100:3000"
+      - "127.0.0.1:3200:3000"
     depends_on:
       - backend
     restart: unless-stopped
