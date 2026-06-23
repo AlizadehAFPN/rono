@@ -1,0 +1,32 @@
+# Secrets — never bake into images
+.env
+.env.*
+*.pem
+*.key
+secrets/
+.aws/
+
+# VCS / tooling
+.git
+.gitignore
+.claude/
+.specstory/
+
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.cache/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# Logs / local
+*.log
+.DS_Store
+
+# Terraform
+**/.terraform/
+*.tfstate*
+*.tfvars

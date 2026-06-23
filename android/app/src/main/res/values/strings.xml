@@ -1,0 +1,221 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Synapse</string>
+
+    <!-- Common -->
+    <string name="common_continue">Continue</string>
+    <string name="common_cancel">Cancel</string>
+    <string name="common_save">Save</string>
+    <string name="common_retry">Retry</string>
+    <string name="common_done">Done</string>
+    <string name="common_back">Back</string>
+    <string name="common_loading">Loading…</string>
+    <string name="common_error_generic">Something went wrong. Please try again.</string>
+    <string name="widget_description">Streak &amp; daily review</string>
+    <string name="common_skip">Skip</string>
+    <string name="common_next">Next</string>
+    <string name="common_get_started">Get started</string>
+
+    <!-- Bottom navigation -->
+    <string name="nav_home">Home</string>
+    <string name="nav_study">Study</string>
+    <string name="nav_daily">Daily</string>
+    <string name="nav_progress">Progress</string>
+    <string name="nav_profile">Profile</string>
+
+    <!-- Onboarding -->
+    <string name="onboarding_1_title">Practice that adapts to you</string>
+    <string name="onboarding_1_body">Questions are chosen for your exact level, so every minute counts toward mastery.</string>
+    <string name="onboarding_2_title">Remember what you learn</string>
+    <string name="onboarding_2_body">Spaced-repetition review brings cards back right before you would forget them.</string>
+    <string name="onboarding_3_title">See your ability grow</string>
+    <string name="onboarding_3_body">Track your mastery across topics and watch your ability rise session by session.</string>
+
+    <!-- Auth -->
+    <string name="auth_tagline">Adaptive Medical Learning Platform</string>
+    <string name="auth_login_title">Welcome back</string>
+    <string name="auth_login_subtitle">Sign in to continue studying</string>
+    <string name="auth_signup_title">Create your account</string>
+    <string name="auth_signup_subtitle">Start practicing in minutes</string>
+    <string name="auth_email">Email</string>
+    <string name="auth_password">Password</string>
+    <string name="auth_full_name">Full name</string>
+    <string name="auth_sign_in">Sign in</string>
+    <string name="auth_sign_up">Sign up</string>
+    <string name="auth_no_account">Don\'t have an account?</string>
+    <string name="auth_have_account">Already have an account?</string>
+    <string name="auth_error_email">Enter a valid email address</string>
+    <string name="auth_error_password_short">Password must be at least 8 characters</string>
+    <string name="auth_error_password_rules">Use upper, lower case and a number</string>
+    <string name="auth_error_name">Enter your name</string>
+
+    <!-- Mastery / ability bands -->
+    <string name="mastery_none">Not started</string>
+    <string name="mastery_beginner">Beginner</string>
+    <string name="mastery_developing">Developing</string>
+    <string name="mastery_proficient">Proficient</string>
+    <string name="mastery_advanced">Advanced</string>
+
+    <!-- Dashboard -->
+    <string name="dash_greeting">Hi, %1$s</string>
+    <string name="dash_subtitle">Here\'s where you stand today</string>
+    <string name="dash_ability">Ability</string>
+    <string name="dash_due_today">Due today</string>
+    <string name="dash_review_now">Review now</string>
+    <string name="dash_start_studying">Start studying</string>
+    <string name="dash_answered">Answered</string>
+    <string name="dash_accuracy">Accuracy</string>
+    <string name="dash_sessions">Sessions</string>
+    <string name="dash_streak_unit">day streak</string>
+    <string name="dash_library">Question bank</string>
+    <string name="dash_seen">Seen</string>
+    <string name="dash_new">New</string>
+    <string name="dash_learning">Learning</string>
+    <string name="dash_in_review">In review</string>
+    <string name="dash_topics_active">Active topics</string>
+    <string name="dash_topics_mastered">Mastered</string>
+    <string name="dash_mastery_distribution">Mastery spread</string>
+    <string name="dash_ability_trend">Ability trend</string>
+    <string name="dash_activity">Activity</string>
+    <string name="dash_strongest">Strongest</string>
+    <string name="dash_focus">Focus area</string>
+    <string name="dash_recent_sessions">Recent sessions</string>
+    <string name="dash_no_activity">No activity yet — start a session.</string>
+    <string name="dash_caught_up">You\'re all caught up</string>
+    <string name="dash_daily_study">Daily Study</string>
+    <string name="dash_progress_title">Progress</string>
+    <string name="dash_progress_sub">Trends, mastery &amp; history</string>
+    <string name="dash_due_now">due now</string>
+    <string name="dash_all_caught_up">All caught up</string>
+
+    <!-- Progress -->
+    <string name="progress_title">Progress</string>
+    <string name="progress_overall">Overall</string>
+    <string name="progress_total_answered">Answered</string>
+    <string name="progress_correct">Correct</string>
+    <string name="progress_by_subject">By subject</string>
+    <string name="progress_no_topics">No topic data yet.</string>
+    <string name="progress_se">± %1$s</string>
+    <string name="session_type_adaptive">Practice</string>
+    <string name="session_type_review">Review</string>
+    <string name="session_type_daily">Daily review</string>
+
+    <!-- Study -->
+    <string name="study_title">Study</string>
+    <string name="study_daily_review">Daily review</string>
+    <string name="study_daily_review_desc">Mixed due &amp; new across your collections</string>
+    <string name="study_start_adaptive">Adaptive practice</string>
+    <string name="study_collections">Collections</string>
+    <string name="study_no_collections">No collections yet.</string>
+    <string name="study_new_count">%1$d new</string>
+    <string name="study_due_count">%1$d due</string>
+    <string name="study_total_count">%1$d total</string>
+
+    <!-- Session runner -->
+    <string name="session_submit">Submit</string>
+    <string name="session_skip">Skip</string>
+    <string name="session_next">Next</string>
+    <string name="session_correct">Correct</string>
+    <string name="session_incorrect">Incorrect</string>
+    <string name="session_skipped">Skipped</string>
+    <string name="session_explanation">Explanation</string>
+    <string name="session_streak">Streak</string>
+    <string name="session_accuracy">Accuracy</string>
+    <string name="session_next_review">Next review</string>
+    <string name="session_finish">Finish</string>
+    <string name="session_exit_title">End this session?</string>
+    <string name="session_exit_message">Your progress so far is saved.</string>
+    <string name="session_exit_confirm">End session</string>
+    <string name="session_progress">%1$d / %2$d</string>
+
+    <!-- Session summary -->
+    <string name="summary_title">Session complete</string>
+    <string name="summary_correct">Correct</string>
+    <string name="summary_wrong">Wrong</string>
+    <string name="summary_skipped">Skipped</string>
+    <string name="summary_ability_change">Ability change</string>
+    <string name="summary_time">Time</string>
+    <string name="summary_restart">New session</string>
+    <string name="summary_done">Done</string>
+    <string name="session_caught_up_title">You\'re all caught up</string>
+    <string name="session_caught_up_body">No cards are due right now. Come back later.</string>
+
+    <!-- Daily review setup -->
+    <string name="daily_title">Daily review</string>
+    <string name="daily_collections">Collections</string>
+    <string name="daily_all">All collections</string>
+    <string name="daily_budget">Session length</string>
+    <string name="daily_by_count">Questions</string>
+    <string name="daily_by_time">Time</string>
+    <string name="daily_minutes">%1$d min</string>
+    <string name="daily_level">Starting level (optional)</string>
+    <string name="daily_start">Start review</string>
+    <string name="daily_summary">%1$d due · %2$d new selected</string>
+
+    <!-- Practice exam -->
+    <string name="exam_title">Practice exam</string>
+    <string name="exam_setup_title">Set up your exam</string>
+    <string name="exam_type">Exam</string>
+    <string name="exam_part">Section</string>
+    <string name="exam_count">Questions</string>
+    <string name="exam_feedback_mode">Feedback</string>
+    <string name="exam_instant">Instant</string>
+    <string name="exam_real">At the end</string>
+    <string name="exam_start">Start exam</string>
+    <string name="exam_submit">Submit exam</string>
+    <string name="exam_flag">Flag</string>
+    <string name="exam_unflag">Unflag</string>
+    <string name="exam_question_n">Question %1$d of %2$d</string>
+    <string name="exam_score">Score</string>
+    <string name="exam_net_score">Net score</string>
+    <string name="exam_any">Any</string>
+
+    <!-- Roles -->
+    <string name="role_student">Student</string>
+    <string name="role_instructor">Instructor</string>
+    <string name="role_admin">Admin</string>
+
+    <!-- Profile -->
+    <string name="profile_title">Profile</string>
+    <string name="profile_name">Name</string>
+    <string name="profile_change_photo">Change photo</string>
+    <string name="profile_remove_photo">Remove photo</string>
+    <string name="profile_verified">Verified</string>
+    <string name="profile_unverified">Unverified</string>
+    <string name="profile_learning">Learning</string>
+    <string name="profile_topics">Topics</string>
+
+    <!-- Settings -->
+    <string name="settings_title">Settings</string>
+    <string name="settings_appearance">Appearance</string>
+    <string name="settings_theme">Theme</string>
+    <string name="settings_theme_light">Light</string>
+    <string name="settings_theme_dark">Dark</string>
+    <string name="settings_theme_system">System</string>
+    <string name="settings_language">Language</string>
+    <string name="settings_timezone">Time zone</string>
+    <string name="settings_security">Security</string>
+    <string name="settings_change_password">Change password</string>
+    <string name="settings_devices">Active devices</string>
+    <string name="settings_account">Account</string>
+    <string name="settings_email">Email</string>
+    <string name="settings_developer">Developer</string>
+    <string name="settings_backend">Backend</string>
+    <string name="settings_backend_prod">Production</string>
+    <string name="settings_backend_dev">Development</string>
+    <string name="settings_logout">Log out</string>
+
+    <!-- Change password -->
+    <string name="change_password_title">Change password</string>
+    <string name="change_password_current">Current password</string>
+    <string name="change_password_new">New password</string>
+    <string name="change_password_save">Update password</string>
+    <string name="change_password_success">Password updated</string>
+
+    <!-- Devices -->
+    <string name="devices_title">Active devices</string>
+    <string name="devices_current">This device</string>
+    <string name="devices_revoke">Sign out</string>
+    <string name="devices_revoke_others">Sign out all other devices</string>
+    <string name="devices_empty">No other active devices.</string>
+</resources>

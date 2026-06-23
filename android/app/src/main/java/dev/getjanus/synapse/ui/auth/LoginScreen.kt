@@ -1,0 +1,91 @@
+package dev.getjanus.synapse.ui.auth
+
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.height
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Lock
+import androidx.compose.material.icons.filled.MailOutline
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Text
+import androidx.compose.material3.TextButton
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
+import androidx.compose.ui.Alignment
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.input.ImeAction
+import androidx.compose.ui.text.input.KeyboardType
+import androidx.hilt.navigation.compose.hiltViewModel
+import androidx.lifecycle.compose.collectAsStateWithLifecycle
+import dev.getjanus.synapse.R
+import dev.getjanus.synapse.core.datastore.AppLocale
+import dev.getjanus.synapse.core.designsystem.components.PrimaryButton
+import dev.getjanus.synapse.core.designsystem.components.SynapseTextField
+import dev.getjanus.synapse.core.designsystem.theme.Spacing
+import dev.getjanus.synapse.core.util.Validation
+
+@Composable
+fun LoginScreen(
+    onNavigateToSignup: () -> Unit,
+    currentLocale: AppLocale,
+    onSetLocale: (AppLocale) -> Unit,
+    viewModel: AuthViewModel = hiltViewModel(),
+) {
+    val state by viewModel.state.collectAsStateWithLifecycle()
+    var emailError by remember { mutableStateOf<String?>(null) }
+    var passwordError by remember { mutableStateOf<String?>(null) }
+
+    val invalidEmail = stringResource(R.string.auth_error_email)
+    val shortPassword = stringResource(R.string.auth_error_password_short)
+
+    AuthScaffold(
+        tagline = stringResource(R.string.auth_tagline),
+        title = stringResource(R.string.auth_login_title),
+        subtitle = stringResource(R.string.auth_login_subtitle),
+        currentLocale = currentLocale,
+        onSetLocale = onSetLocale,
+    ) {
+        SynapseTextField(
+            value = state.email,
+            onValueChange = viewModel::onEmail,
+            label = stringResource(R.string.auth_email),
+            leadingIcon = Icons.Filled.MailOutline,
+            keyboardType = KeyboardType.Email,
+            error = emailError,
+        )
+        Spacer(Modifier.height(Spacing.gap))
+        SynapseTextField(
+            value = state.password,
+            onValueChange = viewModel::onPassword,
+            label = stringResource(R.string.auth_password),
+            leadingIcon = Icons.Filled.Lock,
+            isPassword = true,
+            imeAction = ImeAction.Done,
+            error = passwordError,
+        )
+        if (state.error != null) {
+            Spacer(Modifier.height(Spacing.gap))
+            Text(state.error!!, style = MaterialTheme.typography.bodyMedium, color = MaterialTheme.colorScheme.error)
+        }
+        Spacer(Modifier.height(Spacing.lg))
+        PrimaryButton(
+            text = stringResource(R.string.auth_sign_in),
+            loading = state.submitting,
+            onClick = {
+                emailError = if (Validation.isEmailValid(state.email)) null else invalidEmail
+                passwordError = if (state.password.length >= 8) null else shortPassword
+                if (emailError == null && passwordError == null) viewModel.login()
+            },
+        )
+        Spacer(Modifier.height(Spacing.sm))
+        Row(verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.Center) {
+            Text(stringResource(R.string.auth_no_account), color = MaterialTheme.colorScheme.onSurfaceVariant)
+            TextButton(onClick = onNavigateToSignup) { Text(stringResource(R.string.auth_sign_up)) }
+        }
+    }
+}

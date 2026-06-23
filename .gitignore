@@ -1,0 +1,39 @@
+__pycache__/
+*.py[cod]
+.env
+.env.local
+venv/
+.venv/
+node_modules/
+dist/
+.next/
+.vscode/
+.idea/
+.DS_Store
+
+# Terraform
+**/.terraform/
+*.tfstate
+*.tfstate.backup
+*.tfstate.lock.info
+.terraform.lock.hcl
+*.tfplan
+
+# Secrets — anything that could carry a live credential
+.env.*
+!.env.example
+*.pem
+*.key
+*.p12
+secrets/
+.aws/
+credentials
+# Build / AI-tooling artifacts that can capture env vars or pasted secrets
+*.log
+build.log
+# Stray installer artifacts (e.g. Swift toolchain pkg) — never belong in the repo
+*.pkg
+.claude/
+.specstory/
+.cursor/
+.history/

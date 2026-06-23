@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  Synapse "hourglass synapse-graph" brand mark, white on the blue background
+  layer. Geometry matches frontend/components/logo.tsx (corners 22/78, hub
+  50,50 on a 0-100 grid), scaled by 0.6 and centred into the 108 safe zone.
+-->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="108dp"
+    android:height="108dp"
+    android:viewportWidth="108"
+    android:viewportHeight="108">
+
+    <!-- edges: top bar, bottom bar, two crossing diagonals -->
+    <path android:strokeColor="#FFFFFFFF" android:strokeWidth="5.4"
+        android:strokeLineCap="round" android:strokeLineJoin="round"
+        android:pathData="M37.2,38.4 L70.8,38.4" />
+    <path android:strokeColor="#FFFFFFFF" android:strokeWidth="5.4"
+        android:strokeLineCap="round" android:strokeLineJoin="round"
+        android:pathData="M37.2,69.6 L70.8,69.6" />
+    <path android:strokeColor="#FFFFFFFF" android:strokeWidth="5.4"
+        android:strokeLineCap="round" android:strokeLineJoin="round"
+        android:pathData="M37.2,38.4 L70.8,69.6" />
+    <path android:strokeColor="#FFFFFFFF" android:strokeWidth="5.4"
+        android:strokeLineCap="round" android:strokeLineJoin="round"
+        android:pathData="M70.8,38.4 L37.2,69.6" />
+
+    <!-- nodes: four corners (r=4.2) + centre hub (r=3.9) -->
+    <path android:fillColor="#FFFFFFFF"
+        android:pathData="M33,38.4 a4.2,4.2 0 1,0 8.4,0 a4.2,4.2 0 1,0 -8.4,0 Z" />
+    <path android:fillColor="#FFFFFFFF"
+        android:pathData="M66.6,38.4 a4.2,4.2 0 1,0 8.4,0 a4.2,4.2 0 1,0 -8.4,0 Z" />
+    <path android:fillColor="#FFFFFFFF"
+        android:pathData="M33,69.6 a4.2,4.2 0 1,0 8.4,0 a4.2,4.2 0 1,0 -8.4,0 Z" />
+    <path android:fillColor="#FFFFFFFF"
+        android:pathData="M66.6,69.6 a4.2,4.2 0 1,0 8.4,0 a4.2,4.2 0 1,0 -8.4,0 Z" />
+    <path android:fillColor="#FFFFFFFF"
+        android:pathData="M50.1,54 a3.9,3.9 0 1,0 7.8,0 a3.9,3.9 0 1,0 -7.8,0 Z" />
+</vector>

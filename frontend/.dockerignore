@@ -1,0 +1,23 @@
+# Secrets — never bake into images
+.env
+.env.*
+*.pem
+*.key
+secrets/
+.aws/
+
+# VCS / tooling
+.git
+.gitignore
+.claude/
+.specstory/
+
+# Node
+node_modules/
+.next/
+dist/
+npm-debug.log*
+
+# Logs / local
+*.log
+.DS_Store
