@@ -16,7 +16,7 @@ export default function manifest(): MetadataRoute.Manifest {
     display: "standalone",
     orientation: "portrait",
     background_color: "#15202B", // X "dim" dark background
-    theme_color: "#1D9BF0", // X blue
+    theme_color: "#7C3AED", // Rono violet
     icons: [
       {
         src: "/icon-192x192.png",

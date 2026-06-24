@@ -32,7 +32,7 @@ export default function Differentiators() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section header */}
         <div className="max-w-2xl">
-          <p className="text-cyan-600 text-sm font-semibold uppercase tracking-widest">
+          <p className="text-violet-600 text-sm font-semibold uppercase tracking-widest">
             {t.home.differentiators.eyebrow}
           </p>
           <h2 className="mt-3 text-3xl sm:text-4xl font-bold text-slate-900 leading-tight">
@@ -54,7 +54,7 @@ export default function Differentiators() {
                 <div
                   className={`w-11 h-11 rounded-lg flex items-center justify-center mb-4 transition-colors duration-200 ${
                     feature.accent === "cyan"
-                      ? "bg-cyan-50 group-hover:bg-cyan-100"
+                      ? "bg-violet-50 group-hover:bg-violet-100"
                       : "bg-violet-50 group-hover:bg-violet-100"
                   }`}
                 >
@@ -62,7 +62,7 @@ export default function Differentiators() {
                     size={20}
                     className={
                       feature.accent === "cyan"
-                        ? "text-cyan-600"
+                        ? "text-violet-600"
                         : "text-violet-600"
                     }
                   />

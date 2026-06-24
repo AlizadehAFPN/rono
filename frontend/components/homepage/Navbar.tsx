@@ -67,7 +67,7 @@ export default function Navbar() {
             <LanguageSwitcher tone="onDark" className="hidden sm:inline-flex" />
             <a
               href="#contact"
-              className="hidden sm:inline-flex items-center px-4 py-2 bg-cyan-500 hover:bg-cyan-400 text-white text-sm font-semibold rounded-lg transition-colors duration-200"
+              className="hidden sm:inline-flex items-center px-4 py-2 bg-violet-500 hover:bg-violet-400 text-white text-sm font-semibold rounded-lg transition-colors duration-200"
             >
               {t.home.nav.getEarlyAccess}
             </a>
@@ -76,7 +76,7 @@ export default function Navbar() {
                 cyan button; at sm+ it steps back to the subtle outline style. */}
             <a
               href="/login"
-              className="inline-flex items-center rounded-lg px-3 py-1.5 text-sm font-semibold transition-all duration-200 sm:px-4 sm:py-2 bg-cyan-500 text-white hover:bg-cyan-400 sm:border sm:border-white/20 sm:bg-white/10 sm:text-white sm:hover:border-white/40 sm:hover:bg-white/20"
+              className="inline-flex items-center rounded-lg px-3 py-1.5 text-sm font-semibold transition-all duration-200 sm:px-4 sm:py-2 bg-violet-500 text-white hover:bg-violet-400 sm:border sm:border-white/20 sm:bg-white/10 sm:text-white sm:hover:border-white/40 sm:hover:bg-white/20"
             >
               {t.home.nav.accessWebApp}
             </a>
@@ -112,7 +112,7 @@ export default function Navbar() {
             <a
               href="#contact"
               onClick={() => setOpen(false)}
-              className="flex items-center justify-center px-4 py-3 bg-cyan-500 text-white text-sm font-semibold rounded-lg"
+              className="flex items-center justify-center px-4 py-3 bg-violet-500 text-white text-sm font-semibold rounded-lg"
             >
               {t.home.nav.getEarlyAccess}
             </a>

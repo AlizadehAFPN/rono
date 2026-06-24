@@ -46,7 +46,7 @@ export const metadata: Metadata = {
 // Drives the theme-color and notch-safe rendering for the installed PWA.
 export const viewport: Viewport = {
   themeColor: [
-    { media: "(prefers-color-scheme: light)", color: "#1D9BF0" },
+    { media: "(prefers-color-scheme: light)", color: "#7C3AED" },
     { media: "(prefers-color-scheme: dark)", color: "#15202B" },
   ],
   width: "device-width",

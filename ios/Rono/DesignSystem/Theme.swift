@@ -13,7 +13,7 @@ enum Palette {
     static let popoverForeground = Color(light: 0x0F1419, dark: 0xF7F9F9)
 
     // ── Brand / actions ────────────────────────────────────────────
-    static let primary            = Color(light: 0x1478BE, dark: 0x1D9BF0)
+    static let primary            = Color(light: 0x7C3AED, dark: 0x9B6BFF)
     static let primaryForeground  = Color(hex: 0xFFFFFF)
     static let secondary          = Color(light: 0xEFF3F4, dark: 0x273340)
     static let secondaryForeground = Color(light: 0x0F1419, dark: 0xF7F9F9)
@@ -26,7 +26,7 @@ enum Palette {
     // ── Lines ──────────────────────────────────────────────────────
     static let border = Color(light: 0xCFD9DE, dark: 0x38444D)
     static let input  = Color(light: 0xCFD9DE, dark: 0x38444D)
-    static let ring   = Color(light: 0x1478BE, dark: 0x1D9BF0)
+    static let ring   = Color(light: 0x7C3AED, dark: 0x9B6BFF)
 
     // ── Charts ─────────────────────────────────────────────────────
     static let chart1 = Color(hex: 0x1D9BF0)
@@ -38,7 +38,7 @@ enum Palette {
     // ── Sidebar (used by More menu / nav surfaces) ─────────────────
     static let sidebar                  = Color(light: 0xFFFFFF, dark: 0x15202B)
     static let sidebarForeground        = Color(light: 0x0F1419, dark: 0xF7F9F9)
-    static let sidebarPrimary           = Color(light: 0x1478BE, dark: 0x1D9BF0)
+    static let sidebarPrimary           = Color(light: 0x7C3AED, dark: 0x9B6BFF)
     static let sidebarPrimaryForeground = Color(hex: 0xFFFFFF)
     static let sidebarAccent            = Color(light: 0xEFF3F4, dark: 0x273340)
 

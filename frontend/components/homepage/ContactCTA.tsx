@@ -19,7 +19,7 @@ export default function ContactCTA() {
         <div className="max-w-4xl mx-auto">
           {/* Heading */}
           <div className="text-center mb-14">
-            <p className="text-cyan-400 text-sm font-semibold uppercase tracking-widest mb-4">
+            <p className="text-violet-400 text-sm font-semibold uppercase tracking-widest mb-4">
               {t.home.contact.eyebrow}
             </p>
             <h2 className="text-4xl sm:text-5xl font-bold text-white leading-tight mb-5">
@@ -40,8 +40,8 @@ export default function ContactCTA() {
                   key={type.label}
                   className="rounded-xl border border-white/10 bg-white/5 p-6 text-center"
                 >
-                  <div className="w-10 h-10 rounded-full bg-cyan-500/15 border border-cyan-500/20 flex items-center justify-center mx-auto mb-3">
-                    <Icon size={16} className="text-cyan-400" />
+                  <div className="w-10 h-10 rounded-full bg-violet-500/15 border border-violet-500/20 flex items-center justify-center mx-auto mb-3">
+                    <Icon size={16} className="text-violet-400" />
                   </div>
                   <p className="text-white font-semibold text-sm mb-1">
                     {type.label}
@@ -58,7 +58,7 @@ export default function ContactCTA() {
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <a
               href="mailto:farzad@touchzenmedia.com"
-              className="inline-flex items-center justify-center gap-2.5 px-7 py-4 bg-cyan-500 hover:bg-cyan-400 text-white font-semibold rounded-lg transition-colors duration-200 text-sm"
+              className="inline-flex items-center justify-center gap-2.5 px-7 py-4 bg-violet-500 hover:bg-violet-400 text-white font-semibold rounded-lg transition-colors duration-200 text-sm"
             >
               <Mail size={16} />
               {t.home.contact.ctaPrimary}

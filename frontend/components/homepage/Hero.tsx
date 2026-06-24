@@ -235,7 +235,7 @@ export default function Hero() {
     >
       {/* Ambient glow blobs */}
       <div className="absolute inset-0 pointer-events-none" aria-hidden="true">
-        <div className="absolute top-1/4 -left-20 w-[480px] h-[480px] rounded-full bg-cyan-500 blur-[140px] opacity-[0.06]" />
+        <div className="absolute top-1/4 -left-20 w-[480px] h-[480px] rounded-full bg-violet-500 blur-[140px] opacity-[0.06]" />
         <div className="absolute bottom-1/4 -right-20 w-[480px] h-[480px] rounded-full bg-violet-600 blur-[140px] opacity-[0.06]" />
       </div>
 
@@ -244,9 +244,9 @@ export default function Hero() {
           {/* ── Left: Text content ── */}
           <div>
             {/* Eyebrow */}
-            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-cyan-500/10 border border-cyan-500/20 mb-8">
-              <span className="w-1.5 h-1.5 rounded-full bg-cyan-400 animate-pulse" />
-              <span className="text-cyan-400 text-xs font-semibold tracking-widest uppercase">
+            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-violet-500/10 border border-violet-500/20 mb-8">
+              <span className="w-1.5 h-1.5 rounded-full bg-violet-400 animate-pulse" />
+              <span className="text-violet-400 text-xs font-semibold tracking-widest uppercase">
                 {t.home.hero.eyebrow}
               </span>
             </div>
@@ -255,7 +255,7 @@ export default function Hero() {
             <h1 className="text-5xl sm:text-6xl lg:text-[64px] font-bold text-white leading-[1.08] tracking-tight">
               {t.home.hero.titleLine1}
               <br />
-              <span className="bg-gradient-to-r from-cyan-400 to-violet-400 bg-clip-text text-transparent">
+              <span className="bg-gradient-to-r from-violet-400 to-fuchsia-400 bg-clip-text text-transparent">
                 {t.home.hero.titleLine2}
               </span>
             </h1>
@@ -269,7 +269,7 @@ export default function Hero() {
             <div className="mt-10 flex flex-col sm:flex-row gap-4">
               <a
                 href="#contact"
-                className="inline-flex items-center justify-center px-6 py-3.5 bg-cyan-500 hover:bg-cyan-400 text-white font-semibold rounded-lg transition-colors duration-200 text-sm"
+                className="inline-flex items-center justify-center px-6 py-3.5 bg-violet-500 hover:bg-violet-400 text-white font-semibold rounded-lg transition-colors duration-200 text-sm"
               >
                 {t.home.hero.ctaPrimary}
               </a>

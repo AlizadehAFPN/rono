@@ -67,9 +67,9 @@ const PLATFORM_META = [
   {
     id: "web",
     icon: "web" as const,
-    accentText: "text-cyan-500",
-    iconBg: "bg-cyan-50",
-    cardBorder: "border-cyan-100",
+    accentText: "text-violet-500",
+    iconBg: "bg-violet-50",
+    cardBorder: "border-violet-100",
     // Live now: links into the web app.
     href: "/login",
     download: false,
@@ -121,7 +121,7 @@ export default function Platforms() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section header */}
         <div className="text-center max-w-2xl mx-auto mb-14">
-          <p className="text-cyan-600 text-sm font-semibold uppercase tracking-widest">
+          <p className="text-violet-600 text-sm font-semibold uppercase tracking-widest">
             {t.home.platforms.eyebrow}
           </p>
           <h2 className="mt-3 text-3xl sm:text-4xl font-bold text-slate-900 leading-tight">
@@ -178,7 +178,7 @@ export default function Platforms() {
               <a
                 href={platform.href}
                 {...(platform.download ? { download: true } : {})}
-                className="inline-flex items-center gap-2 px-4 py-2.5 bg-cyan-500 hover:bg-cyan-400 text-white text-sm font-semibold rounded-lg transition-colors duration-200"
+                className="inline-flex items-center gap-2 px-4 py-2.5 bg-violet-500 hover:bg-violet-400 text-white text-sm font-semibold rounded-lg transition-colors duration-200"
               >
                 {platform.download && (
                   <svg

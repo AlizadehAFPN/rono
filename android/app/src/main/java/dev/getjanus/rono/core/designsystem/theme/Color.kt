@@ -12,8 +12,8 @@ import androidx.compose.ui.graphics.Color
  *
  * WCAG notes (computed): body text `onSurface` pairs exceed 15:1 in both modes;
  * `mutedForeground` is 5.8:1 (light) / 5.1:1 (dark). The brand `primary` keeps
- * white labels to match X — light #1478BE → 4.7:1 (passes AA), dark #1D9BF0 →
- * ~3.0:1 (passes AA for the bold/large button text it is used on). Primary
+ * white labels — light violet #7C3AED → 5.7:1 (passes AA), dark #9B6BFF →
+ * ~3.5:1 (passes AA for the bold/large button text it is used on). Primary
  * buttons therefore always use a bold, ≥16sp label.
  */
 internal object Tokens {
@@ -26,8 +26,8 @@ internal object Tokens {
     val CardD = Color(0xFF1E2732)
 
     // Brand / actions
-    val PrimaryL = Color(0xFF1478BE)
-    val PrimaryD = Color(0xFF1D9BF0)
+    val PrimaryL = Color(0xFF7C3AED)
+    val PrimaryD = Color(0xFF9B6BFF)
     val OnPrimary = Color(0xFFFFFFFF)
     val SecondarySurfaceL = Color(0xFFEFF3F4)
     val SecondarySurfaceD = Color(0xFF273340)

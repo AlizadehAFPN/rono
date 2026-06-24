@@ -39,8 +39,8 @@ const EDGES = [
   [78, 24, 22, 76], // diagonal ╱
 ];
 
-const BRAND_TOP = "#2BA6F4";
-const BRAND_BOTTOM = "#0A66C2";
+const BRAND_TOP = "#9B6BFF";
+const BRAND_BOTTOM = "#6D28D9";
 
 /**
  * Build an SVG string.

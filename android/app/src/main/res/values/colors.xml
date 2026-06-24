@@ -2,8 +2,8 @@
 <resources>
     <!-- Raw colors used by XML window themes / splash / launcher icon only.
          Compose theming uses its own Kotlin color tokens (core/designsystem). -->
-    <color name="brand">#1478BE</color>
-    <color name="brand_dark">#1D9BF0</color>
+    <color name="brand">#7C3AED</color>
+    <color name="brand_dark">#9B6BFF</color>
     <color name="splash_background_light">#F7F9F9</color>
     <color name="splash_background_dark">#15202B</color>
     <color name="ic_launcher_background">#15202B</color>

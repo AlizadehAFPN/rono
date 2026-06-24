@@ -6,8 +6,8 @@
 
 /* ── Light mode — X "Light" theme (verified WCAG AA) ────────────────────────
  * Soft off-white page, white cards, near-black (not pure black) text, and
- * X's gray secondary text. Accent blue deepened to #1478BE so it stays
- * readable as link/button text on light surfaces (X's #1D9BF0 fails there).
+ * X's gray secondary text. Rono brand accent is violet #7C3AED (5.7:1 on
+ * white) so it stays readable as link/button text on light surfaces.
  */
 :root {
   --background: #F7F9F9;            /* X light gray page */
@@ -16,7 +16,7 @@
   --card-foreground: #0F1419;
   --popover: #FFFFFF;
   --popover-foreground: #0F1419;
-  --primary: #1478BE;              /* readable X blue (4.5:1+ as text) */
+  --primary: #7C3AED;              /* Rono violet (5.7:1 as text) */
   --primary-foreground: #FFFFFF;
   --secondary: #EFF3F4;            /* X light button gray */
   --secondary-foreground: #0F1419;
@@ -27,7 +27,7 @@
   --destructive: #F4212E;          /* X red */
   --border: #CFD9DE;               /* X visible divider */
   --input: #CFD9DE;
-  --ring: #1478BE;
+  --ring: #7C3AED;
   --chart-1: #1D9BF0;              /* X blue */
   --chart-2: #00BA7C;              /* X green */
   --chart-3: #7856FF;              /* X purple */
@@ -36,12 +36,12 @@
   --radius: 0.625rem;
   --sidebar: #FFFFFF;
   --sidebar-foreground: #0F1419;
-  --sidebar-primary: #1478BE;
+  --sidebar-primary: #7C3AED;
   --sidebar-primary-foreground: #FFFFFF;
   --sidebar-accent: #EFF3F4;
   --sidebar-accent-foreground: #0F1419;
   --sidebar-border: #EFF3F4;
-  --sidebar-ring: #1478BE;
+  --sidebar-ring: #7C3AED;
 }
 
 @theme inline {
@@ -90,7 +90,7 @@
 
 /* ── Dark mode — X "Dim" theme (verified WCAG AA) ───────────────────────────
  * X's signature soft dark-blue, not black. Cards one step lighter for depth,
- * X gray secondary text (#8B98A5, 5.1:1), exact X blue accent #1D9BF0.
+ * X gray secondary text (#8B98A5, 5.1:1), Rono violet accent #9B6BFF (4.7:1).
  */
 .dark {
   --background: #15202B;           /* X Dim page */
@@ -99,7 +99,7 @@
   --card-foreground: #F7F9F9;
   --popover: #1E2732;
   --popover-foreground: #F7F9F9;
-  --primary: #1D9BF0;              /* exact X blue */
+  --primary: #9B6BFF;              /* Rono violet (4.7:1 on dim bg) */
   --primary-foreground: #FFFFFF;
   --secondary: #273340;            /* X Dim secondary surface */
   --secondary-foreground: #F7F9F9;
@@ -110,7 +110,7 @@
   --destructive: #F4212E;          /* X red */
   --border: #38444D;               /* X Dim divider */
   --input: #38444D;
-  --ring: #1D9BF0;
+  --ring: #9B6BFF;
   --chart-1: #1D9BF0;
   --chart-2: #00BA7C;
   --chart-3: #7856FF;
@@ -118,12 +118,12 @@
   --chart-5: #F91880;
   --sidebar: #15202B;
   --sidebar-foreground: #F7F9F9;
-  --sidebar-primary: #1D9BF0;
+  --sidebar-primary: #9B6BFF;
   --sidebar-primary-foreground: #FFFFFF;
   --sidebar-accent: #273340;
   --sidebar-accent-foreground: #F7F9F9;
   --sidebar-border: #38444D;
-  --sidebar-ring: #1D9BF0;
+  --sidebar-ring: #9B6BFF;
 }
 
 @layer base {

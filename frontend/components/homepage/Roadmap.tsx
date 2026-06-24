@@ -29,8 +29,8 @@ function StatusBadge({ status }: { status: PhaseStatus }) {
   if (status === "active") {
     return (
       <div className="flex items-center gap-1.5">
-        <span className="w-1.5 h-1.5 rounded-full bg-cyan-500 animate-pulse" />
-        <span className="text-xs font-semibold text-cyan-600">
+        <span className="w-1.5 h-1.5 rounded-full bg-violet-500 animate-pulse" />
+        <span className="text-xs font-semibold text-violet-600">
           {t.home.roadmap.statusActive}
         </span>
       </div>
@@ -59,7 +59,7 @@ export default function Roadmap() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section header */}
         <div className="text-center max-w-2xl mx-auto mb-14">
-          <p className="text-cyan-600 text-sm font-semibold uppercase tracking-widest">
+          <p className="text-violet-600 text-sm font-semibold uppercase tracking-widest">
             {t.home.roadmap.eyebrow}
           </p>
           <h2 className="mt-3 text-3xl sm:text-4xl font-bold text-slate-900 leading-tight">
@@ -79,7 +79,7 @@ export default function Roadmap() {
                 phase.status === "complete"
                   ? "bg-white border-emerald-200"
                   : phase.status === "active"
-                    ? "bg-white border-cyan-200 shadow-md shadow-cyan-100/60"
+                    ? "bg-white border-violet-200 shadow-md shadow-violet-100/60"
                     : "bg-white border-slate-200"
               }`}
             >
@@ -90,7 +90,7 @@ export default function Roadmap() {
                     phase.status === "complete"
                       ? "bg-emerald-50 text-emerald-600"
                       : phase.status === "active"
-                        ? "bg-cyan-50 text-cyan-600"
+                        ? "bg-violet-50 text-violet-600"
                         : "bg-slate-100 text-slate-500"
                   }`}
                 >

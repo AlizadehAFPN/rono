@@ -17,7 +17,7 @@ export default function Problem() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section header */}
         <div className="max-w-2xl">
-          <p className="text-cyan-600 text-sm font-semibold uppercase tracking-widest">
+          <p className="text-violet-600 text-sm font-semibold uppercase tracking-widest">
             {t.home.problem.eyebrow}
           </p>
           <h2 className="mt-3 text-3xl sm:text-4xl font-bold text-slate-900 leading-tight">

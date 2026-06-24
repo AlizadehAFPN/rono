@@ -52,10 +52,10 @@ class ContrastTest {
 
     @Test
     fun primaryButtonLabelPassesLargeText() {
-        // White on brand blue. Light passes AA normal; dark is the fixed X-blue,
-        // used only for bold ≥16sp labels, so the large-text 3:1 bar applies.
-        assertAA(0xFFFFFF, 0x1478BE, "onPrimary light")
-        assertLargeText(0xFFFFFF, 0x1D9BF0, "onPrimary dark")
+        // White on brand violet. Light passes AA normal; dark is the lighter
+        // violet tint, used only for bold ≥16sp labels, so the 3:1 bar applies.
+        assertAA(0xFFFFFF, 0x7C3AED, "onPrimary light")
+        assertLargeText(0xFFFFFF, 0x9B6BFF, "onPrimary dark")
     }
 
     private fun assertAA(fg: Int, bg: Int, name: String) {

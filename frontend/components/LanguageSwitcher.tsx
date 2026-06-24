@@ -37,7 +37,7 @@ export function LanguageSwitcher({
       <DropdownMenu.Trigger
         aria-label={t.common.language.label}
         className={cn(
-          "inline-flex items-center gap-1.5 rounded-lg px-2.5 py-1.5 text-sm font-medium outline-none transition-colors duration-200 focus-visible:ring-2 focus-visible:ring-cyan-500/50",
+          "inline-flex items-center gap-1.5 rounded-lg px-2.5 py-1.5 text-sm font-medium outline-none transition-colors duration-200 focus-visible:ring-2 focus-visible:ring-violet-500/50",
           triggerClass,
           className,
         )}
@@ -72,7 +72,7 @@ export function LanguageSwitcher({
                     ? "focus:bg-white/10 data-[highlighted]:bg-white/10"
                     : "focus:bg-accent data-[highlighted]:bg-accent",
                   active &&
-                    (tone === "onDark" ? "text-cyan-400" : "font-medium"),
+                    (tone === "onDark" ? "text-violet-400" : "font-medium"),
                 )}
               >
                 <span className="flex items-center gap-2.5">

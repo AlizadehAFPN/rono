@@ -9,7 +9,7 @@ export default function Solution() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section header */}
         <div className="text-center max-w-3xl mx-auto">
-          <p className="text-cyan-600 text-sm font-semibold uppercase tracking-widest">
+          <p className="text-violet-600 text-sm font-semibold uppercase tracking-widest">
             {t.home.solution.eyebrow}
           </p>
           <h2 className="mt-3 text-3xl sm:text-4xl font-bold text-slate-900 leading-tight">
@@ -23,15 +23,15 @@ export default function Solution() {
         {/* Algorithm cards */}
         <div className="mt-16 grid md:grid-cols-2 gap-7 max-w-5xl mx-auto">
           {/* IRT card */}
-          <div className="rounded-2xl border border-cyan-100 bg-gradient-to-b from-cyan-50/70 to-white p-8 lg:p-10">
+          <div className="rounded-2xl border border-violet-100 bg-gradient-to-b from-violet-50/70 to-white p-8 lg:p-10">
             <div className="flex items-center gap-3 mb-6">
-              <div className="w-10 h-10 rounded-full bg-cyan-500 flex items-center justify-center shrink-0">
+              <div className="w-10 h-10 rounded-full bg-violet-500 flex items-center justify-center shrink-0">
                 <span className="text-white text-xs font-bold tracking-tight">
                   IRT
                 </span>
               </div>
               <div>
-                <div className="text-[11px] font-semibold text-cyan-600 uppercase tracking-widest mb-0.5">
+                <div className="text-[11px] font-semibold text-violet-600 uppercase tracking-widest mb-0.5">
                   {t.home.solution.irt.algoLabel}
                 </div>
                 <div className="text-slate-800 font-semibold text-sm">
@@ -54,7 +54,7 @@ export default function Solution() {
                   key={point}
                   className="flex items-start gap-2.5 text-sm text-slate-600"
                 >
-                  <span className="w-1.5 h-1.5 rounded-full bg-cyan-500 mt-[6px] shrink-0" />
+                  <span className="w-1.5 h-1.5 rounded-full bg-violet-500 mt-[6px] shrink-0" />
                   {point}
                 </li>
               ))}

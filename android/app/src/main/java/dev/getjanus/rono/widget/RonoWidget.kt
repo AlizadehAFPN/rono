@@ -46,7 +46,7 @@ class RonoWidget : GlanceAppWidget() {
     }
 }
 
-private val BrandBlue = Color(0xFF1D9BF0)
+private val BrandViolet = Color(0xFF9B6BFF)
 private val Amber = Color(0xFFFFB23E)
 
 @Composable
@@ -80,7 +80,7 @@ private fun WidgetBody(context: Context, snapshot: WidgetSnapshot) {
         Box(
             modifier = GlanceModifier
                 .fillMaxWidth()
-                .background(ColorProvider(BrandBlue))
+                .background(ColorProvider(BrandViolet))
                 .cornerRadius(12.dp)
                 .padding(vertical = 10.dp)
                 .clickable(openDaily),

@@ -19,7 +19,7 @@ export function Confetti() {
     const dpr = Math.min(window.devicePixelRatio || 1, 2);
     const W = (canvas.width = window.innerWidth * dpr);
     const H = (canvas.height = window.innerHeight * dpr);
-    const cols = ["#1D9BF0", "#00BA7C", "#8B98A5", "#FFFFFF"];
+    const cols = ["#9B6BFF", "#00BA7C", "#8B98A5", "#FFFFFF"];
 
     const parts = Array.from({ length: 90 }, (_, i) => ({
       x: W / 2,
