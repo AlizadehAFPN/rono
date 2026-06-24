@@ -1,6 +1,6 @@
 locals {
   # Placeholder image — replaced on first deploy by GitHub Actions
-  placeholder_image = "${var.aws_account_id}.dkr.ecr.${var.aws_region}.amazonaws.com/synapse/backend:latest"
+  placeholder_image = "${var.aws_account_id}.dkr.ecr.${var.aws_region}.amazonaws.com/rono/backend:latest"
 }
 
 data "aws_caller_identity" "current" {}
@@ -79,8 +79,8 @@ module "ecs" {
   backend_target_group_arn  = module.alb.backend_target_group_arn
   frontend_target_group_arn = module.alb.frontend_target_group_arn
 
-  backend_image  = "${var.aws_account_id}.dkr.ecr.${var.aws_region}.amazonaws.com/synapse/backend:latest"
-  frontend_image = "${var.aws_account_id}.dkr.ecr.${var.aws_region}.amazonaws.com/synapse/frontend:latest"
+  backend_image  = "${var.aws_account_id}.dkr.ecr.${var.aws_region}.amazonaws.com/rono/backend:latest"
+  frontend_image = "${var.aws_account_id}.dkr.ecr.${var.aws_region}.amazonaws.com/rono/frontend:latest"
 
   backend_cpu    = 256
   backend_memory = 512

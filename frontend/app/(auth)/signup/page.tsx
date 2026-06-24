@@ -27,12 +27,12 @@ type SignupFormValues = {
   password: string;
 };
 
-function SynapseLogo() {
+function RonoLogo() {
   return (
     <div className="flex items-center justify-center gap-3 text-primary">
       <LogoMark className="size-9" />
       <span className="text-2xl font-bold tracking-tight text-foreground">
-        Synapse
+        Rono
       </span>
     </div>
   );
@@ -72,7 +72,7 @@ export default function SignupPage() {
     <div className="rounded-2xl border bg-card p-8 shadow-xs sm:p-10">
       {/* Logo */}
       <div className="mb-8">
-        <SynapseLogo />
+        <RonoLogo />
         <p className="mt-3 text-center text-sm text-muted-foreground">
           {t.auth.signup.tagline}
         </p>

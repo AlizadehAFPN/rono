@@ -16,9 +16,9 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Synapse — Adaptive Learning Platform",
+  title: "Rono — Adaptive Learning Platform",
   description:
-    "Synapse combines Item Response Theory and spaced repetition scheduling to deliver personalized medical education that adapts to every learner in real time.",
+    "Rono combines Item Response Theory and spaced repetition scheduling to deliver personalized medical education that adapts to every learner in real time.",
   keywords: [
     "adaptive learning",
     "medical education",
@@ -27,7 +27,7 @@ export const metadata: Metadata = {
     "FSRS",
   ],
   // PWA: tells the browser this app is installable and how to render it.
-  applicationName: "Synapse",
+  applicationName: "Rono",
   appleWebApp: {
     capable: true, // run standalone (no Safari chrome) when added to home screen
     // NOT "black-translucent": that anchors the web view at the physical top in
@@ -35,7 +35,7 @@ export const metadata: Metadata = {
     // the screen and the fixed tab bar floats above a dead strip. "black" sits
     // the web view below the status bar and lets it reach the physical bottom.
     statusBarStyle: "black",
-    title: "Synapse",
+    title: "Rono",
   },
   icons: {
     icon: "/favicon.ico",
@@ -57,7 +57,7 @@ export const viewport: Viewport = {
 // Only needed for the "system" edge case: server cannot know the OS preference,
 // so we apply it client-side before React hydrates to avoid FOUC.
 // For explicit "light" or "dark" cookies the server already renders the right class.
-const systemThemeScript = `try{if(document.cookie.match(/synapse-theme=system/)&&window.matchMedia("(prefers-color-scheme:dark)").matches){document.documentElement.classList.add("dark")}}catch(e){}`;
+const systemThemeScript = `try{if(document.cookie.match(/rono-theme=system/)&&window.matchMedia("(prefers-color-scheme:dark)").matches){document.documentElement.classList.add("dark")}}catch(e){}`;
 
 export default async function RootLayout({
   children,
@@ -65,7 +65,7 @@ export default async function RootLayout({
   children: React.ReactNode;
 }) {
   const cookieStore = await cookies();
-  const themeCookie = cookieStore.get("synapse-theme")?.value;
+  const themeCookie = cookieStore.get("rono-theme")?.value;
   const locale = resolveLocale(cookieStore.get(LOCALE_COOKIE)?.value);
 
   // Server-side class determination:

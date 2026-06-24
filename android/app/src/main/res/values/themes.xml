@@ -3,7 +3,7 @@
 
     <!-- Real app theme. Compose draws all UI; this only controls the window
          chrome to avoid flashes before the first composition. -->
-    <style name="Theme.Synapse" parent="android:Theme.Material.Light.NoActionBar">
+    <style name="Theme.Rono" parent="android:Theme.Material.Light.NoActionBar">
         <item name="android:windowBackground">@color/window_background_light</item>
         <item name="android:statusBarColor">@android:color/transparent</item>
         <item name="android:navigationBarColor">@android:color/transparent</item>
@@ -11,10 +11,10 @@
     </style>
 
     <!-- Splash screen theme (androidx core-splashscreen). -->
-    <style name="Theme.Synapse.Starting" parent="Theme.SplashScreen">
+    <style name="Theme.Rono.Starting" parent="Theme.SplashScreen">
         <item name="windowSplashScreenBackground">@color/splash_background_light</item>
         <item name="windowSplashScreenAnimatedIcon">@drawable/ic_launcher_foreground</item>
-        <item name="postSplashScreenTheme">@style/Theme.Synapse</item>
+        <item name="postSplashScreenTheme">@style/Theme.Rono</item>
     </style>
 
 </resources>

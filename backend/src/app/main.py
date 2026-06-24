@@ -11,7 +11,7 @@ from sqlalchemy import text
 from app.api import v1_router
 from app.core.config import settings
 from app.core.database import engine
-from app.core.exceptions import SynapseException, synapse_exception_handler
+from app.core.exceptions import RonoException, rono_exception_handler
 
 logger = structlog.get_logger()
 
@@ -25,10 +25,10 @@ async def lifespan(app: FastAPI):
 
 
 app = FastAPI(
-    title="Synapse — Adaptive Learning API",
+    title="Rono — Adaptive Learning API",
     version="0.1.0",
     description=(
-        "REST API for the Synapse adaptive learning platform. "
+        "REST API for the Rono adaptive learning platform. "
         "Powered by IRT (Item Response Theory) + FSRS-5 spaced repetition."
     ),
     lifespan=lifespan,
@@ -51,7 +51,7 @@ app.add_middleware(
 # Exception handlers
 # ---------------------------------------------------------------------------
 
-app.add_exception_handler(SynapseException, synapse_exception_handler)  # type: ignore[arg-type]
+app.add_exception_handler(RonoException, rono_exception_handler)  # type: ignore[arg-type]
 
 # ---------------------------------------------------------------------------
 # Routers

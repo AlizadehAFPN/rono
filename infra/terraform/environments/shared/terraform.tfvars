@@ -1,2 +1,2 @@
-github_org  = "Synapse-Qbank"
-github_repo = "Synapse"
+github_org  = "Rono-Qbank"
+github_repo = "Rono"

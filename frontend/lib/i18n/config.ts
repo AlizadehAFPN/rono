@@ -4,7 +4,7 @@ export type Locale = (typeof locales)[number];
 
 export const defaultLocale: Locale = "tr";
 
-export const LOCALE_COOKIE = "synapse-lang";
+export const LOCALE_COOKIE = "rono-lang";
 
 export const LOCALE_LABELS: Record<Locale, { native: string; short: string }> =
   {

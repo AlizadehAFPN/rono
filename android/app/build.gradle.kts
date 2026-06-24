@@ -18,11 +18,11 @@ val keystoreProps = Properties().apply {
 }
 
 android {
-    namespace = "dev.getjanus.synapse"
+    namespace = "dev.getjanus.rono"
     compileSdk = 36
 
     defaultConfig {
-        applicationId = "dev.getjanus.synapse"
+        applicationId = "dev.getjanus.rono"
         minSdk = 26
         targetSdk = 36
         versionCode = 1

@@ -1,7 +1,7 @@
-# Synapse Adaptive Learning Platform
+# Rono Adaptive Learning Platform
 ## Phase 0 Completion Report — Foundation & Infrastructure
 
-**Project:** Synapse — Adaptive Learning Platform for Medical Education  
+**Project:** Rono — Adaptive Learning Platform for Medical Education  
 **Phase:** 0 — Foundation  
 **Period:** May 2026  
 **Status:** Complete  
@@ -11,7 +11,7 @@
 
 ## Executive Summary
 
-Phase 0 of the Synapse platform has been successfully completed. This phase focused entirely on building the invisible but essential foundation that every feature of the product will rely on. No user-facing features were built in this phase — instead, the team established the engineering infrastructure, development environment, and quality systems that will allow all future development to move faster, safer, and more reliably.
+Phase 0 of the Rono platform has been successfully completed. This phase focused entirely on building the invisible but essential foundation that every feature of the product will rely on. No user-facing features were built in this phase — instead, the team established the engineering infrastructure, development environment, and quality systems that will allow all future development to move faster, safer, and more reliably.
 
 Think of Phase 0 as building the plumbing, electrical wiring, and structural frame of a house before any interior work begins. The house looks empty from the outside, but everything that matters is now in place.
 
@@ -147,7 +147,7 @@ make up
 
 Three foundational documents were created:
 
-**README** — The project's welcome document. Any new developer, stakeholder, or contributor can read this to understand what Synapse is, how to start it, and what technologies it uses.
+**README** — The project's welcome document. Any new developer, stakeholder, or contributor can read this to understand what Rono is, how to start it, and what technologies it uses.
 
 **CHANGELOG** — A running log of every significant change made to the platform, organized by release. This creates a clear historical record of what changed and when — invaluable for debugging, audits, and communication with stakeholders.
 
@@ -194,7 +194,7 @@ Delivered 19 live API endpoints, a full JWT-based authentication system with tok
 
 ## Summary
 
-Phase 0 is complete. The Synapse platform now has a professional, production-grade foundation. Every line of infrastructure built in this phase was chosen deliberately — not for elegance, but for reliability, maintainability, and the ability to move fast without breaking things as the product grows.
+Phase 0 is complete. The Rono platform now has a professional, production-grade foundation. Every line of infrastructure built in this phase was chosen deliberately — not for elegance, but for reliability, maintainability, and the ability to move fast without breaking things as the product grows.
 
 The team is ready to begin Phase 1.
 

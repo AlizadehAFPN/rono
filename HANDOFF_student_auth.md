@@ -32,7 +32,7 @@ later). A self-signup just needs email + password + name → creates an active
 ## THE GAP TO CLOSE
 `POST /api/v1/auth/register` currently creates a **new institution + admin**
 (see `auth_service.register`). Student self-signup must instead create a
-**student membership in the EXISTING institution** (the single one: "Synapse Demo
+**student membership in the EXISTING institution** (the single one: "Rono Demo
 University"). So:
 1. Backend: add an open **student signup** path (e.g. `POST /api/v1/auth/signup`)
    → create User (hashed pw) + Membership(role=student, status=active) in the
@@ -48,13 +48,13 @@ University"). So:
    card state are isolated per user.
 
 ## ENVIRONMENT & ACCESS
-- Repo (local, source of truth): `/Users/wallex/Desktop/Synapse`, branch
+- Repo (local, source of truth): `/Users/wallex/Desktop/Rono`, branch
   `staging`. The Bash tool runs on this Mac.
 - Live server (Hetzner "Argus"): `ssh -o BatchMode=yes root@178.105.254.90`
-  (the Mac's SSH key is authorized). App: **https://synapse.getjanus.dev**.
-  Admin login: `admin@synapse-demo.edu` / `Admin1234!`.
-- Stack on server: Docker Compose project **synapse** at
-  `/opt/synapse/infra/hetzner/docker-compose.prod.yml` (postgres + redis +
+  (the Mac's SSH key is authorized). App: **https://rono.getjanus.dev**.
+  Admin login: `admin@rono-demo.edu` / `Admin1234!`.
+- Stack on server: Docker Compose project **rono** at
+  `/opt/rono/infra/hetzner/docker-compose.prod.yml` (postgres + redis +
   backend + frontend), behind the host **nginx** (already routes the domain with
   Let's Encrypt). Frontend published on `127.0.0.1:3100`; backend internal.
 
@@ -63,15 +63,15 @@ University"). So:
    Backend imports: `cd backend && PYTHONPATH=src .venv/bin/python -c "import app.main"`.
    Run backend tests: `cd backend && .venv/bin/python -m pytest -q`.
 2. Sync to server:
-   `rsync -az -e "ssh -o BatchMode=yes" --exclude .venv --exclude __pycache__ --exclude '*.pyc' backend/src/ root@178.105.254.90:/opt/synapse/backend/src/`
-   `rsync -az -e "ssh -o BatchMode=yes" --exclude node_modules --exclude .next frontend/ root@178.105.254.90:/opt/synapse/frontend/`
+   `rsync -az -e "ssh -o BatchMode=yes" --exclude .venv --exclude __pycache__ --exclude '*.pyc' backend/src/ root@178.105.254.90:/opt/rono/backend/src/`
+   `rsync -az -e "ssh -o BatchMode=yes" --exclude node_modules --exclude .next frontend/ root@178.105.254.90:/opt/rono/frontend/`
 3. Rebuild only what changed (long; run in background):
-   `ssh root@178.105.254.90 'cd /opt/synapse/infra/hetzner && docker compose -f docker-compose.prod.yml -p synapse --env-file .env up -d --build backend frontend'`
+   `ssh root@178.105.254.90 'cd /opt/rono/infra/hetzner && docker compose -f docker-compose.prod.yml -p rono --env-file .env up -d --build backend frontend'`
 4. Migrations run automatically on backend start (its command is
    `alembic upgrade head && uvicorn ...`). For new tables/columns add an Alembic
    migration in `backend/alembic/versions/` (current head: check
    `alembic history`). Models live in `backend/src/app/models/`.
-5. Verify against https://synapse.getjanus.dev with curl (login sets httpOnly
+5. Verify against https://rono.getjanus.dev with curl (login sets httpOnly
    cookies; the `/api/v1/sessions/` POST 308-redirects on trailing slash — use
    `curl -L`). The browser/fetch follows it fine.
 
@@ -102,4 +102,4 @@ University"). So:
   uses the adaptive practice + review + progress flow with their own isolated
   θ/FSRS state. Backend tests pass; frontend typechecks; committed locally and
   pushed to `hetzner`. Confirm with a real end-to-end run on
-  https://synapse.getjanus.dev using a freshly created account.
+  https://rono.getjanus.dev using a freshly created account.

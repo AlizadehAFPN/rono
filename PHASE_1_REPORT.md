@@ -1,7 +1,7 @@
-# Synapse — Adaptive Learning Platform
+# Rono — Adaptive Learning Platform
 ## Phase 1 Completion Report: Data Architecture & Database Foundation
 
-**Project:** Synapse — AI-Powered Adaptive Learning for Medical Education
+**Project:** Rono — AI-Powered Adaptive Learning for Medical Education
 **Phase:** 1 of 6 — Data Architecture & Database Foundation
 **Status:** Complete
 **Date Completed:** May 16, 2026
@@ -11,11 +11,11 @@
 
 ## Executive Summary
 
-Phase 1 established the permanent data foundation for the Synapse platform. Every piece of information the platform will ever store — from user accounts and exam questions, to how students perform, how questions are scheduled for review, and how administrators monitor outcomes — has been precisely designed, implemented, and deployed to the database.
+Phase 1 established the permanent data foundation for the Rono platform. Every piece of information the platform will ever store — from user accounts and exam questions, to how students perform, how questions are scheduled for review, and how administrators monitor outcomes — has been precisely designed, implemented, and deployed to the database.
 
 This phase is analogous to pouring and inspecting the concrete foundation of a building. No walls go up, no windows go in, and no tenants move in during this phase. But everything that comes next depends entirely on the quality of what was built here. We are satisfied that the foundation is sound, scalable, and professional.
 
-At the conclusion of Phase 1, the Synapse database contains **33 production-ready tables**, organized into **5 logical domains**, with full support for multi-institutional deployment from day one.
+At the conclusion of Phase 1, the Rono database contains **33 production-ready tables**, organized into **5 logical domains**, with full support for multi-institutional deployment from day one.
 
 ---
 

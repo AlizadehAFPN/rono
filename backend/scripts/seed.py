@@ -2,10 +2,10 @@
 Idempotent database seed script for development and testing.
 
 Creates:
-  1. Institution  : "Synapse Demo University"  (slug: synapse-demo)
-  2. Admin user   : admin@synapse-demo.edu     / Admin1234!  (institution_admin)
-  3. Instructor   : instructor@synapse-demo.edu / Teach1234! (instructor)
-  4. Student      : student@synapse-demo.edu   / Study1234!  (student)
+  1. Institution  : "Rono Demo University"  (slug: rono-demo)
+  2. Admin user   : admin@rono-demo.edu     / Admin1234!  (institution_admin)
+  3. Instructor   : instructor@rono-demo.edu / Teach1234! (instructor)
+  4. Student      : student@rono-demo.edu   / Study1234!  (student)
   5. Topic tree   : Basic Sciences → Physiology → Cardiovascular Physiology
                     Basic Sciences → Biochemistry
                     Clinical Sciences → Cardiology → Heart Failure
@@ -78,10 +78,10 @@ log = structlog.get_logger()
 # Seed data constants
 # ---------------------------------------------------------------------------
 
-INSTITUTION_SLUG = "synapse-demo"
-ADMIN_EMAIL = "admin@synapse-demo.edu"
-INSTRUCTOR_EMAIL = "instructor@synapse-demo.edu"
-STUDENT_EMAIL = "student@synapse-demo.edu"
+INSTITUTION_SLUG = "rono-demo"
+ADMIN_EMAIL = "admin@rono-demo.edu"
+INSTRUCTOR_EMAIL = "instructor@rono-demo.edu"
+STUDENT_EMAIL = "student@rono-demo.edu"
 
 
 # ---------------------------------------------------------------------------
@@ -97,7 +97,7 @@ async def _get_or_create_institution(db: AsyncSession) -> Institution:
         return inst
 
     inst = Institution(
-        name="Synapse Demo University",
+        name="Rono Demo University",
         slug=INSTITUTION_SLUG,
         subscription_tier="pro",
     )

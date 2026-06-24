@@ -28,7 +28,7 @@ export default function Differentiators() {
   }));
 
   return (
-    <section id="why-synapse" className="py-24 bg-white">
+    <section id="why-rono" className="py-24 bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section header */}
         <div className="max-w-2xl">

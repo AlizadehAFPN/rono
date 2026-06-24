@@ -5,8 +5,8 @@
 -keepclasseswithmembers class * {
     kotlinx.serialization.KSerializer serializer(...);
 }
--keep,includedescriptorclasses class dev.getjanus.synapse.**$$serializer { *; }
--keepclassmembers class dev.getjanus.synapse.** {
+-keep,includedescriptorclasses class dev.getjanus.rono.**$$serializer { *; }
+-keepclassmembers class dev.getjanus.rono.** {
     *** Companion;
 }
 

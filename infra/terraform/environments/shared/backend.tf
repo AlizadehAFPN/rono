@@ -9,10 +9,10 @@ terraform {
   }
 
   backend "s3" {
-    bucket       = "synapse-tf-state-646167485518"
+    bucket       = "rono-tf-state-646167485518"
     key          = "shared/terraform.tfstate"
     region       = "eu-north-1"
-    profile      = "synapse"
+    profile      = "rono"
     use_lockfile = true
     encrypt      = true
   }
@@ -20,11 +20,11 @@ terraform {
 
 provider "aws" {
   region  = "eu-north-1"
-  profile = "synapse"
+  profile = "rono"
 
   default_tags {
     tags = {
-      Project   = "synapse"
+      Project   = "rono"
       ManagedBy = "terraform"
     }
   }

@@ -1,7 +1,7 @@
 import { cn } from "@/lib/utils";
 
 /**
- * The Synapse brand mark — an "hourglass" synapse graph (four corner nodes + a
+ * The Rono brand mark — an "hourglass" rono graph (four corner nodes + a
  * center hub, joined by a top bar, a bottom bar, and two crossing diagonals).
  *
  * This is the SINGLE in-app vector source: the same geometry the raster app
@@ -51,7 +51,7 @@ export function LogoMark({
 }
 
 /**
- * Mark + "Synapse" wordmark lockup. The mark inherits the wordmark's color via
+ * Mark + "Rono" wordmark lockup. The mark inherits the wordmark's color via
  * `currentColor` unless `markClassName` overrides it.
  */
 export function Logo({
@@ -67,7 +67,7 @@ export function Logo({
     <div className={cn("flex items-center gap-2.5", className)}>
       <LogoMark className={cn("size-7", markClassName)} />
       <span className={cn("font-semibold tracking-tight", wordClassName)}>
-        Synapse
+        Rono
       </span>
     </div>
   );

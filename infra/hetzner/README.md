@@ -1,6 +1,6 @@
-# Synapse on Hetzner + Coolify
+# Rono on Hetzner + Coolify
 
-Migration runbook to move Synapse off AWS (ECS/RDS/ElastiCache/CloudFront) onto a
+Migration runbook to move Rono off AWS (ECS/RDS/ElastiCache/CloudFront) onto a
 single Hetzner Cloud VPS managed by [Coolify](https://coolify.io) — a self-hosted
 PaaS that gives git-push deploys, automatic HTTPS, and managed Postgres/Redis with
 backups.
@@ -19,8 +19,8 @@ backups.
 ```
                  ┌──────────────────────── Hetzner CPX31 (Ubuntu 24.04) ───────────────────────┐
    Internet ──▶  │  Coolify (Traefik proxy, Let's Encrypt)                                       │
-                 │     ├── frontend  (Next.js, :3000)   ◀── https://synapse.getjanus.dev          │
-                 │     ├── backend   (FastAPI, :8000)   ◀── https://api.synapse.getjanus.dev      │
+                 │     ├── frontend  (Next.js, :3000)   ◀── https://rono.getjanus.dev          │
+                 │     ├── backend   (FastAPI, :8000)   ◀── https://api.rono.getjanus.dev      │
                  │     ├── postgres  (managed by Coolify, nightly backups)                        │
                  │     └── redis     (managed by Coolify)                                         │
                  └──────────────────────────────────────────────────────────────────────────────┘
@@ -58,26 +58,26 @@ Point these A records at `<SERVER_IP>` (DNS for `getjanus.dev`):
 
 | Record | Type | Value |
 |---|---|---|
-| `synapse.getjanus.dev`     | A | `<SERVER_IP>` |
-| `api.synapse.getjanus.dev` | A | `<SERVER_IP>` |
+| `rono.getjanus.dev`     | A | `<SERVER_IP>` |
+| `api.rono.getjanus.dev` | A | `<SERVER_IP>` |
 
 Coolify provisions Let's Encrypt certificates automatically once DNS resolves.
 
 ## 4. Connect the repo
 
 In Coolify: **Sources → GitHub** → install the Coolify GitHub App on the
-`Synapse-Qbank/Synapse` repo. This gives push-to-deploy.
+`Rono-Qbank/Rono` repo. This gives push-to-deploy.
 
 ## 5. Create the databases (managed → backups included)
 
 In your Coolify project:
 
-1. **+ New Resource → Database → PostgreSQL 16.** Name it `synapse-postgres`.
+1. **+ New Resource → Database → PostgreSQL 16.** Name it `rono-postgres`.
    - Set a strong password.
    - Enable **Scheduled Backups** (e.g. daily) → configure an S3-compatible
      target (Hetzner Object Storage or a Storage Box via restic). **This replaces RDS's automated backups — do not skip it.**
    - Note the internal connection host (Coolify gives an internal hostname usable by other resources in the same project).
-2. **+ New Resource → Database → Redis 7.** Name it `synapse-redis`.
+2. **+ New Resource → Database → Redis 7.** Name it `rono-redis`.
 
 ## 6. Deploy the backend (FastAPI)
 
@@ -94,7 +94,7 @@ In your Coolify project:
   ```
   This applies all migrations, including `a7b8c9d0e1f2` which seeds the global
   TUS topic taxonomy.
-- **Domain:** `https://api.synapse.getjanus.dev`
+- **Domain:** `https://api.rono.getjanus.dev`
 - **Environment variables:** see §8.
 
 ## 7. Deploy the frontend (Next.js)
@@ -106,12 +106,12 @@ In your Coolify project:
 - **Dockerfile:** `Dockerfile`
 - **Docker build target:** `runner`  (the production stage)
 - **Port:** `3000`
-- **Domain:** `https://synapse.getjanus.dev`
+- **Domain:** `https://rono.getjanus.dev`
 - **Environment variables:** see §8.
 
 ## 8. Environment variables
 
-**Backend** (`synapse` backend app):
+**Backend** (`rono` backend app):
 
 | Key | Value |
 |---|---|
@@ -123,14 +123,14 @@ In your Coolify project:
 | `REFRESH_TOKEN_EXPIRE_DAYS` | `7` |
 | `ENVIRONMENT` | `production` |
 | `LOG_LEVEL` | `INFO` |
-| `CORS_ORIGINS` | `https://synapse.getjanus.dev` |
+| `CORS_ORIGINS` | `https://rono.getjanus.dev` |
 | `COOKIE_SECURE` | `true` |
 
-**Frontend** (`synapse` frontend app):
+**Frontend** (`rono` frontend app):
 
 | Key | Value |
 |---|---|
-| `NEXT_PUBLIC_API_URL` | `https://api.synapse.getjanus.dev` |
+| `NEXT_PUBLIC_API_URL` | `https://api.rono.getjanus.dev` |
 | `INTERNAL_API_URL` | `http://<coolify-backend-internal-host>:8000` |
 | `NODE_ENV` | `production` |
 
@@ -144,9 +144,9 @@ In your Coolify project:
 Trigger a deploy of both apps. Then:
 
 ```bash
-curl https://api.synapse.getjanus.dev/api/v1/health   # {"status":"ok"} — liveness
-curl https://api.synapse.getjanus.dev/api/v1/ready     # checks Postgres + Redis
-open https://synapse.getjanus.dev                       # login page
+curl https://api.rono.getjanus.dev/api/v1/health   # {"status":"ok"} — liveness
+curl https://api.rono.getjanus.dev/api/v1/ready     # checks Postgres + Redis
+open https://rono.getjanus.dev                       # login page
 ```
 
 Optional demo data (dev only — skip for a clean prod):
@@ -164,7 +164,7 @@ Order matters — kill the deploy automation first so nothing redeploys to a dyi
    and `deploy-prod.yml` (or gate them). Coolify now owns deploys.
 2. **Take a final RDS dump** (belt-and-suspenders) before destroying:
    ```bash
-   pg_dump "<rds-connection-url>" -Fc -f synapse-rds-final.dump
+   pg_dump "<rds-connection-url>" -Fc -f rono-rds-final.dump
    ```
    (Run from somewhere that can reach RDS, e.g. a temporary bastion / your old CI.)
 3. **Terraform destroy**, per environment:
@@ -187,12 +187,12 @@ repo under `infra/hetzner/` and are deployed alongside the stack.
 
 ```cron
 # Nightly Postgres backup at 03:00
-0 3 * * *  /opt/synapse/infra/hetzner/backup.sh    >> /var/log/synapse-backup.log 2>&1
+0 3 * * *  /opt/rono/infra/hetzner/backup.sh    >> /var/log/rono-backup.log 2>&1
 
 # Weekly IRT item calibration, Mondays at 04:00. Turns accumulated responses into
 # per-item difficulty/discrimination so adaptive selection (and Daily Review's
 # new-card picks) stop being random. Safe to run more often; it's idempotent.
-0 4 * * 1  /opt/synapse/infra/hetzner/calibrate.sh >> /var/log/synapse-calibrate.log 2>&1
+0 4 * * 1  /opt/rono/infra/hetzner/calibrate.sh >> /var/log/rono-calibrate.log 2>&1
 ```
 
 Adjust the path prefix to wherever the repo is synced on the host. Run

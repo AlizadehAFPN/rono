@@ -47,7 +47,7 @@ const en = {
   },
   register: {
     title: "Create your account",
-    subtitle: "Start your institution's Synapse workspace",
+    subtitle: "Start your institution's Rono workspace",
     fullNameLabel: "Full name",
     fullNamePlaceholder: "Dr. Jane Smith",
     emailLabel: "Work email",
@@ -132,7 +132,7 @@ const tr: AuthDict = {
   },
   register: {
     title: "Hesabınızı oluşturun",
-    subtitle: "Kurumunuzun Synapse çalışma alanını başlatın",
+    subtitle: "Kurumunuzun Rono çalışma alanını başlatın",
     fullNameLabel: "Ad soyad",
     fullNamePlaceholder: "Dr. Ayşe Yılmaz",
     emailLabel: "İş e-postası",

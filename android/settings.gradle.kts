@@ -20,5 +20,5 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "Synapse"
+rootProject.name = "Rono"
 include(":app")

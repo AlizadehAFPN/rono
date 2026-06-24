@@ -1,4 +1,4 @@
-// Synapse service worker.
+// Rono service worker.
 //
 // Caching policy (deliberately conservative so the app NEVER gets stuck on a
 // stale version — the previous version cached the manifest + all assets
@@ -14,7 +14,7 @@
 // Bump CACHE on any change here so the new SW activates, purges old caches,
 // and takes over clients.
 
-const CACHE = "synapse-shell-v2";
+const CACHE = "rono-shell-v2";
 const PRECACHE = ["/", "/icon-192x192.png", "/icon-512x512.png"];
 
 self.addEventListener("install", (event) => {

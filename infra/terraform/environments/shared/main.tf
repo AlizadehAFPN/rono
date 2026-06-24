@@ -4,7 +4,7 @@ data "aws_caller_identity" "current" {}
 module "ecr" {
   source = "../../modules/ecr"
 
-  project              = "synapse"
+  project              = "rono"
   repositories         = ["backend", "frontend"]
   image_retention_count = 15
 }
@@ -24,7 +24,7 @@ resource "aws_iam_openid_connect_provider" "github" {
 
 # ── IAM Role: GitHub Actions → Staging Deploy ──────────────────────────────────
 resource "aws_iam_role" "github_staging" {
-  name = "synapse-github-staging-deploy"
+  name = "rono-github-staging-deploy"
 
   assume_role_policy = jsonencode({
     Version = "2012-10-17"
@@ -46,20 +46,20 @@ resource "aws_iam_role" "github_staging" {
   })
 
   tags = {
-    Name    = "synapse-github-staging-deploy"
+    Name    = "rono-github-staging-deploy"
     Purpose = "GitHub Actions OIDC for staging deploys"
   }
 }
 
 resource "aws_iam_role_policy" "github_staging" {
-  name = "synapse-github-staging-policy"
+  name = "rono-github-staging-policy"
   role = aws_iam_role.github_staging.id
   policy = data.aws_iam_policy_document.github_deploy.json
 }
 
 # ── IAM Role: GitHub Actions → Prod Deploy ─────────────────────────────────────
 resource "aws_iam_role" "github_prod" {
-  name = "synapse-github-prod-deploy"
+  name = "rono-github-prod-deploy"
 
   assume_role_policy = jsonencode({
     Version = "2012-10-17"
@@ -81,13 +81,13 @@ resource "aws_iam_role" "github_prod" {
   })
 
   tags = {
-    Name    = "synapse-github-prod-deploy"
+    Name    = "rono-github-prod-deploy"
     Purpose = "GitHub Actions OIDC for prod deploys"
   }
 }
 
 resource "aws_iam_role_policy" "github_prod" {
-  name = "synapse-github-prod-policy"
+  name = "rono-github-prod-policy"
   role = aws_iam_role.github_prod.id
   policy = data.aws_iam_policy_document.github_deploy.json
 }
@@ -116,7 +116,7 @@ data "aws_iam_policy_document" "github_deploy" {
       "ecr:ListImages",
     ]
     resources = [
-      "arn:aws:ecr:eu-north-1:${data.aws_caller_identity.current.account_id}:repository/synapse/*"
+      "arn:aws:ecr:eu-north-1:${data.aws_caller_identity.current.account_id}:repository/rono/*"
     ]
   }
 
@@ -143,7 +143,7 @@ data "aws_iam_policy_document" "github_deploy" {
     effect = "Allow"
     actions = ["iam:PassRole"]
     resources = [
-      "arn:aws:iam::${data.aws_caller_identity.current.account_id}:role/synapse-*-ecs-*"
+      "arn:aws:iam::${data.aws_caller_identity.current.account_id}:role/rono-*-ecs-*"
     ]
   }
 
@@ -163,7 +163,7 @@ data "aws_iam_policy_document" "github_deploy" {
     effect = "Allow"
     actions = ["secretsmanager:GetSecretValue"]
     resources = [
-      "arn:aws:secretsmanager:eu-north-1:${data.aws_caller_identity.current.account_id}:secret:synapse-*"
+      "arn:aws:secretsmanager:eu-north-1:${data.aws_caller_identity.current.account_id}:secret:rono-*"
     ]
   }
 }

@@ -121,7 +121,7 @@ jobs:
           push: false
           cache-from: type=gha
           cache-to: type=gha,mode=max
-          tags: synapse/backend:ci
+          tags: rono/backend:ci
 
       - name: Build frontend image
         uses: docker/build-push-action@v5
@@ -131,4 +131,4 @@ jobs:
           push: false
           cache-from: type=gha
           cache-to: type=gha,mode=max
-          tags: synapse/frontend:ci
+          tags: rono/frontend:ci

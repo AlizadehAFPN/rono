@@ -7,7 +7,7 @@ function Logo() {
   return (
     <div className="flex items-center gap-2.5">
       <LogoMark className="size-6 text-[#22D3EE]" />
-      <span className="text-white font-semibold text-base">Synapse</span>
+      <span className="text-white font-semibold text-base">Rono</span>
     </div>
   );
 }

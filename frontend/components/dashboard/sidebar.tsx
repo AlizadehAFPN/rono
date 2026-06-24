@@ -142,7 +142,7 @@ export function SidebarInner({ onNavClick }: { onNavClick?: () => void }) {
         <LogoMark className="size-7 shrink-0 text-sidebar-primary" />
         <div className="flex items-baseline gap-1.5">
           <span className="text-[15px] font-bold tracking-tight text-sidebar-foreground">
-            Synapse
+            Rono
           </span>
           {isAdmin && (
             <span className="rounded bg-sidebar-primary px-1.5 py-px text-[9px] font-bold uppercase tracking-widest text-sidebar-primary-foreground opacity-80">

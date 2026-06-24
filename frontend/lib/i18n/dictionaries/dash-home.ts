@@ -11,7 +11,7 @@ const en = {
   subtitle: "Here's your learning at a glance.",
   loading: "Loading your dashboard…",
   empty: {
-    title: "Welcome to Synapse",
+    title: "Welcome to Rono",
     body: "Study a category to start building your progress — it will show up here.",
     cta: "Browse categories",
   },
@@ -98,7 +98,7 @@ const tr: DashHomeDict = {
   subtitle: "Öğrenmene genel bir bakış.",
   loading: "Panelin yükleniyor…",
   empty: {
-    title: "Synapse'e hoş geldin",
+    title: "Rono'e hoş geldin",
     body: "İlerlemeni oluşturmak için bir kategori çalış — burada görünecek.",
     cta: "Kategorilere göz at",
   },

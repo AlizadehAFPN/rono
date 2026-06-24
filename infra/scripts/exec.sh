@@ -11,10 +11,10 @@ set -euo pipefail
 
 ENV="${1:-staging}"
 SERVICE="${2:-backend}"
-PROFILE="${AWS_PROFILE:-synapse}"
+PROFILE="${AWS_PROFILE:-rono}"
 REGION="eu-north-1"
-CLUSTER="synapse-${ENV}"
-ECS_SERVICE="synapse-${ENV}-${SERVICE}"
+CLUSTER="rono-${ENV}"
+ECS_SERVICE="rono-${ENV}-${SERVICE}"
 
 echo "==> Connecting to $SERVICE in $ENV..."
 

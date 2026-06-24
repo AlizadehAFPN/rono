@@ -11,7 +11,7 @@ function Logo() {
     <div className="flex items-center gap-2.5">
       <LogoMark className="size-7 text-[#22D3EE]" />
       <span className="text-white font-semibold text-lg tracking-tight">
-        Synapse
+        Rono
       </span>
     </div>
   );

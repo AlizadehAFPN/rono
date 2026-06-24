@@ -10,7 +10,7 @@ interface ThemeStore {
 function getStoredTheme(): Theme {
   if (typeof window === "undefined") return "dark";
   try {
-    const v = localStorage.getItem("synapse-theme");
+    const v = localStorage.getItem("rono-theme");
     if (v === "light" || v === "dark" || v === "system") return v;
   } catch {}
   return "dark";
@@ -35,10 +35,10 @@ const store: ThemeStore = {
   listeners: new Set(),
   setTheme(theme: Theme) {
     try {
-      localStorage.setItem("synapse-theme", theme);
+      localStorage.setItem("rono-theme", theme);
       // Write a cookie so the server can apply the correct class on next request,
       // eliminating the hydration mismatch for explicit light/dark preferences.
-      document.cookie = `synapse-theme=${theme};path=/;max-age=31536000;SameSite=Lax`;
+      document.cookie = `rono-theme=${theme};path=/;max-age=31536000;SameSite=Lax`;
     } catch {}
     store.theme = theme;
     applyTheme(theme);

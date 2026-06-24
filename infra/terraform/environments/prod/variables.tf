@@ -1,6 +1,6 @@
 variable "project" {
   type    = string
-  default = "synapse"
+  default = "rono"
 }
 
 variable "env" {

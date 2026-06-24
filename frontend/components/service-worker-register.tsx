@@ -2,7 +2,7 @@
 
 import { useEffect } from "react";
 
-// Registers the Synapse service worker once, after hydration.
+// Registers the Rono service worker once, after hydration.
 // Renders nothing; safe to mount high in the tree.
 export function ServiceWorkerRegister() {
   useEffect(() => {

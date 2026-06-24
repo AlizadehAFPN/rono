@@ -77,7 +77,7 @@ async def get_current_user(
     if not token:
         raise UnauthorizedError("Authentication required.")
 
-    # Raises InvalidTokenError (subclass of SynapseException → 401) on any JWT failure
+    # Raises InvalidTokenError (subclass of RonoException → 401) on any JWT failure
     try:
         payload = decode_token(token)
     except InvalidTokenError as err:

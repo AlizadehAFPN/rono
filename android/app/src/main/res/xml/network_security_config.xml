@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!--
-  Production (synapse.getjanus.dev) is HTTPS-only with no cleartext.
+  Production (rono.getjanus.dev) is HTTPS-only with no cleartext.
   Cleartext is permitted ONLY for the local dev backend reached from the
   emulator (10.0.2.2) / device (localhost), used by the dev backend toggle.
 -->

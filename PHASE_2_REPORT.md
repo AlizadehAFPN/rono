@@ -1,7 +1,7 @@
-# Synapse — Adaptive Learning Platform
+# Rono — Adaptive Learning Platform
 ## Phase 2 Completion Report: Authentication, Security & Core API Layer
 
-**Project:** Synapse — AI-Powered Adaptive Learning for Medical Education
+**Project:** Rono — AI-Powered Adaptive Learning for Medical Education
 **Phase:** 2 of 6 — Authentication, Security & Core API Layer
 **Status:** Complete
 **Date Completed:** May 16, 2026
@@ -11,7 +11,7 @@
 
 ## Executive Summary
 
-Phase 2 transformed the Synapse platform from a database schema into a living, communicating system. Where Phase 1 built the foundation and Phase 0 built the scaffolding, Phase 2 built the doors, locks, and rooms — the parts that humans and software actually interact with.
+Phase 2 transformed the Rono platform from a database schema into a living, communicating system. Where Phase 1 built the foundation and Phase 0 built the scaffolding, Phase 2 built the doors, locks, and rooms — the parts that humans and software actually interact with.
 
 By the end of this phase, a real user can register an account, log in securely, prove their identity on every request, browse the subject matter hierarchy, and retrieve exam questions with their full answer choices and explanations. Every endpoint is protected by a layered security model: authentication verifies identity, session management enables instant revocation, and role-based access control ensures that students, instructors, and administrators each see exactly what they are permitted to see — nothing more.
 
@@ -44,7 +44,7 @@ Both tokens carry a digital signature. If anyone tampers with the contents — f
 Every time a refresh token is used to obtain a new access token, the old refresh token is permanently revoked and a new one is issued. This means stolen tokens become useless after a single use, and the window of exposure from any compromise is minimized.
 
 **Session Tracking**
-Every login creates a record in the database. This record is checked on every authenticated request — in addition to the JWT signature. If an administrator revokes a user's access (by invalidating the session record), that user is locked out immediately, even if their JWT has not yet expired. Most platforms cannot do this; they must wait for tokens to expire naturally. Synapse does not have this limitation.
+Every login creates a record in the database. This record is checked on every authenticated request — in addition to the JWT signature. If an administrator revokes a user's access (by invalidating the session record), that user is locked out immediately, even if their JWT has not yet expired. Most platforms cannot do this; they must wait for tokens to expire naturally. Rono does not have this limitation.
 
 **Secure Cookie Delivery**
 Tokens are delivered as `httpOnly` cookies, which means they are invisible to JavaScript running in the browser. This design choice eliminates an entire class of attack (Cross-Site Scripting token theft). Cookies are also scoped to HTTPS in all non-development environments.
@@ -186,15 +186,15 @@ This field is indexed for fast filtering and is available as a query parameter o
 To support end-to-end testing and provide a realistic starting point for client demonstrations, a seed script was created that populates the database with representative data. The seed is fully idempotent — it can be run any number of times without creating duplicates.
 
 **Institution created:**
-- Synapse Demo University
+- Rono Demo University
 
 **Users created:**
 
 | Email | Password | Role |
 |-------|----------|------|
-| admin@synapse-demo.edu | Admin1234! | Institution Admin |
-| instructor@synapse-demo.edu | Teach1234! | Instructor |
-| student@synapse-demo.edu | Study1234! | Student |
+| admin@rono-demo.edu | Admin1234! | Institution Admin |
+| instructor@rono-demo.edu | Teach1234! | Instructor |
+| student@rono-demo.edu | Study1234! | Student |
 
 **Topic hierarchy created (8 topics, 3 levels deep):**
 
@@ -398,7 +398,7 @@ The following capabilities are out of scope for Phase 2 and are planned for subs
 
 ## Phase 3 Preview
 
-Phase 3 will implement the adaptive learning engine — the algorithms that make Synapse different from a simple flashcard application.
+Phase 3 will implement the adaptive learning engine — the algorithms that make Rono different from a simple flashcard application.
 
 By the end of Phase 3, a student will be able to:
 

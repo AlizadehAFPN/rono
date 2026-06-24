@@ -1,4 +1,4 @@
-# Synapse — Build Phases
+# Rono — Build Phases
 
 Adaptive learning platform for medical exam preparation (USMLE Step 1/2/3, TUS).  
 Architecture: FastAPI + SQLAlchemy 2.0 async · PostgreSQL 16 · Redis 7 · Next.js 16 · Docker Compose.
@@ -140,9 +140,9 @@ Topic scoping: queries include `institution_id = X OR institution_id IS NULL` (g
 **Seed data:** `make seed`
 | Email | Password | Role |
 |-------|----------|------|
-| admin@synapse-demo.edu | Admin1234! | institution_admin |
-| instructor@synapse-demo.edu | Teach1234! | instructor |
-| student@synapse-demo.edu | Study1234! | student |
+| admin@rono-demo.edu | Admin1234! | institution_admin |
+| instructor@rono-demo.edu | Teach1234! | instructor |
+| student@rono-demo.edu | Study1234! | student |
 
 ---
 

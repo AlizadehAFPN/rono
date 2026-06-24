@@ -12,14 +12,14 @@ const en = {
     accessWebApp: "Access Web App",
     openMenu: "Open menu",
     closeMenu: "Close menu",
-    home: "Synapse home",
+    home: "Rono home",
   },
   hero: {
     eyebrow: "Adaptive Learning Platform",
     titleLine1: "The Right Question.",
     titleLine2: "At the Right Time.",
     subheadline:
-      "Synapse is an adaptive learning platform for medical education. Two peer-reviewed algorithms work in concert — one ensuring every question is perfectly calibrated to your ability, the other ensuring nothing you learn is ever forgotten.",
+      "Rono is an adaptive learning platform for medical education. Two peer-reviewed algorithms work in concert — one ensuring every question is perfectly calibrated to your ability, the other ensuring nothing you learn is ever forgotten.",
     ctaPrimary: "Request Early Access",
     ctaSecondary: "See How It Works",
     stats: {
@@ -56,19 +56,19 @@ const en = {
       },
     },
     transition:
-      "Synapse was built to solve each of these problems — separately and precisely.",
+      "Rono was built to solve each of these problems — separately and precisely.",
   },
   solution: {
     eyebrow: "Our Solution",
     title: "Two algorithms. One unified platform.",
     subtitle:
-      "Most adaptive systems conflate two very different problems into a single mechanism. Synapse keeps them rigorously separate — giving each algorithm the precision it deserves, and the independence it needs to evolve.",
+      "Most adaptive systems conflate two very different problems into a single mechanism. Rono keeps them rigorously separate — giving each algorithm the precision it deserves, and the independence it needs to evolve.",
     irt: {
       algoLabel: "Algorithm 1",
       name: "Item Response Theory (2PL)",
       question: "“What should I learn next?”",
       description:
-        "Using the 2-Parameter Logistic model, Synapse continuously estimates each learner's ability on a calibrated scale. It then selects the question that provides maximum information about the learner's current knowledge state — always at the edge of their competence, never above or below it.",
+        "Using the 2-Parameter Logistic model, Rono continuously estimates each learner's ability on a calibrated scale. It then selects the question that provides maximum information about the learner's current knowledge state — always at the edge of their competence, never above or below it.",
       points: [
         "Real-time ability estimation via Expected A Posteriori (EAP)",
         "Item selection via Fisher information maximization",
@@ -97,10 +97,10 @@ const en = {
     eyebrow: "How It Works",
     title: "Three steps. Continuously adapting.",
     subtitle:
-      "From the first question to the thousandth review, Synapse is always computing the optimal next action for each individual learner.",
+      "From the first question to the thousandth review, Rono is always computing the optimal next action for each individual learner.",
     steps: [
       {
-        title: "Synapse establishes your baseline",
+        title: "Rono establishes your baseline",
         description:
           "Your first session begins with an adaptive assessment. Every response — correct or incorrect — immediately updates your ability estimate using Bayesian inference, converging on your true knowledge level within minutes.",
         tag: "IRT · EAP estimation · Bayesian inference",
@@ -108,7 +108,7 @@ const en = {
       {
         title: "You receive the perfectly calibrated question",
         description:
-          "Based on your live ability estimate, Synapse selects the item that maximizes learning information. Not too easy. Not too hard. Precisely at the boundary of your current competence — exactly where learning happens fastest.",
+          "Based on your live ability estimate, Rono selects the item that maximizes learning information. Not too easy. Not too hard. Precisely at the boundary of your current competence — exactly where learning happens fastest.",
         tag: "Fisher information maximization · 2PL model",
       },
       {
@@ -120,11 +120,11 @@ const en = {
     ],
   },
   differentiators: {
-    eyebrow: "Why Synapse",
+    eyebrow: "Why Rono",
     titleLine1: "Built on sound principles.",
     titleLine2: "Engineered for scale.",
     subtitle:
-      "Synapse is different because it was designed around learning science first — and technology second. Every architectural decision reflects that order of priority.",
+      "Rono is different because it was designed around learning science first — and technology second. Every architectural decision reflects that order of priority.",
     features: [
       {
         title: "Peer-Reviewed Science",
@@ -162,7 +162,7 @@ const en = {
     eyebrow: "Available Platforms",
     title: "Learn anywhere, on any device.",
     subtitle:
-      "Synapse is designed for the way medical professionals actually study — across devices, with and without connectivity, whenever the moment is right.",
+      "Rono is designed for the way medical professionals actually study — across devices, with and without connectivity, whenever the moment is right.",
     statusAvailable: "Available",
     statusSoon: "Coming Soon",
     comingSoonSuffix: "Coming Soon",
@@ -188,7 +188,7 @@ const en = {
       name: "iOS",
       tagline: "Install as a web app.",
       description:
-        "Add Synapse to your home screen straight from Safari for a full-screen, app-like experience that syncs across all your devices — no App Store needed.",
+        "Add Rono to your home screen straight from Safari for a full-screen, app-like experience that syncs across all your devices — no App Store needed.",
       cta: "Install as PWA",
       meta: "",
       storeNote: "App Store",
@@ -279,7 +279,7 @@ const en = {
     titleLine1: "Join the future of",
     titleLine2: "medical education.",
     subtitle:
-      "Synapse is in active development and is seeking early partners who believe that learning science and technology can fundamentally improve how medical professionals are trained.",
+      "Rono is in active development and is seeking early partners who believe that learning science and technology can fundamentally improve how medical professionals are trained.",
     partnerTypes: [
       {
         label: "Pilot Institutions",
@@ -298,7 +298,7 @@ const en = {
       },
     ],
     ctaPrimary: "Contact the Team",
-    ctaSecondary: "Learn More About Synapse",
+    ctaSecondary: "Learn More About Rono",
     statusLine:
       "Currently in active development · Phase 0 complete · Accepting pilot partners and research collaborations",
   },
@@ -309,7 +309,7 @@ const en = {
     howItWorks: "How It Works",
     roadmap: "Roadmap",
     contact: "Contact",
-    copyright: "© 2026 Synapse.",
+    copyright: "© 2026 Rono.",
     rights: "All rights reserved.",
   },
 };
@@ -326,14 +326,14 @@ const tr: HomeDict = {
     accessWebApp: "Web Uygulamasına Eriş",
     openMenu: "Menüyü aç",
     closeMenu: "Menüyü kapat",
-    home: "Synapse ana sayfa",
+    home: "Rono ana sayfa",
   },
   hero: {
     eyebrow: "Uyarlanabilir Öğrenme Platformu",
     titleLine1: "Doğru Soru.",
     titleLine2: "Doğru Zamanda.",
     subheadline:
-      "Synapse, tıp eğitimi için geliştirilmiş uyarlanabilir bir öğrenme platformudur. Hakemli iki algoritma uyum içinde çalışır — biri her sorunun yeteneğinize tam olarak göre ayarlanmasını, diğeri öğrendiğiniz hiçbir şeyin asla unutulmamasını sağlar.",
+      "Rono, tıp eğitimi için geliştirilmiş uyarlanabilir bir öğrenme platformudur. Hakemli iki algoritma uyum içinde çalışır — biri her sorunun yeteneğinize tam olarak göre ayarlanmasını, diğeri öğrendiğiniz hiçbir şeyin asla unutulmamasını sağlar.",
     ctaPrimary: "Erken Erişim Talep Edin",
     ctaSecondary: "Nasıl Çalıştığını Görün",
     stats: {
@@ -370,19 +370,19 @@ const tr: HomeDict = {
       },
     },
     transition:
-      "Synapse, bu sorunların her birini — ayrı ayrı ve hassas biçimde — çözmek için tasarlandı.",
+      "Rono, bu sorunların her birini — ayrı ayrı ve hassas biçimde — çözmek için tasarlandı.",
   },
   solution: {
     eyebrow: "Çözümümüz",
     title: "İki algoritma. Tek bütünleşik platform.",
     subtitle:
-      "Çoğu uyarlanabilir sistem, birbirinden çok farklı iki sorunu tek bir mekanizmada birleştirir. Synapse bunları titizlikle ayrı tutar — her algoritmaya hak ettiği hassasiyeti ve gelişmek için ihtiyaç duyduğu bağımsızlığı verir.",
+      "Çoğu uyarlanabilir sistem, birbirinden çok farklı iki sorunu tek bir mekanizmada birleştirir. Rono bunları titizlikle ayrı tutar — her algoritmaya hak ettiği hassasiyeti ve gelişmek için ihtiyaç duyduğu bağımsızlığı verir.",
     irt: {
       algoLabel: "Algoritma 1",
       name: "Madde Tepki Kuramı (2PL)",
       question: "“Sırada ne öğrenmeliyim?”",
       description:
-        "2 Parametreli Lojistik modeli kullanan Synapse, her öğrencinin yeteneğini kalibre edilmiş bir ölçekte sürekli olarak tahmin eder. Ardından öğrencinin mevcut bilgi durumu hakkında en fazla bilgiyi sağlayan soruyu seçer — her zaman yetkinliğinin sınırında, asla üstünde veya altında değil.",
+        "2 Parametreli Lojistik modeli kullanan Rono, her öğrencinin yeteneğini kalibre edilmiş bir ölçekte sürekli olarak tahmin eder. Ardından öğrencinin mevcut bilgi durumu hakkında en fazla bilgiyi sağlayan soruyu seçer — her zaman yetkinliğinin sınırında, asla üstünde veya altında değil.",
       points: [
         "Beklenen Sonsal (EAP) ile gerçek zamanlı yetenek tahmini",
         "Fisher bilgisi maksimizasyonu ile soru seçimi",
@@ -411,10 +411,10 @@ const tr: HomeDict = {
     eyebrow: "Nasıl Çalışır",
     title: "Üç adım. Sürekli uyarlanıyor.",
     subtitle:
-      "İlk sorudan bininci tekrara kadar Synapse, her öğrenci için en uygun bir sonraki eylemi sürekli olarak hesaplar.",
+      "İlk sorudan bininci tekrara kadar Rono, her öğrenci için en uygun bir sonraki eylemi sürekli olarak hesaplar.",
     steps: [
       {
-        title: "Synapse temel seviyenizi belirler",
+        title: "Rono temel seviyenizi belirler",
         description:
           "İlk oturumunuz uyarlanabilir bir değerlendirmeyle başlar. Doğru ya da yanlış her yanıt, Bayes çıkarımı kullanılarak yetenek tahmininizi anında günceller ve dakikalar içinde gerçek bilgi düzeyinize yakınsar.",
         tag: "IRT · EAP tahmini · Bayes çıkarımı",
@@ -422,7 +422,7 @@ const tr: HomeDict = {
       {
         title: "Tam olarak kalibre edilmiş soruyu alırsınız",
         description:
-          "Anlık yetenek tahmininize göre Synapse, öğrenme bilgisini en üst düzeye çıkaran maddeyi seçer. Ne çok kolay, ne çok zor. Tam olarak mevcut yetkinliğinizin sınırında — öğrenmenin en hızlı gerçekleştiği yerde.",
+          "Anlık yetenek tahmininize göre Rono, öğrenme bilgisini en üst düzeye çıkaran maddeyi seçer. Ne çok kolay, ne çok zor. Tam olarak mevcut yetkinliğinizin sınırında — öğrenmenin en hızlı gerçekleştiği yerde.",
         tag: "Fisher bilgisi maksimizasyonu · 2PL modeli",
       },
       {
@@ -434,11 +434,11 @@ const tr: HomeDict = {
     ],
   },
   differentiators: {
-    eyebrow: "Neden Synapse",
+    eyebrow: "Neden Rono",
     titleLine1: "Sağlam ilkeler üzerine kuruldu.",
     titleLine2: "Ölçeklenmek için tasarlandı.",
     subtitle:
-      "Synapse farklıdır çünkü önce öğrenme bilimi, sonra teknoloji etrafında tasarlandı. Her mimari karar bu öncelik sırasını yansıtır.",
+      "Rono farklıdır çünkü önce öğrenme bilimi, sonra teknoloji etrafında tasarlandı. Her mimari karar bu öncelik sırasını yansıtır.",
     features: [
       {
         title: "Hakemli Bilim",
@@ -476,7 +476,7 @@ const tr: HomeDict = {
     eyebrow: "Mevcut Platformlar",
     title: "Her yerde, her cihazda öğrenin.",
     subtitle:
-      "Synapse, tıp profesyonellerinin gerçekte nasıl çalıştığı göz önünde bulundurularak tasarlandı — cihazlar arası, bağlantı olsun olmasın, doğru an geldiğinde.",
+      "Rono, tıp profesyonellerinin gerçekte nasıl çalıştığı göz önünde bulundurularak tasarlandı — cihazlar arası, bağlantı olsun olmasın, doğru an geldiğinde.",
     statusAvailable: "Kullanılabilir",
     statusSoon: "Yakında",
     comingSoonSuffix: "Yakında",
@@ -502,7 +502,7 @@ const tr: HomeDict = {
       name: "iOS",
       tagline: "Web uygulaması olarak yükle.",
       description:
-        "Synapse'i doğrudan Safari'den ana ekranınıza ekleyin; App Store'a gerek kalmadan tüm cihazlarınızda eşitlenen, tam ekran ve uygulama benzeri bir deneyim yaşayın.",
+        "Rono'i doğrudan Safari'den ana ekranınıza ekleyin; App Store'a gerek kalmadan tüm cihazlarınızda eşitlenen, tam ekran ve uygulama benzeri bir deneyim yaşayın.",
       cta: "PWA Olarak Yükle",
       meta: "",
       storeNote: "App Store",
@@ -593,7 +593,7 @@ const tr: HomeDict = {
     titleLine1: "Tıp eğitiminin",
     titleLine2: "geleceğine katılın.",
     subtitle:
-      "Synapse aktif geliştirme aşamasındadır ve öğrenme bilimi ile teknolojinin, tıp profesyonellerinin yetiştirilme biçimini köklü biçimde iyileştirebileceğine inanan erken iş ortakları aramaktadır.",
+      "Rono aktif geliştirme aşamasındadır ve öğrenme bilimi ile teknolojinin, tıp profesyonellerinin yetiştirilme biçimini köklü biçimde iyileştirebileceğine inanan erken iş ortakları aramaktadır.",
     partnerTypes: [
       {
         label: "Pilot Kurumlar",
@@ -611,7 +611,7 @@ const tr: HomeDict = {
       },
     ],
     ctaPrimary: "Ekiple İletişime Geçin",
-    ctaSecondary: "Synapse Hakkında Daha Fazla Bilgi",
+    ctaSecondary: "Rono Hakkında Daha Fazla Bilgi",
     statusLine:
       "Şu anda aktif geliştirme aşamasında · Faz 0 tamamlandı · Pilot iş ortakları ve araştırma iş birlikleri kabul ediliyor",
   },
@@ -622,7 +622,7 @@ const tr: HomeDict = {
     howItWorks: "Nasıl Çalışır",
     roadmap: "Yol Haritası",
     contact: "İletişim",
-    copyright: "© 2026 Synapse.",
+    copyright: "© 2026 Rono.",
     rights: "Tüm hakları saklıdır.",
   },
 };

@@ -12,9 +12,9 @@ env:
   AWS_REGION: eu-north-1
   AWS_ACCOUNT_ID: "646167485518"
   ECR_REGISTRY: 646167485518.dkr.ecr.eu-north-1.amazonaws.com
-  ECS_CLUSTER: synapse-prod
-  BACKEND_SERVICE: synapse-prod-backend
-  FRONTEND_SERVICE: synapse-prod-frontend
+  ECS_CLUSTER: rono-prod
+  BACKEND_SERVICE: rono-prod-backend
+  FRONTEND_SERVICE: rono-prod-frontend
 
 jobs:
   deploy:
@@ -34,7 +34,7 @@ jobs:
       - name: Configure AWS credentials
         uses: aws-actions/configure-aws-credentials@v4
         with:
-          role-to-assume: arn:aws:iam::${{ env.AWS_ACCOUNT_ID }}:role/synapse-github-prod-deploy
+          role-to-assume: arn:aws:iam::${{ env.AWS_ACCOUNT_ID }}:role/rono-github-prod-deploy
           aws-region: ${{ env.AWS_REGION }}
 
       # ── ECR login ────────────────────────────────────────────────────────────
@@ -52,11 +52,11 @@ jobs:
         with:
           context: ./backend
           push: true
-          cache-from: type=registry,ref=${{ env.ECR_REGISTRY }}/synapse/backend:cache
-          cache-to: type=registry,ref=${{ env.ECR_REGISTRY }}/synapse/backend:cache,mode=max
+          cache-from: type=registry,ref=${{ env.ECR_REGISTRY }}/rono/backend:cache
+          cache-to: type=registry,ref=${{ env.ECR_REGISTRY }}/rono/backend:cache,mode=max
           tags: |
-            ${{ env.ECR_REGISTRY }}/synapse/backend:${{ github.sha }}
-            ${{ env.ECR_REGISTRY }}/synapse/backend:latest
+            ${{ env.ECR_REGISTRY }}/rono/backend:${{ github.sha }}
+            ${{ env.ECR_REGISTRY }}/rono/backend:latest
 
       # ── Build & push frontend ────────────────────────────────────────────────
       - name: Build and push frontend
@@ -65,20 +65,20 @@ jobs:
           context: ./frontend
           target: runner
           push: true
-          cache-from: type=registry,ref=${{ env.ECR_REGISTRY }}/synapse/frontend:cache
-          cache-to: type=registry,ref=${{ env.ECR_REGISTRY }}/synapse/frontend:cache,mode=max
+          cache-from: type=registry,ref=${{ env.ECR_REGISTRY }}/rono/frontend:cache
+          cache-to: type=registry,ref=${{ env.ECR_REGISTRY }}/rono/frontend:cache,mode=max
           tags: |
-            ${{ env.ECR_REGISTRY }}/synapse/frontend:${{ github.sha }}
-            ${{ env.ECR_REGISTRY }}/synapse/frontend:latest
+            ${{ env.ECR_REGISTRY }}/rono/frontend:${{ github.sha }}
+            ${{ env.ECR_REGISTRY }}/rono/frontend:latest
 
       # ── Render migration task definition with new backend image ─────────────
       - name: Render migration task definition
         id: render-migration
         uses: aws-actions/amazon-ecs-render-task-definition@v1
         with:
-          task-definition-family: synapse-prod-migration
+          task-definition-family: rono-prod-migration
           container-name: migration
-          image: ${{ env.ECR_REGISTRY }}/synapse/backend:${{ github.sha }}
+          image: ${{ env.ECR_REGISTRY }}/rono/backend:${{ github.sha }}
 
       # ── Run Alembic migrations ───────────────────────────────────────────────
       - name: Run database migrations
@@ -131,9 +131,9 @@ jobs:
         id: render-backend
         uses: aws-actions/amazon-ecs-render-task-definition@v1
         with:
-          task-definition-family: synapse-prod-backend
+          task-definition-family: rono-prod-backend
           container-name: backend
-          image: ${{ env.ECR_REGISTRY }}/synapse/backend:${{ github.sha }}
+          image: ${{ env.ECR_REGISTRY }}/rono/backend:${{ github.sha }}
 
       - name: Deploy backend
         uses: aws-actions/amazon-ecs-deploy-task-definition@v2
@@ -148,9 +148,9 @@ jobs:
         id: render-frontend
         uses: aws-actions/amazon-ecs-render-task-definition@v1
         with:
-          task-definition-family: synapse-prod-frontend
+          task-definition-family: rono-prod-frontend
           container-name: frontend
-          image: ${{ env.ECR_REGISTRY }}/synapse/frontend:${{ github.sha }}
+          image: ${{ env.ECR_REGISTRY }}/rono/frontend:${{ github.sha }}
 
       - name: Deploy frontend
         uses: aws-actions/amazon-ecs-deploy-task-definition@v2

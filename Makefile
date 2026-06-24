@@ -2,7 +2,7 @@
         aws-bootstrap aws-profile tf-init tf-plan tf-apply \
         deploy-staging deploy-prod aws-migrate aws-logs aws-exec
 
-AWS_PROFILE ?= synapse
+AWS_PROFILE ?= rono
 
 help:
 	@echo ""
@@ -94,7 +94,7 @@ aws-migrate:
 
 aws-logs:
 	@if [ -z "$(env)" ] || [ -z "$(svc)" ]; then echo "Usage: make aws-logs env=<staging|prod> svc=<backend|frontend>"; exit 1; fi
-	AWS_PROFILE=$(AWS_PROFILE) aws logs tail /ecs/synapse-$(env)/$(svc) \
+	AWS_PROFILE=$(AWS_PROFILE) aws logs tail /ecs/rono-$(env)/$(svc) \
 	  --region eu-north-1 --follow --profile $(AWS_PROFILE)
 
 aws-exec:

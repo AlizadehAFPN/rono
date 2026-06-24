@@ -23,7 +23,7 @@ resource "aws_secretsmanager_secret" "db_url" {
 
 resource "aws_secretsmanager_secret_version" "db_url" {
   secret_id = aws_secretsmanager_secret.db_url.id
-  secret_string = "postgresql+asyncpg://synapse:${random_password.db.result}@${aws_db_instance.main.endpoint}/${replace(local.name, "-", "_")}"
+  secret_string = "postgresql+asyncpg://rono:${random_password.db.result}@${aws_db_instance.main.endpoint}/${replace(local.name, "-", "_")}"
 }
 
 # ── DB Subnet Group ─────────────────────────────────────────────────────────────
@@ -70,7 +70,7 @@ resource "aws_db_instance" "main" {
   storage_encrypted    = true
 
   db_name  = replace(local.name, "-", "_")
-  username = "synapse"
+  username = "rono"
   password = random_password.db.result
 
   db_subnet_group_name   = aws_db_subnet_group.main.name

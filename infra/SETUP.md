@@ -1,4 +1,4 @@
-# Synapse AWS Infrastructure — Setup Guide
+# Rono AWS Infrastructure — Setup Guide
 
 ## Architecture Overview
 
@@ -34,14 +34,14 @@ ECS Tasks (private subnets)
 
 ### Step 1 — Configure AWS Profile
 
-You need access keys for the Synapse account (646167485518):
+You need access keys for the Rono account (646167485518):
 
-1. In the AWS Console, go to **IAM → Users → alizadeh_Synapse → Security credentials**
+1. In the AWS Console, go to **IAM → Users → alizadeh_Rono → Security credentials**
 2. Click **Create access key** → CLI → copy both keys
 3. Configure the profile locally:
 
 ```bash
-aws configure --profile synapse
+aws configure --profile rono
 # AWS Access Key ID: <your key>
 # AWS Secret Access Key: <your secret>
 # Default region: eu-north-1
@@ -50,7 +50,7 @@ aws configure --profile synapse
 
 Verify:
 ```bash
-aws sts get-caller-identity --profile synapse
+aws sts get-caller-identity --profile rono
 # Should show Account: "646167485518"
 ```
 
@@ -68,7 +68,7 @@ Edit `infra/terraform/environments/shared/terraform.tfvars`:
 
 ```hcl
 github_org  = "YOUR_GITHUB_USERNAME"   # e.g. "farzad-alizadeh"
-github_repo = "Synapse"
+github_repo = "Rono"
 ```
 
 ### Step 4 — Apply Shared Infrastructure (ECR + GitHub OIDC)
@@ -79,7 +79,7 @@ make tf-apply env=shared
 ```
 
 This creates:
-- ECR repos: `synapse/backend` and `synapse/frontend`
+- ECR repos: `rono/backend` and `rono/frontend`
 - IAM roles for GitHub Actions (OIDC, no static keys)
 
 Note the outputs — you'll need the role ARNs for GitHub.
@@ -93,7 +93,7 @@ make tf-apply env=staging
 
 Takes ~10 minutes (RDS, ElastiCache take the longest).
 
-The output will show: `alb_url = "http://synapse-staging-alb-XXXX.eu-north-1.elb.amazonaws.com"`
+The output will show: `alb_url = "http://rono-staging-alb-XXXX.eu-north-1.elb.amazonaws.com"`
 
 ### Step 6 — Apply Production
 
@@ -107,7 +107,7 @@ make tf-apply env=prod
 #### 7a. Push your repo to GitHub
 
 ```bash
-git remote add origin https://github.com/YOUR_ORG/Synapse.git
+git remote add origin https://github.com/YOUR_ORG/Rono.git
 git push -u origin main
 ```
 
@@ -224,7 +224,7 @@ make aws-exec env=staging svc=backend
 
 View migration logs:
 ```bash
-aws logs tail /ecs/synapse-staging/migration --region eu-north-1 --profile synapse
+aws logs tail /ecs/rono-staging/migration --region eu-north-1 --profile rono
 ```
 
 ### Service unhealthy after deploy

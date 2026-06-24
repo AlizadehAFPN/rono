@@ -3,15 +3,15 @@
 
 const en = {
   installHint: {
-    title: "Install Synapse",
+    title: "Install Rono",
     // {share} is replaced with the Share icon at render time.
     body: "Tap {share} then “Add to Home Screen” for the full app experience.",
     dismiss: "Dismiss",
   },
   // Android / Chromium: a native install is available via beforeinstallprompt.
   installPrompt: {
-    title: "Install Synapse",
-    body: "Add Synapse to your home screen for a faster, full-screen experience.",
+    title: "Install Rono",
+    body: "Add Rono to your home screen for a faster, full-screen experience.",
     install: "Install",
     dismiss: "Not now",
   },
@@ -21,13 +21,13 @@ export type PwaDict = typeof en;
 
 const tr: PwaDict = {
   installHint: {
-    title: "Synapse’ı Yükle",
+    title: "Rono’ı Yükle",
     body: "Tam uygulama deneyimi için {share} simgesine dokunup “Ana Ekrana Ekle”’yi seçin.",
     dismiss: "Kapat",
   },
   installPrompt: {
-    title: "Synapse’ı Yükle",
-    body: "Daha hızlı ve tam ekran deneyim için Synapse’ı ana ekranınıza ekleyin.",
+    title: "Rono’ı Yükle",
+    body: "Daha hızlı ve tam ekran deneyim için Rono’ı ana ekranınıza ekleyin.",
     install: "Yükle",
     dismiss: "Şimdi değil",
   },

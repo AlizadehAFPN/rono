@@ -7,15 +7,15 @@
 #   • DynamoDB table for state locking
 #
 # Usage:
-#   AWS_PROFILE=synapse bash infra/scripts/bootstrap.sh
+#   AWS_PROFILE=rono bash infra/scripts/bootstrap.sh
 # =============================================================================
 set -euo pipefail
 
 ACCOUNT_ID="646167485518"
 REGION="eu-north-1"
-BUCKET="synapse-tf-state-${ACCOUNT_ID}"
-DYNAMO_TABLE="synapse-tf-locks"
-PROFILE="${AWS_PROFILE:-synapse}"
+BUCKET="rono-tf-state-${ACCOUNT_ID}"
+DYNAMO_TABLE="rono-tf-locks"
+PROFILE="${AWS_PROFILE:-rono}"
 
 echo "==> Bootstrapping Terraform state backend"
 echo "    Account : $ACCOUNT_ID"
@@ -32,7 +32,7 @@ ACTUAL_ACCOUNT=$(aws sts get-caller-identity \
 
 if [ "$ACTUAL_ACCOUNT" != "$ACCOUNT_ID" ]; then
   echo "ERROR: AWS profile '$PROFILE' resolves to account $ACTUAL_ACCOUNT, expected $ACCOUNT_ID"
-  echo "       Make sure you configured the 'synapse' AWS profile correctly."
+  echo "       Make sure you configured the 'rono' AWS profile correctly."
   exit 1
 fi
 

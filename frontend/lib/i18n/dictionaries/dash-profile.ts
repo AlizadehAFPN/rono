@@ -18,7 +18,7 @@ const en = {
 
   edit: {
     title: "Personal details",
-    description: "This is how you appear across Synapse.",
+    description: "This is how you appear across Rono.",
     fullName: "Full name",
     fullNamePh: "Jane Doe",
     preferredName: "Preferred name",
@@ -146,7 +146,7 @@ const tr: DashProfileDict = {
 
   edit: {
     title: "Kişisel bilgiler",
-    description: "Synapse genelinde bu şekilde görünürsünüz.",
+    description: "Rono genelinde bu şekilde görünürsünüz.",
     fullName: "Ad soyad",
     fullNamePh: "Ayşe Yılmaz",
     preferredName: "Tercih edilen ad",

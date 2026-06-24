@@ -1,6 +1,6 @@
 import { usePwaInstallStore } from "@/lib/stores/pwa-install";
 
-const DISMISS_KEY = "synapse-install-dismissed";
+const DISMISS_KEY = "rono-install-dismissed";
 
 // Consumes the shared install prompt captured by <PwaInstallRegister>. Any
 // surface (banner, drawer button) can call `install()` to open the native OS

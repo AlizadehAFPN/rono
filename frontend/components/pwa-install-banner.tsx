@@ -15,7 +15,7 @@ import { cn } from "@/lib/utils";
 // `install()` to open the native OS install dialog. iOS never fires the event,
 // so this stays hidden there — see <IosInstallBanner> for that path.
 
-const DISMISS_KEY = "synapse-install-dismissed";
+const DISMISS_KEY = "rono-install-dismissed";
 
 export function PwaInstallBanner() {
   const { t } = useI18n();

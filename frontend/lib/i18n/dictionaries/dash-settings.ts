@@ -4,7 +4,7 @@ const en = {
   pageTitle: "Settings",
   appearance: {
     heading: "Appearance",
-    description: "Customize the look and feel of the Synapse dashboard.",
+    description: "Customize the look and feel of the Rono dashboard.",
   },
   theme: {
     title: "Theme",
@@ -79,7 +79,7 @@ const en = {
     heading: "Institution",
     description: "Your institution's profile. Only admins can edit.",
     nameLabel: "Name",
-    namePh: "Synapse Demo University",
+    namePh: "Rono Demo University",
     domainLabel: "Domain",
     domainPh: "example.edu",
     slugLabel: "Slug",
@@ -99,7 +99,7 @@ const tr: DashSettingsDict = {
   pageTitle: "Ayarlar",
   appearance: {
     heading: "Görünüm",
-    description: "Synapse panosunun görünümünü ve hissini özelleştirin.",
+    description: "Rono panosunun görünümünü ve hissini özelleştirin.",
   },
   theme: {
     title: "Tema",
@@ -174,7 +174,7 @@ const tr: DashSettingsDict = {
     heading: "Kurum",
     description: "Kurumunuzun profili. Yalnızca yöneticiler düzenleyebilir.",
     nameLabel: "Ad",
-    namePh: "Synapse Demo Üniversitesi",
+    namePh: "Rono Demo Üniversitesi",
     domainLabel: "Alan adı",
     domainPh: "ornek.edu",
     slugLabel: "Kısa ad",

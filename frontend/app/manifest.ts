@@ -1,11 +1,11 @@
 import type { MetadataRoute } from "next";
 
-// Web App Manifest — makes Synapse installable to the home screen on
+// Web App Manifest — makes Rono installable to the home screen on
 // Android (Chrome shows an install prompt) and iOS (Share → Add to Home Screen).
 export default function manifest(): MetadataRoute.Manifest {
   return {
-    name: "Synapse — Adaptive Learning",
-    short_name: "Synapse",
+    name: "Rono — Adaptive Learning",
+    short_name: "Rono",
     description:
       "Adaptive medical education that personalizes to every learner in real time.",
     // The PWA is the web *app*, not the marketing site: launch straight into

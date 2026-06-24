@@ -10,7 +10,7 @@ import { cn } from "@/lib/utils";
 const useIsomorphicLayoutEffect =
   typeof window !== "undefined" ? useLayoutEffect : useEffect;
 
-const SESSION_KEY = "synapse-splash-shown";
+const SESSION_KEY = "rono-splash-shown";
 const HOLD_MS = 650; // time the mark is held before it fades
 const FADE_MS = 500; // must match the CSS transition duration below
 
@@ -70,10 +70,10 @@ export function SplashScreen() {
 
       <div className="relative flex flex-col items-center gap-5">
         <div className="text-primary motion-safe:animate-in motion-safe:fade-in motion-safe:zoom-in-90 motion-safe:duration-700">
-          <LogoMark className="size-20" title="Synapse" />
+          <LogoMark className="size-20" title="Rono" />
         </div>
         <span className="text-xl font-bold tracking-tight text-foreground motion-safe:animate-in motion-safe:fade-in motion-safe:duration-1000">
-          Synapse
+          Rono
         </span>
       </div>
     </div>

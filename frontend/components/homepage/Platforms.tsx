@@ -83,7 +83,7 @@ const PLATFORM_META = [
     iconBg: "bg-emerald-50",
     cardBorder: "border-emerald-100",
     // Direct APK download served from /public; Play Store still pending.
-    href: "/downloads/synapse-android.apk",
+    href: "/downloads/rono-android.apk",
     download: true,
     storeSoon: true,
   },

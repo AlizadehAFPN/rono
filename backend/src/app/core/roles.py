@@ -1,5 +1,5 @@
 """
-Role hierarchy for the Synapse platform.
+Role hierarchy for the Rono platform.
 
 Roles are stored as plain strings in the Membership table (String(30)).
 All authorization checks go through role_gte() — never compare role strings inline.

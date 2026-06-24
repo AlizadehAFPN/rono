@@ -11,7 +11,7 @@ import { cn } from "@/lib/utils";
 // native prompt), on desktop, in non-Safari iOS browsers, and once the app
 // is already installed (standalone) or the user has dismissed it.
 
-const DISMISS_KEY = "synapse-ios-install-dismissed";
+const DISMISS_KEY = "rono-ios-install-dismissed";
 
 function isIosSafari(): boolean {
   if (typeof navigator === "undefined") return false;

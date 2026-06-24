@@ -1,6 +1,6 @@
-// Single source of truth for the Synapse brand mark.
+// Single source of truth for the Rono brand mark.
 //
-// The mark is an "hourglass" synapse graph: 5 nodes (four corners + a center
+// The mark is an "hourglass" rono graph: 5 nodes (four corners + a center
 // hub) joined by a top bar, a bottom bar, and two crossing diagonals. Every
 // raster icon across every platform (PWA, favicon, Apple touch, iOS AppIcon)
 // is rendered from the SAME geometry here so the logo is pixel-consistent.
@@ -20,7 +20,7 @@ const __dirname = dirname(fileURLToPath(import.meta.url));
 const FRONTEND = resolve(__dirname, "..");
 const IOS_APPICON = resolve(
   FRONTEND,
-  "../ios/Synapse/Resources/Assets.xcassets/AppIcon.appiconset",
+  "../ios/Rono/Resources/Assets.xcassets/AppIcon.appiconset",
 );
 
 // ── Brand mark geometry, normalised to a 100×100 box ───────────────────────

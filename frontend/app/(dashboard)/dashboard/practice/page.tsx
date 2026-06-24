@@ -450,7 +450,7 @@ export default function ExamPage() {
               <div className="px-6 py-7 sm:pl-16 sm:pr-12">
                 {/* running header */}
                 <div className="flex items-center justify-between border-b border-[var(--exam-ink)]/25 pb-2 text-[10px] uppercase tracking-[0.18em] text-[var(--exam-muted)]">
-                  <span className="truncate">SYNAPSE · {examTitle}</span>
+                  <span className="truncate">RONO · {examTitle}</span>
                   <span className="shrink-0">
                     {x.official.booklet} {BOOKLET} · {bookletCode}
                   </span>
@@ -740,7 +740,7 @@ function Masthead({
   return (
     <div className="flex items-center justify-between gap-3 border-2 border-[var(--exam-ink)] px-4 py-3">
       <div className="min-w-0">
-        <div className="text-lg font-black tracking-[0.22em]">SYNAPSE</div>
+        <div className="text-lg font-black tracking-[0.22em]">RONO</div>
         <div className="text-[9px] uppercase tracking-[0.25em] text-[var(--exam-muted)]">{board}</div>
       </div>
       <div className="shrink-0 text-right">

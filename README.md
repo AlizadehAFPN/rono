@@ -1,4 +1,4 @@
-# Synapse — Adaptive Learning Platform
+# Rono — Adaptive Learning Platform
 
 Medical education platform using IRT (Item Response Theory) + FSRS-5 spaced repetition.
 

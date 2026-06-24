@@ -3,17 +3,17 @@
 # migrate.sh — Run Alembic migrations on a live ECS environment
 #
 # Usage:
-#   AWS_PROFILE=synapse bash infra/scripts/migrate.sh staging
-#   AWS_PROFILE=synapse bash infra/scripts/migrate.sh prod
+#   AWS_PROFILE=rono bash infra/scripts/migrate.sh staging
+#   AWS_PROFILE=rono bash infra/scripts/migrate.sh prod
 # =============================================================================
 set -euo pipefail
 
 ENV="${1:-staging}"
-PROFILE="${AWS_PROFILE:-synapse}"
+PROFILE="${AWS_PROFILE:-rono}"
 REGION="eu-north-1"
-CLUSTER="synapse-${ENV}"
-BACKEND_SERVICE="synapse-${ENV}-backend"
-TASK_DEF="synapse-${ENV}-migration"
+CLUSTER="rono-${ENV}"
+BACKEND_SERVICE="rono-${ENV}-backend"
+TASK_DEF="rono-${ENV}-migration"
 
 echo "==> Running Alembic migrations on: $ENV"
 
