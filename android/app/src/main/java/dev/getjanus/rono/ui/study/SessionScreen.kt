@@ -53,11 +53,14 @@ import dev.getjanus.rono.core.designsystem.theme.Spacing
 import dev.getjanus.rono.core.designsystem.theme.rono
 import dev.getjanus.rono.core.util.formatDueDate
 import dev.getjanus.rono.core.util.formatPercent
-import dev.getjanus.rono.core.util.formatTheta
+import dev.getjanus.rono.core.util.readinessDelta
+import dev.getjanus.rono.core.util.readinessPercent
 import dev.getjanus.rono.core.util.rememberHtmlText
 import dev.getjanus.rono.data.practice.NextItemDto
 import dev.getjanus.rono.ui.common.ErrorState
 import dev.getjanus.rono.ui.common.LoadingState
+import dev.getjanus.rono.ui.common.PassageCard
+import dev.getjanus.rono.ui.common.QuestionImage
 import java.time.Instant
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -122,6 +125,8 @@ fun SessionScreen(
                 is SessionStage.Failed -> ErrorState(stage.message, onRetry = viewModel::retry)
                 is SessionStage.Question -> QuestionView(
                     item = stage.item,
+                    imageUrl = viewModel.imageUrl(stage.item.imageUrl),
+                    stimulusImageUrl = viewModel.imageUrl(stage.item.stimulus?.imageUrl),
                     selectedOptionId = stage.selectedOptionId,
                     rail = state,
                     submitting = state.submitting,
@@ -131,6 +136,8 @@ fun SessionScreen(
                 )
                 is SessionStage.Feedback -> FeedbackView(
                     item = stage.item,
+                    imageUrl = viewModel.imageUrl(stage.item.imageUrl),
+                    stimulusImageUrl = viewModel.imageUrl(stage.item.stimulus?.imageUrl),
                     result = stage.result,
                     selectedOptionId = stage.selectedOptionId,
                     rail = state,
@@ -157,7 +164,7 @@ private fun SessionProgressLabel(delivered: Int, target: Int?) {
 @Composable
 private fun StatRail(rail: SessionUiState) {
     Row(Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.SpaceEvenly) {
-        MetricBlock("θ", formatTheta(rail.theta))
+        MetricBlock(stringResource(R.string.dash_ability), readinessPercent(rail.theta))
         MetricBlock(stringResource(R.string.session_streak), rail.streak.toString(), color = MaterialTheme.rono.warning)
         MetricBlock(stringResource(R.string.session_accuracy), formatPercent(rail.accuracy), color = MaterialTheme.rono.success)
     }
@@ -166,6 +173,8 @@ private fun StatRail(rail: SessionUiState) {
 @Composable
 private fun QuestionView(
     item: NextItemDto,
+    imageUrl: String?,
+    stimulusImageUrl: String?,
     selectedOptionId: String?,
     rail: SessionUiState,
     submitting: Boolean,
@@ -180,7 +189,12 @@ private fun QuestionView(
             Spacer(Modifier.height(Spacing.sm))
             StatRail(rail)
             Spacer(Modifier.height(Spacing.md))
+            item.stimulus?.let {
+                PassageCard(it, stimulusImageUrl)
+                Spacer(Modifier.height(Spacing.md))
+            }
             Text(rememberHtmlText(item.content), style = MaterialTheme.typography.titleLarge)
+            QuestionImage(imageUrl)
             Spacer(Modifier.height(Spacing.lg))
             item.options.sortedBy { it.displayOrder }.forEach { opt ->
                 OptionRow(
@@ -211,6 +225,8 @@ private fun QuestionView(
 @Composable
 private fun FeedbackView(
     item: NextItemDto,
+    imageUrl: String?,
+    stimulusImageUrl: String?,
     result: dev.getjanus.rono.data.practice.AnswerResultDto,
     selectedOptionId: String?,
     rail: SessionUiState,
@@ -225,7 +241,12 @@ private fun FeedbackView(
             Spacer(Modifier.height(Spacing.md))
             FeedbackBanner(result)
             Spacer(Modifier.height(Spacing.md))
+            item.stimulus?.let {
+                PassageCard(it, stimulusImageUrl)
+                Spacer(Modifier.height(Spacing.md))
+            }
             Text(rememberHtmlText(item.content), style = MaterialTheme.typography.titleLarge)
+            QuestionImage(imageUrl)
             Spacer(Modifier.height(Spacing.lg))
             item.options.sortedBy { it.displayOrder }.forEach { opt ->
                 val visual = when {
@@ -268,7 +289,7 @@ private fun FeedbackBanner(result: dev.getjanus.rono.data.practice.AnswerResultD
     Row(Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.SpaceBetween, verticalAlignment = Alignment.CenterVertically) {
         Text(label, style = MaterialTheme.typography.titleLarge, color = color)
         Row(horizontalArrangement = Arrangement.spacedBy(Spacing.sm)) {
-            Pill(text = "θ ${formatTheta(result.thetaDelta, signed = true)}", color = if (result.thetaDelta >= 0) MaterialTheme.rono.success else MaterialTheme.rono.danger)
+            Pill(text = readinessDelta(result.thetaDelta), color = if (result.thetaDelta >= 0) MaterialTheme.rono.success else MaterialTheme.rono.danger)
             result.card.dueAt?.let { due ->
                 Pill(text = formatDueDate(runCatching { Instant.parse(due) }.getOrNull()), color = MaterialTheme.colorScheme.primary)
             }

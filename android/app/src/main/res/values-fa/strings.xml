@@ -1,0 +1,222 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">رونو</string>
+
+    <!-- Common -->
+    <string name="common_continue">ادامه</string>
+    <string name="common_cancel">انصراف</string>
+    <string name="common_save">ذخیره</string>
+    <string name="common_retry">تلاش دوباره</string>
+    <string name="common_done">تمام</string>
+    <string name="common_back">بازگشت</string>
+    <string name="common_loading">در حال بارگذاری…</string>
+    <string name="common_error_generic">مشکلی پیش آمد. لطفاً دوباره تلاش کن.</string>
+    <string name="widget_description">روزشمار و مرور روزانه</string>
+    <string name="common_skip">رد کردن</string>
+    <string name="common_next">بعدی</string>
+    <string name="common_get_started">شروع کنیم</string>
+
+    <!-- Bottom navigation -->
+    <string name="nav_home">خانه</string>
+    <string name="nav_study">تمرین</string>
+    <string name="nav_daily">روزانه</string>
+    <string name="nav_progress">پیشرفت</string>
+    <string name="nav_profile">پروفایل</string>
+
+    <!-- Onboarding -->
+    <string name="onboarding_1_title">تمرینی که با تو هماهنگ می‌شود</string>
+    <string name="onboarding_1_body">سؤال‌ها متناسب با سطح خودت انتخاب می‌شوند تا هر دقیقه به تسلط بیشتر تو کمک کند.</string>
+    <string name="onboarding_2_title">آنچه یاد می‌گیری در ذهنت بماند</string>
+    <string name="onboarding_2_body">مرور برنامه‌ریزی‌شده سؤال‌ها را درست پیش از آنکه فراموش کنی دوباره برایت می‌آورد.</string>
+    <string name="onboarding_3_title">رشد آمادگی‌ات را ببین</string>
+    <string name="onboarding_3_body">تسلطت را در هر مبحث دنبال کن و ببین چطور آمادگی‌ات جلسه‌به‌جلسه بالا می‌رود.</string>
+
+    <!-- Auth -->
+    <string name="auth_tagline">تمرین هوشمند آزمون استخدامی</string>
+    <string name="auth_login_title">خوش آمدی</string>
+    <string name="auth_login_subtitle">برای ادامهٔ تمرین وارد شو</string>
+    <string name="auth_signup_title">ساختن حساب کاربری</string>
+    <string name="auth_signup_subtitle">در چند دقیقه تمرین را شروع کن</string>
+    <string name="auth_email">ایمیل</string>
+    <string name="auth_password">رمز عبور</string>
+    <string name="auth_full_name">نام و نام خانوادگی</string>
+    <string name="auth_sign_in">ورود</string>
+    <string name="auth_sign_up">ثبت‌نام</string>
+    <string name="auth_no_account">حساب کاربری نداری؟</string>
+    <string name="auth_have_account">از قبل حساب داری؟</string>
+    <string name="auth_error_email">یک ایمیل معتبر وارد کن</string>
+    <string name="auth_error_password_short">رمز عبور باید حداقل ۸ نویسه باشد</string>
+    <string name="auth_error_password_rules">از حروف بزرگ، حروف کوچک و یک عدد استفاده کن</string>
+    <string name="auth_error_name">نامت را وارد کن</string>
+
+    <!-- Mastery / ability bands -->
+    <string name="mastery_none">شروع‌نشده</string>
+    <string name="mastery_beginner">مبتدی</string>
+    <string name="mastery_developing">در حال پیشرفت</string>
+    <string name="mastery_proficient">مسلط</string>
+    <string name="mastery_advanced">پیشرفته</string>
+
+    <!-- Dashboard -->
+    <string name="dash_greeting">سلام، %1$s</string>
+    <string name="dash_subtitle">وضعیت امروزت اینجاست</string>
+    <string name="dash_ability">آمادگی</string>
+    <string name="dash_due_today">برای امروز</string>
+    <string name="dash_review_now">همین حالا مرور کن</string>
+    <string name="dash_start_studying">شروع تمرین</string>
+    <string name="dash_answered">پاسخ‌داده</string>
+    <string name="dash_accuracy">دقت</string>
+    <string name="dash_sessions">جلسه‌ها</string>
+    <string name="dash_streak_unit">روز پیاپی</string>
+    <string name="dash_library">بانک سؤال</string>
+    <string name="dash_seen">دیده‌شده</string>
+    <string name="dash_new">جدید</string>
+    <string name="dash_learning">در حال یادگیری</string>
+    <string name="dash_in_review">در حال مرور</string>
+    <string name="dash_topics_active">مبحث‌های فعال</string>
+    <string name="dash_topics_mastered">مسلط‌شده</string>
+    <string name="dash_mastery_distribution">پراکندگی تسلط</string>
+    <string name="dash_ability_trend">روند آمادگی</string>
+    <string name="dash_activity">فعالیت</string>
+    <string name="dash_strongest">قوی‌ترین</string>
+    <string name="dash_focus">مبحث تمرکز</string>
+    <string name="dash_recent_sessions">جلسه‌های اخیر</string>
+    <string name="dash_no_activity">هنوز فعالیتی نداری — یک جلسه شروع کن.</string>
+    <string name="dash_caught_up">همه چیز را به‌روز کرده‌ای</string>
+    <string name="dash_daily_study">تمرین روزانه</string>
+    <string name="dash_progress_title">پیشرفت</string>
+    <string name="dash_progress_sub">روندها، تسلط و تاریخچه</string>
+    <string name="dash_due_now">آمادهٔ مرور</string>
+    <string name="dash_all_caught_up">همه چیز به‌روز است</string>
+
+    <!-- Progress -->
+    <string name="progress_title">پیشرفت</string>
+    <string name="progress_overall">کلی</string>
+    <string name="progress_total_answered">پاسخ‌داده</string>
+    <string name="progress_correct">درست</string>
+    <string name="progress_by_subject">به تفکیک درس</string>
+    <string name="progress_no_topics">هنوز اطلاعاتی از مبحث‌ها نیست.</string>
+    <string name="progress_se">± %1$s</string>
+    <string name="session_type_adaptive">تمرین</string>
+    <string name="session_type_review">مرور</string>
+    <string name="session_type_daily">مرور روزانه</string>
+
+    <!-- Study -->
+    <string name="study_title">تمرین</string>
+    <string name="study_daily_review">مرور روزانه</string>
+    <string name="study_daily_review_desc">ترکیبی از سؤال‌های آمادهٔ مرور و جدید از مجموعه‌هایت</string>
+    <string name="study_start_adaptive">تمرین هوشمند</string>
+    <string name="study_collections">مجموعه‌ها</string>
+    <string name="study_no_collections">هنوز مجموعه‌ای نداری.</string>
+    <string name="study_new_count">%1$d جدید</string>
+    <string name="study_due_count">%1$d آمادهٔ مرور</string>
+    <string name="study_total_count">%1$d در مجموع</string>
+
+    <!-- Session runner -->
+    <string name="session_submit">ثبت پاسخ</string>
+    <string name="session_skip">رد کردن</string>
+    <string name="session_next">بعدی</string>
+    <string name="session_correct">درست</string>
+    <string name="session_incorrect">نادرست</string>
+    <string name="session_skipped">رد شد</string>
+    <string name="session_explanation">توضیح</string>
+    <string name="passage_label">متن</string>
+    <string name="session_streak">روزشمار</string>
+    <string name="session_accuracy">دقت</string>
+    <string name="session_next_review">مرور بعدی</string>
+    <string name="session_finish">پایان</string>
+    <string name="session_exit_title">این جلسه را تمام کنیم؟</string>
+    <string name="session_exit_message">پیشرفتت تا اینجا ذخیره شده است.</string>
+    <string name="session_exit_confirm">پایان جلسه</string>
+    <string name="session_progress">%1$d / %2$d</string>
+
+    <!-- Session summary -->
+    <string name="summary_title">جلسه تمام شد</string>
+    <string name="summary_correct">درست</string>
+    <string name="summary_wrong">نادرست</string>
+    <string name="summary_skipped">رد شده</string>
+    <string name="summary_ability_change">تغییر آمادگی</string>
+    <string name="summary_time">زمان</string>
+    <string name="summary_restart">جلسهٔ جدید</string>
+    <string name="summary_done">تمام</string>
+    <string name="session_caught_up_title">همه چیز را به‌روز کرده‌ای</string>
+    <string name="session_caught_up_body">الان هیچ سؤالی آمادهٔ مرور نیست. بعداً سر بزن.</string>
+
+    <!-- Daily review setup -->
+    <string name="daily_title">مرور روزانه</string>
+    <string name="daily_collections">مجموعه‌ها</string>
+    <string name="daily_all">همهٔ مجموعه‌ها</string>
+    <string name="daily_budget">طول جلسه</string>
+    <string name="daily_by_count">تعداد سؤال</string>
+    <string name="daily_by_time">زمان</string>
+    <string name="daily_minutes">%1$d دقیقه</string>
+    <string name="daily_level">سطح شروع (اختیاری)</string>
+    <string name="daily_start">شروع مرور</string>
+    <string name="daily_summary">%1$d آمادهٔ مرور · %2$d جدید انتخاب شد</string>
+
+    <!-- Practice exam -->
+    <string name="exam_title">آزمون آزمایشی</string>
+    <string name="exam_setup_title">آزمونت را تنظیم کن</string>
+    <string name="exam_type">آزمون</string>
+    <string name="exam_part">بخش</string>
+    <string name="exam_count">تعداد سؤال</string>
+    <string name="exam_feedback_mode">بازخورد</string>
+    <string name="exam_instant">فوری</string>
+    <string name="exam_real">در پایان</string>
+    <string name="exam_start">شروع آزمون</string>
+    <string name="exam_submit">ثبت آزمون</string>
+    <string name="exam_flag">نشان‌گذاری</string>
+    <string name="exam_unflag">برداشتن نشان</string>
+    <string name="exam_question_n">سؤال %1$d از %2$d</string>
+    <string name="exam_score">امتیاز</string>
+    <string name="exam_net_score">امتیاز خالص</string>
+    <string name="exam_any">هر کدام</string>
+
+    <!-- Roles -->
+    <string name="role_student">داوطلب</string>
+    <string name="role_instructor">مدرس</string>
+    <string name="role_admin">مدیر</string>
+
+    <!-- Profile -->
+    <string name="profile_title">پروفایل</string>
+    <string name="profile_name">نام</string>
+    <string name="profile_change_photo">تغییر عکس</string>
+    <string name="profile_remove_photo">حذف عکس</string>
+    <string name="profile_verified">تأییدشده</string>
+    <string name="profile_unverified">تأییدنشده</string>
+    <string name="profile_learning">در حال یادگیری</string>
+    <string name="profile_topics">مبحث‌ها</string>
+
+    <!-- Settings -->
+    <string name="settings_title">تنظیمات</string>
+    <string name="settings_appearance">ظاهر</string>
+    <string name="settings_theme">پوسته</string>
+    <string name="settings_theme_light">روشن</string>
+    <string name="settings_theme_dark">تیره</string>
+    <string name="settings_theme_system">سیستم</string>
+    <string name="settings_language">زبان</string>
+    <string name="settings_timezone">منطقهٔ زمانی</string>
+    <string name="settings_security">امنیت</string>
+    <string name="settings_change_password">تغییر رمز عبور</string>
+    <string name="settings_devices">دستگاه‌های فعال</string>
+    <string name="settings_account">حساب کاربری</string>
+    <string name="settings_email">ایمیل</string>
+    <string name="settings_developer">توسعه‌دهنده</string>
+    <string name="settings_backend">سرور</string>
+    <string name="settings_backend_prod">عملیاتی</string>
+    <string name="settings_backend_dev">توسعه</string>
+    <string name="settings_logout">خروج از حساب</string>
+
+    <!-- Change password -->
+    <string name="change_password_title">تغییر رمز عبور</string>
+    <string name="change_password_current">رمز عبور فعلی</string>
+    <string name="change_password_new">رمز عبور جدید</string>
+    <string name="change_password_save">به‌روزرسانی رمز عبور</string>
+    <string name="change_password_success">رمز عبور به‌روزرسانی شد</string>
+
+    <!-- Devices -->
+    <string name="devices_title">دستگاه‌های فعال</string>
+    <string name="devices_current">این دستگاه</string>
+    <string name="devices_revoke">خروج</string>
+    <string name="devices_revoke_others">خروج از همهٔ دستگاه‌های دیگر</string>
+    <string name="devices_empty">دستگاه فعال دیگری نیست.</string>
+</resources>

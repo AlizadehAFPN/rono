@@ -13,6 +13,7 @@ is private to the user who started it (enforced in the service layer).
 """
 
 import uuid
+from collections import Counter
 from typing import Annotated
 
 from fastapi import APIRouter, Depends
@@ -34,6 +35,7 @@ from app.schemas.practice import (
     SessionOut,
     SessionStartRequest,
     SessionSummaryOut,
+    StimulusOut,
 )
 from app.services import practice_service
 
@@ -46,6 +48,21 @@ def _require_institution(current_user: CurrentUser) -> uuid.UUID:
     if current_user.institution_id is None:
         raise ForbiddenError("Institution context required for practice sessions.")
     return current_user.institution_id
+
+
+def _stimulus_out(item, total_in_group: int | None = None) -> StimulusOut | None:
+    """Build the shared-passage payload for a question, or None if it has none."""
+    s = item.stimulus
+    if s is None:
+        return None
+    return StimulusOut(
+        id=s.id,
+        content=s.content,
+        image_url=practice_service.first_image_url_media(s.media_attachments),
+        group_no=s.group_no,
+        order_in_group=item.stimulus_order,
+        total_in_group=total_in_group,
+    )
 
 
 def _session_out(session) -> SessionOut:
@@ -152,8 +169,12 @@ async def get_next(
         item_id=item.id,
         item_version_id=version.id,
         content=version.content,
+        image_url=practice_service.first_image_url(version),
         options=[NextOptionOut.model_validate(o) for o in options],
         primary_topic_id=primary_topic,
+        # total_in_group is None in adaptive mode (one question served at a time);
+        # the full passage still rides along so the question renders standalone.
+        stimulus=_stimulus_out(item),
         selection_theta=selection_theta,
         item_irt_a=float(item.irt_a) if item.irt_a is not None else 1.0,
         item_irt_b=float(item.irt_b) if item.irt_b is not None else 0.0,
@@ -182,6 +203,9 @@ async def get_exam_paper(
     items = await practice_service.exam_paper(
         db, session_id, current_user.user_id, capped
     )
+    # How many questions on this paper share each passage — lets the client show
+    # "passage 1 of 3" and render the passage once above its contiguous group.
+    group_counts = Counter(i.stimulus_id for i in items if i.stimulus_id is not None)
     paper: list[ExamItemOut] = []
     for item in items:
         version = item.current_version
@@ -193,8 +217,10 @@ async def get_exam_paper(
                 item_id=item.id,
                 item_version_id=version.id,
                 content=version.content,
+                image_url=practice_service.first_image_url(version),
                 options=[NextOptionOut.model_validate(o) for o in options],
                 primary_topic_id=practice_service._primary_topic_id(item),
+                stimulus=_stimulus_out(item, group_counts.get(item.stimulus_id)),
             )
         )
     return ExamPaperOut(session_id=session_id, items=paper, count=len(paper))

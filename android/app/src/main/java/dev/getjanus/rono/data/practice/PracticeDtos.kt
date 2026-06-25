@@ -39,6 +39,18 @@ data class OptionDto(
     val displayOrder: Int = 0,
 )
 
+/** A shared reading passage / scenario (متن مشترک) attached to a question. The
+ * full passage travels with each question so it can be re-read at any time. */
+@Serializable
+data class StimulusDto(
+    val id: String,
+    val content: String,
+    val imageUrl: String? = null,
+    val groupNo: Int? = null,
+    val orderInGroup: Int? = null,
+    val totalInGroup: Int? = null,
+)
+
 /**
  * Merged shape for GET /next, which returns either NextItemOut or NoMoreItems.
  * [itemId] is null when the candidate pool is exhausted ([hasItem] == false).
@@ -49,8 +61,10 @@ data class NextItemDto(
     val itemId: String? = null,
     val itemVersionId: String? = null,
     val content: String? = null,
+    val imageUrl: String? = null,
     val options: List<OptionDto> = emptyList(),
     val primaryTopicId: String? = null,
+    val stimulus: StimulusDto? = null,
     val selectionTheta: Double? = null,
     val itemIrtA: Double? = null,
     val itemIrtB: Double? = null,
@@ -67,8 +81,10 @@ data class ExamItemDto(
     val itemId: String,
     val itemVersionId: String,
     val content: String,
+    val imageUrl: String? = null,
     val options: List<OptionDto> = emptyList(),
     val primaryTopicId: String? = null,
+    val stimulus: StimulusDto? = null,
 )
 
 @Serializable

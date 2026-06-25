@@ -19,6 +19,8 @@ class Item(Base):
             "status",
             postgresql_where=text("deleted_at IS NULL"),
         ),
+        # Fetch all questions of a shared passage in order (exam-paper grouping).
+        Index("ix_items_stimulus_order", "stimulus_id", "stimulus_order"),
     )
 
     id: Mapped[uuid.UUID] = mapped_column(UUID(as_uuid=True), primary_key=True, default=uuid.uuid4)
@@ -33,18 +35,30 @@ class Item(Base):
         ForeignKey("item_versions.id", use_alter=True, name="fk_items_current_version_id"),
         nullable=True,
     )
+    # Optional shared reading passage / scenario this question belongs to.
+    # Nullable: most questions are standalone. ON DELETE SET NULL so removing a
+    # passage degrades its questions to standalone, never deletes them.
+    stimulus_id: Mapped[uuid.UUID | None] = mapped_column(
+        UUID(as_uuid=True),
+        ForeignKey("stimuli.id", ondelete="SET NULL"),
+        nullable=True,
+        index=True,
+    )
+    # 1-based position of this question within its passage's run of questions.
+    stimulus_order: Mapped[int | None] = mapped_column(Integer, nullable=True)
     item_type: Mapped[str] = mapped_column(String(30), nullable=False, default="single_best_answer")
+    # Employment exam: executive | education | bank | social_security (see core/exams.py).
     exam_type: Mapped[str | None] = mapped_column(String(30), nullable=True, index=True)
-    # Exam-based section, distinct from the (topic-based) topic tree.
-    # For TUS: "basic_sciences" (TTBT) | "clinical_sciences" (KTBT).
+    # Exam-based section, distinct from the (topic-based) topic tree:
+    # "general" (دروس عمومی) | "specialized" (دروس تخصصی).
     exam_part: Mapped[str | None] = mapped_column(String(30), nullable=True, index=True)
-    # Content language (ISO 639-1). Single-language for now ("tr"); multi-language later.
-    language: Mapped[str] = mapped_column(String(10), nullable=False, default="tr", index=True)
+    # Content language (ISO 639-1). Persian by default.
+    language: Mapped[str] = mapped_column(String(10), nullable=False, default="fa", index=True)
     # Provenance of the question (e.g. official past papers).
-    source: Mapped[str | None] = mapped_column(String(100), nullable=True)  # e.g. "osym"
+    source: Mapped[str | None] = mapped_column(String(100), nullable=True)  # e.g. "sanjesh"
     source_reference: Mapped[str | None] = mapped_column(
         String(255), nullable=True
-    )  # e.g. "2013-TUS İlkbahar / TTBT"
+    )  # e.g. "آزمون استخدامی آموزش و پرورش ۱۴۰۱"
     exam_year: Mapped[int | None] = mapped_column(Integer, nullable=True, index=True)
     exam_session: Mapped[str | None] = mapped_column(
         String(20), nullable=True
@@ -83,6 +97,7 @@ class Item(Base):
     current_version: Mapped["ItemVersion | None"] = relationship(
         "ItemVersion", foreign_keys=[current_version_id]
     )
+    stimulus: Mapped["Stimulus | None"] = relationship("Stimulus", back_populates="items")
     item_topic_links: Mapped[list["ItemTopicLink"]] = relationship(
         "ItemTopicLink", back_populates="item"
     )

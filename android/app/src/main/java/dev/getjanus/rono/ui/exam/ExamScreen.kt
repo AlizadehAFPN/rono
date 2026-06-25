@@ -126,7 +126,12 @@ private fun RunningExam(state: ExamUiState, viewModel: ExamViewModel, onClose: (
         Column(Modifier.fillMaxSize().padding(padding)) {
             Column(Modifier.weight(1f).verticalScroll(rememberScrollState()).padding(horizontal = Spacing.screen)) {
                 Spacer(Modifier.height(Spacing.sm))
+                item.stimulus?.let {
+                    dev.getjanus.rono.ui.common.PassageCard(it, viewModel.imageUrl(it.imageUrl))
+                    Spacer(Modifier.height(Spacing.md))
+                }
                 Text(rememberHtmlText(item.content), style = MaterialTheme.typography.titleLarge)
+                dev.getjanus.rono.ui.common.QuestionImage(viewModel.imageUrl(item.imageUrl))
                 Spacer(Modifier.height(Spacing.lg))
                 item.options.sortedBy { it.displayOrder }.forEach { opt ->
                     val visual = when {

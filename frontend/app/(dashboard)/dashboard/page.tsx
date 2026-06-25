@@ -54,10 +54,11 @@ const STATUS_DOT: Record<string, string> = {
 };
 
 const EXAM_BAR_COLORS: Record<string, string> = {
-  usmle_step1: "bg-orange-400",
-  usmle_step2: "bg-blue-400",
-  usmle_step3: "bg-violet-400",
-  tus: "bg-emerald-400",
+  executive: "bg-violet-400",
+  education: "bg-emerald-400",
+  bank: "bg-blue-400",
+  social_security: "bg-orange-400",
+  phd: "bg-fuchsia-400",
   unassigned: "bg-slate-300",
 };
 
@@ -312,7 +313,7 @@ function StaffOverview() {
                         <span className="font-medium">{label}</span>
                         <div className="flex items-center gap-2 text-muted-foreground">
                           <span className="tabular-nums">{count}</span>
-                          <span className="w-8 text-right text-xs tabular-nums">
+                          <span className="w-8 text-end text-xs tabular-nums">
                             {pct}%
                           </span>
                         </div>
@@ -348,7 +349,7 @@ function StaffOverview() {
                     <div key={i} className="flex items-center gap-3">
                       <Skeleton className="size-2.5 rounded-full" />
                       <Skeleton className="h-3.5 w-24" />
-                      <Skeleton className="ml-auto h-3.5 w-8" />
+                      <Skeleton className="ms-auto h-3.5 w-8" />
                     </div>
                   ))}
                 </div>

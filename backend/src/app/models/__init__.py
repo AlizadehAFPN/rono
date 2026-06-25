@@ -36,6 +36,7 @@ from app.models.review_log import ReviewLog
 from app.models.theta_history import ThetaHistory
 
 # Domain 2 — Content
+from app.models.stimulus import Stimulus
 from app.models.topic import Topic
 from app.models.user import User
 from app.models.user_theta import UserTheta
@@ -52,6 +53,7 @@ __all__ = [
     "AuthSession",
     "PasswordResetToken",
     "Topic",
+    "Stimulus",
     "Item",
     "ItemVersion",
     "Option",

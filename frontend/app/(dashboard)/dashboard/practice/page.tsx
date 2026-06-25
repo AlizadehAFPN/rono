@@ -67,7 +67,7 @@ export default function ExamPage() {
   const finish = useFinishSession();
 
   const [phase, setPhase] = useState<Phase>("setup");
-  const [examType, setExamType] = useState<string>("tus");
+  const [examType, setExamType] = useState<string>("executive");
   const [examPart, setExamPart] = useState<string>(NONE);
   const [feedbackMode, setFeedbackMode] = useState<boolean>(false);
 
@@ -93,9 +93,9 @@ export default function ExamPage() {
   );
 
   const sectionLabel =
-    examPart === "basic_sciences"
+    examPart === "general"
       ? x.setup.basic
-      : examPart === "clinical_sciences"
+      : examPart === "specialized"
         ? x.setup.clinical
         : null;
   const examTitle = [EXAM_TYPE_LABELS[examType] ?? examType, sectionLabel]
@@ -301,8 +301,8 @@ export default function ExamPage() {
                     </SelectTrigger>
                     <SelectContent>
                       <SelectItem value={NONE}>{x.setup.anyPart}</SelectItem>
-                      <SelectItem value="basic_sciences">{x.setup.basic}</SelectItem>
-                      <SelectItem value="clinical_sciences">{x.setup.clinical}</SelectItem>
+                      <SelectItem value="general">{x.setup.basic}</SelectItem>
+                      <SelectItem value="specialized">{x.setup.clinical}</SelectItem>
                     </SelectContent>
                   </Select>
                 </label>
@@ -313,7 +313,7 @@ export default function ExamPage() {
               <button
                 type="button"
                 onClick={() => setFeedbackMode((v) => !v)}
-                className="flex w-full items-center justify-between gap-4 rounded-lg border p-3 text-left"
+                className="flex w-full items-center justify-between gap-4 rounded-lg border p-3 text-start"
               >
                 <span>
                   <span className="text-sm font-medium">{x.setup.feedbackLabel}</span>
@@ -330,7 +330,7 @@ export default function ExamPage() {
                   <span
                     className={cn(
                       "absolute top-0.5 size-5 rounded-full bg-white shadow transition-all",
-                      feedbackMode ? "left-[18px]" : "left-0.5",
+                      feedbackMode ? "start-[18px]" : "start-0.5",
                     )}
                   />
                 </span>
@@ -445,9 +445,9 @@ export default function ExamPage() {
               {/* red margin rule */}
               <div
                 aria-hidden
-                className="pointer-events-none absolute inset-y-0 left-12 hidden w-px bg-[var(--exam-margin)]/35 sm:block"
+                className="pointer-events-none absolute inset-y-0 start-12 hidden w-px bg-[var(--exam-margin)]/35 sm:block"
               />
-              <div className="px-6 py-7 sm:pl-16 sm:pr-12">
+              <div className="px-6 py-7 sm:ps-16 sm:pe-12">
                 {/* running header */}
                 <div className="flex items-center justify-between border-b border-[var(--exam-ink)]/25 pb-2 text-[10px] uppercase tracking-[0.18em] text-[var(--exam-muted)]">
                   <span className="truncate">RONO · {examTitle}</span>
@@ -456,6 +456,30 @@ export default function ExamPage() {
                   </span>
                 </div>
 
+                {/* shared passage (متن مشترک) — repeated on each of its
+                    questions' pages so it can be re-read at any time */}
+                {item.stimulus && (
+                  <div className="mt-6 max-h-[40vh] overflow-y-auto rounded-[2px] border border-[var(--exam-line)] bg-[var(--exam-soft)] p-4">
+                    <p className="mb-2 text-[10px] font-bold uppercase tracking-[0.18em] text-[var(--exam-muted)]">
+                      متن{item.stimulus.group_no ? ` ${item.stimulus.group_no}` : ""}
+                      {item.stimulus.total_in_group && item.stimulus.order_in_group
+                        ? ` · سؤال ${item.stimulus.order_in_group} از ${item.stimulus.total_in_group}`
+                        : ""}
+                    </p>
+                    <p className="whitespace-pre-line text-justify text-[15px] leading-[1.9] text-[var(--exam-ink-2)]">
+                      {item.stimulus.content}
+                    </p>
+                    {item.stimulus.image_url && (
+                      /* eslint-disable-next-line @next/next/no-img-element */
+                      <img
+                        src={item.stimulus.image_url}
+                        alt=""
+                        className="mt-3 max-h-60 rounded-lg border border-[var(--exam-line)] object-contain"
+                      />
+                    )}
+                  </div>
+                )}
+
                 {/* question */}
                 <div className="mt-7 flex gap-3.5">
                   <span className="shrink-0 text-lg font-bold">{current + 1}.</span>
@@ -463,6 +487,14 @@ export default function ExamPage() {
                     {item.content}
                   </p>
                 </div>
+                {item.image_url && (
+                  /* eslint-disable-next-line @next/next/no-img-element */
+                  <img
+                    src={item.image_url}
+                    alt=""
+                    className="mt-4 max-h-72 rounded-lg border border-[var(--exam-line)] object-contain"
+                  />
+                )}
 
                 {/* options — lettered, as in a printed booklet */}
                 <ol className="mt-6 space-y-1">
@@ -480,7 +512,7 @@ export default function ExamPage() {
                             disabled={!!res}
                             onClick={() => choose(item, o.id)}
                             className={cn(
-                              "flex w-full items-baseline gap-3 rounded-[2px] px-3 py-2 text-left text-[16px] transition-colors",
+                              "flex w-full items-baseline gap-3 rounded-[2px] px-3 py-2 text-start text-[16px] transition-colors",
                               !res && picked && "bg-[var(--exam-ink)]/[0.06]",
                               isCorrect && "bg-green-700/10",
                               isWrong && "bg-red-700/10",
@@ -500,7 +532,7 @@ export default function ExamPage() {
                             </span>
                             <span className={cn(picked && !res && "font-medium")}>{o.content}</span>
                             {!res && picked && (
-                              <span className="ml-auto shrink-0 self-center text-xs font-semibold uppercase tracking-wider text-[var(--exam-accent)]">
+                              <span className="ms-auto shrink-0 self-center text-xs font-semibold uppercase tracking-wider text-[var(--exam-accent)]">
                                 ✓
                               </span>
                             )}
@@ -511,7 +543,7 @@ export default function ExamPage() {
                 </ol>
 
                 {results[item.item_id]?.explanation && (
-                  <div className="mt-5 border-l-2 border-[var(--exam-accent)] bg-[var(--exam-soft)] p-4 text-[15px] leading-relaxed">
+                  <div className="mt-5 border-s-2 border-[var(--exam-accent)] bg-[var(--exam-soft)] p-4 text-[15px] leading-relaxed">
                     <p className="mb-1 font-bold uppercase tracking-wide text-[11px] text-[var(--exam-accent)]">
                       {x.feedback.explanation}
                     </p>
@@ -591,7 +623,7 @@ export default function ExamPage() {
           <button
             type="button"
             onClick={() => setShowReview(true)}
-            className="absolute bottom-5 right-5 z-10 inline-flex items-center gap-2 rounded-full bg-[var(--exam-paper)] px-4 py-3 text-sm font-semibold text-[var(--exam-ink)] shadow-lg lg:hidden"
+            className="absolute bottom-5 end-5 z-10 inline-flex items-center gap-2 rounded-full bg-[var(--exam-paper)] px-4 py-3 text-sm font-semibold text-[var(--exam-ink)] shadow-lg lg:hidden"
           >
             <LayoutGridIcon className="size-4" />
             {answeredCount}/{items.length}
@@ -743,7 +775,7 @@ function Masthead({
         <div className="text-lg font-black tracking-[0.22em]">RONO</div>
         <div className="text-[9px] uppercase tracking-[0.25em] text-[var(--exam-muted)]">{board}</div>
       </div>
-      <div className="shrink-0 text-right">
+      <div className="shrink-0 text-end">
         <div className="text-[13px] font-bold uppercase tracking-wider">
           {bookletLabel} {BOOKLET}
         </div>
@@ -824,7 +856,7 @@ function OmrSheet({
         </p>
       </div>
       <div
-        className="max-h-[52vh] space-y-0.5 overflow-y-auto pr-1"
+        className="max-h-[52vh] space-y-0.5 overflow-y-auto pe-1"
         style={{ fontFamily: "var(--font-geist-mono, ui-monospace, monospace)" }}
       >
         {items.map((it, i) => {

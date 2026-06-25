@@ -57,10 +57,16 @@ from app.services import irt as irt_engine
 # figure only — it never feeds IRT θ estimation or FSRS scheduling, matching the
 # standard separation of psychometrics from exam scoring.
 #
-# TUS deducts a quarter point per wrong answer ("doğru sayısından yanlışların
-# dörtte biri düşülür"). Other exams default to 0.0 (no penalty).
+# Iran's employment exams (سنجش-administered) apply the standard "منفی یک‌سوم":
+# every 3 wrong answers cancel 1 correct, i.e. a 1/3-point deduction per wrong
+# answer. Blanks/skips are never penalised. (Verify the exact rule against each
+# exam's official booklet — some roles/rounds differ.) Exams not listed → 0.0.
+THIRD = 1.0 / 3.0  # منفی یک‌سوم — kept exact so net scores round cleanly (30 wrong → −10)
 PENALTY_PER_WRONG: dict[str, float] = {
-    "tus": 0.25,
+    "executive": THIRD,
+    "education": THIRD,
+    "bank": THIRD,
+    "social_security": THIRD,
 }
 
 
@@ -268,6 +274,7 @@ async def _load_item_full(db: AsyncSession, item_id: uuid.UUID) -> Item | None:
         .options(
             selectinload(Item.current_version).selectinload(ItemVersion.options),
             selectinload(Item.item_topic_links),
+            selectinload(Item.stimulus),
         )
         .where(Item.id == item_id, Item.deleted_at.is_(None))
     )
@@ -298,6 +305,7 @@ async def _candidate_items(
         .options(
             selectinload(Item.current_version).selectinload(ItemVersion.options),
             selectinload(Item.item_topic_links),
+            selectinload(Item.stimulus),
         )
         .where(
             Item.institution_id == session.institution_id,
@@ -332,6 +340,20 @@ def _primary_topic_id(item: Item) -> uuid.UUID | None:
         if link.is_primary:
             return link.topic_id
     return None
+
+
+def first_image_url_media(media_attachments: list | None) -> str | None:
+    """The URL of the first image in a media_attachments list, if any. Shared by
+    questions (ItemVersion) and passages (Stimulus), which use the same shape."""
+    media = media_attachments or []
+    if media and isinstance(media[0], dict):
+        return media[0].get("url")
+    return None
+
+
+def first_image_url(version: ItemVersion) -> str | None:
+    """The URL of a question version's first image attachment, if any."""
+    return first_image_url_media(version.media_attachments)
 
 
 def _resolve_tz(tz_name: str | None) -> ZoneInfo:
@@ -703,11 +725,18 @@ async def exam_paper(
         except (ValueError, AttributeError):
             continue
 
-    # Sort by official number; unnumbered items fall to the end (stable by id).
+    # Sort by official number; unnumbered items fall to the end. The two stimulus
+    # keys are tie-breakers that keep questions sharing a passage contiguous and
+    # in intra-passage order, so the client can render the passage once per group.
     unnumbered = 10**9
     ordered = sorted(
         candidates,
-        key=lambda it: (qno_by_item.get(it.id, unnumbered), str(it.id)),
+        key=lambda it: (
+            qno_by_item.get(it.id, unnumbered),
+            str(it.stimulus_id) if it.stimulus_id else "",
+            it.stimulus_order or 0,
+            str(it.id),
+        ),
     )
     if count is None:
         return ordered
@@ -962,7 +991,7 @@ async def finish_session(
             completed_at=now,
             time_spent_seconds=time_spent,
             net_score=net_score,
-            penalty_per_wrong=penalty,
+            penalty_per_wrong=round(penalty, 4),  # clean reporting value (0.3333)
         )
     )
     await db.commit()

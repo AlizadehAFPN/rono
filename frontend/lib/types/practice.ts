@@ -42,13 +42,26 @@ export interface NextOptionOut {
   display_order: number;
 }
 
+/** A shared reading passage / scenario attached to a question (متن مشترک).
+ * Travels with each question so the learner can always re-read it. */
+export interface StimulusOut {
+  id: string;
+  content: string;
+  image_url?: string | null;
+  group_no?: number | null;
+  order_in_group?: number | null;
+  total_in_group?: number | null;
+}
+
 export interface NextItemOut {
   session_id: string;
   item_id: string;
   item_version_id: string;
   content: string;
+  image_url?: string | null;
   options: NextOptionOut[];
   primary_topic_id: string | null;
+  stimulus?: StimulusOut | null;
   selection_theta: number;
   item_irt_a: number;
   item_irt_b: number;
@@ -73,8 +86,10 @@ export interface ExamItemOut {
   item_id: string;
   item_version_id: string;
   content: string;
+  image_url?: string | null;
   options: NextOptionOut[];
   primary_topic_id: string | null;
+  stimulus?: StimulusOut | null;
 }
 
 export interface ExamPaperOut {

@@ -119,6 +119,7 @@
     <string name="session_incorrect">Incorrect</string>
     <string name="session_skipped">Skipped</string>
     <string name="session_explanation">Explanation</string>
+    <string name="passage_label">Passage</string>
     <string name="session_streak">Streak</string>
     <string name="session_accuracy">Accuracy</string>
     <string name="session_next_review">Next review</string>

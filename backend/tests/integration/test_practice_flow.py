@@ -25,7 +25,7 @@ pytestmark = pytest.mark.asyncio
 
 
 async def _start_session(auth_client, **body):
-    payload = {"exam_type": "usmle_step1", "items_target": 10, **body}
+    payload = {"exam_type": "education", "items_target": 10, **body}
     resp = await auth_client.post("/api/v1/sessions/", json=payload)
     assert resp.status_code == 201, resp.text
     return resp.json()
@@ -317,6 +317,54 @@ async def test_bulk_answers_rejected_on_finished_session(auth_client, seed):
         f"/api/v1/sessions/{session['id']}/bulk-answers", json={"answers": answers}
     )
     assert resp.status_code == 400, resp.text
+
+
+# ---------------------------------------------------------------------------
+# Shared passage (متن مشترک)
+# ---------------------------------------------------------------------------
+
+
+async def test_next_carries_shared_passage_with_its_questions(auth_client, seed):
+    """A question linked to a passage carries the full passage in /next so it
+    renders standalone; a standalone question reports stimulus: null."""
+    session = await _start_session(auth_client)
+    saw_with_passage = False
+    saw_without_passage = False
+    # Exhaust the pool, answering each, inspecting the stimulus payload.
+    for _ in range(len(seed.item_ids)):
+        nxt = (await auth_client.get(f"/api/v1/sessions/{session['id']}/next")).json()
+        if "item_id" not in nxt:
+            break
+        stim = nxt.get("stimulus")
+        if uuid.UUID(nxt["item_id"]) in seed.item_ids[:2]:
+            assert stim is not None, "passage-linked question must carry its stimulus"
+            assert stim["id"] == str(seed.stimulus_id)
+            assert stim["content"]  # full passage travels with the question
+            assert stim["order_in_group"] in (1, 2)
+            saw_with_passage = True
+        else:
+            assert stim is None, "standalone question must not carry a stimulus"
+            saw_without_passage = True
+        await _answer(auth_client, session["id"], nxt, correct=True)
+    assert saw_with_passage and saw_without_passage
+
+
+async def test_exam_paper_groups_shared_passage_items_contiguously(auth_client, seed):
+    """On the exam paper, questions sharing a passage are adjacent, ordered by
+    order_in_group, and report the correct total_in_group."""
+    session = await _start_session(auth_client)
+    paper = (await auth_client.get(f"/api/v1/sessions/{session['id']}/exam-paper")).json()
+    items = paper["items"]
+
+    # Positions of the items carrying our seeded stimulus, in paper order.
+    positions = [i for i, it in enumerate(items) if it.get("stimulus")]
+    assert len(positions) == 2
+    assert positions[1] == positions[0] + 1  # contiguous
+
+    grouped = [items[p] for p in positions]
+    assert [g["stimulus"]["order_in_group"] for g in grouped] == [1, 2]
+    assert all(g["stimulus"]["id"] == str(seed.stimulus_id) for g in grouped)
+    assert all(g["stimulus"]["total_in_group"] == 2 for g in grouped)
 
 
 async def test_global_and_topic_theta_rows_are_maintained(auth_client, seed, db):

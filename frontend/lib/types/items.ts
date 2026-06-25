@@ -7,6 +7,12 @@ export interface OptionOut {
   display_order: number;
 }
 
+/** A per-question media item (currently an image). */
+export interface MediaAttachment {
+  url: string;
+  alt?: string | null;
+}
+
 export interface ItemVersionOut {
   id: string;
   item_id: string;
@@ -14,6 +20,7 @@ export interface ItemVersionOut {
   content: string;
   explanation: string | null;
   options: OptionOut[];
+  media_attachments?: MediaAttachment[];
   is_published: boolean;
   change_summary: string | null;
   authored_by_id: string | null;
@@ -69,6 +76,7 @@ export interface ItemVersionCreate {
   content: string;
   explanation?: string | null;
   options: OptionCreate[];
+  media_attachments?: MediaAttachment[];
   change_summary?: string | null;
 }
 
@@ -101,20 +109,21 @@ export interface ItemUpdate {
   difficulty_preset?: number | null;
 }
 
+// Employment-exam types. Mirrors backend app/core/exams.py::EXAM_TYPES.
 export const EXAM_TYPE_LABELS: Record<string, string> = {
-  usmle_step1: "USMLE Step 1",
-  usmle_step2: "USMLE Step 2",
-  usmle_step3: "USMLE Step 3",
-  tus: "TUS",
-  farzad: "Farzad",
+  executive: "دستگاه‌های اجرایی",
+  education: "آموزش و پرورش",
+  bank: "بانک‌ها",
+  social_security: "تأمین اجتماعی",
+  phd: "دکتری",
 };
 
 export const EXAM_TYPES = Object.keys(EXAM_TYPE_LABELS);
 
-// Exam-based section (TUS: TTBT vs KTBT). Distinct from the topic taxonomy.
+// Exam section: general (عمومی) vs specialized (تخصصی). Distinct from the topic taxonomy.
 export const EXAM_PART_LABELS: Record<string, string> = {
-  basic_sciences: "Basic Sciences",
-  clinical_sciences: "Clinical Sciences",
+  general: "عمومی",
+  specialized: "تخصصی",
 };
 
 export const EXAM_PARTS = Object.keys(EXAM_PART_LABELS);

@@ -27,11 +27,12 @@ class SessionStartRequest(BaseModel):
         description="adaptive_practice | review (due cards only) | daily_review",
     )
     exam_type: str | None = Field(
-        default=None, description="Restrict candidate items to this exam, e.g. usmle_step1, tus"
+        default=None,
+        description="Exam filter: executive | education | bank | social_security",
     )
     exam_part: str | None = Field(
         default=None,
-        description="Restrict to an exam section, e.g. basic_sciences, clinical_sciences",
+        description="Restrict to an exam section: general | specialized",
     )
     topic_id: uuid.UUID | None = Field(
         default=None, description="Restrict to items whose primary topic is this topic"
@@ -100,6 +101,23 @@ class NextOptionOut(BaseModel):
     model_config = ConfigDict(from_attributes=True)
 
 
+class StimulusOut(BaseModel):
+    """A shared reading passage / scenario attached to a question.
+
+    Travels in full with each question (adaptive mode) so the learner can always
+    re-read it; in exam mode the client renders it once above the contiguous run
+    of items that share the same ``id``."""
+
+    id: uuid.UUID
+    content: str
+    image_url: str | None = None
+    group_no: int | None = None
+    # Position of THIS question within its passage's run (1-based), and how many
+    # questions share the passage in the current payload (exam mode only).
+    order_in_group: int | None = None
+    total_in_group: int | None = None
+
+
 class NextItemOut(BaseModel):
     """The next adaptively-selected question, with correctness withheld."""
 
@@ -107,8 +125,10 @@ class NextItemOut(BaseModel):
     item_id: uuid.UUID
     item_version_id: uuid.UUID
     content: str
+    image_url: str | None = None  # optional question image (web/PWA)
     options: list[NextOptionOut]
     primary_topic_id: uuid.UUID | None
+    stimulus: StimulusOut | None = None  # shared passage, if this question has one
     # Transparency into why this item was chosen (also handy for debugging/tests).
     selection_theta: float
     item_irt_a: float
@@ -139,8 +159,10 @@ class ExamItemOut(BaseModel):
     item_id: uuid.UUID
     item_version_id: uuid.UUID
     content: str
+    image_url: str | None = None  # optional question image (web/PWA)
     options: list[NextOptionOut]
     primary_topic_id: uuid.UUID | None
+    stimulus: StimulusOut | None = None  # shared passage, if this question has one
 
 
 class ExamPaperOut(BaseModel):

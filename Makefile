@@ -1,4 +1,5 @@
-.PHONY: help up down logs test lint clean migrate migration shell-db seed \
+.PHONY: help up down logs test lint clean migrate migration shell-db seed seed-topics \
+        seed-aptitude-topics \
         aws-bootstrap aws-profile tf-init tf-plan tf-apply \
         deploy-staging deploy-prod aws-migrate aws-logs aws-exec
 
@@ -16,6 +17,8 @@ help:
 	@echo "  make migrate               Apply Alembic migrations (local)"
 	@echo "  make migration msg=<name>  Create a new migration"
 	@echo "  make seed                  Seed the database with demo data"
+	@echo "  make seed-topics           Seed the employment-exam subject taxonomy"
+	@echo "  make seed-aptitude-topics  Seed the PhD aptitude (استعداد تحصیلی) taxonomy"
 	@echo "  make shell-db              Open a Postgres shell"
 	@echo ""
 	@echo "── AWS Setup (run once) ───────────────────────────────────────"
@@ -61,6 +64,12 @@ migration:
 
 seed:
 	docker compose exec backend sh -c "PYTHONPATH=src uv run python scripts/seed.py"
+
+seed-topics:
+	docker compose exec backend sh -c "PYTHONPATH=src uv run python scripts/seed_estekhdami_topics.py"
+
+seed-aptitude-topics:
+	docker compose exec backend sh -c "PYTHONPATH=src uv run python scripts/seed_aptitude_topics.py"
 
 shell-db:
 	docker compose exec postgres psql -U app -d adaptive_learn

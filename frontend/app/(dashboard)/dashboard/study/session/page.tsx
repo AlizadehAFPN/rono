@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import { Topbar } from "@/components/dashboard/topbar";
+import { PassagePanel } from "@/components/dashboard/passage-panel";
 import { Button } from "@/components/ui/button";
 import { ProgressRing } from "@/components/dashboard/progress-ring";
 import { Confetti } from "@/components/dashboard/confetti";
@@ -195,10 +196,21 @@ export default function StudySessionPage() {
                   {topicName ? `${topicName} · ` : ""}
                   {p.runner.progress(item.items_delivered + 1, item.items_target)}
                 </p>
+                {item.stimulus && (
+                  <PassagePanel stimulus={item.stimulus} className="mt-3 shrink-0" />
+                )}
                 <p className="mt-3 shrink-0 whitespace-pre-line text-[17px] font-normal leading-relaxed text-foreground md:text-lg">
                   {item.content}
                 </p>
-                <div className="mt-5 space-y-2.5 md:min-h-0 md:flex-1 md:overflow-y-auto md:pr-1">
+                {item.image_url && (
+                  /* eslint-disable-next-line @next/next/no-img-element */
+                  <img
+                    src={item.image_url}
+                    alt=""
+                    className="mt-4 max-h-64 shrink-0 rounded-lg border border-border object-contain"
+                  />
+                )}
+                <div className="mt-5 space-y-2.5 md:min-h-0 md:flex-1 md:overflow-y-auto md:pe-1">
                   {item.options
                     .slice()
                     .sort((a, b) => a.display_order - b.display_order)
@@ -215,7 +227,7 @@ export default function StudySessionPage() {
                           disabled={phase === "feedback"}
                           onClick={() => setSelected(o.id)}
                           className={cn(
-                            "flex w-full items-center gap-3 rounded-xl border-[1.5px] p-3.5 text-left text-[15px] transition-colors",
+                            "flex w-full items-center gap-3 rounded-xl border-[1.5px] p-3.5 text-start text-[15px] transition-colors",
                             phase === "active" &&
                               (isPicked
                                 ? "border-primary bg-primary/[0.08]"
@@ -295,7 +307,7 @@ export default function StudySessionPage() {
               <span className="hidden text-sm font-medium text-muted-foreground md:block">
                 {p.runner.progress(item.items_delivered + 1, item.items_target)}
               </span>
-              <div className="ml-auto flex flex-1 items-center gap-2.5 md:flex-initial">
+              <div className="ms-auto flex flex-1 items-center gap-2.5 md:flex-initial">
                 {phase === "active" ? (
                   <>
                     <Button

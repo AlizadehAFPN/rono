@@ -30,6 +30,7 @@ from app.main import app
 from app.models.base import Base
 from app.models.institution import Institution
 from app.models.item import Item
+from app.models.stimulus import Stimulus
 from app.models.topic import Topic
 from app.models.user import User
 from app.schemas.items import ItemCreate, ItemVersionCreate, OptionCreate
@@ -104,12 +105,14 @@ class Seeded:
     domain_topic_id: uuid.UUID
     exam_type: str
     item_ids: list[uuid.UUID] = field(default_factory=list)
+    # A shared passage linked to the first two item_ids (order 1, 2).
+    stimulus_id: uuid.UUID | None = None
 
 
 @pytest.fixture
 async def seed(db: AsyncSession) -> Seeded:
     suffix = uuid.uuid4().hex[:8]
-    exam_type = "usmle_step1"
+    exam_type = "education"
 
     institution = Institution(name=f"Test Med School {suffix}", slug=f"test-{suffix}")
     db.add(institution)
@@ -194,6 +197,26 @@ async def seed(db: AsyncSession) -> Seeded:
         .where(Item.id.in_(seeded.item_ids))
         .values(status="active")
     )
+
+    # A shared passage (متن مشترک) linked to the first two items — exercises the
+    # stimulus serving path without disturbing the other standalone items.
+    stimulus = Stimulus(
+        institution_id=institution.id,
+        content="Shared passage: read this before answering the next questions.",
+        language="fa",
+        source_reference=f"test-passage-{suffix}",
+        group_no=1,
+    )
+    db.add(stimulus)
+    await db.flush()
+    seeded.stimulus_id = stimulus.id
+    for order, item_id in enumerate(seeded.item_ids[:2], start=1):
+        await db.execute(
+            update(Item)
+            .where(Item.id == item_id)
+            .values(stimulus_id=stimulus.id, stimulus_order=order)
+        )
+
     await db.commit()
     return seeded
 
