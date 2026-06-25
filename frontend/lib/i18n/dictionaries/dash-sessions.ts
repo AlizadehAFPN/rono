@@ -22,20 +22,20 @@ const en = {
 
 export type DashSessionsDict = typeof en;
 
-const tr: DashSessionsDict = {
+const fa: DashSessionsDict = {
   recent: {
-    pageTitle: "Son oturumlar",
-    subtitle: "Geçmiş çalışma ve tekrar oturumların.",
-    empty: "Henüz oturum yok — geçmişini görmek için bir alıştırma oturumu yap.",
-    net: "Net",
-    entryTitle: "Son oturumlar",
-    entrySubtitle: "Geçmiş çalışma oturumlarını gör",
+    pageTitle: "جلسات اخیر",
+    subtitle: "جلسات مطالعه و مرور گذشته شما.",
+    empty: "هنوز جلسه‌ای نیست — برای دیدن سابقه خود یک جلسه تمرین انجام دهید.",
+    net: "خالص",
+    entryTitle: "جلسات اخیر",
+    entrySubtitle: "جلسات مطالعه گذشته خود را مرور کنید",
   },
   active: {
-    pageTitle: "Aktif oturumlar",
-    entryTitle: "Aktif oturumlar",
-    entrySubtitle: "Hesabında oturum açmış cihazları yönet",
+    pageTitle: "جلسات فعال",
+    entryTitle: "جلسات فعال",
+    entrySubtitle: "دستگاه‌های وارد شده به حساب کاربری خود را مدیریت کنید",
   },
 };
 
-export const dashSessions = { en, tr };
+export const dashSessions = { en, fa };

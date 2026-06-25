@@ -84,7 +84,7 @@ fun SettingsScreen(
                 Text(stringResource(R.string.settings_language), style = MaterialTheme.typography.titleSmall)
                 Spacer(Modifier.height(Spacing.sm))
                 SingleChoiceSegmentedButtonRow(Modifier.fillMaxWidth()) {
-                    val locales = listOf(AppLocale.TURKISH to "Türkçe", AppLocale.ENGLISH to "English")
+                    val locales = listOf(AppLocale.PERSIAN to "فارسی", AppLocale.ENGLISH to "English")
                     locales.forEachIndexed { i, (loc, label) ->
                         SegmentedButton(
                             selected = settings.locale == loc,

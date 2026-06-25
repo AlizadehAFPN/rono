@@ -36,8 +36,8 @@ struct ExamView: View {
                 }
                 Picker(x.setup.partLabel, selection: $runner.examPart) {
                     Text(x.setup.anyPart).tag(String?.none)
-                    Text(x.setup.basic).tag(String?.some("basic_sciences"))
-                    Text(x.setup.clinical).tag(String?.some("clinical_sciences"))
+                    Text(x.setup.basic).tag(String?.some("general"))
+                    Text(x.setup.clinical).tag(String?.some("specialized"))
                 }
             } header: { Text(x.setup.title) } footer: { Text(x.setup.scopeHint) }
 
@@ -62,8 +62,8 @@ struct ExamView: View {
         VStack(spacing: Metric.padLg) {
             Spacer()
             Image(systemName: "doc.text.fill").font(.system(size: 56)).foregroundStyle(Palette.primary)
-            Text(x.ready.eyebrow).font(.headline).foregroundStyle(Palette.primary)
-            Text(x.ready.questions(runner.items.count)).font(.largeTitle.bold()).foregroundStyle(Palette.foreground)
+            Text(x.ready.eyebrow).font(.vHeadline).foregroundStyle(Palette.primary)
+            Text(x.ready.questions(runner.items.count)).font(.vLargeTitle.bold()).foregroundStyle(Palette.foreground)
             VStack(alignment: .leading, spacing: 10) {
                 rule(x.ready.rule1)
                 rule(x.ready.rule2)
@@ -79,8 +79,8 @@ struct ExamView: View {
     }
     private func rule(_ t: String) -> some View {
         HStack(alignment: .top, spacing: 8) {
-            Image(systemName: "checkmark.circle.fill").foregroundStyle(Palette.primary).font(.caption)
-            Text(t).font(.subheadline).foregroundStyle(Palette.foreground)
+            Image(systemName: "checkmark.circle.fill").foregroundStyle(Palette.primary).font(.vCaption)
+            Text(t).font(.vSubheadline).foregroundStyle(Palette.foreground)
             Spacer(minLength: 0)
         }
     }
@@ -97,15 +97,15 @@ struct ExamView: View {
             ScrollView {
                 if let it = runner.item {
                     VStack(alignment: .leading, spacing: Metric.pad) {
-                        Text(it.content).font(.title3.weight(.semibold)).foregroundStyle(Palette.foreground)
+                        Text(it.content).font(.vTitle3.weight(.semibold)).foregroundStyle(Palette.foreground)
                             .fixedSize(horizontal: false, vertical: true)
                         ForEach(it.options) { opt in
                             examOption(it, opt)
                         }
                         if let res = runner.results[it.itemId], let exp = res.explanation, !exp.isEmpty {
                             VStack(alignment: .leading, spacing: 4) {
-                                Text(x.feedback.explanation).font(.caption.weight(.semibold)).foregroundStyle(Palette.mutedForeground)
-                                Text(exp).font(.subheadline).foregroundStyle(Palette.foreground)
+                                Text(x.feedback.explanation).font(.vCaption.weight(.semibold)).foregroundStyle(Palette.mutedForeground)
+                                Text(exp).font(.vSubheadline).foregroundStyle(Palette.foreground)
                             }
                             .padding(Metric.pad)
                             .background(Palette.secondary, in: RoundedRectangle(cornerRadius: Metric.radiusMd))
@@ -131,12 +131,12 @@ struct ExamView: View {
             Spacer()
             TimelineView(.periodic(from: .now, by: 1)) { _ in
                 Label(fmtTime(Int(Date().timeIntervalSince(runner.startedAt))), systemImage: "clock")
-                    .font(.subheadline.monospacedDigit()).foregroundStyle(Palette.mutedForeground)
+                    .font(.vSubheadline.monospacedDigit()).foregroundStyle(Palette.mutedForeground)
             }
             Spacer()
             Button { showSheet = true } label: {
                 Label("\(runner.answeredCount)/\(runner.items.count)", systemImage: "square.grid.3x3")
-                    .font(.subheadline.weight(.medium))
+                    .font(.vSubheadline.weight(.medium))
             }
         }
         .padding(.horizontal, Metric.pad).padding(.vertical, 10)
@@ -170,11 +170,11 @@ struct ExamView: View {
             Spacer()
             if runner.current == runner.items.count - 1 {
                 Button(x.review.submitNow) { showReview = true }
-                    .font(.body.weight(.semibold)).foregroundStyle(Palette.primary)
+                    .font(.vBody.weight(.semibold)).foregroundStyle(Palette.primary)
                     .disabled(!runner.canSubmit)
             } else {
                 Button { runner.nextQ() } label: { Label(x.runner.next, systemImage: "chevron.right") }
-                    .font(.body.weight(.semibold))
+                    .font(.vBody.weight(.semibold))
             }
         }
         .padding(Metric.pad)
@@ -193,12 +193,12 @@ struct ExamView: View {
                             runner.go(to: idx); showSheet = false
                         } label: {
                             Text("\(idx + 1)")
-                                .font(.subheadline.weight(.semibold)).frame(maxWidth: .infinity, minHeight: 44)
+                                .font(.vSubheadline.weight(.semibold)).frame(maxWidth: .infinity, minHeight: 44)
                                 .foregroundStyle(answered ? Palette.primaryForeground : Palette.foreground)
                                 .background(answered ? Palette.primary : Palette.secondary,
                                             in: RoundedRectangle(cornerRadius: Metric.radiusMd))
                                 .overlay(alignment: .topTrailing) {
-                                    if flag { Image(systemName: "flag.fill").font(.caption2).foregroundStyle(Palette.studyWarning).padding(3) }
+                                    if flag { Image(systemName: "flag.fill").font(.vCaption2).foregroundStyle(Palette.studyWarning).padding(3) }
                                 }
                         }
                     }
@@ -216,7 +216,7 @@ struct ExamView: View {
     private var reviewSheet: some View {
         NavigationStack {
             VStack(spacing: Metric.pad) {
-                Text(x.review.subtitle).font(.subheadline).foregroundStyle(Palette.mutedForeground)
+                Text(x.review.subtitle).font(.vSubheadline).foregroundStyle(Palette.mutedForeground)
                 HStack(spacing: 10) {
                     StatTile(icon: "checkmark", value: "\(runner.answeredCount)", label: x.review.answered, tint: Palette.studySuccess)
                     StatTile(icon: "circle", value: "\(runner.items.count - runner.answeredCount)", label: x.review.blank, tint: Palette.studyWarning)
@@ -241,7 +241,7 @@ struct ExamView: View {
         ScrollView {
             if let sum = runner.summary {
                 VStack(spacing: Metric.pad) {
-                    Text(x.results.title).font(.title2.bold()).foregroundStyle(Palette.foreground).padding(.top)
+                    Text(x.results.title).font(.vTitle2.bold()).foregroundStyle(Palette.foreground).padding(.top)
                     HStack(spacing: 10) {
                         StatTile(icon: "checkmark.circle.fill", value: "\(sum.itemsCorrect)", label: x.results.correct, tint: Palette.studySuccess)
                         StatTile(icon: "xmark.circle.fill", value: "\(sum.itemsWrong)", label: x.results.wrong, tint: Palette.studyDanger)
@@ -262,7 +262,7 @@ struct ExamView: View {
         }
     }
     private func resultRow(_ l: String, _ v: String) -> some View {
-        HStack { Text(l).foregroundStyle(Palette.mutedForeground); Spacer(); Text(v).font(.body.weight(.semibold)).foregroundStyle(Palette.foreground) }
+        HStack { Text(l).foregroundStyle(Palette.mutedForeground); Spacer(); Text(v).font(.vBody.weight(.semibold)).foregroundStyle(Palette.foreground) }
             .padding(.horizontal, Metric.pad).padding(.vertical, 12)
     }
 

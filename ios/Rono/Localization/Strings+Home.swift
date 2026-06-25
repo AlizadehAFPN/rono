@@ -61,33 +61,34 @@ struct HomeStrings: Sendable {
                         types: ["adaptive_practice": "Practice", "review": "Review", "exam": "Exam"])
     )
 
-    static let tr = HomeStrings(
-        title: "Panel", subtitle: "Öğrenmene genel bir bakış.", loading: "Panelin yükleniyor…",
-        greeting: .init(morning: "Günaydın", afternoon: "İyi günler",
-                        evening: "İyi akşamlar", fallbackName: "merhaba"),
-        empty: .init(title: "Rono'e hoş geldin",
-                     body: "İlerlemeni oluşturmak için bir kategori çalış — burada görünecek.",
-                     cta: "Kategorilere göz at"),
-        levels: ["beginner": "Başlangıç", "developing": "Gelişiyor",
-                 "proficient": "Yetkin", "advanced": "İleri"],
-        stats: .init(ability: "Yetenek", accuracy: "Doğruluk", answered: "Yanıtlanan", streak: "Gün serisi"),
-        due: .init(title: "Tekrar kuyruğu", dueNow: "zamanı geldi",
-                   none: "Her şey tamam — şu an tekrar bekleyen yok.", caughtUp: "Her şey tamam",
-                   cta: "Tekrara başla", learning: "Öğreniliyor", review: "Tekrarda"),
-        library: .init(title: "Soru bankası", seen: "Görülen", newLabel: "Yeni", coverage: "Kapsam"),
-        mastery: .init(title: "Ders uzmanlığı", strongest: "En güçlü", focus: "Odak alanı",
-                       levels: ["not_started": "Başlanmadı", "needs_review": "Tekrar gerekli",
-                                "developing": "Gelişiyor", "proficient": "Yetkin",
-                                "mastered": "Uzman"],
-                       masteredOf: { "\($1) dersten \($0) tanesinde uzman" }),
-        activity: .init(title: "Son 14 gün", empty: "Henüz etkinlik yok.", questions: "soru"),
-        trend: .init(title: "Yetenek eğilimi", notEnough: "Eğilimini görmek için birkaç soru daha yanıtla."),
-        actions: .init(title: "Hızlı işlemler", study: "Çalışmaya devam et",
-                       exam: "Sınava gir", progress: "Ayrıntılı ilerleme",
-                       dailyStudy: "Günlük Çalışma", dailySub: "Aralıklı tekrar",
-                       progressTitle: "İlerleme", progressSub: "Eğilimler, uzmanlık ve geçmiş"),
-        sessions: .init(title: "Son oturumlar", empty: "Henüz oturum yok.",
-                        types: ["adaptive_practice": "Alıştırma", "review": "Tekrar", "exam": "Sınav"])
+    static let fa = HomeStrings(
+        title: "داشبورد", subtitle: "یک نگاه کلی به یادگیری‌ات.",
+        loading: "در حال بارگذاری داشبورد…",
+        greeting: .init(morning: "صبح بخیر", afternoon: "ظهر بخیر",
+                        evening: "عصر بخیر", fallbackName: "دوست من"),
+        empty: .init(title: "به رونو خوش اومدی",
+                     body: "روی یک درس کار کن تا پیشرفتت شروع بشه — همین‌جا نشونت می‌دیم.",
+                     cta: "دیدن درس‌ها"),
+        levels: ["beginner": "تازه‌کار", "developing": "متوسط",
+                 "proficient": "ماهر", "advanced": "پیشرفته"],
+        stats: .init(ability: "آمادگی", accuracy: "دقت", answered: "پاسخ‌داده", streak: "روز پیاپی"),
+        due: .init(title: "صف مرور", dueNow: "وقتشه",
+                   none: "همه چی مرتبه — الان چیزی برای مرور نداری.", caughtUp: "همه چی مرتبه",
+                   cta: "شروع مرور", learning: "در حال یادگیری", review: "در حال مرور"),
+        library: .init(title: "بانک سؤال", seen: "دیده‌شده", newLabel: "جدید", coverage: "پوشش"),
+        mastery: .init(title: "تسلط بر درس‌ها", strongest: "قوی‌ترین", focus: "نیاز به تمرکز",
+                       levels: ["not_started": "شروع‌نشده", "needs_review": "نیاز به مرور",
+                                "developing": "متوسط", "proficient": "ماهر",
+                                "mastered": "مسلط"],
+                       masteredOf: { "تسلط بر \($0) درس از \($1) درس" }),
+        activity: .init(title: "۱۴ روز اخیر", empty: "هنوز فعالیتی نیست.", questions: "سؤال"),
+        trend: .init(title: "روند آمادگی", notEnough: "چند سؤال دیگه جواب بده تا روندت رو ببینی."),
+        actions: .init(title: "کارهای سریع", study: "ادامه مطالعه",
+                       exam: "شرکت در آزمون", progress: "پیشرفت کامل",
+                       dailyStudy: "مطالعه روزانه", dailySub: "مرور در فاصله‌های زمانی",
+                       progressTitle: "پیشرفت", progressSub: "روندها، تسلط و تاریخچه"),
+        sessions: .init(title: "جلسه‌های اخیر", empty: "هنوز جلسه‌ای نیست.",
+                        types: ["adaptive_practice": "تمرین", "review": "مرور", "exam": "آزمون"])
     )
 }
 
@@ -131,22 +132,22 @@ struct ProgressStrings: Sendable {
         sessionType: ["adaptive_practice": "Practice", "review": "Review", "exam": "Exam"]
     )
 
-    static let tr = ProgressStrings(
-        pageTitle: "İlerleme",
-        empty: "Henüz etkinlik yok — ilerlemeni görmek için bir alıştırma oturumu yap.", loading: "Yükleniyor…",
-        summary: .init(title: "Durumun", strongest: "En güçlü ders", focus: "Odaklanılacak alan",
-                       dueReview: "Tekrar zamanı", mastered: "Uzmanlaşılan dersler",
-                       cardsUnit: "kart", subjectsUnit: "ders", none: "—"),
-        abilityLevel: ["beginner": "Başlangıç", "developing": "Gelişiyor",
-                       "proficient": "Yetkin", "advanced": "İleri"],
-        insight: .init(high: "Harika gidiyorsun — doğruluğun yüksek. Bu tempoyu koru.",
-                       mid: "İyi ilerleme. Biraz tekrar puanlarını daha da yükseltecek.",
-                       low: "Henüz başlangıçtasın — yeteneğini geliştirmek için pratik yapmaya devam et."),
-        stats: .init(ability: "Yetenek (θ)", answered: "Yanıtlanan", correct: "Doğru", accuracy: "Doğruluk"),
-        topics: .init(title: "Derslere göre", empty: "Henüz ders etkinliği yok.", questions: "soru"),
-        sessions: .init(title: "Son oturumlar", empty: "Henüz oturum yok.", score: "Puan", net: "Net"),
-        mastery: ["not_started": "Başlanmadı", "needs_review": "Tekrar gerekli",
-                  "developing": "Gelişiyor", "proficient": "Yetkin", "mastered": "Uzman"],
-        sessionType: ["adaptive_practice": "Alıştırma", "review": "Tekrar", "exam": "Sınav"]
+    static let fa = ProgressStrings(
+        pageTitle: "پیشرفت",
+        empty: "هنوز فعالیتی نیست — یک جلسه تمرین انجام بده تا پیشرفتت رو ببینی.", loading: "در حال بارگذاری…",
+        summary: .init(title: "وضعیت تو", strongest: "قوی‌ترین درس", focus: "نیاز به تمرکز",
+                       dueReview: "آماده مرور", mastered: "درس‌های مسلط‌شده",
+                       cardsUnit: "کارت", subjectsUnit: "درس", none: "—"),
+        abilityLevel: ["beginner": "تازه‌کار", "developing": "متوسط",
+                       "proficient": "ماهر", "advanced": "پیشرفته"],
+        insight: .init(high: "عالیه — دقتت خیلی خوبه. همین‌طور ادامه بده.",
+                       mid: "پیشرفت خوبیه. کمی مرور امتیازهات رو بالاتر می‌بره.",
+                       low: "تازه شروع کردی — با تمرین بیشتر آمادگی‌ات رو بساز."),
+        stats: .init(ability: "آمادگی", answered: "پاسخ‌داده", correct: "درست", accuracy: "دقت"),
+        topics: .init(title: "بر اساس درس", empty: "هنوز فعالیتی روی درس‌ها نیست.", questions: "سؤال"),
+        sessions: .init(title: "جلسه‌های اخیر", empty: "هنوز جلسه‌ای نیست.", score: "امتیاز", net: "خالص"),
+        mastery: ["not_started": "شروع‌نشده", "needs_review": "نیاز به مرور",
+                  "developing": "متوسط", "proficient": "ماهر", "mastered": "مسلط"],
+        sessionType: ["adaptive_practice": "تمرین", "review": "مرور", "exam": "آزمون"]
     )
 }

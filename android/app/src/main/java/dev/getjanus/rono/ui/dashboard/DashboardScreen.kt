@@ -48,7 +48,7 @@ import dev.getjanus.rono.core.designsystem.gamification.masteryColor
 import dev.getjanus.rono.core.designsystem.theme.Spacing
 import dev.getjanus.rono.core.util.UiState
 import dev.getjanus.rono.core.util.formatPercent
-import dev.getjanus.rono.core.util.formatTheta
+import dev.getjanus.rono.core.util.readinessPercent
 import dev.getjanus.rono.data.progress.DashboardDto
 import dev.getjanus.rono.domain.model.MasteryLevel
 import dev.getjanus.rono.ui.common.ErrorState
@@ -151,13 +151,11 @@ private fun AbilityHeroCard(data: DashboardDto) {
     AppCard {
         Row(verticalAlignment = Alignment.CenterVertically) {
             ProgressRing(progress = progress, size = 92.dp, stroke = 9.dp, color = ringColor) {
-                Column(horizontalAlignment = Alignment.CenterHorizontally) {
-                    Text("θ", style = MaterialTheme.typography.labelSmall, color = MaterialTheme.colorScheme.onSurfaceVariant)
-                    Text(
-                        formatTheta(data.ability.theta),
-                        style = MaterialTheme.typography.titleLarge.copy(fontWeight = FontWeight.Bold),
-                    )
-                }
+                // Plain readiness % — no raw figure or symbol shown to the user.
+                Text(
+                    readinessPercent(data.ability.theta),
+                    style = MaterialTheme.typography.titleLarge.copy(fontWeight = FontWeight.Bold),
+                )
             }
             Spacer(Modifier.width(Spacing.md))
             Column(Modifier.weight(1f)) {

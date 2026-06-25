@@ -112,6 +112,9 @@ export const api = {
   putForm: <T>(path: string, form: FormData, options?: RequestInit) =>
     request<T>(path, { ...options, method: "PUT", body: form }),
 
+  postForm: <T>(path: string, form: FormData, options?: RequestInit) =>
+    request<T>(path, { ...options, method: "POST", body: form }),
+
   delete: <T = void>(path: string, options?: RequestInit) =>
     request<T>(path, { ...options, method: "DELETE" }),
 };

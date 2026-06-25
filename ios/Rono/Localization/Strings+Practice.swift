@@ -151,87 +151,87 @@ struct PracticeStrings: Sendable {
                       noQuestions: "No questions available for this selection.")
     )
 
-    static let tr = PracticeStrings(
-        pageTitle: "Alıştırma",
+    static let fa = PracticeStrings(
+        pageTitle: "تمرین",
         exam: Exam(
-            pageTitle: "Sınav",
+            pageTitle: "آزمون",
             setup: .init(
-                title: "Sınavını hazırla",
-                subtitle: "Gerçek bir sınav gibi sabit sayıda soruyu yanıtla, sonra puanını gör.",
-                examLabel: "Sınav", partLabel: "Bölüm",
-                scopeHint: "Sınav kâğıdın, seçtiğin bölümdeki tüm soruları içerir.",
-                anyPart: "Tüm bölümler", basic: "Temel Tıp Bilimleri", clinical: "Klinik Tıp Bilimleri",
-                feedbackLabel: "Her sorudan sonra cevabı göster",
-                feedbackHint: "Gerçek sınav için kapalı bırak — sonuçları yalnızca sonda görürsün.",
-                start: "Sınavı hazırla", starting: "Soru kâğıdın hazırlanıyor…",
-                empty: "Bu seçim için soru bulunmuyor."
+                title: "آزمونت رو بچین",
+                subtitle: "مثل یه آزمون واقعی به تعداد مشخصی سؤال جواب بده، بعد نمره‌ات رو ببین.",
+                examLabel: "آزمون", partLabel: "بخش",
+                scopeHint: "برگه‌ات همه‌ی سؤال‌های بخشی که انتخاب کردی رو دارد.",
+                anyPart: "همه‌ی بخش‌ها", basic: "دروس عمومی", clinical: "دروس تخصصی",
+                feedbackLabel: "بعد از هر سؤال جواب رو نشانم بده",
+                feedbackHint: "برای آزمون واقعی این رو خاموش بذار — نتیجه رو فقط آخرش می‌بینی.",
+                start: "آزمون رو آماده کن", starting: "داریم برگه‌ات رو آماده می‌کنیم…",
+                empty: "برای این انتخاب سؤالی موجود نیست."
             ),
             ready: .init(
-                eyebrow: "Sınav hazır",
-                rule1: "Sorular arasında serbestçe gez — bitirmeden önce dönmek için işaretle.",
-                rule2: "Cevaplar yalnızca gönderince kaydedilir. Erken çıkış sınavı iptal eder.",
-                feedbackOn: "Her sorudan sonra cevap gösterilir.",
-                feedbackOff: "Sonuçlarını yalnızca sonda görürsün.",
-                noTimeLimit: "Süre sınırı yok — saat yalnızca temponu izler.",
-                begin: "Sınava başla",
-                questions: { "\($0) soru" }
+                eyebrow: "آزمون آماده‌ست",
+                rule1: "بین سؤال‌ها راحت جابه‌جا شو — هرکدوم رو خواستی علامت بزن تا قبل از پایان دوباره سراغش بری.",
+                rule2: "جواب‌ها فقط وقتی ثبت می‌شن که آزمون رو بفرستی. زود بیرون بری آزمون پاک می‌شه.",
+                feedbackOn: "بعد از هر سؤال جواب نشان داده می‌شه.",
+                feedbackOff: "نتیجه‌ات رو فقط در پایان می‌بینی.",
+                noTimeLimit: "محدودیت زمانی نداری — ساعت فقط سرعتت رو نشان می‌ده.",
+                begin: "شروع آزمون",
+                questions: { "\($0) سؤال" }
             ),
             runner: .init(
-                flag: "İşaretle", flagged: "İşaretli", prev: "Önceki", next: "Sonraki",
-                clear: "Cevabı temizle", submit: "Gönder", submitting: "Gönderiliyor…",
-                exit: "Sınavdan çık",
-                exitConfirm: "Sınavdan çıkılsın mı? Hiçbir şey kaydedilmez ve baştan başlarsın.",
-                kbd: "", palette: "Cevap kâğıdı", legendAnswered: "Yanıtlanan",
-                legendUnanswered: "Yanıtlanmayan", legendFlagged: "İşaretli",
-                abandonWarning: "Şimdi çıkarsan sınav iptal olur — hiçbir şey kaydedilmez ve baştan başlarsın.",
-                question: { "Soru \($0) / \($1)" },
+                flag: "علامت", flagged: "علامت‌خورده", prev: "قبلی", next: "بعدی",
+                clear: "پاک کردن جواب", submit: "ثبت", submitting: "در حال ثبت…",
+                exit: "خروج از آزمون",
+                exitConfirm: "از آزمون بیرون بری؟ چیزی ذخیره نمی‌شه و از اول شروع می‌کنی.",
+                kbd: "", palette: "پاسخ‌برگ", legendAnswered: "جواب‌داده",
+                legendUnanswered: "بی‌جواب", legendFlagged: "علامت‌خورده",
+                abandonWarning: "اگه الان بیرون بری آزمون پاک می‌شه — چیزی ذخیره نمی‌شه و از اول شروع می‌کنی.",
+                question: { "سؤال \($0) از \($1)" },
                 answeredCount: { "\($0) / \($1)" }
             ),
             review: .init(
-                title: "Sınavını gözden geçir",
-                subtitle: "İşaretlediğin veya boş bıraktığın soruları kontrol et, sonra gönder.",
-                answered: "Yanıtlanan", blank: "Boş", flagged: "İşaretli",
-                jumpHint: "Bir soruya dönmek için numarasına dokun.",
-                submitNow: "Sınavı gönder", keepWorking: "Devam et"
+                title: "آزمونت رو مرور کن",
+                subtitle: "هرچی رو علامت زدی یا خالی گذاشتی چک کن، بعد بفرست.",
+                answered: "جواب‌داده", blank: "خالی", flagged: "علامت‌خورده",
+                jumpHint: "روی یه شماره بزن تا به همون سؤال برگردی.",
+                submitNow: "فرستادن آزمون", keepWorking: "ادامه می‌دم"
             ),
-            feedback: .init(correct: "Doğru", incorrect: "Yanlış",
-                            correctAnswer: "Doğru cevap", explanation: "Açıklama"),
+            feedback: .init(correct: "درست", incorrect: "نادرست",
+                            correctAnswer: "جواب درست", explanation: "توضیح"),
             results: .init(
-                title: "Sınav sonuçları", correct: "Doğru", wrong: "Yanlış", skipped: "Boş",
-                score: "Puan", netScore: "Net puan", ability: "Yetenek değişimi",
-                timeTaken: "Süre", review: "Cevap incelemesi", newExam: "Yeni sınav"
+                title: "نتیجه‌ی آزمون", correct: "درست", wrong: "غلط", skipped: "خالی",
+                score: "نمره", netScore: "نمره‌ی خالص", ability: "تغییر میزان آمادگی",
+                timeTaken: "زمان صرف‌شده", review: "مرور جواب‌ها", newExam: "آزمون جدید"
             )
         ),
         setup: .init(
-            title: "Alıştırma oturumu başlat",
-            subtitle: "Uyarlanabilir seçilen soruları yanıtla ve anında geri bildirim al.",
-            modeLabel: "Mod", modePractice: "Alıştırma", modeReview: "Tekrar (zamanı gelenler)",
-            examLabel: "Sınav", partLabel: "Bölüm", countLabel: "Soru sayısı",
-            anyExam: "Tümü", anyPart: "Tüm bölümler", basic: "Temel Tıp Bilimleri",
-            clinical: "Klinik Tıp Bilimleri", start: "Başlat", starting: "Başlatılıyor…"
+            title: "یه تمرین شروع کن",
+            subtitle: "به سؤال‌هایی که هوشمند برات انتخاب شده جواب بده و سریع بازخورد بگیر.",
+            modeLabel: "حالت", modePractice: "تمرین", modeReview: "مرور (کارت‌های موعددار)",
+            examLabel: "آزمون", partLabel: "بخش", countLabel: "تعداد سؤال‌ها",
+            anyExam: "همه", anyPart: "همه‌ی بخش‌ها", basic: "دروس عمومی",
+            clinical: "دروس تخصصی", start: "شروع", starting: "در حال شروع…"
         ),
         runner: .init(
-            submit: "Cevabı gönder", submitting: "Gönderiliyor…", skip: "Atla",
-            next: "Sonraki soru", finish: "Bitir", finishing: "Bitiriliyor…",
-            correct: "Doğru", incorrect: "Yanlış", skipped: "Atlandı",
-            correctAnswer: "Doğru cevap", explanation: "Açıklama", ability: "Yetenek (θ)",
-            selectHint: "Bir cevap seçin",
-            progress: { n, total in total != nil ? "Soru \(n) / \(total!)" : "Soru \(n)" },
-            panel: .init(title: "Bu oturum", progress: "İlerleme", accuracy: "Doğruluk",
-                         ability: "Yetenek (θ)", streak: { "üst üste \($0)" }),
-            schedule: .init(label: "Sonraki tekrar", soon: "yakında",
-                            inMinutes: { "\($0) dk sonra" }, inHours: { "\($0) sa sonra" },
-                            inDays: { "\($0) gün sonra" })
+            submit: "ثبت جواب", submitting: "در حال ثبت…", skip: "رد کن",
+            next: "سؤال بعدی", finish: "تمام", finishing: "در حال اتمام…",
+            correct: "درست", incorrect: "نادرست", skipped: "رد شده",
+            correctAnswer: "جواب درست", explanation: "توضیح", ability: "میزان آمادگی",
+            selectHint: "یه جواب انتخاب کن",
+            progress: { n, total in total != nil ? "سؤال \(n) / \(total!)" : "سؤال \(n)" },
+            panel: .init(title: "این تمرین", progress: "پیشرفت", accuracy: "دقت",
+                         ability: "میزان آمادگی", streak: { "\($0) تا پشت سر هم" }),
+            schedule: .init(label: "مرور بعدی", soon: "به‌زودی",
+                            inMinutes: { "\($0) دقیقه دیگه" }, inHours: { "\($0) ساعت دیگه" },
+                            inDays: { "\($0) روز دیگه" })
         ),
         summary: .init(
-            title: "Oturum tamamlandı", accuracy: "Doğruluk", correct: "Doğru", wrong: "Yanlış",
-            skipped: "Atlanan", delivered: "Yanıtlanan", scorePercent: "Puan", netScore: "Net puan",
-            noPenalty: "ceza yok", abilityChange: "Yetenek değişimi", time: "Süre",
-            restart: "Yeni oturum", done: "Bitti",
-            penaltyNote: { "her yanlış için \(Self.fmt($0)) ceza ile" }
+            title: "تمرین تمام شد", accuracy: "دقت", correct: "درست", wrong: "غلط",
+            skipped: "رد شده", delivered: "جواب‌داده", scorePercent: "نمره", netScore: "نمره‌ی خالص",
+            noPenalty: "بدون نمره‌ی منفی", abilityChange: "تغییر میزان آمادگی", time: "زمان",
+            restart: "تمرین جدید", done: "تمام",
+            penaltyNote: { "با \(Self.fmt($0)) نمره منفی برای هر جواب غلط" }
         ),
-        states: .init(loading: "Yükleniyor…", error: "Bir şeyler ters gitti.",
-                      noQuestions: "Bu seçim için soru bulunmuyor.")
+        states: .init(loading: "در حال بارگذاری…", error: "یه مشکلی پیش اومد.",
+                      noQuestions: "برای این انتخاب سؤالی موجود نیست.")
     )
 
     private static func fmt(_ v: Double) -> String {

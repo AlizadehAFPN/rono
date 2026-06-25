@@ -1,313 +1,293 @@
 // Homepage (public marketing site) copy.
-// `en` is the source of truth; `tr` must satisfy the exact same shape — if a key
-// is missing or mistyped in Turkish, TypeScript fails the build.
+// `en` is the source of truth; `fa` must satisfy the exact same shape — if a key
+// is missing or mistyped in Persian, TypeScript fails the build.
+//
+// Domain: preparation & review for Iran's high-traffic employment exams
+// (آزمون استخدامی). Voice: warm, plain, encouraging — NEVER technical. The smart
+// engine stays behind the scenes; the user only ever sees the simple benefit.
 
 const en = {
   nav: {
-    problem: "The Problem",
-    solution: "Our Solution",
+    problem: "The Challenge",
+    solution: "How It Helps",
     howItWorks: "How It Works",
-    roadmap: "Roadmap",
-    getEarlyAccess: "Get Early Access",
-    accessWebApp: "Access Web App",
+    roadmap: "What's Coming",
+    getEarlyAccess: "Start Free",
+    accessWebApp: "Open App",
     openMenu: "Open menu",
     closeMenu: "Close menu",
     home: "Rono home",
   },
   hero: {
-    eyebrow: "Adaptive Learning Platform",
-    titleLine1: "The Right Question.",
-    titleLine2: "At the Right Time.",
+    eyebrow: "Employment-Exam Prep",
+    titleLine1: "Real employment-exam questions.",
+    titleLine2: "Study, review, get hired.",
     subheadline:
-      "Rono is an adaptive learning platform for medical education. Two peer-reviewed algorithms work in concert — one ensuring every question is perfectly calibrated to your ability, the other ensuring nothing you learn is ever forgotten.",
-    ctaPrimary: "Request Early Access",
+      "Every question from past employment exams, in one place and neatly sorted. Rono keeps track of which ones you've got down and which still trip you up — and brings the tricky ones back at just the right time, so nothing slips away before exam day.",
+    ctaPrimary: "Start Free",
     ctaSecondary: "See How It Works",
     stats: {
-      retentionLabel: "Target retention rate maintained",
-      irtLabel: "IRT model for ability estimation",
-      latencyLabel: "p95 question delivery target",
+      s1: { value: "Real", label: "Actual questions from past exams" },
+      s2: { value: "4", label: "Major employment exams covered" },
+      s3: { value: "Free", label: "Start at no cost, right now" },
     },
     viz: {
-      abilityEstimation: "Ability Estimation",
-      memoryScheduling: "Memory Scheduling",
-      orchestrator: "ORCHESTRATOR",
+      leftTitle: "Right question",
+      leftSub: "matched to your level",
+      rightTitle: "Timely review",
+      rightSub: "so it sticks",
+      center: "your plan",
     },
   },
   problem: {
     eyebrow: "The Challenge",
-    title: "Medical education has a retention problem.",
+    title: "Getting ready for an employment exam is harder than it should be.",
     subtitle:
-      "The way medical professionals are trained today relies on systems that were not designed with learning science in mind. The consequences are visible in clinical practice.",
+      "Most candidates aren't short on talent — they're buried under scattered material and the wrong way of studying. Three problems show up every time:",
     cards: {
       generic: {
-        title: "Generic, One-Size-Fits-All Content",
+        title: "Material scattered everywhere",
         description:
-          "Traditional curricula deliver identical material to every student, regardless of what they already know. Students are bored by content they have mastered, or overwhelmed by content they are not yet ready for.",
+          "Questions and notes are spread all over the place. You don't know where to start or what matters most, and you burn hours just hunting for a decent source.",
       },
       memorization: {
-        title: "Memorization Without Retention",
+        title: "You read it, then forget it",
         description:
-          "Medical students master material for exams and forget it within weeks. Without a scientifically grounded review schedule, knowledge decay is inevitable — and the consequences in clinical practice can be serious.",
+          "What you studied this week is gone a few weeks later. Without a steady review rhythm, you sit down on exam day only to find you've forgotten most of it.",
       },
       noAdaptation: {
-        title: "No Real-Time Adaptation",
+        title: "You can't tell where you stand",
         description:
-          "Most learning platforms treat every student as equal. There is no feedback loop between performance and content difficulty, leaving students trapped in inefficient learning cycles with no measurable progress signal.",
+          "There's no clear sign of how ready you actually are or which subjects you're weak in. That brings stress — and sends your time to the wrong places.",
       },
     },
-    transition:
-      "Rono was built to solve each of these problems — separately and precisely.",
+    transition: "Rono was built to fix exactly these three.",
   },
   solution: {
-    eyebrow: "Our Solution",
-    title: "Two algorithms. One unified platform.",
+    eyebrow: "How It Helps",
+    title: "Two simple things that make the difference.",
     subtitle:
-      "Most adaptive systems conflate two very different problems into a single mechanism. Rono keeps them rigorously separate — giving each algorithm the precision it deserves, and the independence it needs to evolve.",
+      "Rono does two important things for you, without you having to think about any of it.",
     irt: {
-      algoLabel: "Algorithm 1",
-      name: "Item Response Theory (2PL)",
-      question: "“What should I learn next?”",
+      algoLabel: "Part 1",
+      name: "Questions at your level",
+      question: "“Where do I even start?”",
       description:
-        "Using the 2-Parameter Logistic model, Rono continuously estimates each learner's ability on a calibrated scale. It then selects the question that provides maximum information about the learner's current knowledge state — always at the edge of their competence, never above or below it.",
+        "Rono notices what you know well and where you struggle, then shows questions that are never so easy you get bored, nor so hard you give up — right at the spot where you learn fastest.",
       points: [
-        "Real-time ability estimation via Expected A Posteriori (EAP)",
-        "Item selection via Fisher information maximization",
-        "Calibrated question bank with per-item difficulty and discrimination",
+        "Questions sized to your current level",
+        "Your time goes to what you need, not what you already know",
+        "The further you go, the sharper it gets",
       ],
     },
     fsrs: {
-      algoLabel: "Algorithm 2",
-      name: "FSRS-5 Spaced Repetition",
-      question: "“When should I review it?”",
+      algoLabel: "Part 2",
+      name: "Review right on time",
+      question: "“When should I go over it again?”",
       description:
-        "FSRS-5 models memory at the individual item level, tracking Difficulty, Stability, and Retrievability for every piece of knowledge. It schedules each review precisely when the probability of recall approaches 90% — not a day sooner, not a day later.",
+        "Every question you learn, Rono remembers — and brings it back just before you'd forget it. The harder ones come around more often, the ones you've mastered less, so with the least time, everything stays put until exam day.",
       points: [
-        "Per-item memory state: Difficulty, Stability, Retrievability",
-        "90% retention target maintained across all knowledge",
-        "Learns continuously from actual forgetting and recovery patterns",
+        "Harder questions come back more often",
+        "What you already know doesn't waste your time",
+        "Reminders land right before you'd forget",
       ],
     },
     orchestrator: {
-      title: "The Orchestrator",
+      title: "You just study — we handle the rest",
       description:
-        "A single decision point determines on every request whether to surface a due review (FSRS-5) or introduce a new learning item (IRT). The two algorithms are never conflated — each calibrates, fails, and evolves independently, ensuring the overall system remains transparent and correct.",
+        "No need to plan or figure out what to review and when. Every time, Rono decides on its own whether it's the moment for a fresh question or a review of something you've seen before. You just keep going.",
     },
   },
   howItWorks: {
     eyebrow: "How It Works",
-    title: "Three steps. Continuously adapting.",
-    subtitle:
-      "From the first question to the thousandth review, Rono is always computing the optimal next action for each individual learner.",
+    title: "Three simple steps.",
+    subtitle: "From the very first question, Rono is right there with you.",
     steps: [
       {
-        title: "Rono establishes your baseline",
+        title: "First, it sees where you stand",
         description:
-          "Your first session begins with an adaptive assessment. Every response — correct or incorrect — immediately updates your ability estimate using Bayesian inference, converging on your true knowledge level within minutes.",
-        tag: "IRT · EAP estimation · Bayesian inference",
+          "You answer a few questions so Rono can tell which subjects you're strong in and where you need more work — just a few minutes.",
+        tag: "The first few minutes",
       },
       {
-        title: "You receive the perfectly calibrated question",
+        title: "You get questions that fit you",
         description:
-          "Based on your live ability estimate, Rono selects the item that maximizes learning information. Not too easy. Not too hard. Precisely at the boundary of your current competence — exactly where learning happens fastest.",
-        tag: "Fisher information maximization · 2PL model",
+          "After that, you get questions sized just right for you — not so easy you lose interest, not so hard you get discouraged.",
+        tag: "Matched to you",
       },
       {
-        title: "Reviews arrive exactly when you need them",
+        title: "We remind you right on time",
         description:
-          "The memory scheduler tracks each piece of knowledge independently. When your probability of recall for an item approaches 90%, it is surfaced for review. After each response, memory stability is recalculated and the next optimal review date is set.",
-        tag: "FSRS-5 · Difficulty · Stability · Retrievability",
+          "Everything you've studied comes back just before you'd forget it, so it becomes yours for good.",
+        tag: "Timely review",
       },
     ],
   },
   differentiators: {
     eyebrow: "Why Rono",
-    titleLine1: "Built on sound principles.",
-    titleLine2: "Engineered for scale.",
+    titleLine1: "Real questions, not made-up ones.",
+    titleLine2: "A method that actually works.",
     subtitle:
-      "Rono is different because it was designed around learning science first — and technology second. Every architectural decision reflects that order of priority.",
+      "Rono is built around one simple idea: take the real questions from past exams and review them smartly enough that every one becomes yours.",
     features: [
       {
-        title: "Peer-Reviewed Science",
+        title: "Real exam questions",
         description:
-          "IRT and FSRS-5 are rigorously validated algorithms from the cognitive science and psychometrics literature — not proprietary heuristics. Every design decision has a published basis.",
+          "Questions come from the actual booklets of past exams — not made-up samples. Exactly what you'll face on the day.",
       },
       {
-        title: "Architectural Clarity",
+        title: "Review until it's truly learned",
         description:
-          "The two core algorithms are kept strictly separate. Each can evolve, be recalibrated, or be replaced without affecting the other — a key advantage as learning science advances.",
+          "Reading once isn't enough. Rono repeats questions right on time so nothing slips away before exam day.",
       },
       {
-        title: "Built for Medical Education",
+        title: "Everything neatly sorted",
         description:
-          "Designed specifically for the depth and complexity of medical science content, with hierarchical topic organization and item banks that can be calibrated to specialty and level.",
+          "Questions are organized by exam, subject and topic, so you can jump straight to whatever you want.",
       },
       {
-        title: "Real-Time Adaptation",
+        title: "Full explanations",
         description:
-          "Every response instantly updates the learner's ability estimate. There is no batch processing or delayed recalculation — adaptation is continuous, immediate, and per-item.",
+          "Every question comes with a clear, complete answer — you don't just see right or wrong, you see why.",
       },
       {
-        title: "Performance by Design",
+        title: "Mock exams",
         description:
-          "Built from day one with a clear performance budget: p95 question delivery under 100ms, with Redis caching targeting sub-50ms on warm reads. Production-ready from the ground up.",
+          "Whenever you like, take a timed test just like the real day and see exactly where you stand.",
       },
       {
-        title: "Scalable Architecture",
+        title: "On your phone, anywhere",
         description:
-          "From a solo learner to an entire medical school cohort, the system architecture scales horizontally without fundamental redesign — suitable for institutional deployment from day one.",
+          "In a queue, on the bus, any spare few minutes — pull out your phone and review a few questions.",
       },
     ],
   },
   platforms: {
-    eyebrow: "Available Platforms",
-    title: "Learn anywhere, on any device.",
+    eyebrow: "Every Device",
+    title: "Study wherever you are.",
     subtitle:
-      "Rono is designed for the way medical professionals actually study — across devices, with and without connectivity, whenever the moment is right.",
+      "We built Rono around the way you actually study — on your phone, tablet or computer, online or off.",
     statusAvailable: "Available",
     statusSoon: "Coming Soon",
     comingSoonSuffix: "Coming Soon",
     web: {
-      name: "Web Application",
-      tagline: "No installation. Open and learn.",
+      name: "Web",
+      tagline: "No install. Open and go.",
       description:
-        "Your full learning dashboard is available in any modern browser. Start a session from your desktop, laptop, or tablet — all progress syncs in real time.",
-      cta: "Access Web App",
+        "Your full dashboard opens in any browser. Start on a computer or tablet — everything stays in sync in real time.",
+      cta: "Open App",
       meta: "",
       storeNote: "",
     },
     android: {
       name: "Android",
-      tagline: "Native app — download now.",
+      tagline: "Native app — get it now.",
       description:
-        "Native Android app with push notifications for scheduled reviews and seamless cross-device progress sync. Download the APK directly to get started today.",
-      cta: "Download APK",
+        "The Android app with review reminders and progress sync. Download the install file directly and start today.",
+      cta: "Download App",
       meta: "v1.0.0 · APK · 2.6 MB",
       storeNote: "Google Play",
     },
     ios: {
-      name: "iOS",
-      tagline: "Install as a web app.",
+      name: "iPhone",
+      tagline: "Install it like an app.",
       description:
-        "Add Rono to your home screen straight from Safari for a full-screen, app-like experience that syncs across all your devices — no App Store needed.",
-      cta: "Install as PWA",
+        "Add Rono to your home screen from Safari for a full-screen, app-like experience — no App Store needed.",
+      cta: "Add to Home Screen",
       meta: "",
       storeNote: "App Store",
     },
     syncNote:
-      "All platforms share the same learning state. Progress, ability estimates, and review schedules sync automatically across devices.",
+      "Wherever you sign in, your progress is the same. Reviews and your report sync automatically across all your devices.",
   },
   roadmap: {
-    eyebrow: "Development Roadmap",
-    title: "A clear path from foundation to product.",
+    eyebrow: "What's Coming",
+    title: "Getting better every week.",
     subtitle:
-      "Phase 0 is complete. Active development continues on a structured, milestone-driven roadmap with clear acceptance criteria at each phase.",
-    statusComplete: "Complete",
-    statusActive: "In Progress",
-    statusUpcoming: "Upcoming",
-    phaseLabel: "Phase",
+      "Rono works right now, and we keep adding more exams and features all the time.",
+    statusComplete: "Ready",
+    statusActive: "Adding now",
+    statusUpcoming: "Coming soon",
+    phaseLabel: "Stage",
     phases: [
       {
-        title: "Foundation",
+        title: "General-subject question bank",
         description:
-          "Infrastructure, containerization, CI/CD pipeline, health monitoring, and developer experience tooling.",
+          "Real questions from the general subjects shared across every exam — sorted, with full explanations.",
         items: [
-          "Docker Compose: PostgreSQL 16, Redis 7, FastAPI, Next.js",
-          "GitHub Actions CI with pre-commit quality gates",
-          "Health and readiness check endpoints",
-          "Makefile shortcuts and environment configuration",
+          "Persian literature & Islamic studies",
+          "Math, aptitude & computer skills",
+          "English & general knowledge",
+          "A full explanation for every question",
         ],
       },
       {
-        title: "Backend & Data Model",
+        title: "Review & mock exams",
         description:
-          "Complete database schema, authentication system, and REST API foundations.",
+          "Smart daily review and a timed test that feels like the real exam day.",
         items: [
-          "7-table PostgreSQL schema with full indexing",
-          "JWT-based auth with role-based access control",
-          "Admin item management endpoints",
-          "Append-only response log — immutable system of record",
+          "Review questions until fully learned",
+          "Timed mock exams",
+          "Report card & weak spots",
+          "Daily reminders",
         ],
       },
       {
-        title: "Algorithmic Core",
+        title: "Specialized subjects per exam",
         description:
-          "IRT and FSRS-5 engines working end-to-end with the unified orchestrator.",
+          "Specialized questions for Education, banks, social security and executive-agency exams.",
         items: [
-          "EAP ability estimation from response data",
-          "Fisher information item selection",
-          "Per-item FSRS-5 memory state tracking",
-          "Orchestrator decision logic: review vs. new item",
+          "Executive agencies (Faragir)",
+          "Education Ministry",
+          "Banks",
+          "Social Security",
         ],
       },
       {
-        title: "Learning Interface",
+        title: "More, the more you ask",
         description:
-          "Full-featured student interface, progress dashboard, and instructor panel.",
+          "New exams and features, added based on what you need most.",
         items: [
-          "Adaptive practice session UI",
-          "Real-time ability progress visualizations",
-          "Instructor item management panel",
-          "Mobile-responsive design across all views",
-        ],
-      },
-      {
-        title: "Public Beta",
-        description:
-          "Production-ready deployment with real medical content and institutional onboarding.",
-        items: [
-          "Calibrated medical question bank",
-          "Institutional account management",
-          "Cloud deployment infrastructure",
-          "Beta partner onboarding program",
-        ],
-      },
-      {
-        title: "AI Calibration",
-        description:
-          "Automatic item parameter fitting from accumulated response data.",
-        items: [
-          "Offline IRT calibration pipeline (10k items in ~5 min)",
-          "Adaptive difficulty adjustment from cohort data",
-          "Analytics and longitudinal reporting layer",
-          "Multi-cohort performance benchmarking",
+          "More employment exams",
+          "Questions from the latest years",
+          "More detailed progress reports",
+          "Whatever you ask for",
         ],
       },
     ],
   },
   contact: {
-    eyebrow: "Get Involved",
-    titleLine1: "Join the future of",
-    titleLine2: "medical education.",
+    eyebrow: "Get Started",
+    titleLine1: "Ready to pass",
+    titleLine2: "your exam?",
     subtitle:
-      "Rono is in active development and is seeking early partners who believe that learning science and technology can fundamentally improve how medical professionals are trained.",
+      "Rono is ready to use right now. Start free, review a few questions, and see the difference for yourself. Got a question or an idea? We'd love to hear it.",
     partnerTypes: [
       {
-        label: "Pilot Institutions",
-        description:
-          "Medical schools and residency programs interested in early adoption.",
+        label: "Exam candidates",
+        description: "Anyone getting themselves ready for an employment exam.",
       },
       {
-        label: "Research Collaborators",
-        description:
-          "Academics and educators working in learning science or psychometrics.",
+        label: "Schools & tutors",
+        description: "Teachers and academies who want to help their students.",
       },
       {
-        label: "Strategic Partners",
+        label: "Content creators",
         description:
-          "Organizations aligned with evidence-based medical education.",
+          "Anyone with quality questions or notes who wants to share them.",
       },
     ],
-    ctaPrimary: "Contact the Team",
-    ctaSecondary: "Learn More About Rono",
+    ctaPrimary: "Start Free",
+    ctaSecondary: "Learn More",
     statusLine:
-      "Currently in active development · Phase 0 complete · Accepting pilot partners and research collaborations",
+      "Ready to use now · Free to start · Real questions from past exams",
   },
   footer: {
-    tagline: "Adaptive Learning Platform",
-    problem: "The Problem",
-    solution: "Our Solution",
+    tagline: "Employment-Exam Prep",
+    problem: "The Challenge",
+    solution: "How It Helps",
     howItWorks: "How It Works",
-    roadmap: "Roadmap",
+    roadmap: "What's Coming",
     contact: "Contact",
     copyright: "© 2026 Rono.",
     rights: "All rights reserved.",
@@ -316,315 +296,292 @@ const en = {
 
 export type HomeDict = typeof en;
 
-const tr: HomeDict = {
+const fa: HomeDict = {
   nav: {
-    problem: "Sorun",
-    solution: "Çözümümüz",
-    howItWorks: "Nasıl Çalışır",
-    roadmap: "Yol Haritası",
-    getEarlyAccess: "Erken Erişim Alın",
-    accessWebApp: "Web Uygulamasına Eriş",
-    openMenu: "Menüyü aç",
-    closeMenu: "Menüyü kapat",
-    home: "Rono ana sayfa",
+    problem: "چالش",
+    solution: "چطور کمک می‌کنه",
+    howItWorks: "چطور کار می‌کنه",
+    roadmap: "مسیر پیش‌رو",
+    getEarlyAccess: "رایگان شروع کن",
+    accessWebApp: "ورود به برنامه",
+    openMenu: "باز کردن منو",
+    closeMenu: "بستن منو",
+    home: "صفحه اصلی رونو",
   },
   hero: {
-    eyebrow: "Uyarlanabilir Öğrenme Platformu",
-    titleLine1: "Doğru Soru.",
-    titleLine2: "Doğru Zamanda.",
+    eyebrow: "آمادگی آزمون استخدامی",
+    titleLine1: "سؤال‌های اصلِ آزمون استخدامی.",
+    titleLine2: "بخون، مرور کن، قبول شو.",
     subheadline:
-      "Rono, tıp eğitimi için geliştirilmiş uyarlanabilir bir öğrenme platformudur. Hakemli iki algoritma uyum içinde çalışır — biri her sorunun yeteneğinize tam olarak göre ayarlanmasını, diğeri öğrendiğiniz hiçbir şeyin asla unutulmamasını sağlar.",
-    ctaPrimary: "Erken Erişim Talep Edin",
-    ctaSecondary: "Nasıl Çalıştığını Görün",
+      "همه‌ی سؤال‌های آزمون‌های استخدامیِ سال‌های قبل، یک‌جا و مرتب دسته‌بندی‌شده. رونو حواسش هست کدوم سؤال‌ها رو خوب بلدی و کدوم‌ها هنوز اذیتت می‌کنن، و همون‌ها رو درست سرِ وقت دوباره میاره جلوت تا تا روزِ آزمون چیزی از یادت نره.",
+    ctaPrimary: "رایگان شروع کن",
+    ctaSecondary: "ببین چطور کار می‌کنه",
     stats: {
-      retentionLabel: "Hedeflenen kalıcılık oranı korunur",
-      irtLabel: "Yetenek tahmini için IRT modeli",
-      latencyLabel: "p95 soru sunum hedefi",
+      s1: { value: "اصل", label: "سؤال‌های واقعیِ سال‌های گذشته" },
+      s2: { value: "4", label: "آزمون استخدامیِ پرمخاطب" },
+      s3: { value: "رایگان", label: "همین حالا و بدونِ هزینه شروع کن" },
     },
     viz: {
-      abilityEstimation: "Yetenek Tahmini",
-      memoryScheduling: "Bellek Planlaması",
-      orchestrator: "ORKESTRATÖR",
+      leftTitle: "سؤالِ مناسب",
+      leftSub: "هم‌سطحِ خودت",
+      rightTitle: "مرورِ به‌موقع",
+      rightSub: "تا یادت نره",
+      center: "برنامه‌ی تو",
     },
   },
   problem: {
-    eyebrow: "Zorluk",
-    title: "Tıp eğitiminin bir kalıcılık sorunu var.",
+    eyebrow: "چالش",
+    title: "آماده‌شدن برای آزمون استخدامی سخت‌تر از چیزیه که باید باشه.",
     subtitle:
-      "Tıp profesyonellerinin bugün eğitildiği yöntemler, öğrenme bilimi göz önünde bulundurularak tasarlanmamış sistemlere dayanıyor. Bunun sonuçları klinik uygulamada açıkça görülüyor.",
+      "بیشترِ داوطلب‌ها کم‌استعداد نیستن؛ فقط زیرِ کوهی از منابعِ پخش‌وپلا و روشِ مطالعه‌ی اشتباه گیر افتادن. سه‌تا مشکل که همیشه سر و کله‌شون پیدا می‌شه:",
     cards: {
       generic: {
-        title: "Genel, Herkese Tek Tip İçerik",
+        title: "منابع این‌ور و اون‌ور پخشه",
         description:
-          "Geleneksel müfredatlar, öğrencilerin neyi bildiğine bakmaksızın herkese aynı içeriği sunar. Öğrenciler ya çoktan öğrendikleri içerikten sıkılır ya da henüz hazır olmadıkları içeriğin altında ezilir.",
+          "سؤال‌ها و جزوه‌ها همه‌جا پخش‌ان. آدم نمی‌دونه از کجا شروع کنه و چی مهم‌تره، و کلی وقت فقط سرِ پیدا کردنِ یه منبعِ درست‌وحسابی هدر می‌ده.",
       },
       memorization: {
-        title: "Kalıcılık Olmadan Ezber",
+        title: "می‌خونی، یادت می‌ره",
         description:
-          "Tıp öğrencileri konuları sınavlar için öğrenir ve haftalar içinde unutur. Bilimsel temelli bir tekrar programı olmadan bilgi kaybı kaçınılmazdır — ve klinik uygulamadaki sonuçları ciddi olabilir.",
+          "چیزی که این هفته خوندی، چند هفته بعد دیگه یادت نیست. بدونِ یه برنامه‌ی مرورِ منظم، درست سرِ جلسه می‌بینی خیلی چیزها رو فراموش کردی.",
       },
       noAdaptation: {
-        title: "Gerçek Zamanlı Uyarlama Yok",
+        title: "نمی‌دونی کجای کاری",
         description:
-          "Çoğu öğrenme platformu her öğrenciye eşit davranır. Performans ile içerik zorluğu arasında bir geri bildirim döngüsü yoktur; bu da öğrencileri ölçülebilir bir ilerleme sinyali olmayan verimsiz öğrenme döngülerine hapseder.",
+          "هیچ نشونه‌ی روشنی نداری که بفهمی واقعاً چقدر آماده‌ای و رو کدوم درس‌ها ضعیف‌تری. همین هم استرس میاره، هم وقتت رو می‌بره سراغِ چیزهای اشتباه.",
       },
     },
-    transition:
-      "Rono, bu sorunların her birini — ayrı ayrı ve hassas biçimde — çözmek için tasarlandı.",
+    transition: "رونو ساخته شده تا دقیقاً همین سه‌تا رو حل کنه.",
   },
   solution: {
-    eyebrow: "Çözümümüz",
-    title: "İki algoritma. Tek bütünleşik platform.",
+    eyebrow: "چطور کمک می‌کنه",
+    title: "دو کارِ ساده که فرق رو می‌سازن.",
     subtitle:
-      "Çoğu uyarlanabilir sistem, birbirinden çok farklı iki sorunu tek bir mekanizmada birleştirir. Rono bunları titizlikle ayrı tutar — her algoritmaya hak ettiği hassasiyeti ve gelişmek için ihtiyaç duyduğu bağımsızlığı verir.",
+      "رونو دو تا کارِ مهم رو برات انجام می‌ده، بی‌اینکه لازم باشه به هیچ‌کدومش فکر کنی.",
     irt: {
-      algoLabel: "Algoritma 1",
-      name: "Madde Tepki Kuramı (2PL)",
-      question: "“Sırada ne öğrenmeliyim?”",
+      algoLabel: "بخش اول",
+      name: "سؤالِ هم‌سطحِ تو",
+      question: "«اصلاً از کجا شروع کنم؟»",
       description:
-        "2 Parametreli Lojistik modeli kullanan Rono, her öğrencinin yeteneğini kalibre edilmiş bir ölçekte sürekli olarak tahmin eder. Ardından öğrencinin mevcut bilgi durumu hakkında en fazla bilgiyi sağlayan soruyu seçer — her zaman yetkinliğinin sınırında, asla üstünde veya altında değil.",
+        "رونو می‌فهمه چی رو خوب بلدی و کجا لنگ می‌زنی، بعد سؤال‌هایی بهت نشون می‌ده که نه اون‌قدر آسونن که خسته بشی، نه اون‌قدر سخت که جا بزنی — درست همون‌جایی که سریع‌تر از همیشه یاد می‌گیری.",
       points: [
-        "Beklenen Sonsal (EAP) ile gerçek zamanlı yetenek tahmini",
-        "Fisher bilgisi maksimizasyonu ile soru seçimi",
-        "Madde bazında zorluk ve ayırt edicilik içeren kalibre edilmiş soru bankası",
+        "سؤال‌ها هم‌اندازه‌ی سطحِ همین‌حالای تو",
+        "وقتت می‌ره سراغِ چیزی که لازم داری، نه چیزی که بلدی",
+        "هرچی جلوتر می‌ری، دقیق‌تر و سخت‌تر می‌شه",
       ],
     },
     fsrs: {
-      algoLabel: "Algoritma 2",
-      name: "FSRS-5 Aralıklı Tekrar",
-      question: "“Ne zaman tekrar etmeliyim?”",
+      algoLabel: "بخش دوم",
+      name: "مرورِ درست سرِ وقت",
+      question: "«کِی دوباره مرورش کنم؟»",
       description:
-        "FSRS-5, belleği madde düzeyinde modeller; her bilgi parçası için Zorluk, Kararlılık ve Geri Çağrılabilirlik değerlerini izler. Her tekrarı, hatırlama olasılığı %90'a yaklaştığı anda planlar — ne bir gün önce, ne bir gün sonra.",
+        "هر سؤالی رو که یاد می‌گیری، رونو یادش می‌مونه و درست قبل از اینکه فراموشش کنی دوباره میارش جلوت. سؤالِ سخت‌تر بیشتر تکرار می‌شه، چیزی که مسلط شدی کمتر — تا با کم‌ترین وقت، همه‌چی تا روزِ آزمون سرِ جاش بمونه.",
       points: [
-        "Madde bazında bellek durumu: Zorluk, Kararlılık, Geri Çağrılabilirlik",
-        "Tüm bilgilerde %90 kalıcılık hedefi korunur",
-        "Gerçek unutma ve hatırlama örüntülerinden sürekli öğrenir",
+        "سؤالِ سخت‌تر بیشتر تکرار می‌شه",
+        "چیزی که بلدی وقتت رو نمی‌گیره",
+        "درست قبل از فراموش‌شدن، یادآوری می‌شه",
       ],
     },
     orchestrator: {
-      title: "Orkestratör",
+      title: "تو فقط بخون، بقیه‌ش با ما",
       description:
-        "Tek bir karar noktası, her istekte zamanı gelmiş bir tekrarı (FSRS-5) mı yoksa yeni bir öğrenme maddesini (IRT) mi sunacağını belirler. İki algoritma asla birbirine karıştırılmaz — her biri bağımsız olarak kalibre olur, hata yapar ve gelişir; böylece sistemin bütünü şeffaf ve doğru kalır.",
+        "لازم نیست برنامه بریزی یا حساب کنی چی رو کِی مرور کنی. رونو هر بار خودش تصمیم می‌گیره الان وقتِ یه سؤالِ تازه‌ست یا مرورِ چیزیه که قبلاً دیدی. تو فقط ادامه بده.",
     },
   },
   howItWorks: {
-    eyebrow: "Nasıl Çalışır",
-    title: "Üç adım. Sürekli uyarlanıyor.",
-    subtitle:
-      "İlk sorudan bininci tekrara kadar Rono, her öğrenci için en uygun bir sonraki eylemi sürekli olarak hesaplar.",
+    eyebrow: "چطور کار می‌کنه",
+    title: "سه قدمِ ساده.",
+    subtitle: "از همون سؤالِ اول، رونو کنارته.",
     steps: [
       {
-        title: "Rono temel seviyenizi belirler",
+        title: "اول می‌بینه کجای کاری",
         description:
-          "İlk oturumunuz uyarlanabilir bir değerlendirmeyle başlar. Doğru ya da yanlış her yanıt, Bayes çıkarımı kullanılarak yetenek tahmininizi anında günceller ve dakikalar içinde gerçek bilgi düzeyinize yakınsar.",
-        tag: "IRT · EAP tahmini · Bayes çıkarımı",
+          "چند تا سؤال جواب می‌دی تا رونو بفهمه رو کدوم درس‌ها قوی‌ای و کجا باید بیشتر کار کنی — فقط چند دقیقه.",
+        tag: "چند دقیقه‌ی اول",
       },
       {
-        title: "Tam olarak kalibre edilmiş soruyu alırsınız",
+        title: "سؤالِ مناسبت رو می‌گیری",
         description:
-          "Anlık yetenek tahmininize göre Rono, öğrenme bilgisini en üst düzeye çıkaran maddeyi seçer. Ne çok kolay, ne çok zor. Tam olarak mevcut yetkinliğinizin sınırında — öğrenmenin en hızlı gerçekleştiği yerde.",
-        tag: "Fisher bilgisi maksimizasyonu · 2PL modeli",
+          "بعدش سؤال‌هایی بهت می‌رسه که درست اندازه‌ی سطحِ خودته؛ نه آسون که حوصله‌ت سر بره، نه سخت که زده بشی.",
+        tag: "هم‌سطحِ تو",
       },
       {
-        title: "Tekrarlar tam ihtiyacınız olduğunda gelir",
+        title: "سرِ وقت یادت می‌ندازیم",
         description:
-          "Bellek planlayıcısı her bilgi parçasını bağımsız olarak izler. Bir maddeyi hatırlama olasılığınız %90'a yaklaştığında o madde tekrar için sunulur. Her yanıttan sonra bellek kararlılığı yeniden hesaplanır ve bir sonraki en uygun tekrar tarihi belirlenir.",
-        tag: "FSRS-5 · Zorluk · Kararlılık · Geri Çağrılabilirlik",
+          "هر چیزی که خوندی، درست قبل از اینکه یادت بره دوباره میاد بالا تا برای همیشه مالِ خودت بشه.",
+        tag: "مرورِ به‌موقع",
       },
     ],
   },
   differentiators: {
-    eyebrow: "Neden Rono",
-    titleLine1: "Sağlam ilkeler üzerine kuruldu.",
-    titleLine2: "Ölçeklenmek için tasarlandı.",
+    eyebrow: "چرا رونو",
+    titleLine1: "سؤالِ اصل، نه ساختگی.",
+    titleLine2: "روشی که واقعاً جواب می‌ده.",
     subtitle:
-      "Rono farklıdır çünkü önce öğrenme bilimi, sonra teknoloji etrafında tasarlandı. Her mimari karar bu öncelik sırasını yansıtır.",
+      "رونو دورِ یه ایده‌ی ساده ساخته شده: سؤال‌های واقعیِ آزمون‌ها رو اون‌قدر هوشمندانه مرور کن تا همه‌شون مالِ خودت بشن.",
     features: [
       {
-        title: "Hakemli Bilim",
+        title: "سؤال‌های اصلِ آزمون",
         description:
-          "IRT ve FSRS-5, bilişsel bilim ve psikometri literatüründen titizlikle doğrulanmış algoritmalardır — tescilli sezgisel yöntemler değil. Her tasarım kararının yayımlanmış bir dayanağı vardır.",
+          "سؤال‌ها از دفترچه‌های واقعیِ آزمون‌های سال‌های قبل‌ان، نه نمونه‌سؤالِ ساختگی. دقیقاً همون چیزی که سرِ جلسه باهاش روبه‌رو می‌شی.",
       },
       {
-        title: "Mimari Berraklık",
+        title: "مرور تا یادگیریِ کامل",
         description:
-          "İki temel algoritma kesinlikle ayrı tutulur. Her biri diğerini etkilemeden gelişebilir, yeniden kalibre edilebilir veya değiştirilebilir — öğrenme bilimi ilerledikçe önemli bir avantaj.",
+          "فقط یک‌بار خوندن کافی نیست. رونو سؤال‌ها رو سرِ وقت برات تکرار می‌کنه تا تا روزِ آزمون چیزی از یادت نره.",
       },
       {
-        title: "Tıp Eğitimi İçin Tasarlandı",
+        title: "همه‌چی مرتب و دسته‌بندی‌شده",
         description:
-          "Tıp bilimi içeriğinin derinliği ve karmaşıklığı için özel olarak tasarlandı; hiyerarşik konu organizasyonu ve uzmanlık ile düzeye göre kalibre edilebilen soru bankaları içerir.",
+          "سؤال‌ها بر اساسِ آزمون، درس و مبحث چیده شدن؛ راحت می‌ری سراغِ هر چیزی که می‌خوای.",
       },
       {
-        title: "Gerçek Zamanlı Uyarlama",
+        title: "پاسخِ تشریحی",
         description:
-          "Her yanıt, öğrencinin yetenek tahminini anında günceller. Toplu işleme veya gecikmeli yeniden hesaplama yoktur — uyarlama süreklidir, anlıktır ve madde bazındadır.",
+          "هر سؤال جوابِ کامل و توضیحِ روشن داره؛ فقط نمی‌فهمی درست یا غلط، می‌فهمی چرا.",
       },
       {
-        title: "Tasarımdan Gelen Performans",
+        title: "آزمونِ آزمایشی",
         description:
-          "İlk günden net bir performans bütçesiyle inşa edildi: 100 ms altında p95 soru sunumu ve sıcak okumalarda 50 ms altını hedefleyen Redis önbelleği. Baştan sona üretime hazır.",
+          "هر وقت خواستی، یه آزمونِ زمان‌دار درست مثلِ روزِ امتحان بده و ببین دقیقاً کجا وایسادی.",
       },
       {
-        title: "Ölçeklenebilir Mimari",
+        title: "رو موبایل، هر جا",
         description:
-          "Tek bir öğrenciden tüm bir tıp fakültesi kümesine kadar, sistem mimarisi temelden yeniden tasarlanmaya gerek olmadan yatay olarak ölçeklenir — ilk günden kurumsal dağıtıma uygun.",
+          "تو صف، تو اتوبوس، هر وقت چند دقیقه وقت داشتی — گوشیت رو دربیار و چند تا سؤال مرور کن.",
       },
     ],
   },
   platforms: {
-    eyebrow: "Mevcut Platformlar",
-    title: "Her yerde, her cihazda öğrenin.",
+    eyebrow: "روی هر دستگاهی",
+    title: "هر جا که هستی، آماده شو.",
     subtitle:
-      "Rono, tıp profesyonellerinin gerçekte nasıl çalıştığı göz önünde bulundurularak tasarlandı — cihazlar arası, bağlantı olsun olmasın, doğru an geldiğinde.",
-    statusAvailable: "Kullanılabilir",
-    statusSoon: "Yakında",
-    comingSoonSuffix: "Yakında",
+      "رونو رو همون‌جوری که واقعاً درس می‌خونی ساختیم — رو گوشی، تبلت یا کامپیوتر، با اینترنت یا بی‌اینترنت.",
+    statusAvailable: "در دسترس",
+    statusSoon: "به‌زودی",
+    comingSoonSuffix: "به‌زودی",
     web: {
-      name: "Web Uygulaması",
-      tagline: "Kurulum yok. Aç ve öğren.",
+      name: "نسخه‌ی وب",
+      tagline: "بدونِ نصب. باز کن و شروع کن.",
       description:
-        "Tüm öğrenme panonuz her modern tarayıcıda kullanılabilir. Masaüstü, dizüstü veya tabletinizden bir oturum başlatın — tüm ilerlemeniz gerçek zamanlı olarak eşitlenir.",
-      cta: "Web Uygulamasına Eriş",
+        "داشبوردِ کاملت تو هر مرورگری باز می‌شه. رو کامپیوتر یا تبلت شروع کن — همه‌چی هم‌زمان همگام می‌مونه.",
+      cta: "ورود به برنامه",
       meta: "",
       storeNote: "",
     },
     android: {
-      name: "Android",
-      tagline: "Yerel uygulama — şimdi indir.",
+      name: "اندروید",
+      tagline: "برنامه‌ی بومی — همین حالا بگیر.",
       description:
-        "Planlanan tekrarlar için anlık bildirimler ve sorunsuz cihazlar arası ilerleme eşitlemesi sunan yerel Android uygulaması. Hemen başlamak için APK'yı doğrudan indirin.",
-      cta: "APK İndir",
+        "نسخه‌ی اندرویدِ رونو با یادآورِ مرور و همگام‌سازیِ پیشرفت. فایلِ نصب رو مستقیم دانلود کن و امروز شروع کن.",
+      cta: "دانلود برنامه",
       meta: "v1.0.0 · APK · 2.6 MB",
       storeNote: "Google Play",
     },
     ios: {
-      name: "iOS",
-      tagline: "Web uygulaması olarak yükle.",
+      name: "آیفون",
+      tagline: "مثلِ یه برنامه نصبش کن.",
       description:
-        "Rono'i doğrudan Safari'den ana ekranınıza ekleyin; App Store'a gerek kalmadan tüm cihazlarınızda eşitlenen, tam ekran ve uygulama benzeri bir deneyim yaşayın.",
-      cta: "PWA Olarak Yükle",
+        "رونو رو از Safari به صفحه‌ی اصلیِ گوشیت اضافه کن تا تمام‌صفحه و مثلِ یه اپ باز شه — بدونِ نیاز به App Store.",
+      cta: "افزودن به صفحه‌ی اصلی",
       meta: "",
       storeNote: "App Store",
     },
     syncNote:
-      "Tüm platformlar aynı öğrenme durumunu paylaşır. İlerleme, yetenek tahminleri ve tekrar programları cihazlar arasında otomatik olarak eşitlenir.",
+      "هر جا وارد شی، پیشرفتت همونه. مرورها و کارنامه‌ت خودکار بینِ همه‌ی دستگاه‌هات همگام می‌شه.",
   },
   roadmap: {
-    eyebrow: "Geliştirme Yol Haritası",
-    title: "Temelden ürüne giden net bir yol.",
+    eyebrow: "مسیر پیش‌رو",
+    title: "هر هفته کامل‌تر می‌شه.",
     subtitle:
-      "Faz 0 tamamlandı. Aktif geliştirme, her fazda net kabul ölçütleri bulunan yapılandırılmış ve kilometre taşı odaklı bir yol haritasında sürüyor.",
-    statusComplete: "Tamamlandı",
-    statusActive: "Devam Ediyor",
-    statusUpcoming: "Yaklaşan",
-    phaseLabel: "Faz",
+      "رونو همین حالا کار می‌کنه و مدام آزمون‌ها و امکاناتِ بیشتری بهش اضافه می‌شه.",
+    statusComplete: "آماده",
+    statusActive: "در حالِ افزودن",
+    statusUpcoming: "به‌زودی",
+    phaseLabel: "مرحله",
     phases: [
       {
-        title: "Temel",
+        title: "بانکِ سؤالِ دروسِ عمومی",
         description:
-          "Altyapı, konteynerleştirme, CI/CD hattı, sağlık izleme ve geliştirici deneyimi araçları.",
+          "سؤال‌های اصلِ دروسِ عمومیِ مشترکِ همه‌ی آزمون‌ها، مرتب و با پاسخِ تشریحی.",
         items: [
-          "Docker Compose: PostgreSQL 16, Redis 7, FastAPI, Next.js",
-          "Commit öncesi kalite denetimleriyle GitHub Actions CI",
-          "Sağlık ve hazır olma denetim uç noktaları",
-          "Makefile kısayolları ve ortam yapılandırması",
+          "ادبیات فارسی و معارف",
+          "ریاضی، هوش و مهارت‌های کامپیوتر",
+          "زبان انگلیسی و اطلاعاتِ عمومی",
+          "پاسخِ تشریحی برای هر سؤال",
         ],
       },
       {
-        title: "Arka Uç ve Veri Modeli",
+        title: "مرور و آزمونِ آزمایشی",
         description:
-          "Eksiksiz veritabanı şeması, kimlik doğrulama sistemi ve REST API temelleri.",
+          "مرورِ هوشمندِ روزانه و آزمونِ زمان‌دار شبیهِ روزِ امتحان.",
         items: [
-          "Tam indekslemeli 7 tablolu PostgreSQL şeması",
-          "Rol tabanlı erişim denetimli JWT kimlik doğrulama",
-          "Yönetici soru yönetimi uç noktaları",
-          "Yalnızca ekleme yapılan yanıt günlüğü — değiştirilemez kayıt sistemi",
+          "مرورِ سؤال‌ها تا یادگیریِ کامل",
+          "آزمونِ آزمایشیِ زمان‌دار",
+          "کارنامه و نقاطِ ضعف",
+          "یادآورِ روزانه",
         ],
       },
       {
-        title: "Algoritmik Çekirdek",
+        title: "دروسِ تخصصیِ هر آزمون",
         description:
-          "IRT ve FSRS-5 motorlarının bütünleşik orkestratörle uçtan uca çalışması.",
+          "سؤال‌های تخصصیِ آموزش و پرورش، بانک‌ها، تأمین اجتماعی و دستگاه‌های اجرایی.",
         items: [
-          "Yanıt verisinden EAP yetenek tahmini",
-          "Fisher bilgisi ile soru seçimi",
-          "Madde bazında FSRS-5 bellek durumu takibi",
-          "Orkestratör karar mantığı: tekrar mı yeni soru mu",
+          "دستگاه‌های اجرایی (فراگیر)",
+          "آموزش و پرورش",
+          "بانک‌ها",
+          "تأمین اجتماعی",
         ],
       },
       {
-        title: "Öğrenme Arayüzü",
+        title: "هرچی بیشتر، بهتر",
         description:
-          "Tam özellikli öğrenci arayüzü, ilerleme panosu ve eğitmen paneli.",
+          "آزمون‌ها و امکاناتِ تازه که بر اساسِ نیازِ شما اضافه می‌شن.",
         items: [
-          "Uyarlanabilir alıştırma oturumu arayüzü",
-          "Gerçek zamanlı yetenek ilerleme görselleştirmeleri",
-          "Eğitmen soru yönetimi paneli",
-          "Tüm görünümlerde mobil uyumlu tasarım",
-        ],
-      },
-      {
-        title: "Herkese Açık Beta",
-        description:
-          "Gerçek tıbbi içerik ve kurumsal katılımla üretime hazır dağıtım.",
-        items: [
-          "Kalibre edilmiş tıbbi soru bankası",
-          "Kurumsal hesap yönetimi",
-          "Bulut dağıtım altyapısı",
-          "Beta iş ortağı katılım programı",
-        ],
-      },
-      {
-        title: "Yapay Zeka Kalibrasyonu",
-        description:
-          "Biriken yanıt verisinden otomatik soru parametresi uydurma.",
-        items: [
-          "Çevrimdışı IRT kalibrasyon hattı (~5 dakikada 10 bin soru)",
-          "Küme verisinden uyarlanabilir zorluk ayarı",
-          "Analitik ve uzunlamasına raporlama katmanı",
-          "Çoklu küme performans kıyaslaması",
+          "آزمون‌های استخدامیِ بیشتر",
+          "سؤال‌های سال‌های تازه‌تر",
+          "گزارشِ پیشرفتِ دقیق‌تر",
+          "هر چیزی که شما بخواید",
         ],
       },
     ],
   },
   contact: {
-    eyebrow: "Katılın",
-    titleLine1: "Tıp eğitiminin",
-    titleLine2: "geleceğine katılın.",
+    eyebrow: "همراهِ ما شو",
+    titleLine1: "آماده‌ای برای",
+    titleLine2: "قبولی در آزمون؟",
     subtitle:
-      "Rono aktif geliştirme aşamasındadır ve öğrenme bilimi ile teknolojinin, tıp profesyonellerinin yetiştirilme biçimini köklü biçimde iyileştirebileceğine inanan erken iş ortakları aramaktadır.",
+      "رونو همین حالا آماده‌ی استفاده‌ست. رایگان شروع کن، چند تا سؤال مرور کن و خودت ببین چقدر فرق داره. اگه سؤالی داشتی یا نظری، خوشحال می‌شیم بشنویم.",
     partnerTypes: [
       {
-        label: "Pilot Kurumlar",
-        description:
-          "Erken benimsemeye ilgi duyan tıp fakülteleri ve uzmanlık programları.",
+        label: "داوطلبانِ آزمون",
+        description: "هر کسی که داره خودش رو برای آزمون استخدامی آماده می‌کنه.",
       },
       {
-        label: "Araştırma İş Birlikçileri",
-        description:
-          "Öğrenme bilimi veya psikometri alanında çalışan akademisyenler ve eğitimciler.",
+        label: "آموزشگاه‌ها و مدرس‌ها",
+        description: "مدرس‌ها و آموزشگاه‌هایی که می‌خوان به داوطلب‌هاشون کمک کنن.",
       },
       {
-        label: "Stratejik İş Ortakları",
-        description: "Kanıta dayalı tıp eğitimiyle uyumlu kuruluşlar.",
+        label: "تولیدکنندگانِ محتوا",
+        description:
+          "هر کسی که سؤال یا جزوه‌ی باکیفیت داره و می‌خواد به اشتراک بذاره.",
       },
     ],
-    ctaPrimary: "Ekiple İletişime Geçin",
-    ctaSecondary: "Rono Hakkında Daha Fazla Bilgi",
+    ctaPrimary: "رایگان شروع کن",
+    ctaSecondary: "بیشتر بدون",
     statusLine:
-      "Şu anda aktif geliştirme aşamasında · Faz 0 tamamlandı · Pilot iş ortakları ve araştırma iş birlikleri kabul ediliyor",
+      "همین حالا آماده‌ی استفاده · شروعِ رایگان · سؤال‌های اصلِ آزمون‌های گذشته",
   },
   footer: {
-    tagline: "Uyarlanabilir Öğrenme Platformu",
-    problem: "Sorun",
-    solution: "Çözümümüz",
-    howItWorks: "Nasıl Çalışır",
-    roadmap: "Yol Haritası",
-    contact: "İletişim",
+    tagline: "آمادگی آزمون استخدامی",
+    problem: "چالش",
+    solution: "چطور کمک می‌کنه",
+    howItWorks: "چطور کار می‌کنه",
+    roadmap: "مسیر پیش‌رو",
+    contact: "تماس",
     copyright: "© 2026 Rono.",
-    rights: "Tüm hakları saklıdır.",
+    rights: "تمامی حقوق محفوظه.",
   },
 };
 
-export const home = { en, tr };
+export const home = { en, fa };

@@ -222,7 +222,7 @@ function QuestionRow({
       onClick={() => router.push(`/dashboard/items/${item.id}`)}
     >
       {/* Question stem */}
-      <td className="py-3 pl-5 pr-4 align-top">
+      <td className="py-3 ps-5 pe-4 align-top">
         <div className="flex items-start gap-2.5">
           <span
             className={cn("mt-1.5 size-1.5 shrink-0 rounded-full", calDot)}
@@ -291,7 +291,7 @@ function QuestionRow({
 
       {/* Actions */}
       <td
-        className="py-3 pl-2 pr-5 align-top w-20"
+        className="py-3 ps-2 pe-5 align-top w-20"
         onClick={(e) => e.stopPropagation()}
       >
         <div className="flex items-center gap-1">
@@ -430,11 +430,11 @@ export default function ItemsPage() {
             </Alert>
           )}
 
-          <table className="w-full text-left">
+          <table className="w-full text-start">
             {/* Column headers */}
             <thead>
               <tr className="border-b border-border/60 bg-muted/30">
-                <th className="py-2.5 pl-5 pr-4 text-[11px] font-semibold uppercase tracking-wide text-muted-foreground">
+                <th className="py-2.5 ps-5 pe-4 text-[11px] font-semibold uppercase tracking-wide text-muted-foreground">
                   {t.dashItems.columns.question}
                 </th>
                 <th className="py-2.5 px-4 text-[11px] font-semibold uppercase tracking-wide text-muted-foreground w-56">
@@ -452,7 +452,7 @@ export default function ItemsPage() {
                 <th className="py-2.5 px-4 text-[11px] font-semibold uppercase tracking-wide text-muted-foreground w-20">
                   {t.dashItems.columns.status}
                 </th>
-                <th className="py-2.5 pl-2 pr-5 w-20" />
+                <th className="py-2.5 ps-2 pe-5 w-20" />
               </tr>
             </thead>
 
@@ -463,7 +463,7 @@ export default function ItemsPage() {
                     key={i}
                     className="border-b border-border/60 last:border-0"
                   >
-                    <td className="py-3 pl-5 pr-4">
+                    <td className="py-3 ps-5 pe-4">
                       <div className="flex items-start gap-2.5">
                         <Skeleton className="mt-1.5 size-1.5 shrink-0 rounded-full" />
                         <div className="space-y-1.5 flex-1">
@@ -487,7 +487,7 @@ export default function ItemsPage() {
                     <td className="py-3 px-4 w-20">
                       <Skeleton className="h-5 w-14 rounded-full" />
                     </td>
-                    <td className="py-3 pl-2 pr-5 w-20" />
+                    <td className="py-3 ps-2 pe-5 w-20" />
                   </tr>
                 ))}
 

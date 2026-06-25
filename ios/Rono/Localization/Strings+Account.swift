@@ -72,45 +72,44 @@ struct SettingsStrings: Sendable {
         )
     )
 
-    static let tr = SettingsStrings(
-        pageTitle: "Ayarlar",
+    static let fa = SettingsStrings(
+        pageTitle: "تنظیمات",
         theme: .init(
-            title: "Tema", description: "Panonun size nasıl görüneceğini seçin.",
-            light: .init(label: "Açık", desc: "Sade ve aydınlık"),
-            dark: .init(label: "Koyu", desc: "Gözleri yormaz"),
-            system: .init(label: "Sistem", desc: "İşletim sisteminizi izler")
+            title: "ظاهر", description: "انتخاب کن داشبورد چه شکلی برات نمایش داده بشه.",
+            light: .init(label: "روشن", desc: "تمیز و روشن"),
+            dark: .init(label: "تیره", desc: "ملایم برای چشم"),
+            system: .init(label: "سیستم", desc: "از سیستم‌عاملت پیروی می‌کنه")
         ),
         language: .init(
-            title: "Dil", description: "Uygulama genelinde kullanılır. Hesabınıza kaydedilir.",
-            saved: "Dil güncellendi", saveFailed: "Diliniz kaydedilemedi"
+            title: "زبان", description: "در کل برنامه استفاده می‌شه. روی حسابت ذخیره می‌شه.",
+            saved: "زبان به‌روزرسانی شد", saveFailed: "نتونستیم زبانت رو ذخیره کنیم"
         ),
         account: .init(
-            heading: "Hesap ve güvenlik",
-            description: "Giriş bilgilerinizi ve aktif oturumlarınızı yönetin.",
-            emailLabel: "E-posta", emailHint: "E-postanızı değiştirmek için yöneticinizle iletişime geçin."
+            heading: "حساب و امنیت",
+            description: "اطلاعات ورود و نشست‌های فعالت رو مدیریت کن.",
+            emailLabel: "ایمیل", emailHint: "برای تغییر ایمیلت با مدیر تماس بگیر."
         ),
         password: .init(
-            title: "Parola", description: "Başka yerde kullanmadığınız güçlü bir parola seçin.",
-            current: "Mevcut parola", next: "Yeni parola", confirm: "Yeni parolayı onayla",
-            rules: "En az 8 karakter; bir büyük harf, bir küçük harf ve bir rakam içermeli.",
-            mismatch: "Yeni parolalar eşleşmiyor.", change: "Parolayı güncelle",
-            changing: "Güncelleniyor…", changed: "Parola güncellendi — diğer oturumlar kapatıldı.",
-            failed: "Parolanız güncellenemedi"
+            title: "رمز عبور", description: "یک رمز عبور قوی انتخاب کن که جای دیگه ازش استفاده نمی‌کنی.",
+            current: "رمز عبور فعلی", next: "رمز عبور جدید", confirm: "تأیید رمز عبور جدید",
+            rules: "حداقل ۸ کاراکتر، شامل یک حرف بزرگ، یک حرف کوچک و یک عدد.",
+            mismatch: "رمزهای عبور جدید با هم یکی نیستن.", change: "به‌روزرسانی رمز عبور",
+            changing: "در حال به‌روزرسانی…", changed: "رمز عبور به‌روزرسانی شد — بقیه نشست‌ها خارج شدن.",
+            failed: "نتونستیم رمز عبورت رو به‌روزرسانی کنیم"
         ),
         sessions: .init(
-            title: "Aktif oturumlar", description: "Hesabınızda şu anda oturum açmış cihazlar.",
-            current: "Bu cihaz", unknownDevice: "Bilinmeyen cihaz", signedIn: "Giriş",
-            expires: "Bitiş", revoke: "Çıkış yap", revoked: "Oturum kapatıldı",
-            revokeOthers: "Diğer tüm oturumları kapat", revokedOthers: "Diğer oturumlar kapatıldı",
-            empty: "Başka aktif oturum yok.", loading: "Oturumlar yükleniyor…", failed: "İşlem başarısız"
+            title: "نشست‌های فعال", description: "دستگاه‌هایی که الان به حسابت وارد شدن.",
+            current: "این دستگاه", unknownDevice: "دستگاه ناشناس", signedIn: "ورود",
+            expires: "انقضا", revoke: "خروج", revoked: "نشست خارج شد",
+            revokeOthers: "خروج از همه نشست‌های دیگه", revokedOthers: "نشست‌های دیگه خارج شدن",
+            empty: "نشست فعال دیگه‌ای نیست.", loading: "در حال بارگذاری نشست‌ها…", failed: "عملیات ناموفق بود"
         ),
         institution: .init(
-            heading: "Kurum", description: "Kurumunuzun profili. Yalnızca yöneticiler düzenleyebilir.",
-            nameLabel: "Ad", namePh: "Rono Demo Üniversitesi", domainLabel: "Alan adı",
-            domainPh: "ornek.edu", slugLabel: "Kısa ad", tierLabel: "Plan",
-            save: "Değişiklikleri kaydet", saving: "Kaydediliyor…", saved: "Kurum güncellendi",
-            saveFailed: "Kurum güncellenemedi", error: "Hata",
-            adminOnly: "Bu ayarları yalnızca yöneticiler düzenleyebilir."
+            heading: "سازمان", description: "پروفایل سازمانت. فقط مدیرها می‌تونن ویرایش کنن.",
+            nameLabel: "نام", namePh: "سازمان نمونه رونو", domainLabel: "دامنه",
+            domainPh: "example.edu", slugLabel: "نامک", tierLabel: "پلن", save: "ذخیره تغییرات",
+            saving: "در حال ذخیره…", saved: "سازمان به‌روزرسانی شد", saveFailed: "به‌روزرسانی سازمان ناموفق بود",
+            error: "خطا", adminOnly: "فقط مدیرها می‌تونن این تنظیمات رو ویرایش کنن."
         )
     )
 }
@@ -204,51 +203,51 @@ struct ProfileStrings: Sendable {
         )
     )
 
-    static let tr = ProfileStrings(
-        pageTitle: "Profil",
+    static let fa = ProfileStrings(
+        pageTitle: "پروفایل",
         identity: .init(
-            memberSince: "Üyelik başlangıcı", lastLogin: "Son giriş", never: "Hiç",
-            institution: "Kurum", role: "Rol", emailVerified: "E-posta doğrulandı",
-            emailUnverified: "E-posta doğrulanmadı", accountActive: "Aktif",
-            accountInactive: "Devre dışı"
+            memberSince: "عضو از", lastLogin: "آخرین ورود", never: "هرگز",
+            institution: "سازمان", role: "نقش", emailVerified: "ایمیل تأیید شده",
+            emailUnverified: "ایمیل تأیید نشده", accountActive: "فعال",
+            accountInactive: "غیرفعال"
         ),
         edit: .init(
-            title: "Kişisel bilgiler", description: "Rono genelinde bu şekilde görünürsünüz.",
-            fullName: "Ad soyad", fullNamePh: "Ayşe Yılmaz", preferredName: "Tercih edilen ad",
-            preferredNamePh: "Ayşe", preferredNameHint: "Karşılamalarda gösterilir. İsteğe bağlı.",
-            save: "Değişiklikleri kaydet", saving: "Kaydediliyor…", saved: "Profil güncellendi",
-            saveFailed: "Profiliniz kaydedilemedi", error: "Hata"
+            title: "اطلاعات شخصی", description: "در سراسر رونو به این شکل دیده می‌شی.",
+            fullName: "نام کامل", fullNamePh: "نام و نام خانوادگی", preferredName: "نام دلخواه",
+            preferredNamePh: "نام کوچک", preferredNameHint: "در خوشامدگویی‌ها نشون داده می‌شه. اختیاری.",
+            save: "ذخیره تغییرات", saving: "در حال ذخیره…", saved: "پروفایل به‌روزرسانی شد",
+            saveFailed: "نتونستیم پروفایلت رو ذخیره کنیم", error: "خطا"
         ),
         avatar: .init(
-            alt: "Profil fotoğrafı", upload: "Fotoğraf yükle", change: "Fotoğrafı değiştir",
-            remove: "Fotoğrafı kaldır", uploading: "Yükleniyor…", removing: "Kaldırılıyor…",
-            hint: "JPEG, PNG, WebP veya GIF. En fazla 5 MB.", uploaded: "Fotoğraf güncellendi",
-            removed: "Fotoğraf kaldırıldı", uploadFailed: "Fotoğrafınız yüklenemedi",
-            removeFailed: "Fotoğrafınız kaldırılamadı",
-            tooLarge: "Görsel çok büyük. En fazla 5 MB olabilir.",
-            badType: "Desteklenmeyen biçim. JPEG, PNG, WebP veya GIF kullanın."
+            alt: "عکس پروفایل", upload: "بارگذاری عکس", change: "تغییر عکس",
+            remove: "حذف عکس", uploading: "در حال بارگذاری…", removing: "در حال حذف…",
+            hint: "JPEG، PNG، WebP یا GIF. حداکثر ۵ مگابایت.", uploaded: "عکس به‌روزرسانی شد",
+            removed: "عکس حذف شد", uploadFailed: "نتونستیم عکست رو بارگذاری کنیم",
+            removeFailed: "نتونستیم عکست رو حذف کنیم",
+            tooLarge: "عکس خیلی بزرگه. حداکثر اندازه ۵ مگابایته.",
+            badType: "این قالب پشتیبانی نمی‌شه. از JPEG، PNG، WebP یا GIF استفاده کن."
         ),
         state: .init(
-            title: "Öğrenme durumunuz",
-            description: "Uyarlanabilir motorun sizin hakkınızda bildiklerinin şeffaf, gerçek zamanlı görünümü.",
-            empty: "Henüz hiç soru yanıtlamadınız. Bir oturum başlatın; yetenek, ustalık ve tekrar planınız burada görünecek.",
+            title: "وضعیت پیشرفت تو",
+            description: "نمای روشن و لحظه‌ای از اینکه رونو چقدر تو رو می‌شناسه.",
+            empty: "هنوز به هیچ سؤالی جواب ندادی. یک تمرین رو شروع کن تا سطح آمادگی، تسلط و برنامه مرورت اینجا نمایش داده بشه.",
             ability: .init(
-                label: "Yetenek (θ)",
-                help: "0'ın ortalama öğrenciyi temsil ettiği bir ölçekte tahmini beceriniz; her yanıttan sonra güncellenir (IRT 2PL).",
-                confidenceLabel: "Güven",
-                confidence: ["building": "Hâlâ kalibre ediliyor", "medium": "Sağlamlaşıyor", "high": "İyi oturmuş"],
-                interpret: ["building": "Temel oluşturuluyor", "developing": "Gelişiyor", "solid": "Yolunda", "advanced": "İleri düzey"],
-                interpretHint: ["building": "Ortalama öğrencinin altında — temellere odaklanın.",
-                                "developing": "Ortalama öğrenciye yaklaşıyor.",
-                                "solid": "Ortalama öğrenci düzeyinde veya üzerinde.",
-                                "advanced": "Ortalama öğrencinin oldukça üzerinde."]
+                label: "سطح آمادگی",
+                help: "برآوردی از سطح آمادگیت روی مقیاسی که ۰ یعنی داوطلب متوسط؛ بعد از هر جواب به‌روز می‌شه.",
+                confidenceLabel: "میزان اطمینان",
+                confidence: ["building": "هنوز در حال سنجش", "medium": "در حال تثبیت", "high": "کاملاً جا افتاده"],
+                interpret: ["building": "ساختن پایه‌ها", "developing": "در حال پیشرفت", "solid": "روی مسیر درست", "advanced": "پیشرفته"],
+                interpretHint: ["building": "پایین‌تر از داوطلب متوسط — روی مباحث پایه تمرکز کن.",
+                                "developing": "داری به داوطلب متوسط نزدیک می‌شی.",
+                                "solid": "هم‌سطح یا بالاتر از داوطلب متوسط.",
+                                "advanced": "خیلی بالاتر از داوطلب متوسط."]
             ),
-            stats: .init(answered: "Yanıtlanan soru", correct: "Doğru", accuracy: "Doğruluk",
-                         reviewDue: "Bekleyen tekrar", reviewDueHelp: "FSRS-5'in şimdi tekrar edilmeye hazır dediği kartlar.",
-                         newAvailable: "Yeni mevcut"),
-            mastery: .init(title: "Konuya göre ustalık", description: "Her konunun ustalık yolundaki yeri.",
-                           empty: "Henüz konu verisi yok.", questions: "soru", distributionTitle: "Ustalık dağılımı"),
-            sessions: .init(title: "Son oturumlar", empty: "Henüz oturum yok.", net: "Net")
+            stats: .init(answered: "سؤال‌های جواب‌داده‌شده", correct: "درست", accuracy: "دقت",
+                         reviewDue: "مرورهای موعد رسیده", reviewDueHelp: "سؤال‌هایی که الان آماده مرورن.",
+                         newAvailable: "سؤال‌های جدید"),
+            mastery: .init(title: "تسلط بر اساس مبحث", description: "جای هر مبحث در مسیر تسلط.",
+                           empty: "هنوز داده‌ای برای مبحث‌ها نیست.", questions: "سؤال", distributionTitle: "توزیع تسلط"),
+            sessions: .init(title: "تمرین‌های اخیر", empty: "هنوز تمرینی نیست.", net: "خالص")
         )
     )
 }

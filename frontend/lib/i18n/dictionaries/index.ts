@@ -18,7 +18,7 @@ import { dashSessions } from "./dash-sessions";
 import { pwa } from "./pwa";
 import type { Locale } from "../config";
 
-// Each namespace owns its own file and enforces TR↔EN key parity internally.
+// Each namespace owns its own file and enforces FA↔EN key parity internally.
 // Composing them here gives a single typed dictionary per locale.
 export const dictionaries = {
   en: {
@@ -41,25 +41,25 @@ export const dictionaries = {
     dashSessions: dashSessions.en,
     pwa: pwa.en,
   },
-  tr: {
-    common: common.tr,
-    home: home.tr,
-    auth: auth.tr,
-    dashNav: dashNav.tr,
-    dashOverview: dashOverview.tr,
-    dashTopics: dashTopics.tr,
-    dashItems: dashItems.tr,
-    dashAnalytics: dashAnalytics.tr,
-    dashItemEditor: dashItemEditor.tr,
-    dashHome: dashHome.tr,
-    dashPractice: dashPractice.tr,
-    dashStudy: dashStudy.tr,
-    dashProgress: dashProgress.tr,
-    dashUsers: dashUsers.tr,
-    dashSettings: dashSettings.tr,
-    dashProfile: dashProfile.tr,
-    dashSessions: dashSessions.tr,
-    pwa: pwa.tr,
+  fa: {
+    common: common.fa,
+    home: home.fa,
+    auth: auth.fa,
+    dashNav: dashNav.fa,
+    dashOverview: dashOverview.fa,
+    dashTopics: dashTopics.fa,
+    dashItems: dashItems.fa,
+    dashAnalytics: dashAnalytics.fa,
+    dashItemEditor: dashItemEditor.fa,
+    dashHome: dashHome.fa,
+    dashPractice: dashPractice.fa,
+    dashStudy: dashStudy.fa,
+    dashProgress: dashProgress.fa,
+    dashUsers: dashUsers.fa,
+    dashSettings: dashSettings.fa,
+    dashProfile: dashProfile.fa,
+    dashSessions: dashSessions.fa,
+    pwa: pwa.fa,
   },
 } satisfies Record<Locale, unknown>;
 

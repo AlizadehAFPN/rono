@@ -43,7 +43,7 @@ struct SignupView: View {
                     Button(s.signIn) { path.removeLast(path.count) }
                         .foregroundStyle(Palette.primary)
                 }
-                .font(.subheadline)
+                .font(.vSubheadline)
             }
         }
         .navigationTitle(s.title)

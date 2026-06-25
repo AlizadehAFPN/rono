@@ -30,22 +30,22 @@ struct OnboardingStrings: Sendable {
         logIn: "Log in", signUp: "Create account"
     )
 
-    static let tr = OnboardingStrings(
+    static let fa = OnboardingStrings(
         slides: [
             .init(id: 0, systemImage: "brain.head.profile",
-                  title: "Rono'e hoş geldiniz",
-                  subtitle: "Sizinle birlikte öğrenen uyarlanabilir tıp sınavı hazırlığı."),
+                  title: "به رونو خوش اومدی",
+                  subtitle: "آماده شدن برای آزمون استخدامی، ساده و همراه خودت."),
             .init(id: 1, systemImage: "target",
-                  title: "Size uyum sağlayan sorular",
-                  subtitle: "Her yanıt, zorluğu gerçek seviyenize göre ayarlar."),
+                  title: "سؤال‌های واقعی آزمون",
+                  subtitle: "سؤال‌های اصلِ آزمون‌های قبلی رو بخون و تمرین کن."),
             .init(id: 2, systemImage: "calendar.badge.clock",
-                  title: "Daha uzun süre hatırlayın",
-                  subtitle: "Günlük Tekrar, tam unutmadan önce kartları geri getirir."),
+                  title: "بیشتر و موندگارتر یاد بگیر",
+                  subtitle: "مرور روزانه سؤال‌ها رو درست قبل از اینکه یادت بره برمی‌گردونه."),
             .init(id: 3, systemImage: "chart.line.uptrend.xyaxis",
-                  title: "İlerlemenizi görün",
-                  subtitle: "Konulardaki ustalığınızı izleyin, seviyenizin yükselişini görün."),
+                  title: "پیشرفتت رو ببین",
+                  subtitle: "تسلطت روی هر مبحث رو دنبال کن و رشدت رو تماشا کن."),
         ],
-        skip: "Atla", next: "İleri", getStarted: "Başla",
-        logIn: "Giriş yap", signUp: "Hesap oluştur"
+        skip: "رد کردن", next: "بعدی", getStarted: "شروع کنیم",
+        logIn: "ورود", signUp: "ساخت حساب"
     )
 }

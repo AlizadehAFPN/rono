@@ -234,7 +234,7 @@ export default function ProfilePage() {
                       )}
                     </div>
                   </div>
-                  <div className="sm:text-right">
+                  <div className="sm:text-end">
                     {(() => {
                       const key = interpretTheta(progress.global_theta);
                       const conf = confidenceFromSe(progress.global_theta_se);
@@ -243,7 +243,7 @@ export default function ProfilePage() {
                           <div className="text-base font-semibold">
                             {p.state.ability.interpret[key]}
                           </div>
-                          <p className="mt-0.5 max-w-xs text-xs text-muted-foreground sm:ml-auto">
+                          <p className="mt-0.5 max-w-xs text-xs text-muted-foreground sm:ms-auto">
                             {p.state.ability.interpretHint[key]}
                           </p>
                           <div className="mt-2 sm:flex sm:justify-end">

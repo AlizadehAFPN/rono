@@ -399,8 +399,8 @@ function TopicNode({
       <div className="mb-2 last:mb-0">
         <div
           className={cn(
-            "group flex items-center gap-3 rounded-xl border border-l-4 px-4 py-3.5",
-            "border-orange-200/70 border-l-orange-500 dark:border-orange-800/40",
+            "group flex items-center gap-3 rounded-xl border border-s-4 px-4 py-3.5",
+            "border-orange-200/70 border-s-orange-500 dark:border-orange-800/40",
             "bg-orange-500/[0.06] dark:bg-orange-500/[0.05]",
             "transition-colors hover:bg-orange-500/10 dark:hover:bg-orange-500/[0.08]",
             isMatch && "ring-2 ring-amber-400/40",
@@ -471,7 +471,7 @@ function TopicNode({
         </div>
 
         {expanded && hasChildren && (
-          <div className="ml-7 mt-1.5 space-y-0.5 border-l-2 border-orange-200/50 pb-1 pl-4 dark:border-orange-800/30">
+          <div className="ms-7 mt-1.5 space-y-0.5 border-s-2 border-orange-200/50 pb-1 ps-4 dark:border-orange-800/30">
             {topic.children.map((child) => (
               <TopicNode
                 key={child.id}
@@ -493,30 +493,30 @@ function TopicNode({
   const rowCfg =
     depth === 1
       ? {
-          border: "border-l-4 border-l-blue-400 dark:border-l-blue-500",
+          border: "border-s-4 border-s-blue-400 dark:border-s-blue-500",
           hover: "hover:bg-blue-500/[0.05] dark:hover:bg-blue-500/[0.08]",
-          childLine: "border-l-2 border-blue-200/50 dark:border-blue-800/40",
+          childLine: "border-s-2 border-blue-200/50 dark:border-blue-800/40",
         }
       : depth === 2
         ? {
-            border: "border-l-4 border-l-violet-400 dark:border-l-violet-500",
+            border: "border-s-4 border-s-violet-400 dark:border-s-violet-500",
             hover: "hover:bg-violet-500/[0.05] dark:hover:bg-violet-500/[0.08]",
             childLine:
-              "border-l-2 border-violet-200/50 dark:border-violet-800/40",
+              "border-s-2 border-violet-200/50 dark:border-violet-800/40",
           }
         : {
-            border: "border-l-4 border-l-emerald-400 dark:border-l-emerald-500",
+            border: "border-s-4 border-s-emerald-400 dark:border-s-emerald-500",
             hover:
               "hover:bg-emerald-500/[0.05] dark:hover:bg-emerald-500/[0.08]",
             childLine:
-              "border-l-2 border-emerald-200/50 dark:border-emerald-800/40",
+              "border-s-2 border-emerald-200/50 dark:border-emerald-800/40",
           };
 
   return (
     <div>
       <div
         className={cn(
-          "group flex items-center gap-2.5 rounded-lg py-2.5 pr-2 pl-3",
+          "group flex items-center gap-2.5 rounded-lg py-2.5 pe-2 ps-3",
           "transition-colors duration-100",
           rowCfg.border,
           rowCfg.hover,
@@ -595,7 +595,7 @@ function TopicNode({
       {expanded && hasChildren && (
         <div
           className={cn(
-            "mt-0.5 ml-5 space-y-0.5 pb-0.5 pl-3",
+            "mt-0.5 ms-5 space-y-0.5 pb-0.5 ps-3",
             rowCfg.childLine,
           )}
         >
@@ -826,7 +826,7 @@ function TopicSheet({
                         type="button"
                         onClick={() => handleLevelChange(l)}
                         className={cn(
-                          "flex items-center gap-3 rounded-xl border p-3.5 text-left transition-all duration-150",
+                          "flex items-center gap-3 rounded-xl border p-3.5 text-start transition-all duration-150",
                           isActive
                             ? cn(m.activeBorder, m.activeBg, m.activeRing)
                             : "border-border hover:border-muted-foreground/30 hover:bg-muted/40",
@@ -851,7 +851,7 @@ function TopicSheet({
                   })}
                 </div>
                 {dt.levels[level].hint && (
-                  <p className="pl-0.5 text-[11px] text-muted-foreground/70">
+                  <p className="ps-0.5 text-[11px] text-muted-foreground/70">
                     {dt.sheet.hintPrefix} {dt.levels[level].hint}
                   </p>
                 )}
@@ -1099,7 +1099,7 @@ function TopicSheet({
                                     "pointer-events-none inline-block size-4 rounded-full bg-white shadow-sm",
                                     "transition-transform duration-200",
                                     field.value
-                                      ? "translate-x-4"
+                                      ? "translate-x-4 rtl:-translate-x-4"
                                       : "translate-x-0",
                                   )}
                                 />
@@ -1340,7 +1340,7 @@ export default function TopicsPage() {
                 {[80, 60, 72, 50, 65, 55].map((w, i) => (
                   <div
                     key={i}
-                    className="flex items-center gap-3 rounded-xl border border-l-4 border-muted-foreground/10 px-4 py-3.5"
+                    className="flex items-center gap-3 rounded-xl border border-s-4 border-muted-foreground/10 px-4 py-3.5"
                   >
                     <Skeleton className="size-8 rounded-lg shrink-0" />
                     <Skeleton

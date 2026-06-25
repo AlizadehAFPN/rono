@@ -5,13 +5,13 @@ import { useI18n } from "@/lib/i18n/context";
 
 type PhaseStatus = "complete" | "active" | "upcoming";
 
+// One entry per roadmap phase in the dictionary (t.home.roadmap.phases).
+// Keep this length in sync with that array.
 const PHASE_META: { number: number; status: PhaseStatus }[] = [
-  { number: 0, status: "complete" },
-  { number: 1, status: "active" },
-  { number: 2, status: "upcoming" },
+  { number: 1, status: "complete" },
+  { number: 2, status: "active" },
   { number: 3, status: "upcoming" },
   { number: 4, status: "upcoming" },
-  { number: 5, status: "upcoming" },
 ];
 
 function StatusBadge({ status }: { status: PhaseStatus }) {

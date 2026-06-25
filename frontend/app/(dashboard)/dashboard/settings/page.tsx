@@ -175,7 +175,7 @@ function ThemeSettings() {
 
 function ActiveDot() {
   return (
-    <span className="absolute right-3 top-3 flex size-4 items-center justify-center rounded-full bg-primary">
+    <span className="absolute end-3 top-3 flex size-4 items-center justify-center rounded-full bg-primary">
       <svg className="size-2.5 text-primary-foreground" fill="none" viewBox="0 0 12 12">
         <path
           d="M2 6l3 3 5-5"
@@ -226,7 +226,7 @@ function LanguageSettings() {
                 onClick={() => pick(loc)}
                 disabled={update.isPending}
                 className={cn(
-                  "group relative flex items-center gap-3 rounded-xl border p-4 text-left transition-all duration-150",
+                  "group relative flex items-center gap-3 rounded-xl border p-4 text-start transition-all duration-150",
                   isActive
                     ? "border-primary bg-primary/8 shadow-sm"
                     : "border-border hover:border-muted-foreground/40 hover:bg-muted/40",

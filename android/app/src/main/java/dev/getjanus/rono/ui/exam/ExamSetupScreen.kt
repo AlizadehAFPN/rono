@@ -34,14 +34,14 @@ import dev.getjanus.rono.core.designsystem.theme.Spacing
 import dev.getjanus.rono.ui.navigation.ExamRoute
 
 private val examTypes = listOf(
-    "USMLE Step 1" to "usmle_step1",
-    "USMLE Step 2" to "usmle_step2",
-    "USMLE Step 3" to "usmle_step3",
-    "TUS" to "tus",
+    "دستگاه‌های اجرایی" to "executive",
+    "آموزش و پرورش" to "education",
+    "بانک‌ها" to "bank",
+    "تأمین اجتماعی" to "social_security",
 )
 private val examParts = listOf(
-    "Basic sciences" to "basic_sciences",
-    "Clinical sciences" to "clinical_sciences",
+    "عمومی" to "general",
+    "تخصصی" to "specialized",
 )
 private val countChoices = listOf(20, 40, 100)
 

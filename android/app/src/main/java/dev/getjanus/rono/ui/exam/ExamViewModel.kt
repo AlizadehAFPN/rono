@@ -6,6 +6,7 @@ import androidx.lifecycle.viewModelScope
 import androidx.navigation.toRoute
 import dagger.hilt.android.lifecycle.HiltViewModel
 import dev.getjanus.rono.core.haptics.Haptics
+import dev.getjanus.rono.core.network.MediaUrlResolver
 import dev.getjanus.rono.core.network.ApiException
 import dev.getjanus.rono.data.practice.AnswerResultDto
 import dev.getjanus.rono.data.practice.AnswerSubmitRequest
@@ -48,10 +49,14 @@ data class ExamUiState(
 class ExamViewModel @Inject constructor(
     private val repository: PracticeRepository,
     private val haptics: Haptics,
+    private val mediaUrlResolver: MediaUrlResolver,
     savedStateHandle: SavedStateHandle,
 ) : ViewModel() {
 
     private val route: ExamRoute = savedStateHandle.toRoute()
+
+    /** Resolve a question's (possibly relative) image URL to an absolute one. */
+    fun imageUrl(path: String?): String? = mediaUrlResolver.resolve(path)
     private val _state = MutableStateFlow(ExamUiState(instantFeedback = route.instantFeedback))
     val state: StateFlow<ExamUiState> = _state.asStateFlow()
 

@@ -78,7 +78,7 @@ export default function StudyPage() {
                 {s.stats.progress} · {seen}/{totalQ}
               </p>
             </div>
-            <div className="ml-auto flex gap-3">
+            <div className="ms-auto flex gap-3">
               <HeaderStat
                 icon={<FlameIcon className="size-4" />}
                 value={totalDue}
@@ -99,7 +99,7 @@ export default function StudyPage() {
         {!isLoading && !isError && categories.length > 0 && (
           <button
             onClick={() => router.push("/dashboard/daily")}
-            className="animate-study-fade group flex w-full items-center gap-4 rounded-2xl border bg-card p-5 text-left shadow-xs transition-all hover:-translate-y-0.5 hover:border-muted-foreground/40 hover:shadow-lg"
+            className="animate-study-fade group flex w-full items-center gap-4 rounded-2xl border bg-card p-5 text-start shadow-xs transition-all hover:-translate-y-0.5 hover:border-muted-foreground/40 hover:shadow-lg"
           >
             <span
               className="grid size-12 shrink-0 place-items-center rounded-xl"

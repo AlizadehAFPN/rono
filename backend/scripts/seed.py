@@ -1,16 +1,17 @@
 """
 Idempotent database seed script for development and testing.
 
-Creates:
-  1. Institution  : "Rono Demo University"  (slug: rono-demo)
+Creates (employment-exam demo data):
+  1. Institution  : "آموزشگاه نمونه‌ی رونو"  (slug: rono-demo)
   2. Admin user   : admin@rono-demo.edu     / Admin1234!  (institution_admin)
   3. Instructor   : instructor@rono-demo.edu / Teach1234! (instructor)
   4. Student      : student@rono-demo.edu   / Study1234!  (student)
-  5. Topic tree   : Basic Sciences → Physiology → Cardiovascular Physiology
-                    Basic Sciences → Biochemistry
-                    Clinical Sciences → Cardiology → Heart Failure
-                    Clinical Sciences → Pulmonology
-  6. Items (3)    : 2 published SBA questions + 1 draft
+  5. Topic tree   : زبان و ادبیات فارسی → قرابت معنایی
+                    ریاضی و آمار → درصد و نسبت
+  6. Items (3)    : 2 سؤال فعال (education/general) + 1 پیش‌نویس
+
+For the full national taxonomy (7 general subjects + specialized), run
+scripts/seed_estekhdami_topics.py (make seed-topics).
 
 Idempotency: each entity is inserted only if it does not already exist
 (checked by unique key before inserting). Safe to run multiple times.
@@ -97,7 +98,7 @@ async def _get_or_create_institution(db: AsyncSession) -> Institution:
         return inst
 
     inst = Institution(
-        name="Rono Demo University",
+        name="آموزشگاه نمونه‌ی رونو",
         slug=INSTITUTION_SLUG,
         subscription_tier="pro",
     )
@@ -205,6 +206,8 @@ async def _create_item_if_not_exists(
     explanation: str,
     options: list[dict],
     status: str = "active",
+    exam_type: str | None = None,
+    exam_part: str | None = None,
 ) -> Item | None:
     # Check by content prefix (good-enough for seed idempotency)
     result = await db.execute(
@@ -224,6 +227,9 @@ async def _create_item_if_not_exists(
     item = Item(
         institution_id=institution_id,
         item_type="single_best_answer",
+        exam_type=exam_type,
+        exam_part=exam_part,
+        language="fa",
         status=status,
         created_by_id=created_by_id,
     )
@@ -291,7 +297,7 @@ async def seed(db: AsyncSession) -> None:
     await _get_or_create_user(
         db,
         ADMIN_EMAIL,
-        "Dr. Shila Vardini",
+        "زهرا محمدی",
         "Admin1234!",
         institution,
         "institution_admin",
@@ -299,7 +305,7 @@ async def seed(db: AsyncSession) -> None:
     instructor = await _get_or_create_user(
         db,
         INSTRUCTOR_EMAIL,
-        "Prof. Sam Rivera",
+        "علی رضایی",
         "Teach1234!",
         institution,
         "instructor",
@@ -307,85 +313,42 @@ async def seed(db: AsyncSession) -> None:
     await _get_or_create_user(
         db,
         STUDENT_EMAIL,
-        "Jordan Lee",
+        "نگار احمدی",
         "Study1234!",
         institution,
         "student",
     )
 
-    # 3. Topic tree
-    basic = await _get_or_create_topic(
-        db, "Basic Sciences", "basic-sciences", institution.id, instructor.id
+    # 3. Topic tree (demo, institution-scoped, 2 levels: درس → مبحث)
+    persian = await _get_or_create_topic(
+        db, "زبان و ادبیات فارسی", "demo-persian", institution.id, instructor.id
     )
-    physiology = await _get_or_create_topic(
-        db, "Physiology", "physiology", institution.id, instructor.id, parent=basic
+    qarabat = await _get_or_create_topic(
+        db, "قرابت معنایی", "demo-persian-qarabat", institution.id, instructor.id, parent=persian
     )
-    cardio_phys = await _get_or_create_topic(
-        db,
-        "Cardiovascular Physiology",
-        "cardiovascular-physiology",
-        institution.id,
-        instructor.id,
-        parent=physiology,
+    math = await _get_or_create_topic(
+        db, "ریاضی و آمار", "demo-math", institution.id, instructor.id
     )
-    await _get_or_create_topic(
-        db, "Biochemistry", "biochemistry", institution.id, instructor.id, parent=basic
+    percent = await _get_or_create_topic(
+        db, "درصد و نسبت", "demo-math-percent", institution.id, instructor.id, parent=math
     )
 
-    clinical = await _get_or_create_topic(
-        db, "Clinical Sciences", "clinical-sciences", institution.id, instructor.id
-    )
-    cardiology = await _get_or_create_topic(
-        db, "Cardiology", "cardiology", institution.id, instructor.id, parent=clinical
-    )
-    heart_failure = await _get_or_create_topic(
-        db, "Heart Failure", "heart-failure", institution.id, instructor.id, parent=cardiology
-    )
-    await _get_or_create_topic(
-        db, "Pulmonology", "pulmonology", institution.id, instructor.id, parent=clinical
-    )
-
-    # 4. Sample items
+    # 4. Sample items (employment exam — education / general)
     await _create_item_if_not_exists(
         db,
         institution_id=institution.id,
         created_by_id=instructor.id,
-        topic=cardio_phys,
-        question_content=(
-            "The Frank-Starling mechanism states that the heart will pump out "
-            "a greater volume of blood when which of the following occurs?"
-        ),
-        explanation=(
-            "The Frank-Starling mechanism describes the relationship between "
-            "end-diastolic volume (EDV) and stroke volume. As venous return increases, "
-            "EDV increases, stretching the myocardial fibers and increasing the force of "
-            "contraction — resulting in a larger stroke volume."
-        ),
+        topic=qarabat,
+        exam_type="education",
+        exam_part="general",
+        question_content="کدام واژه با «سعی» قرابت معنایی دارد؟",
+        explanation="«سعی» به معنای تلاش و کوشش است؛ پس «کوشش» نزدیک‌ترین معنا را دارد.",
         options=[
-            {
-                "key": "A",
-                "content": "Heart rate increases",
-                "is_correct": False,
-                "explanation": "Heart rate is not the primary driver of this mechanism.",
-            },
-            {
-                "key": "B",
-                "content": "Venous return to the heart increases",
-                "is_correct": True,
-                "explanation": "Increased venous return → increased EDV → increased stretch → increased stroke volume.",
-            },
-            {
-                "key": "C",
-                "content": "Systemic vascular resistance decreases",
-                "is_correct": False,
-                "explanation": "SVR affects afterload, not preload (which drives the Frank-Starling mechanism).",
-            },
-            {
-                "key": "D",
-                "content": "Sympathetic tone decreases",
-                "is_correct": False,
-                "explanation": "Decreased sympathetic tone would reduce contractility, the opposite effect.",
-            },
+            {"key": "A", "content": "خواهش", "is_correct": False},
+            {"key": "B", "content": "کوشش", "is_correct": True,
+             "explanation": "کوشش = تلاش = سعی."},
+            {"key": "C", "content": "آرامش", "is_correct": False},
+            {"key": "D", "content": "دانش", "is_correct": False},
         ],
         status="active",
     )
@@ -394,42 +357,17 @@ async def seed(db: AsyncSession) -> None:
         db,
         institution_id=institution.id,
         created_by_id=instructor.id,
-        topic=heart_failure,
-        question_content=(
-            "A 68-year-old man with a history of ischemic cardiomyopathy presents with "
-            "progressive dyspnea on exertion, orthopnea, and bilateral pitting edema to the knees. "
-            "His ejection fraction is 30%. Which of the following best explains his edema?"
-        ),
-        explanation=(
-            "In HFrEF, reduced cardiac output leads to decreased renal perfusion, "
-            "activating the renin-angiotensin-aldosterone system (RAAS). Aldosterone causes "
-            "sodium and water retention, increasing venous pressure and causing peripheral edema."
-        ),
+        topic=percent,
+        exam_type="education",
+        exam_part="general",
+        question_content="۱۵٪ از عدد ۲۴۰ چند است؟",
+        explanation="۲۴۰ × ۰٫۱۵ = ۳۶.",
         options=[
-            {
-                "key": "A",
-                "content": "Decreased oncotic pressure due to hypoalbuminemia",
-                "is_correct": False,
-                "explanation": "While hypoalbuminemia can cause edema, it is not the primary mechanism in HFrEF.",
-            },
-            {
-                "key": "B",
-                "content": "Activation of RAAS leading to sodium and water retention",
-                "is_correct": True,
-                "explanation": "Reduced CO → decreased renal perfusion → RAAS activation → Na+/H2O retention → edema.",
-            },
-            {
-                "key": "C",
-                "content": "Increased capillary permeability from inflammatory cytokines",
-                "is_correct": False,
-                "explanation": "This mechanism is more relevant to distributive states such as sepsis.",
-            },
-            {
-                "key": "D",
-                "content": "Lymphatic obstruction due to venous congestion",
-                "is_correct": False,
-                "explanation": "Lymphatic obstruction is not the primary cause in this scenario.",
-            },
+            {"key": "A", "content": "۳۰", "is_correct": False},
+            {"key": "B", "content": "۳۶", "is_correct": True,
+             "explanation": "۱۵ درصد از ۲۴۰ می‌شود ۳۶."},
+            {"key": "C", "content": "۴۰", "is_correct": False},
+            {"key": "D", "content": "۲۴", "is_correct": False},
         ],
         status="active",
     )
@@ -438,26 +376,17 @@ async def seed(db: AsyncSession) -> None:
         db,
         institution_id=institution.id,
         created_by_id=instructor.id,
-        topic=cardio_phys,
-        question_content=(
-            "Which of the following is the primary determinant of myocardial oxygen demand?"
-        ),
-        explanation=(
-            "Myocardial oxygen demand (MVO2) is primarily determined by heart rate, "
-            "contractility, and wall stress (related to afterload and preload). "
-            "Heart rate has the greatest single impact because it determines both the "
-            "rate of work and the rate of ATP consumption."
-        ),
+        topic=percent,
+        exam_type="education",
+        exam_part="general",
+        question_content="میانگین چهار عدد ۱۰، ۲۰، ۳۰ و ۴۰ چند است؟",
+        explanation="مجموع = ۱۰۰؛ میانگین = ۱۰۰ ÷ ۴ = ۲۵.",
         options=[
-            {"key": "A", "content": "Preload", "is_correct": False},
-            {
-                "key": "B",
-                "content": "Heart rate × systolic blood pressure (rate-pressure product)",
-                "is_correct": True,
-                "explanation": "The double product (HR × SBP) is the best bedside estimate of MVO2.",
-            },
-            {"key": "C", "content": "Diastolic filling time", "is_correct": False},
-            {"key": "D", "content": "Pulmonary capillary wedge pressure", "is_correct": False},
+            {"key": "A", "content": "۲۰", "is_correct": False},
+            {"key": "B", "content": "۲۵", "is_correct": True,
+             "explanation": "مجموع چهار عدد ۱۰۰ است و تقسیم بر ۴ می‌شود ۲۵."},
+            {"key": "C", "content": "۳۰", "is_correct": False},
+            {"key": "D", "content": "۱۵", "is_correct": False},
         ],
         status="draft",
     )

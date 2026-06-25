@@ -4,10 +4,10 @@ import type { MetadataRoute } from "next";
 // Android (Chrome shows an install prompt) and iOS (Share → Add to Home Screen).
 export default function manifest(): MetadataRoute.Manifest {
   return {
-    name: "Rono — Adaptive Learning",
-    short_name: "Rono",
+    name: "رونو — آمادگی آزمون استخدامی",
+    short_name: "رونو",
     description:
-      "Adaptive medical education that personalizes to every learner in real time.",
+      "سؤال‌های اصلِ آزمون‌های استخدامیِ سال‌های قبل را بخوان و مرور کن تا روزِ آزمون چیزی یادت نرود.",
     // The PWA is the web *app*, not the marketing site: launch straight into
     // the dashboard (which routes to /login when unauthenticated). Scope stays
     // at "/" so /login and /signup remain in-app navigations.

@@ -9,7 +9,8 @@ import java.util.Locale
 import kotlin.math.abs
 import kotlin.math.roundToInt
 
-/** Ability θ, e.g. "0.45" or "+0.23" (signed). */
+/** Ability θ, e.g. "0.45" or "+0.23" (signed). Internal/debug only — never shown
+ *  to the user; the UI displays [readinessPercent] instead. */
 fun formatTheta(theta: Double?, signed: Boolean = false): String {
     if (theta == null) return "—"
     val v = (theta * 100).roundToInt() / 100.0
@@ -20,6 +21,20 @@ fun formatTheta(theta: Double?, signed: Boolean = false): String {
         v < 0 -> "-$s"
         else -> "0.00"
     }
+}
+
+/** Plain readiness % shown to users — maps the skill estimate (~[-3, 3]) to
+ *  0–100% so no raw figure or technical symbol ever appears. e.g. "65%". */
+fun readinessPercent(theta: Double?): String {
+    if (theta == null) return "—"
+    return "${(((theta + 3) / 6).coerceIn(0.0, 1.0) * 100).roundToInt()}%"
+}
+
+/** Signed readiness change in points, e.g. "+8" / "-3". */
+fun readinessDelta(deltaTheta: Double?): String {
+    if (deltaTheta == null) return "—"
+    val pts = (deltaTheta / 6 * 100).roundToInt()
+    return if (pts >= 0) "+$pts" else "$pts"
 }
 
 /** Accuracy fraction (0..1) → integer percent, e.g. "82%". */

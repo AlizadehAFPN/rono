@@ -55,27 +55,27 @@ struct SessionsView: View {
     private func row(_ session: DeviceSession) -> some View {
         HStack(spacing: 12) {
             Image(systemName: deviceIcon(session.userAgent))
-                .font(.title3)
+                .font(.vTitle3)
                 .foregroundStyle(session.isCurrent ? Palette.primary : Palette.mutedForeground)
                 .frame(width: 28)
             VStack(alignment: .leading, spacing: 3) {
                 HStack(spacing: 6) {
                     Text(deviceName(session.userAgent))
-                        .font(.subheadline.weight(.medium))
+                        .font(.vSubheadline.weight(.medium))
                         .foregroundStyle(Palette.foreground)
                     if session.isCurrent {
                         Text(s.current)
-                            .font(.caption2.weight(.bold))
+                            .font(.vCaption2.weight(.bold))
                             .foregroundStyle(Palette.primary)
                             .padding(.horizontal, 6).padding(.vertical, 2)
                             .background(Palette.primary.opacity(0.15), in: Capsule())
                     }
                 }
                 Text("\(s.signedIn): \(session.createdAt.formatted(.relative(presentation: .named)))")
-                    .font(.caption)
+                    .font(.vCaption)
                     .foregroundStyle(Palette.mutedForeground)
                 if let ip = session.ipAddress {
-                    Text(ip).font(.caption2).foregroundStyle(Palette.mutedForeground)
+                    Text(ip).font(.vCaption2).foregroundStyle(Palette.mutedForeground)
                 }
             }
             Spacer()

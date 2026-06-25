@@ -1,0 +1,496 @@
+<title>رونو — گزارش بازار و نقشه‌راه آزمون استخدامی</title>
+<style>
+  :root {
+    --ground: #EAEDF3;
+    --paper: #FFFFFF;
+    --ink: #14181F;
+    --muted: #56616F;
+    --hair: #D3D9E2;
+    --accent: #6D28D9;       /* Rono violet */
+    --accent-soft: #F2EBFD;
+    --good: #047857;         /* تأییدشده */
+    --good-soft: #E4F2EC;
+    --warn: #B45309;         /* تأییدنشده */
+    --warn-soft: #FBF0DF;
+    --pain: #B42318;         /* درد / شکاف */
+    --pain-soft: #FBE9E7;
+    --sheet: #20283A;        /* answer-sheet ink panel */
+    --maxw: 1080px;
+    --fa: "Vazirmatn", "Vazir", "IRANSans", "Tahoma", "Geeza Pro", system-ui, sans-serif;
+    --mono: "SF Mono", "JetBrains Mono", ui-monospace, "Menlo", monospace;
+  }
+
+  * { box-sizing: border-box; }
+
+  body {
+    margin: 0;
+    background: var(--ground);
+    color: var(--ink);
+    font-family: var(--fa);
+    line-height: 1.85;
+    direction: rtl;
+    text-align: right;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .wrap { max-width: var(--maxw); margin: 0 auto; padding: 0 20px; }
+
+  /* ── Hero ───────────────────────────────────────────── */
+  .hero {
+    background:
+      radial-gradient(120% 120% at 85% -10%, rgba(109,40,217,.18), transparent 55%),
+      linear-gradient(180deg, #1A2030 0%, #20283A 100%);
+    color: #F3F5FA;
+    padding: 64px 0 56px;
+    border-bottom: 3px solid var(--accent);
+  }
+  .hero .wrap { display: flex; flex-direction: column; gap: 22px; }
+  .kicker {
+    font-family: var(--mono);
+    font-size: 12px; letter-spacing: .18em;
+    color: #B79CF5; text-transform: uppercase;
+    display: flex; align-items: center; gap: 10px; direction: ltr; justify-content: flex-end;
+  }
+  .kicker .logo {
+    width: 22px; height: 22px; border-radius: 6px;
+    background: linear-gradient(145deg,#9B6BFF,#6D28D9);
+    display: inline-block;
+  }
+  .hero h1 {
+    font-size: clamp(30px, 5vw, 52px);
+    line-height: 1.25; margin: 0; font-weight: 800; letter-spacing: -.01em;
+    max-width: 18ch;
+  }
+  .hero h1 .hl { color: #C9B2FF; }
+  .hero .lede {
+    font-size: clamp(16px, 2.1vw, 20px);
+    color: #C4CCDA; margin: 0; max-width: 62ch; font-weight: 300;
+  }
+  .hero .metrics {
+    display: flex; flex-wrap: wrap; gap: 12px; margin-top: 8px;
+  }
+  .chip {
+    background: rgba(255,255,255,.06); border: 1px solid rgba(255,255,255,.14);
+    border-radius: 999px; padding: 7px 15px; font-size: 13px; color: #D8DEEA;
+  }
+  .chip b { color: #fff; font-weight: 700; }
+
+  /* ── generic section ────────────────────────────────── */
+  main { padding: 8px 0 60px; }
+  section { padding: 44px 0 8px; }
+  .sec-head { display: flex; align-items: flex-start; gap: 18px; margin-bottom: 26px; }
+  .bubble {
+    flex: none; width: 52px; height: 52px; border-radius: 50%;
+    background: var(--sheet); color: #fff; font-weight: 800; font-size: 22px;
+    display: grid; place-items: center; position: relative;
+    box-shadow: 0 0 0 4px var(--ground), 0 0 0 5px var(--hair);
+  }
+  .bubble.v { background: var(--accent); }
+  .sec-head h2 { font-size: clamp(22px, 3vw, 30px); margin: 2px 0 4px; font-weight: 800; letter-spacing: -.01em; }
+  .sec-head p { margin: 0; color: var(--muted); font-size: 15px; max-width: 70ch; }
+
+  /* ── cards ──────────────────────────────────────────── */
+  .grid { display: grid; gap: 16px; }
+  .g2 { grid-template-columns: repeat(2, 1fr); }
+  .g3 { grid-template-columns: repeat(3, 1fr); }
+  @media (max-width: 760px) { .g2, .g3 { grid-template-columns: 1fr; } }
+
+  .card {
+    background: var(--paper); border: 1px solid var(--hair);
+    border-radius: 14px; padding: 20px 20px 18px;
+  }
+  .card h3 { margin: 0 0 4px; font-size: 17px; font-weight: 800; display:flex; align-items:center; gap:8px; flex-wrap:wrap; }
+  .card .url { font-family: var(--mono); font-size: 11.5px; color: var(--accent); direction: ltr; unicode-bidi: embed; }
+  .card ul { margin: 10px 0 0; padding: 0 18px 0 0; }
+  .card li { margin: 4px 0; font-size: 14.5px; }
+  .card .price { margin-top: 10px; font-size: 13px; color: var(--muted); }
+  .card .price b { color: var(--ink); }
+
+  /* ── badges ─────────────────────────────────────────── */
+  .badge {
+    font-family: var(--mono); font-size: 10.5px; font-weight: 700;
+    padding: 2px 8px; border-radius: 6px; letter-spacing: .02em; white-space: nowrap;
+    direction: rtl;
+  }
+  .b-good { background: var(--good-soft); color: var(--good); }
+  .b-warn { background: var(--warn-soft); color: var(--warn); }
+  .b-rec  { background: var(--accent-soft); color: var(--accent); }
+  .b-pain { background: var(--pain-soft); color: var(--pain); }
+
+  /* ── pain / gap list ────────────────────────────────── */
+  .stack { display: flex; flex-direction: column; gap: 10px; }
+  .row {
+    background: var(--paper); border: 1px solid var(--hair); border-radius: 12px;
+    padding: 14px 16px; display: flex; gap: 14px; align-items: flex-start;
+  }
+  .row .dot { flex:none; width: 9px; height: 9px; border-radius: 50%; margin-top: 9px; background: var(--accent); }
+  .row.pain .dot { background: var(--pain); }
+  .row .body { flex: 1; }
+  .row .body b { font-weight: 800; }
+  .row .body span { color: var(--muted); font-size: 14px; }
+
+  /* ── gap highlight ──────────────────────────────────── */
+  .gap {
+    background: linear-gradient(180deg, #FBF7FF, #F4ECFE);
+    border: 1px solid #E0CEFB; border-right: 4px solid var(--accent);
+    border-radius: 14px; padding: 22px 24px; margin-top: 4px;
+  }
+  .gap h3 { margin: 0 0 8px; font-size: 19px; font-weight: 800; color: #4C1D95; }
+  .gap p { margin: 0; font-size: 15.5px; }
+
+  /* ── messaging samples ──────────────────────────────── */
+  .quote {
+    background: var(--sheet); color: #Eef; border-radius: 14px; padding: 18px 20px;
+    font-size: 16px; font-weight: 500; line-height: 1.9; position: relative;
+  }
+  .quote::before {
+    content: "«"; color: var(--accent); font-size: 40px; font-weight: 800;
+    position: absolute; top: 2px; left: 14px; opacity: .6;
+  }
+  .quote small { display:block; margin-top: 8px; color: #93A0B5; font-size: 12px; font-weight: 400; font-family: var(--mono); direction: ltr; text-align:left; }
+
+  /* ── roadmap timeline ───────────────────────────────── */
+  .phase { display: flex; gap: 16px; }
+  .phase .rail { flex: none; display: flex; flex-direction: column; align-items: center; }
+  .phase .pn {
+    width: 40px; height: 40px; border-radius: 10px; background: var(--accent); color: #fff;
+    font-weight: 800; display: grid; place-items: center; font-size: 15px;
+  }
+  .phase .line { width: 2px; flex: 1; background: var(--hair); margin: 6px 0; }
+  .phase:last-child .line { display: none; }
+  .phase .content { padding-bottom: 22px; flex: 1; }
+  .phase .content h3 { margin: 6px 0 2px; font-size: 18px; font-weight: 800; }
+  .phase .tag { font-family: var(--mono); font-size: 11px; color: var(--muted); }
+  .phase .content p { margin: 8px 0 0; font-size: 14.5px; color: #2C333E; }
+
+  /* ── table (mapping & curriculum) ───────────────────── */
+  .tbl { width: 100%; border-collapse: collapse; background: var(--paper); border-radius: 12px; overflow: hidden; border: 1px solid var(--hair); font-size: 14.5px; }
+  .tbl th, .tbl td { padding: 11px 14px; text-align: right; border-bottom: 1px solid var(--hair); }
+  .tbl th { background: #F3F5F9; font-weight: 800; font-size: 13px; color: #2C333E; }
+  .tbl tr:last-child td { border-bottom: none; }
+  .tbl td code { font-family: var(--mono); font-size: 12.5px; color: var(--accent); direction: ltr; unicode-bidi: embed; display: inline-block; }
+  .scroll-x { overflow-x: auto; }
+
+  /* ── code-ish data model ────────────────────────────── */
+  .tree {
+    background: var(--sheet); color: #D6DEEC; border-radius: 12px; padding: 18px 22px;
+    font-family: var(--mono); font-size: 13.5px; line-height: 2; direction: ltr; text-align: left;
+    overflow-x: auto;
+  }
+  .tree .k { color: #B79CF5; }
+  .tree .c { color: #6FB7A0; }
+
+  .pills { display: flex; flex-wrap: wrap; gap: 8px; }
+  .pill { background: var(--paper); border: 1px solid var(--hair); border-radius: 999px; padding: 6px 13px; font-size: 13.5px; }
+  .pill.core { border-color: var(--accent); color: var(--accent); font-weight: 700; }
+
+  .note {
+    background: var(--warn-soft); border: 1px solid #F0DCB8; border-radius: 12px;
+    padding: 14px 16px; font-size: 13.5px; color: #6B4310; margin-top: 18px;
+  }
+  .note b { color: #5A3608; }
+
+  /* ── sources ────────────────────────────────────────── */
+  .src { font-size: 13px; color: var(--muted); }
+  .src ol { padding: 0 20px 0 0; margin: 8px 0 0; }
+  .src li { margin: 5px 0; word-break: break-all; }
+  .src a { color: var(--accent); direction: ltr; unicode-bidi: embed; }
+
+  footer { padding: 30px 0 50px; color: var(--muted); font-size: 12.5px; text-align: center; }
+
+  a { color: var(--accent); }
+  :focus-visible { outline: 3px solid #9B6BFF; outline-offset: 2px; border-radius: 4px; }
+  @media (prefers-reduced-motion: no-preference) {
+    .bubble, .pn { transition: transform .2s ease; }
+  }
+  .eyebrow { font-family: var(--mono); font-size: 12px; letter-spacing: .12em; color: var(--accent); text-transform: uppercase; direction: ltr; text-align: right; margin-bottom: 6px; }
+</style>
+
+<header class="hero">
+  <div class="wrap">
+    <div class="kicker"><span>RONO · PRODUCT STRATEGY</span><span class="logo"></span></div>
+    <h1>رقبا فایل و آزمونِ یک‌بار‌مصرف می‌فروشند. <span class="hl">رونو می‌تواند «مرور تا یادگیری» بفروشد.</span></h1>
+    <p class="lede">
+      گزارش بازار و نقشه‌راه تبدیل رونو به سیستم یادگیری و مرور سؤالات آزمون‌های استخدامی پرمخاطب ایران
+      (دستگاه‌های اجرایی، آموزش و پرورش، بانک‌ها، تأمین اجتماعی). یافته‌ی محوری: تقریباً همه‌ی رقبا یا
+      «دانلودِ سؤال» می‌دهند یا «آزمون آزمایشیِ تکی»؛ هیچ‌کدام تا تثبیتِ کامل در ذهنِ داوطلب با او نمی‌مانند —
+      و این دقیقاً همان چیزی است که موتورِ فعلیِ رونو از قبل دارد.
+    </p>
+    <div class="metrics">
+      <span class="chip">۲۰ منبع بررسی‌شده</span>
+      <span class="chip"><b>۱۲</b> ادعای تأییدشده (رأی ۳ از ۳)</span>
+      <span class="chip"><b>۴</b> رقیب اصلی</span>
+      <span class="chip"><b>۷</b> درس عمومی مشترک</span>
+      <span class="chip">۴ آزمون هدف</span>
+    </div>
+  </div>
+</header>
+
+<main class="wrap">
+
+  <!-- AXIS الف -->
+  <section>
+    <div class="sec-head">
+      <div class="bubble">الف</div>
+      <div>
+        <div class="eyebrow">AXIS 01 — MARKET</div>
+        <h2>بازار و رقبا</h2>
+        <p>چهار بازیگر اصلیِ تأییدشده با منبع. الگوی غالب بازار: «فروش فایل/جزوه» یا «آزمون آنلاین رایگانِ تکی». تجربه‌ی مرورِ هدایت‌شده و شخصی تقریباً غایب است.</p>
+      </div>
+    </div>
+
+    <div class="grid g2">
+      <div class="card">
+        <h3>ایران استخدام <span class="badge b-good">مستند</span></h3>
+        <div class="url">iranestekhdam.ir</div>
+        <ul>
+          <li>قدیمی‌ترین و باسابقه‌ترین سایت آگهی استخدام (از ۱۳۹۱).</li>
+          <li>فروشگاه فایل و کتاب استخدامی + جزوات و سؤالات (رایگان و پولی).</li>
+          <li>بسته‌های «اصل سؤالات» آزمون فراگیر و سایر آزمون‌ها.</li>
+        </ul>
+        <div class="price"><b>مدل درآمد:</b> ترکیبی — آگهی + فروش فایل/کتاب (تک‌خرید).</div>
+      </div>
+
+      <div class="card">
+        <h3>ای استخدام <span class="badge b-good">مستند</span></h3>
+        <div class="url">e-estekhdam.com</div>
+        <ul>
+          <li>سبد متنوع: نمونه سؤالات، دفترچه شبیه‌ساز، اصل سؤالات، درسنامه، کتاب جامع، سؤالات مصاحبه.</li>
+          <li>بسته PDF اصل سؤالات سازمان سنجش: بیش از ۲۵۰۰ سؤال، سال‌های ۱۳۹۳ تا ۱۴۰۱.</li>
+          <li>تحویل فایل PDF از طریق ایمیل پس از خرید.</li>
+        </ul>
+        <div class="price"><b>مدل درآمد:</b> فروش بسته‌های محتوا (تک‌خرید/فایل).</div>
+      </div>
+
+      <div class="card">
+        <h3>سامانه آزمون آنلاین <span class="badge b-good">مستند</span></h3>
+        <div class="url">online-azmoon.ir</div>
+        <ul>
+          <li>آزمون‌های آنلاینِ زمان‌دار و واقعی (شبیه‌سازی شرایط روزِ آزمون).</li>
+          <li>پاسخ تشریحی برای سؤالات.</li>
+          <li>پوشش آزمون‌های سازمان‌ها و نهادها و بانک‌ها.</li>
+        </ul>
+        <div class="price"><b>نقطه‌قوت:</b> تجربه‌ی آزمونِ شبیه‌سازی‌شده + پاسخ تشریحی.</div>
+      </div>
+
+      <div class="card">
+        <h3>چهار جواب <span class="badge b-good">مستند</span></h3>
+        <div class="url">4javab.ir</div>
+        <ul>
+          <li>آزمون آنلاین استخدامی، پوشش آموزش و پرورش، فراگیر، تأمین اجتماعی و بانک‌ها.</li>
+          <li>تأکید بازاریابی: «تمامی سؤالات اصل سؤالات است» (نه سؤالِ ساختگی).</li>
+          <li>کاملاً رایگان — تمایزش از رقبای پولی.</li>
+        </ul>
+        <div class="price"><b>مدل درآمد:</b> رایگان (احتمالاً تبلیغاتی).</div>
+      </div>
+    </div>
+
+    <div class="gap">
+      <h3>شکاف بازار = فرصت رونو</h3>
+      <p>
+        رقبا محتوای <b>ایستا</b> می‌دهند: فایل را دانلود کن و خودت بخوان، یا یک آزمون بده و کارنامه بگیر. هیچ‌کدام
+        نمی‌فهمند کاربر کدام سؤال را بلد است و کدام را نه، و <b>خودشان زمان‌بندیِ مرور را تا تثبیتِ کامل مدیریت نمی‌کنند</b>.
+        دقیقاً همین‌جاست که رونو برنده می‌شود: موتورِ تطبیقی + مرورِ تکرارشونده‌ی رونو می‌تواند سؤالِ ضعیف‌تر را بیشتر و
+        سؤالِ مسلط‌شده را کمتر تکرار کند — بدون اینکه کاربر اصلاً بفهمد پشت‌صحنه چه خبر است.
+      </p>
+    </div>
+  </section>
+
+  <!-- AXIS ب -->
+  <section>
+    <div class="sec-head">
+      <div class="bubble">ب</div>
+      <div>
+        <div class="eyebrow">AXIS 02 — CANDIDATES</div>
+        <h2>رفتار و نیاز داوطلب‌ها</h2>
+        <p>آماده‌سازیِ موفق سه پایه دارد <span class="badge b-good">مستند</span>: مطالعه‌ی دروس عمومی، منابع تخصصی، و <b>تست‌زنیِ سؤالات سال‌های قبل</b>. تست‌زنی صراحتاً به‌عنوان توصیه‌ی پذیرفته‌شدگان آمده است.</p>
+      </div>
+    </div>
+
+    <div class="stack">
+      <div class="row pain"><span class="dot"></span><div class="body"><b>حجم زیاد و پراکندگیِ منابع.</b> <span>داوطلب نمی‌داند از کجا شروع کند و چه چیزی مهم‌تر است. <span class="badge b-rec">تحلیل</span></span></div></div>
+      <div class="row pain"><span class="dot"></span><div class="body"><b>فراموشی.</b> <span>چیزی که این هفته خوانده شده، تا روز آزمون فراموش می‌شود؛ مرورِ منظم وجود ندارد. <span class="badge b-rec">تحلیل</span></span></div></div>
+      <div class="row pain"><span class="dot"></span><div class="body"><b>دسترسیِ نامرتب به سؤالات سال‌های قبل.</b> <span>سؤالات اصل ارزشمندند ولی پراکنده‌اند و دسته‌بندیِ مبحثی ندارند. <span class="badge b-rec">تحلیل</span></span></div></div>
+      <div class="row pain"><span class="dot"></span><div class="body"><b>«نمی‌دانم چقدر آماده‌ام».</b> <span>نبودِ بازخوردِ روشن از سطح آمادگی، اضطراب‌آور است. <span class="badge b-rec">تحلیل</span></span></div></div>
+    </div>
+
+    <div class="grid g3" style="margin-top:16px">
+      <div class="card"><h3>چه چیزی برایشان مهم است؟</h3><ul><li><b>اصل بودن</b> سؤالات</li><li>رایگان یا کم‌هزینه</li><li>پاسخ تشریحیِ روشن</li><li>ساده و موبایلی</li></ul></div>
+      <div class="card"><h3>چه پیامی جذاب است؟</h3><ul><li>وعده‌ی ملموس و قابل‌باور</li><li>«اصل سؤالات سال‌های قبل»</li><li>«رایگان شروع کن»</li><li>بدون اصطلاحِ پیچیده</li></ul></div>
+      <div class="card"><h3>چه چیزی دفعشان می‌کند؟</h3><ul><li>ادعای بزرگ و مبهم</li><li>اصطلاحِ فنی و گنگ</li><li>ثبت‌نامِ سخت و طولانی</li><li>هزینه‌ی بالای اولیه</li></ul></div>
+    </div>
+  </section>
+
+  <!-- AXIS ج -->
+  <section>
+    <div class="sec-head">
+      <div class="bubble v">ج</div>
+      <div>
+        <div class="eyebrow">AXIS 03 — FEATURES &amp; COPY</div>
+        <h2>ویژگی‌ها و پیام‌رسانی</h2>
+        <p>قابلیت‌هایی که بیشترین کمک را می‌کنند، به‌اضافه‌ی متنِ آماده‌ی استفاده. <b>قانون طلایی:</b> پشت‌صحنه هوشمند، رویِ صحنه ساده. صفر اصطلاح فنی.</p>
+      </div>
+    </div>
+
+    <div class="grid g3" style="margin-bottom:20px">
+      <div class="card"><h3>بانک سؤالِ اصل</h3><ul><li>سؤالات واقعیِ سال‌های قبل</li><li>دسته‌بندیِ مبحثی</li><li>پاسخ تشریحی</li></ul></div>
+      <div class="card"><h3>مرور تا یادگیری</h3><ul><li>سؤالِ سخت‌تر، بیشتر تکرار می‌شود</li><li>یادآورِ روزانه</li><li>«تا مالِ خودت شود»</li></ul></div>
+      <div class="card"><h3>آزمون آزمایشی</h3><ul><li>زمان‌دار، شبیه روز آزمون</li><li>کارنامه‌ی فوری</li><li>نقاط ضعف مشخص می‌شود</li></ul></div>
+    </div>
+
+    <div class="eyebrow">نمونه‌متن‌های آماده — با لحن ساده و عامیانه</div>
+    <div class="grid g2">
+      <div class="quote">سؤال‌های آزمون‌های قبلی رو بخون و اون‌قدر مرور کن تا همه‌شون مالِ خودت بشه.<small>HERO HEADLINE</small></div>
+      <div class="quote">هر روز چند سؤال؛ خودمون یادت می‌ندازیم چی رو کِی مرور کنی تا یادت نره.<small>ONBOARDING / REMINDER</small></div>
+      <div class="quote">سؤالی که یه بار اشتباه زدی، بیشتر برات میاد بالا تا کامل یادش بگیری.<small>REVIEW MODE — explains repetition simply</small></div>
+      <div class="quote">آزمونِ آزمایشی درست مثل روزِ امتحان؛ ببین الان چند می‌شی.<small>MOCK TEST CTA</small></div>
+      <div class="quote">خودت می‌بینی کدوم مبحث‌ها رو خوب بلدی و کجا باید بیشتر کار کنی.<small>PROGRESS / CARNAMEH</small></div>
+      <div class="quote">رایگان شروع کن — سؤال‌های اصلِ سال‌های قبل، همین حالا.<small>PRIMARY CTA</small></div>
+    </div>
+
+    <div class="note">
+      <b>یادداشتِ پیام‌رسانی:</b> هرجا خواستی «هوشمندیِ» سیستم را بگویی، آن را با منفعتِ ساده جایگزین کن. ❌ «الگوریتم تکرار فاصله‌دار / منحنی فراموشی» ← ✅ «سؤالِ سخت‌تر را بیشتر بهت نشون می‌دیم تا یادت نره». کاربر فقط نتیجه را می‌بیند، نه نامِ روش را.
+    </div>
+  </section>
+
+  <!-- AXIS د -->
+  <section>
+    <div class="sec-head">
+      <div class="bubble">د</div>
+      <div>
+        <div class="eyebrow">AXIS 04 — CONTENT</div>
+        <h2>ساختار محتوا و منابع سؤال</h2>
+        <p>دروسِ عمومی بینِ هر چهار آزمون <b>مشترک</b> است — پس بیشترین بازده با کم‌ترین محتوا. منابعِ سؤالِ سال‌های قبل هم مشخص‌اند.</p>
+      </div>
+    </div>
+
+    <div class="grid g2">
+      <div class="card">
+        <h3>دروس عمومیِ مشترک (هفت‌گانه) <span class="badge b-good">مستند</span></h3>
+        <div class="pills" style="margin-top:12px">
+          <span class="pill core">زبان و ادبیات فارسی</span>
+          <span class="pill core">معارف اسلامی</span>
+          <span class="pill core">زبان انگلیسی</span>
+          <span class="pill core">ریاضی و آمار مقدماتی</span>
+          <span class="pill core">مهارت‌های کامپیوتر (ICDL)</span>
+          <span class="pill core">اطلاعات عمومی و اجتماعی</span>
+          <span class="pill core">هوش و استعداد</span>
+          <span class="pill">قانون اساسی / قوانین اداری *</span>
+        </div>
+        <div class="price" style="margin-top:14px">* در آزمون فراگیر دستگاه‌های اجرایی معمولاً اضافه می‌شود. <span class="badge b-warn">تأییدنشده</span></div>
+      </div>
+
+      <div class="card">
+        <h3>منابعِ سؤالاتِ سال‌های قبل</h3>
+        <ul>
+          <li>دفترچه‌های رسمیِ سازمان سنجش (اصل سؤالات).</li>
+          <li>بسته‌های PDF فروشگاه‌ها (ای استخدام، ایران استخدام، ایران عرضه).</li>
+          <li>آرشیوِ آزمون‌های آنلاین (online-azmoon, 4javab).</li>
+          <li>پوششِ موجود: فراگیر دوره‌های ۱–۹، آموزش و پرورش ۹۴–۱۴۰۱، تأمین اجتماعی ۹۳–۹۴. <span class="badge b-good">مستند</span></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="eyebrow" style="margin-top:22px">دسته‌بندیِ پیشنهادی برای بانک سؤال</div>
+    <div class="tree">
+<span class="k">آزمون</span> (دستگاه‌های اجرایی · آموزش و پرورش · بانک · تأمین اجتماعی)
+└─ <span class="k">دوره / سال</span> (۱۳۹۴ … ۱۴۰۳)
+   └─ <span class="k">درس</span> (عمومی | تخصصی)
+      └─ <span class="k">مبحث</span> (مثلاً: قرابت معنایی، درصد و نسبت، Word/Excel …)
+         └─ <span class="k">سؤال</span> { متن · ۴ گزینه · گزینه‌ی درست · <span class="c">پاسخ تشریحی</span> · سال · منبع }
+    </div>
+  </section>
+
+  <!-- ROADMAP -->
+  <section>
+    <div class="sec-head">
+      <div class="bubble v" style="font-size:18px">→</div>
+      <div>
+        <div class="eyebrow">ROADMAP</div>
+        <h2>نقشه‌راهِ تبدیل رونو</h2>
+        <p>خبر خوب: رونو از قبل ساختارِ <code>items</code> (سؤال)، <code>topics</code> (مبحث)، <code>study</code> (مرور)، <code>practice</code> (آزمون)، <code>progress</code> و <code>analytics</code> را دارد. این تقریباً ۸۰٪ کار است — بیشترِ کار «بازتعریف و پر کردنِ محتوا» است، نه ساختِ از صفر.</p>
+      </div>
+    </div>
+
+    <div>
+      <div class="phase"><div class="rail"><div class="pn">۱</div><div class="line"></div></div><div class="content">
+        <span class="tag">DATA · پایه</span>
+        <h3>مدلِ داده و دسته‌بندی</h3>
+        <p>به <code>item</code> فیلدهای <code>exam</code>، <code>year/دوره</code>، <code>source</code> و نوعِ درس (عمومی/تخصصی) اضافه شود. سلسله‌مراتبِ آزمون ← سال ← درس ← مبحث ← سؤال پیاده شود. این کم‌ریسک‌ترین و پایه‌ای‌ترین قدم است.</p>
+      </div></div>
+
+      <div class="phase"><div class="rail"><div class="pn">۲</div><div class="line"></div></div><div class="content">
+        <span class="tag">CONTENT · بیشترین بازده</span>
+        <h3>ورودِ بانکِ سؤالِ اصل</h3>
+        <p>شروع با <b>دروس عمومیِ مشترک</b> (چون بینِ هر چهار آزمون یکی است → یک‌بار وارد کن، همه‌جا استفاده شود). ابزارِ ورودِ انبوهِ سؤال + پاسخ تشریحی. منبع: دفترچه‌های سال‌های قبل.</p>
+      </div></div>
+
+      <div class="phase"><div class="rail"><div class="pn">۳</div><div class="line"></div></div><div class="content">
+        <span class="tag">EXPERIENCE · هسته‌ی محصول</span>
+        <h3>تجربه‌ی «مرور» و «آزمون آزمایشی»</h3>
+        <p>حالتِ «مرور تا یادگیری» (همان موتورِ موجود، با متنِ ساده) + حالتِ «آزمونِ آزمایشیِ زمان‌دار» شبیهِ روزِ امتحان + پاسخ تشریحیِ بعد از هر سؤال + کارنامه.</p>
+      </div></div>
+
+      <div class="phase"><div class="rail"><div class="pn">۴</div><div class="line"></div></div><div class="content">
+        <span class="tag">COPY · هویت</span>
+        <h3>بازنویسیِ کاملِ متن‌ها</h3>
+        <p>کلِ کپیِ رابط با زبانِ ساده و عامیانه بازنویسی شود؛ صفر اصطلاحِ فنی. از نمونه‌متن‌های محورِ «ج» استفاده شود. برچسب‌گذاریِ منوها مطابقِ جدولِ پایین.</p>
+      </div></div>
+
+      <div class="phase"><div class="rail"><div class="pn">۵</div><div class="line"></div></div><div class="content">
+        <span class="tag">DIFFERENTIATION · برد</span>
+        <h3>تمایزِ نهایی</h3>
+        <p>یادآورِ روزانه، نقشه‌ی «نقاط ضعفِ من»، و شبیه‌سازیِ دقیقِ آزمون. این‌ها رونو را از «دانلودِ فایل» و «آزمونِ تکی»ِ رقبا جدا می‌کند.</p>
+      </div></div>
+    </div>
+
+    <div class="eyebrow" style="margin-top:26px">برچسب‌گذاریِ منوهای رونو (موجود ← جدید)</div>
+    <div class="scroll-x">
+      <table class="tbl">
+        <thead><tr><th>کلیدِ فعلیِ رونو</th><th>برچسبِ جدید (متنِ ساده)</th><th>نقش</th></tr></thead>
+        <tbody>
+          <tr><td><code>items</code></td><td>بانک سؤال</td><td>سؤالاتِ اصلِ سال‌های قبل</td></tr>
+          <tr><td><code>topics</code></td><td>درس‌ها و مباحث</td><td>دسته‌بندیِ محتوا</td></tr>
+          <tr><td><code>study</code></td><td>مرور</td><td>مرور تا یادگیری (هسته)</td></tr>
+          <tr><td><code>practice</code></td><td>آزمون آزمایشی</td><td>شبیه‌سازیِ زمان‌دار</td></tr>
+          <tr><td><code>progress</code></td><td>آمادگیِ من</td><td>«چقدر آماده‌ام»</td></tr>
+          <tr><td><code>analytics</code></td><td>کارنامه و نقاط ضعف</td><td>تحلیلِ عملکرد</td></tr>
+          <tr><td><code>daily</code></td><td>مرورِ روزانه</td><td>عادتِ روزانه + یادآور</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- SOURCES -->
+  <section>
+    <div class="sec-head">
+      <div class="bubble" style="background:#3A4456">§</div>
+      <div>
+        <div class="eyebrow">METHOD &amp; SOURCES</div>
+        <h2>روش و منابع</h2>
+        <p>۲۰ منبع واکشی، ۶۹ ادعا استخراج، ۲۵ ادعا با رأی‌گیریِ سه‌نفره‌ی خصمانه راستی‌آزمایی شد. <b>۱۲ ادعا</b> با رأیِ ۳ از ۳ تأیید شد (برچسبِ «مستند»). موارد برچسبِ «تحلیل» نتیجه‌گیریِ من از داده‌هاست، و «تأییدنشده» یعنی منبع داشت ولی به‌دلیلِ محدودیتِ نرخ، راستی‌آزماییِ مستقلش کامل نشد (نه اینکه غلط باشد).</p>
+      </div>
+    </div>
+    <div class="card src">
+      <b>منابعِ کلیدی (تأییدشده):</b>
+      <ol>
+        <li><a href="https://iranestekhdam.ir">iranestekhdam.ir</a> — ایران استخدام (بازار، تجربه‌ی پذیرفته‌شدگان)</li>
+        <li><a href="https://www.e-estekhdam.com/">e-estekhdam.com</a> — ای استخدام (سبد محصول، بسته‌ی اصل سؤالات، دروس عمومی)</li>
+        <li><a href="https://online-azmoon.ir/">online-azmoon.ir</a> — سامانه آزمون آنلاین (آزمونِ زمان‌دار، پاسخ تشریحی)</li>
+        <li><a href="https://4javab.ir/">4javab.ir</a> — چهار جواب (آزمونِ رایگان، اصل سؤالات)</li>
+      </ol>
+      <b style="display:block;margin-top:12px">منابعِ تکمیلی (سرفصل/مرجع):</b>
+      <ol>
+        <li><a href="https://www.ekhtebar.ir/">ekhtebar.ir</a> · <a href="https://iranmoshavere.com/">iranmoshavere.com</a> · <a href="https://iranarze.ir/">iranarze.ir</a> · <a href="https://3gaam.com/">3gaam.com</a> — سرفصل و ضرایبِ دروس</li>
+      </ol>
+    </div>
+    <div class="note">
+      <b>محدودیت:</b> مرحله‌ی جمع‌بندیِ خودکار و ۱۱ راستی‌آزماییِ مربوط به جزئیاتِ سرفصل به‌خاطرِ سقفِ نرخِ موقت کامل نشد؛ این گزارش جمع‌بندیِ دستیِ من از داده‌های تأییدشده + دانشِ زمینه است. اعداد و سرفصل‌ها پیش از تولیدِ نهاییِ محتوا با دفترچه‌ی رسمیِ هر آزمون بازبینی شوند.
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  رونو · گزارشِ بازار و نقشه‌راهِ آزمون استخدامی · جمع‌بندیِ دستی از تحقیقِ چندمنبعهٔ راستی‌آزمایی‌شده
+</footer>

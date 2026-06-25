@@ -142,15 +142,17 @@ export function StudentDashboard() {
   );
 }
 
-// ── Ability ring ───────────────────────────────────────────────────────────
-// θ runs roughly [-3, +3]; map to a [0, 1] sweep so the ring fills as ability
-// grows. Center reads the raw θ; the level name sits beside it.
+// ── Readiness ring ─────────────────────────────────────────────────────────
+// The underlying skill estimate (~[-3, +3]) is mapped to a [0, 1] sweep and
+// shown to the user as a plain readiness percentage — never the raw figure or
+// any technical symbol. The level name sits beside it.
 function AbilityRing({ theta, color }: { theta: number | null; color: string }) {
   const size = 92;
   const stroke = 9;
   const r = (size - stroke) / 2;
   const circ = 2 * Math.PI * r;
   const frac = theta == null ? 0.06 : Math.min(Math.max((theta + 3) / 6, 0.06), 1);
+  const readinessPct = Math.round(frac * 100);
 
   return (
     <div className="relative shrink-0" style={{ width: size, height: size }}>
@@ -178,12 +180,9 @@ function AbilityRing({ theta, color }: { theta: number | null; color: string }) 
       </svg>
       <div className="absolute inset-0 flex flex-col items-center justify-center">
         {theta != null ? (
-          <>
-            <span className="text-[9px] font-medium uppercase text-muted-foreground">θ</span>
-            <span className="text-base font-bold tabular-nums leading-none">
-              {theta.toFixed(1)}
-            </span>
-          </>
+          <span className="text-lg font-bold tabular-nums leading-none">
+            {readinessPct}%
+          </span>
         ) : (
           <SparklesIcon className="size-5 text-muted-foreground" />
         )}

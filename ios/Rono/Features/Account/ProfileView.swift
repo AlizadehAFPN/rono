@@ -27,7 +27,7 @@ struct ProfileView: View {
                         AvatarView(url: user?.avatarUrl, initials: user?.initials ?? "?", size: 96)
                         PhotosPicker(selection: $photoItem, matching: .images) {
                             Image(systemName: "camera.fill")
-                                .font(.footnote.weight(.bold))
+                                .font(.vFootnote.weight(.bold))
                                 .foregroundStyle(Palette.primaryForeground)
                                 .padding(8)
                                 .background(Palette.primary, in: Circle())
@@ -36,11 +36,11 @@ struct ProfileView: View {
                         .disabled(avatarBusy)
                     }
                     Text(user?.displayName ?? "")
-                        .font(.title3.bold())
+                        .font(.vTitle3.bold())
                         .foregroundStyle(Palette.foreground)
                     if let role = auth.role {
                         Text(loc.t.roleLabel(role.rawValue))
-                            .font(.caption.weight(.medium))
+                            .font(.vCaption.weight(.medium))
                             .foregroundStyle(Palette.primary)
                             .padding(.horizontal, 10).padding(.vertical, 4)
                             .background(Palette.primary.opacity(0.12), in: Capsule())
@@ -49,7 +49,7 @@ struct ProfileView: View {
                         Button(role: .destructive) {
                             Task { await removeAvatar() }
                         } label: {
-                            Text(avatarBusy ? p.avatar.removing : p.avatar.remove).font(.footnote)
+                            Text(avatarBusy ? p.avatar.removing : p.avatar.remove).font(.vFootnote)
                         }
                         .disabled(avatarBusy)
                     }
@@ -95,7 +95,7 @@ struct ProfileView: View {
                     Image(systemName: user?.emailVerifiedAt != nil ? "checkmark.seal.fill" : "exclamationmark.circle")
                         .foregroundStyle(user?.emailVerifiedAt != nil ? Palette.studySuccess : Palette.studyWarning)
                     Text(user?.emailVerifiedAt != nil ? p.identity.emailVerified : p.identity.emailUnverified)
-                        .font(.subheadline)
+                        .font(.vSubheadline)
                 }
             }
 
@@ -122,18 +122,17 @@ struct ProfileView: View {
             Section {
                 VStack(alignment: .leading, spacing: 8) {
                     HStack(alignment: .firstTextBaseline) {
-                        Text(String(format: "%.2f", pr.globalTheta ?? 0))
+                        Text("\(Int((max(0, min(((pr.globalTheta ?? 0) + 3) / 6, 1)) * 100).rounded()))%")
                             .font(.system(size: 34, weight: .bold, design: .rounded))
                             .foregroundStyle(Palette.primary)
-                        Text("θ").foregroundStyle(Palette.mutedForeground)
                         Spacer()
                         Pill(text: st.ability.interpret[interpretKey(pr.globalTheta ?? 0)] ?? "",
                              color: Palette.primary)
                     }
                     Text(st.ability.interpretHint[interpretKey(pr.globalTheta ?? 0)] ?? "")
-                        .font(.caption).foregroundStyle(Palette.mutedForeground)
+                        .font(.vCaption).foregroundStyle(Palette.mutedForeground)
                     Text("\(st.ability.confidenceLabel): \(st.ability.confidence[confidenceKey(pr.globalThetaSe)] ?? "")")
-                        .font(.caption2).foregroundStyle(Palette.mutedForeground)
+                        .font(.vCaption2).foregroundStyle(Palette.mutedForeground)
                 }
             } header: { Text(st.ability.label) } footer: { Text(st.ability.help) }
 
@@ -154,10 +153,10 @@ struct ProfileView: View {
                     ForEach(pr.topics) { topic in
                         VStack(alignment: .leading, spacing: 5) {
                             HStack {
-                                Text(topic.topicName).font(.subheadline).lineLimit(1)
+                                Text(topic.topicName).font(.vSubheadline).lineLimit(1)
                                 Spacer()
                                 Text("\(topic.correctResponses)/\(topic.totalResponses)")
-                                    .font(.caption2.monospacedDigit()).foregroundStyle(Palette.mutedForeground)
+                                    .font(.vCaption2.monospacedDigit()).foregroundStyle(Palette.mutedForeground)
                             }
                             ProgressView(value: topic.accuracyRate ?? 0).tint(Palette.primary)
                         }
@@ -165,7 +164,7 @@ struct ProfileView: View {
                 }
             }
         } else if progress != nil {
-            Section { Text(st.empty).font(.subheadline).foregroundStyle(Palette.mutedForeground) }
+            Section { Text(st.empty).font(.vSubheadline).foregroundStyle(Palette.mutedForeground) }
                 header: { Text(st.title) }
         }
     }

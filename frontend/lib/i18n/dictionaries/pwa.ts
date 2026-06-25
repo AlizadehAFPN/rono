@@ -19,18 +19,18 @@ const en = {
 
 export type PwaDict = typeof en;
 
-const tr: PwaDict = {
+const fa: PwaDict = {
   installHint: {
-    title: "Rono’ı Yükle",
-    body: "Tam uygulama deneyimi için {share} simgesine dokunup “Ana Ekrana Ekle”’yi seçin.",
-    dismiss: "Kapat",
+    title: "نصب Rono",
+    body: "برای تجربه کامل برنامه، روی {share} بزنید و سپس «افزودن به صفحه اصلی» را انتخاب کنید.",
+    dismiss: "بستن",
   },
   installPrompt: {
-    title: "Rono’ı Yükle",
-    body: "Daha hızlı ve tam ekran deneyim için Rono’ı ana ekranınıza ekleyin.",
-    install: "Yükle",
-    dismiss: "Şimdi değil",
+    title: "نصب Rono",
+    body: "برای تجربه‌ای سریع‌تر و تمام‌صفحه، Rono را به صفحه اصلی خود اضافه کنید.",
+    install: "نصب",
+    dismiss: "حالا نه",
   },
 };
 
-export const pwa = { en, tr };
+export const pwa = { en, fa };

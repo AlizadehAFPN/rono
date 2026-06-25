@@ -76,11 +76,11 @@ struct UserHeaderRow: View {
                 AvatarView(url: auth.user?.avatarUrl, initials: auth.user?.initials ?? "?", size: 48)
                 VStack(alignment: .leading, spacing: 3) {
                     Text(auth.user?.displayName ?? "")
-                        .font(.headline)
+                        .font(.vHeadline)
                         .foregroundStyle(Palette.foreground)
                     if let role = auth.role {
                         Text(loc.t.roleLabel(role.rawValue))
-                            .font(.caption)
+                            .font(.vCaption)
                             .foregroundStyle(Palette.mutedForeground)
                     }
                 }

@@ -61,10 +61,10 @@ struct FeaturePlaceholder: View {
                 .font(.system(size: 44))
                 .foregroundStyle(Palette.primary)
             Text(destination.title(loc.t))
-                .font(.title3.bold())
+                .font(.vTitle3.bold())
                 .foregroundStyle(Palette.foreground)
-            Text(loc.locale == .tr ? "Yakında" : "Coming soon")
-                .font(.subheadline)
+            Text(loc.locale == .fa ? "به‌زودی" : "Coming soon")
+                .font(.vSubheadline)
                 .foregroundStyle(Palette.mutedForeground)
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)

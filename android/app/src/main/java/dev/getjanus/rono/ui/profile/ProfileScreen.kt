@@ -50,7 +50,7 @@ import dev.getjanus.rono.core.designsystem.gamification.MetricBlock
 import dev.getjanus.rono.core.designsystem.theme.Spacing
 import dev.getjanus.rono.core.designsystem.theme.rono
 import dev.getjanus.rono.core.util.formatPercent
-import dev.getjanus.rono.core.util.formatTheta
+import dev.getjanus.rono.core.util.readinessPercent
 import dev.getjanus.rono.domain.model.Role
 import dev.getjanus.rono.ui.common.Avatar
 
@@ -146,7 +146,7 @@ fun ProfileScreen(
                 Eyebrow(stringResource(R.string.profile_learning))
                 Spacer(Modifier.height(Spacing.sm))
                 Row(Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.SpaceBetween) {
-                    MetricBlock("θ", formatTheta(stats?.globalTheta))
+                    MetricBlock(stringResource(R.string.dash_ability), readinessPercent(stats?.globalTheta))
                     MetricBlock(stringResource(R.string.dash_accuracy), formatPercent(stats?.accuracy), color = MaterialTheme.rono.success)
                     MetricBlock(stringResource(R.string.dash_answered), (stats?.totalResponses ?: 0).toString())
                     MetricBlock(stringResource(R.string.profile_topics), (stats?.topics?.size ?: 0).toString())

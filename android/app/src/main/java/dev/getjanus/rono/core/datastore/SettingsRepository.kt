@@ -13,18 +13,18 @@ import kotlinx.coroutines.flow.map
 enum class ThemeMode { LIGHT, DARK, SYSTEM }
 
 enum class AppLocale(val tag: String) {
-    TURKISH("tr"),
+    PERSIAN("fa"),
     ENGLISH("en");
 
     companion object {
         fun fromTag(tag: String?): AppLocale =
-            entries.firstOrNull { it.tag == tag } ?: TURKISH
+            entries.firstOrNull { it.tag == tag } ?: PERSIAN
     }
 }
 
 data class AppSettings(
     val themeMode: ThemeMode = ThemeMode.SYSTEM,
-    val locale: AppLocale = AppLocale.TURKISH,
+    val locale: AppLocale = AppLocale.PERSIAN,
     val onboarded: Boolean = false,
     val environment: ApiEnvironment = ApiEnvironment.DEFAULT,
 )

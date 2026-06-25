@@ -30,7 +30,7 @@ import dev.getjanus.rono.core.designsystem.theme.Spacing
 import dev.getjanus.rono.core.designsystem.theme.rono
 import dev.getjanus.rono.core.util.formatClock
 import dev.getjanus.rono.core.util.formatPercent
-import dev.getjanus.rono.core.util.formatTheta
+import dev.getjanus.rono.core.util.readinessDelta
 import dev.getjanus.rono.data.practice.SessionSummaryDto
 
 @Composable
@@ -81,7 +81,7 @@ fun SessionSummaryView(
                 Row(Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.SpaceBetween) {
                     MetricBlock(
                         stringResource(R.string.summary_ability_change),
-                        formatTheta(summary.thetaDelta, signed = true),
+                        readinessDelta(summary.thetaDelta),
                         color = if ((summary.thetaDelta ?: 0.0) >= 0) MaterialTheme.rono.success else MaterialTheme.rono.danger,
                     )
                     summary.timeSpentSeconds?.let {

@@ -22,6 +22,11 @@ from app.core.exceptions import BadRequestError, UnprocessableError
 AVATAR_URL_PREFIX = "/api/v1/uploads/avatars"
 AVATAR_SUBDIR = "avatars"
 
+# Question images (web/PWA only): a question may carry an illustrative image,
+# stored alongside avatars and served from the same static mount.
+QUESTION_IMAGE_URL_PREFIX = "/api/v1/uploads/questions"
+QUESTION_IMAGE_SUBDIR = "questions"
+
 # Sniffed image type -> file extension. The set of formats we accept.
 _IMAGE_EXTENSIONS = {
     "image/jpeg": ".jpg",
@@ -93,3 +98,37 @@ def delete_avatar_file(url: str | None) -> None:
     except OSError:
         # A leftover file is harmless; never fail the request over cleanup.
         pass
+
+
+# ── Question images ─────────────────────────────────────────────────────────
+
+
+def _questions_dir() -> Path:
+    d = Path(settings.UPLOAD_DIR) / QUESTION_IMAGE_SUBDIR
+    d.mkdir(parents=True, exist_ok=True)
+    return d
+
+
+def save_question_image_file(data: bytes) -> str:
+    """Validate raw image bytes, persist them under the questions dir, and return
+    the public URL. Same magic-byte sniffing and size policy as avatars.
+
+    Raises BadRequestError / UnprocessableError on empty, oversized, or
+    unsupported input.
+    """
+    if not data:
+        raise BadRequestError("Uploaded file is empty.")
+    if len(data) > settings.MAX_QUESTION_IMAGE_BYTES:
+        mb = settings.MAX_QUESTION_IMAGE_BYTES // (1024 * 1024)
+        raise UnprocessableError(f"Image is too large. Maximum size is {mb} MB.")
+
+    image_type = _sniff_image_type(data)
+    if image_type is None:
+        raise UnprocessableError(
+            "Unsupported image format. Use JPEG, PNG, WebP, or GIF."
+        )
+
+    extension = _IMAGE_EXTENSIONS[image_type]
+    filename = f"{uuid.uuid4().hex}{extension}"
+    (_questions_dir() / filename).write_bytes(data)
+    return f"{QUESTION_IMAGE_URL_PREFIX}/{filename}"

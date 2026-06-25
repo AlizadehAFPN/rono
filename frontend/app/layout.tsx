@@ -1,9 +1,10 @@
 import type { Metadata, Viewport } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Geist, Geist_Mono, Vazirmatn } from "next/font/google";
+import Script from "next/script";
 import { cookies } from "next/headers";
 import "./globals.css";
 import { Providers } from "./providers";
-import { LOCALE_COOKIE, resolveLocale } from "@/lib/i18n/config";
+import { LOCALE_COOKIE, getDirection, resolveLocale } from "@/lib/i18n/config";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -15,16 +16,24 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
+// Persian (RTL) typeface. `arabic` subset covers the full Persian glyph set;
+// `latin` keeps numerals/Latin words sharp inside Persian copy. globals.css maps
+// `--font-sans` to this variable whenever `<html lang="fa">`.
+const vazirmatn = Vazirmatn({
+  variable: "--font-vazir",
+  subsets: ["arabic", "latin"],
+});
+
 export const metadata: Metadata = {
-  title: "Rono — Adaptive Learning Platform",
+  title: "رونو — آمادگی آزمون استخدامی",
   description:
-    "Rono combines Item Response Theory and spaced repetition scheduling to deliver personalized medical education that adapts to every learner in real time.",
+    "سؤال‌های اصلِ آزمون‌های استخدامیِ سال‌های قبل، یک‌جا و دسته‌بندی‌شده. رونو سؤال‌ها را درست سرِ وقت برایت مرور می‌کند تا تا روزِ آزمون چیزی از یادت نرود.",
   keywords: [
-    "adaptive learning",
-    "medical education",
-    "spaced repetition",
-    "IRT",
-    "FSRS",
+    "آزمون استخدامی",
+    "نمونه سوالات استخدامی",
+    "آزمون آزمایشی",
+    "استخدام",
+    "بانک سوال",
   ],
   // PWA: tells the browser this app is installable and how to render it.
   applicationName: "Rono",
@@ -77,6 +86,7 @@ export default async function RootLayout({
   const htmlClass = [
     geistSans.variable,
     geistMono.variable,
+    vazirmatn.variable,
     "scroll-smooth",
     "antialiased",
     isDark ? "dark" : "",
@@ -85,13 +95,22 @@ export default async function RootLayout({
     .join(" ");
 
   return (
-    <html lang={locale} className={htmlClass} suppressHydrationWarning>
-      <head>
-        {/* Only fires for "system" preference; suppressed for everything else */}
-        {/* eslint-disable-next-line @next/next/no-sync-scripts */}
-        <script dangerouslySetInnerHTML={{ __html: systemThemeScript }} />
-      </head>
+    <html
+      lang={locale}
+      dir={getDirection(locale)}
+      className={htmlClass}
+      suppressHydrationWarning
+    >
       <body className="min-h-full bg-background text-foreground">
+        {/* Applies the dark class before hydration for the "system" theme cookie,
+            avoiding a flash. next/script (beforeInteractive) is the App-Router-safe
+            way to inline a pre-hydration script — a raw <script> in the tree is not
+            executed by React and triggers a console error in Next 16. */}
+        <Script
+          id="system-theme"
+          strategy="beforeInteractive"
+          dangerouslySetInnerHTML={{ __html: systemThemeScript }}
+        />
         <Providers initialLocale={locale}>{children}</Providers>
       </body>
     </html>

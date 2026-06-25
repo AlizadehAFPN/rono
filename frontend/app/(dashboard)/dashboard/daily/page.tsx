@@ -193,7 +193,7 @@ export default function DailyReviewSetupPage() {
                         onClick={() => toggle(c.topic_id)}
                         aria-pressed={on}
                         className={cn(
-                          "flex items-center gap-3 rounded-xl border-[1.5px] p-3.5 text-left transition-colors",
+                          "flex items-center gap-3 rounded-xl border-[1.5px] p-3.5 text-start transition-colors",
                           on
                             ? "border-primary bg-primary/[0.06]"
                             : "border-border bg-card hover:border-primary/40",
@@ -320,7 +320,7 @@ export default function DailyReviewSetupPage() {
             <p className="truncate text-xs text-muted-foreground">{composition}</p>
           </div>
           <Button
-            className="ml-auto shrink-0"
+            className="ms-auto shrink-0"
             onClick={start}
             disabled={sel.size === 0 || isLoading}
           >

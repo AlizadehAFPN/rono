@@ -101,7 +101,7 @@ struct ItemCreate: Encodable, Sendable {
     var itemType: String? = "single_best_answer"
     var examType: String?
     var examPart: String?
-    var language: String? = "tr"
+    var language: String? = "fa"
     var source: String?
     var sourceReference: String?
     var examYear: Int?
@@ -130,23 +130,23 @@ struct ItemUpdate: Encodable, Sendable {
 
 enum ItemLabels {
     static let examType: [String: String] = [
-        "usmle_step1": "USMLE Step 1",
-        "usmle_step2": "USMLE Step 2",
-        "usmle_step3": "USMLE Step 3",
-        "tus": "TUS",
+        "executive": "دستگاه‌های اجرایی",
+        "education": "آموزش و پرورش",
+        "bank": "بانک‌ها",
+        "social_security": "تأمین اجتماعی",
     ]
-    static let examTypes = ["usmle_step1", "usmle_step2", "usmle_step3", "tus"]
+    static let examTypes = ["executive", "education", "bank", "social_security"]
 
     static let examPart: [String: String] = [
-        "basic_sciences": "Basic Sciences",
-        "clinical_sciences": "Clinical Sciences",
+        "general": "عمومی",
+        "specialized": "تخصصی",
     ]
-    static let examParts = ["basic_sciences", "clinical_sciences"]
+    static let examParts = ["general", "specialized"]
     static let examSessions = ["spring", "fall"]
 
     static let status: [String: String] = [
-        "draft": "Draft",
-        "active": "Active",
-        "retired": "Retired",
+        "draft": "پیش‌نویس",
+        "active": "فعال",
+        "retired": "بازنشسته",
     ]
 }

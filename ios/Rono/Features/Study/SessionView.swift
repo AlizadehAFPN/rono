@@ -34,7 +34,7 @@ struct SessionView: View {
                 ToolbarItem(placement: .topBarTrailing) {
                     if runner.stage == .question || runner.stage == .feedback {
                         Button(loc.t.practice.runner.finish) { Task { await runner.finish() } }
-                            .font(.subheadline.weight(.medium))
+                            .font(.vSubheadline.weight(.medium))
                     }
                 }
             }
@@ -51,7 +51,7 @@ struct SessionView: View {
             ProgressView().controlSize(.large)
         case .error(let msg):
             VStack(spacing: Metric.gap) {
-                Image(systemName: "wifi.exclamationmark").font(.largeTitle).foregroundStyle(Palette.destructive)
+                Image(systemName: "wifi.exclamationmark").font(.vLargeTitle).foregroundStyle(Palette.destructive)
                 Text(msg).foregroundStyle(Palette.mutedForeground).multilineTextAlignment(.center)
                 SecondaryButton(title: loc.t.common.actions.retry) { Task { await runner.loadNext() } }
                     .frame(maxWidth: 220)
@@ -72,7 +72,7 @@ struct SessionView: View {
     private var progressHeader: some View {
         VStack(spacing: 3) {
             Text(r.progress(max(runner.delivered + (runner.stage == .feedback ? 0 : 1), 1), runner.target))
-                .font(.caption.weight(.semibold))
+                .font(.vCaption.weight(.semibold))
                 .foregroundStyle(Palette.foreground)
             ProgressView(value: runner.progress)
                 .tint(Palette.primary)
@@ -87,7 +87,7 @@ struct SessionView: View {
                     statRail
                     if let item = runner.current {
                         Text(item.content)
-                            .font(.title3.weight(.semibold))
+                            .font(.vTitle3.weight(.semibold))
                             .foregroundStyle(Palette.foreground)
                             .fixedSize(horizontal: false, vertical: true)
 
@@ -116,12 +116,12 @@ struct SessionView: View {
         .animation(.snappy, value: runner.stage)
     }
 
-    // MARK: - Stat rail (ability θ, streak, accuracy)
+    // MARK: - Stat rail (readiness %, streak, accuracy)
 
     private var statRail: some View {
         HStack(spacing: 8) {
             if let theta = runner.theta {
-                Pill(text: "θ \(String(format: "%.2f", theta))", icon: "gauge.medium")
+                Pill(text: "\(Int((max(0, min((theta + 3) / 6, 1)) * 100).rounded()))%", icon: "gauge.medium")
             }
             if runner.streak >= 2 {
                 Pill(text: r.panel.streak(runner.streak), icon: "flame.fill", color: Palette.chart4)
@@ -140,7 +140,7 @@ struct SessionView: View {
                 if runner.stage == .question {
                     HStack(spacing: 12) {
                         Button(r.skip) { Task { await runner.skip() } }
-                            .font(.body.weight(.medium))
+                            .font(.vBody.weight(.medium))
                             .foregroundStyle(Palette.mutedForeground)
                             .frame(maxWidth: .infinity)
                             .padding(.vertical, 14)
@@ -190,11 +190,11 @@ struct OptionRow: View {
                         default:       Text(option.key.uppercased())
                         }
                     }
-                    .font(.footnote.bold())
+                    .font(.vFootnote.bold())
                     .foregroundStyle(badgeText)
                 }
                 Text(option.content)
-                    .font(.body)
+                    .font(.vBody)
                     .foregroundStyle(Palette.foreground)
                     .frame(maxWidth: .infinity, alignment: .leading)
                     .fixedSize(horizontal: false, vertical: true)
@@ -255,27 +255,28 @@ struct FeedbackCard: View {
         VStack(alignment: .leading, spacing: 12) {
             HStack(spacing: 8) {
                 Image(systemName: result.isCorrect ? "checkmark.seal.fill" : "xmark.octagon.fill")
-                Text(result.isCorrect ? r.correct : r.incorrect).font(.headline)
+                Text(result.isCorrect ? r.correct : r.incorrect).font(.vHeadline)
                 Spacer()
-                let delta = result.thetaAfter - result.thetaBefore
-                Label(String(format: "%+.2f", delta), systemImage: delta >= 0 ? "arrow.up.right" : "arrow.down.right")
-                    .font(.caption.weight(.semibold))
+                // Per-answer readiness change in points (no raw figure shown).
+                let delta = (result.thetaAfter - result.thetaBefore) / 6 * 100
+                Label(String(format: "%+.0f", delta), systemImage: delta >= 0 ? "arrow.up.right" : "arrow.down.right")
+                    .font(.vCaption.weight(.semibold))
                     .foregroundStyle(delta >= 0 ? Palette.studySuccess : Palette.studyDanger)
             }
             .foregroundStyle(result.isCorrect ? Palette.studySuccess : Palette.studyDanger)
 
             if let explanation = result.explanation, !explanation.isEmpty {
                 VStack(alignment: .leading, spacing: 4) {
-                    Text(r.explanation).font(.caption.weight(.semibold)).foregroundStyle(Palette.mutedForeground)
-                    Text(explanation).font(.subheadline).foregroundStyle(Palette.foreground)
+                    Text(r.explanation).font(.vCaption.weight(.semibold)).foregroundStyle(Palette.mutedForeground)
+                    Text(explanation).font(.vSubheadline).foregroundStyle(Palette.foreground)
                         .fixedSize(horizontal: false, vertical: true)
                 }
             }
 
             HStack(spacing: 6) {
-                Image(systemName: "calendar").font(.caption2)
+                Image(systemName: "calendar").font(.vCaption2)
                 Text(r.schedule.label + ": " + scheduleText())
-                    .font(.caption)
+                    .font(.vCaption)
             }
             .foregroundStyle(Palette.mutedForeground)
         }

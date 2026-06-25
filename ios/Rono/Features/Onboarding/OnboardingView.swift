@@ -15,7 +15,7 @@ struct OnboardingView: View {
                 LanguagePill()
                 Spacer()
                 Button(loc.t.onboarding.skip) { auth.completeOnboarding() }
-                    .font(.subheadline.weight(.medium))
+                    .font(.vSubheadline.weight(.medium))
                     .foregroundStyle(Palette.mutedForeground)
             }
             .padding(.horizontal, Metric.pad)
@@ -69,11 +69,11 @@ private struct SlideView: View {
 
             VStack(spacing: 14) {
                 Text(slide.title)
-                    .font(.system(.largeTitle, design: .default).weight(.bold))
+                    .font(.vLargeTitle.bold())
                     .foregroundStyle(Palette.foreground)
                     .multilineTextAlignment(.center)
                 Text(slide.subtitle)
-                    .font(.body)
+                    .font(.vBody)
                     .foregroundStyle(Palette.mutedForeground)
                     .multilineTextAlignment(.center)
                     .lineSpacing(2)
@@ -122,7 +122,7 @@ struct LanguagePill: View {
         } label: {
             HStack(spacing: 6) {
                 Image(systemName: "globe")
-                Text(loc.locale.short).font(.subheadline.weight(.semibold))
+                Text(loc.locale.short).font(.vSubheadline.weight(.semibold))
             }
             .foregroundStyle(Palette.foreground)
             .padding(.horizontal, 12)

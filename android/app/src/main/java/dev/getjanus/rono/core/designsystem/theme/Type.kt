@@ -2,16 +2,24 @@ package dev.getjanus.rono.core.designsystem.theme
 
 import androidx.compose.material3.Typography
 import androidx.compose.ui.text.TextStyle
+import androidx.compose.ui.text.font.Font
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.sp
+import dev.getjanus.rono.R
 
 /**
- * Typography on the platform's default family (Roboto / Roboto Flex) for a
- * genuinely native feel — no bundled web font. Weights/sizes follow the M3
- * type scale, tightened slightly for a calm, premium rhythm.
+ * Vazirmatn — the Persian (RTL) typeface, bundled in res/font. Every text style
+ * references [Default], so pointing it at Vazirmatn switches the whole app. Latin
+ * glyphs/digits inside Persian text fall back gracefully within the same family.
  */
-private val Default = FontFamily.Default
+private val Vazirmatn = FontFamily(
+    Font(R.font.vazirmatn_regular, FontWeight.Normal),
+    Font(R.font.vazirmatn_medium, FontWeight.Medium),
+    Font(R.font.vazirmatn_semibold, FontWeight.SemiBold),
+    Font(R.font.vazirmatn_bold, FontWeight.Bold),
+)
+private val Default = Vazirmatn
 
 val RonoTypography = Typography(
     displaySmall = TextStyle(fontFamily = Default, fontWeight = FontWeight.Bold, fontSize = 34.sp, lineHeight = 40.sp, letterSpacing = (-0.5).sp),

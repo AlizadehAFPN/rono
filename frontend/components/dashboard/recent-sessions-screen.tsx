@@ -50,7 +50,7 @@ export function RecentSessionsScreen({ onBack }: { onBack: () => void }) {
                       {new Date(s.started_at).toLocaleString()}
                     </div>
                   </div>
-                  <div className="text-right text-xs">
+                  <div className="text-end text-xs">
                     <div>
                       {s.items_correct}/{s.items_delivered}
                       {s.score_percent != null && ` · ${s.score_percent}%`}

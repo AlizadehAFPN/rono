@@ -44,7 +44,7 @@ struct RegisterView: View {
                 Divider().overlay(Palette.border)
                 HStack {
                     Text(s.institutionSection)
-                        .font(.footnote.weight(.semibold))
+                        .font(.vFootnote.weight(.semibold))
                         .foregroundStyle(Palette.mutedForeground)
                         .textCase(.uppercase)
                     Spacer()
@@ -72,7 +72,7 @@ struct RegisterView: View {
                     Button(s.signIn) { path.removeLast(path.count) }
                         .foregroundStyle(Palette.primary)
                 }
-                .font(.subheadline)
+                .font(.vSubheadline)
             }
         }
         .navigationTitle(s.title)

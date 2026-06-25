@@ -47,4 +47,12 @@ export const itemsApi = {
 
   listVersions: (id: string) =>
     api.get<ItemVersionOut[]>(`${BASE}/${id}/versions`),
+
+  // Upload a question image (web/PWA); returns its public URL to store in the
+  // version's media_attachments when the item is saved.
+  uploadImage: (file: File) => {
+    const form = new FormData();
+    form.append("file", file);
+    return api.postForm<{ url: string }>(`${BASE}/images`, form);
+  },
 };

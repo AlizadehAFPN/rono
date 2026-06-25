@@ -1,5 +1,5 @@
-// Profile page: identity, self-service profile edit, and a transparent view of
-// the learner's own adaptive state (IRT ability θ, mastery, review load).
+// Profile page: identity, self-service profile edit, and a friendly view of
+// the candidate's own progress (readiness level, mastery, review load).
 
 const en = {
   pageTitle: "Profile",
@@ -45,7 +45,7 @@ const en = {
     newCapHint:
       "How many brand-new questions you can be introduced to each day. Reviews of questions you've already seen are never capped.",
     newCapWarning:
-      "Raising this builds a heavier review load over the next few days — increase it only if you can keep up.",
+      "Raising this gives you more to review over the next few days — increase it only if you can keep up.",
     collectionsNote:
       "Choose which collections to include on the Daily Review screen.",
     save: "Save target",
@@ -71,22 +71,22 @@ const en = {
   },
 
   state: {
-    title: "Your learning state",
+    title: "Your progress",
     description:
-      "A transparent, real-time view of what the adaptive engine knows about you. Nothing here is hidden.",
+      "A clear, up-to-date look at how your exam prep is going. Everything here is yours to see.",
     empty:
-      "You haven't answered any questions yet. Start a practice session and your ability, mastery, and review schedule will appear here.",
+      "You haven't answered any questions yet. Start a practice session and your readiness, mastery, and review schedule will appear here.",
 
     ability: {
-      label: "Ability (θ)",
-      help: "Your estimated skill on a standard scale where 0 is the average learner. The engine updates it after every answer using Item Response Theory (2PL).",
+      label: "Readiness",
+      help: "How ready you are right now, on a simple scale where 0 is the average candidate. Rono updates it after every answer you give.",
       confidenceLabel: "Confidence",
       confidence: {
-        building: "Still calibrating",
+        building: "Still getting to know you",
         medium: "Firming up",
         high: "Well established",
       },
-      // Plain-language reading of the θ value.
+      // Plain-language reading of the readiness value.
       interpret: {
         building: "Building foundations",
         developing: "Developing",
@@ -94,10 +94,10 @@ const en = {
         advanced: "Advanced",
       },
       interpretHint: {
-        building: "Below the average learner — focus on the fundamentals.",
-        developing: "Approaching the average learner.",
-        solid: "At or above the average learner.",
-        advanced: "Well above the average learner.",
+        building: "Below the average candidate — focus on the fundamentals.",
+        developing: "Approaching the average candidate.",
+        solid: "At or above the average candidate.",
+        advanced: "Well above the average candidate.",
       },
     },
 
@@ -107,7 +107,7 @@ const en = {
       accuracy: "Accuracy",
       reviewDue: "Reviews due",
       reviewDueHelp:
-        "Cards the FSRS-5 spaced-repetition scheduler says are ready to review now.",
+        "Questions Rono says are ready for you to review right now.",
       newAvailable: "New available",
     },
 
@@ -129,129 +129,130 @@ const en = {
 
 export type DashProfileDict = typeof en;
 
-const tr: DashProfileDict = {
-  pageTitle: "Profil",
+const fa: DashProfileDict = {
+  pageTitle: "پروفایل",
 
   identity: {
-    memberSince: "Üyelik başlangıcı",
-    lastLogin: "Son giriş",
-    never: "Hiç",
-    institution: "Kurum",
-    role: "Rol",
-    emailVerified: "E-posta doğrulandı",
-    emailUnverified: "E-posta doğrulanmadı",
-    accountActive: "Aktif",
-    accountInactive: "Devre dışı",
+    memberSince: "عضو از",
+    lastLogin: "آخرین ورود",
+    never: "هرگز",
+    institution: "مؤسسه",
+    role: "نقش",
+    emailVerified: "ایمیل تأیید شده",
+    emailUnverified: "ایمیل تأیید نشده",
+    accountActive: "فعال",
+    accountInactive: "غیرفعال",
   },
 
   edit: {
-    title: "Kişisel bilgiler",
-    description: "Rono genelinde bu şekilde görünürsünüz.",
-    fullName: "Ad soyad",
-    fullNamePh: "Ayşe Yılmaz",
-    preferredName: "Tercih edilen ad",
-    preferredNamePh: "Ayşe",
-    preferredNameHint: "Kenar çubuğunda ve karşılamalarda gösterilir. İsteğe bağlı.",
-    save: "Değişiklikleri kaydet",
-    saving: "Kaydediliyor…",
-    saved: "Profil güncellendi",
-    saveFailed: "Profiliniz kaydedilemedi",
-    error: "Hata",
+    title: "اطلاعات شخصی",
+    description: "در سراسر Rono به این شکل نمایش داده می‌شوید.",
+    fullName: "نام کامل",
+    fullNamePh: "Jane Doe",
+    preferredName: "نام دلخواه",
+    preferredNamePh: "Jane",
+    preferredNameHint: "در نوار کناری و پیام‌های خوش‌آمدگویی نمایش داده می‌شود. اختیاری.",
+    save: "ذخیره تغییرات",
+    saving: "در حال ذخیره…",
+    saved: "پروفایل به‌روزرسانی شد",
+    saveFailed: "ذخیره پروفایل شما ممکن نشد",
+    error: "خطا",
   },
 
   daily: {
-    title: "Günlük hedef",
+    title: "هدف روزانه",
     description:
-      "Günlük tekrar hedefin — her günlük oturum başlattığında uygulanır. İstediğin zaman değiştir.",
-    target: "Günlük soru sayısı",
+      "هدف مرور روزانه شما — هر بار که یک جلسه روزانه را آغاز می‌کنید اعمال می‌شود. هر زمان که بخواهید آن را تغییر دهید.",
+    target: "تعداد سؤال در روز",
     questionsOpt: (n: number) => `${n}`,
-    limit: "Oturum uzunluğu",
-    byCount: "Soruya göre",
-    byTime: "Süreye göre",
-    minutesOpt: (n: number) => `${n} dk`,
-    newCap: "Günlük yeni soru",
+    limit: "طول جلسه",
+    byCount: "بر اساس تعداد سؤال",
+    byTime: "بر اساس زمان",
+    minutesOpt: (n: number) => `${n} دقیقه`,
+    newCap: "سؤال‌های جدید در روز",
     newCapHint:
-      "Her gün kaç yeni soruyla tanışabileceğin. Daha önce gördüğün soruların tekrarı asla sınırlanmaz.",
+      "هر روز چند سؤال کاملاً جدید می‌توانید با آن‌ها آشنا شوید. مرور سؤال‌هایی که قبلاً دیده‌اید هرگز محدود نمی‌شود.",
     newCapWarning:
-      "Bunu artırmak sonraki günlerde daha ağır bir tekrar yükü oluşturur — ancak takip edebileceksen artır.",
+      "افزایش این مقدار طی چند روز آینده مرور بیشتری برایتان می‌آورد — تنها در صورتی آن را افزایش دهید که بتوانید همگام بمانید.",
     collectionsNote:
-      "Hangi koleksiyonların dahil olacağını Günlük Tekrar ekranından seç.",
-    save: "Hedefi kaydet",
-    saving: "Kaydediliyor…",
-    saved: "Günlük hedef güncellendi",
-    saveFailed: "Günlük hedefin kaydedilemedi",
+      "انتخاب کنید کدام مجموعه‌ها در صفحه مرور روزانه گنجانده شوند.",
+    save: "ذخیره هدف",
+    saving: "در حال ذخیره…",
+    saved: "هدف روزانه به‌روزرسانی شد",
+    saveFailed: "ذخیره هدف روزانه شما ممکن نشد",
   },
 
   avatar: {
-    alt: "Profil fotoğrafı",
-    upload: "Fotoğraf yükle",
-    change: "Fotoğrafı değiştir",
-    remove: "Fotoğrafı kaldır",
-    uploading: "Yükleniyor…",
-    removing: "Kaldırılıyor…",
-    hint: "JPEG, PNG, WebP veya GIF. En fazla 5 MB.",
-    uploaded: "Fotoğraf güncellendi",
-    removed: "Fotoğraf kaldırıldı",
-    uploadFailed: "Fotoğrafınız yüklenemedi",
-    removeFailed: "Fotoğrafınız kaldırılamadı",
-    tooLarge: "Görsel çok büyük. En fazla 5 MB olabilir.",
-    badType: "Desteklenmeyen biçim. JPEG, PNG, WebP veya GIF kullanın.",
+    alt: "عکس پروفایل",
+    upload: "بارگذاری عکس",
+    change: "تغییر عکس",
+    remove: "حذف عکس",
+    uploading: "در حال بارگذاری…",
+    removing: "در حال حذف…",
+    hint: "JPEG، PNG، WebP یا GIF. حداکثر 5 مگابایت.",
+    uploaded: "عکس به‌روزرسانی شد",
+    removed: "عکس حذف شد",
+    uploadFailed: "بارگذاری عکس شما ممکن نشد",
+    removeFailed: "حذف عکس شما ممکن نشد",
+    tooLarge: "تصویر بیش از حد بزرگ است. حداکثر اندازه 5 مگابایت است.",
+    badType: "قالب پشتیبانی‌نشده. از JPEG، PNG، WebP یا GIF استفاده کنید.",
   },
 
   state: {
-    title: "Öğrenme durumunuz",
+    title: "پیشرفت شما",
     description:
-      "Uyarlanabilir motorun sizin hakkınızda bildiklerinin şeffaf, gerçek zamanlı görünümü. Burada hiçbir şey gizli değildir.",
+      "نمایی روشن و به‌روز از اینکه آماده‌سازی‌ات برای آزمون چطور پیش می‌رود. همه چیز اینجا پیش چشم خودت است.",
     empty:
-      "Henüz hiç soru yanıtlamadınız. Bir alıştırma oturumu başlatın; yetenek, ustalık ve tekrar planınız burada görünecek.",
+      "هنوز به هیچ سؤالی پاسخ نداده‌ای. یک جلسه تمرین را آغاز کن تا میزان آمادگی، تسلط و برنامه مرورت اینجا نمایش داده شود.",
 
     ability: {
-      label: "Yetenek (θ)",
-      help: "0'ın ortalama öğrenciyi temsil ettiği standart bir ölçekte tahmini beceriniz. Motor, her yanıttan sonra Madde Tepki Kuramı (2PL) ile günceller.",
-      confidenceLabel: "Güven",
+      label: "میزان آمادگی",
+      help: "اینکه همین حالا چقدر آماده‌ای، روی مقیاسی ساده که در آن 0 نشان‌دهنده داوطلب متوسط است. رونو بعد از هر پاسخی که می‌دهی آن را به‌روز می‌کند.",
+      confidenceLabel: "اطمینان",
       confidence: {
-        building: "Hâlâ kalibre ediliyor",
-        medium: "Sağlamlaşıyor",
-        high: "İyi oturmuş",
+        building: "هنوز در حال شناخت تو",
+        medium: "در حال تثبیت",
+        high: "کاملاً تثبیت‌شده",
       },
+      // Plain-language reading of the readiness value.
       interpret: {
-        building: "Temel oluşturuluyor",
-        developing: "Gelişiyor",
-        solid: "Yolunda",
-        advanced: "İleri düzey",
+        building: "در حال ساختن پایه‌ها",
+        developing: "در حال پیشرفت",
+        solid: "در مسیر درست",
+        advanced: "پیشرفته",
       },
       interpretHint: {
-        building: "Ortalama öğrencinin altında — temellere odaklanın.",
-        developing: "Ortalama öğrenciye yaklaşıyor.",
-        solid: "Ortalama öğrenci düzeyinde veya üzerinde.",
-        advanced: "Ortalama öğrencinin oldukça üzerinde.",
+        building: "پایین‌تر از داوطلب متوسط — روی اصول پایه تمرکز کن.",
+        developing: "در حال نزدیک شدن به داوطلب متوسط.",
+        solid: "در سطح داوطلب متوسط یا بالاتر.",
+        advanced: "بسیار بالاتر از داوطلب متوسط.",
       },
     },
 
     stats: {
-      answered: "Yanıtlanan soru",
-      correct: "Doğru",
-      accuracy: "Doğruluk",
-      reviewDue: "Bekleyen tekrar",
+      answered: "سؤال‌های پاسخ‌داده‌شده",
+      correct: "درست",
+      accuracy: "دقت",
+      reviewDue: "مرورهای سررسیدشده",
       reviewDueHelp:
-        "FSRS-5 aralıklı tekrar planlayıcısının şimdi tekrar edilmeye hazır dediği kartlar.",
-      newAvailable: "Yeni mevcut",
+        "سؤال‌هایی که رونو می‌گوید همین حالا برای مرور آماده‌اند.",
+      newAvailable: "جدید در دسترس",
     },
 
     mastery: {
-      title: "Konuya göre ustalık",
-      description: "Her konunun ustalık yolundaki yeri.",
-      empty: "Henüz konu verisi yok.",
-      questions: "soru",
-      distributionTitle: "Ustalık dağılımı",
+      title: "تسلط بر اساس مبحث",
+      description: "جایگاه هر مبحث در مسیر تسلط.",
+      empty: "هنوز داده‌ای برای مباحث وجود ندارد.",
+      questions: "سؤال",
+      distributionTitle: "توزیع تسلط",
     },
 
     sessions: {
-      title: "Son oturumlar",
-      empty: "Henüz oturum yok.",
-      net: "Net",
+      title: "جلسه‌های اخیر",
+      empty: "هنوز جلسه‌ای وجود ندارد.",
+      net: "خالص",
     },
   },
 };
 
-export const dashProfile = { en, tr };
+export const dashProfile = { en, fa };

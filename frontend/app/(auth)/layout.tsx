@@ -19,7 +19,7 @@ export default function AuthLayout({
       <Link
         href="/"
         title="Rono"
-        className="absolute top-4 right-4 z-20 flex items-center gap-2 rounded-lg px-2 py-1 transition-opacity hover:opacity-80"
+        className="absolute top-4 end-4 z-20 flex items-center gap-2 rounded-lg px-2 py-1 transition-opacity hover:opacity-80"
       >
         <LogoMark className="size-6 text-primary" />
         <span className="text-base font-bold tracking-tight text-foreground">
@@ -27,8 +27,8 @@ export default function AuthLayout({
         </span>
       </Link>
 
-      {/* Language switcher — moved to top-left to make room for the brand */}
-      <div className="absolute top-4 left-4 z-20">
+      {/* Language switcher — opposite corner from the brand (flips with dir) */}
+      <div className="absolute top-4 start-4 z-20">
         <LanguageSwitcher tone="surface" />
       </div>
 

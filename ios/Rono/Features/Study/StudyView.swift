@@ -107,13 +107,13 @@ struct DailyReviewCard: View {
                     .fill(Palette.primary.opacity(0.15))
                     .frame(width: 48, height: 48)
                 Image(systemName: "calendar.badge.clock")
-                    .font(.title3).foregroundStyle(Palette.primary)
+                    .font(.vTitle3).foregroundStyle(Palette.primary)
             }
             VStack(alignment: .leading, spacing: 3) {
                 Text(loc.t.study.daily.cardTitle)
-                    .font(.headline).foregroundStyle(Palette.foreground)
+                    .font(.vHeadline).foregroundStyle(Palette.foreground)
                 Text(loc.t.study.daily.cardSubtitle)
-                    .font(.caption).foregroundStyle(Palette.mutedForeground)
+                    .font(.vCaption).foregroundStyle(Palette.mutedForeground)
                     .lineLimit(2)
             }
             Spacer(minLength: 0)
@@ -146,7 +146,7 @@ struct CategoryCard: View {
         VStack(alignment: .leading, spacing: 12) {
             HStack {
                 Text(category.topicName)
-                    .font(.headline).foregroundStyle(Palette.foreground)
+                    .font(.vHeadline).foregroundStyle(Palette.foreground)
                     .lineLimit(2)
                 Spacer()
                 masteryPill
@@ -168,7 +168,7 @@ struct CategoryCard: View {
             Button(action: { Haptics.tap(); action() }) {
                 HStack {
                     if starting { ProgressView().tint(Palette.primaryForeground) }
-                    Text(actionTitle).font(.subheadline.weight(.semibold))
+                    Text(actionTitle).font(.vSubheadline.weight(.semibold))
                 }
                 .frame(maxWidth: .infinity).padding(.vertical, 11)
                 .foregroundStyle(canStart ? Palette.primaryForeground : Palette.mutedForeground)
@@ -213,8 +213,8 @@ struct CategoryCard: View {
 
     private func stat(_ label: String, _ value: String, _ color: Color) -> some View {
         VStack(spacing: 2) {
-            Text(value).font(.subheadline.bold()).foregroundStyle(color)
-            Text(label).font(.caption2).foregroundStyle(Palette.mutedForeground)
+            Text(value).font(.vSubheadline.bold()).foregroundStyle(color)
+            Text(label).font(.vCaption2).foregroundStyle(Palette.mutedForeground)
         }
     }
 }

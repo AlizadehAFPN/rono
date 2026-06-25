@@ -20,7 +20,7 @@ struct SessionSummaryView: View {
             ScrollView {
                 VStack(spacing: Metric.padLg) {
                     Text(s.title)
-                        .font(.title2.bold())
+                        .font(.vTitle2.bold())
                         .foregroundStyle(Palette.foreground)
                         .padding(.top, Metric.padLg)
 
@@ -31,7 +31,7 @@ struct SessionSummaryView: View {
                                 .font(.system(size: 40, weight: .bold, design: .rounded))
                                 .foregroundStyle(Palette.foreground)
                                 .contentTransition(.numericText())
-                            Text(s.accuracy).font(.caption).foregroundStyle(Palette.mutedForeground)
+                            Text(s.accuracy).font(.vCaption).foregroundStyle(Palette.mutedForeground)
                         }
                     }
 
@@ -54,7 +54,7 @@ struct SessionSummaryView: View {
                         }
                         if let ts = summary.thetaStart, let te = summary.thetaEnd {
                             Divider().overlay(Palette.border)
-                            summaryRow(s.abilityChange, String(format: "%+.2f", te - ts))
+                            summaryRow(s.abilityChange, String(format: "%+.0f", (te - ts) / 6 * 100))
                         }
                         if let secs = summary.timeSpentSeconds {
                             Divider().overlay(Palette.border)
@@ -88,7 +88,7 @@ struct SessionSummaryView: View {
         HStack {
             Text(label).foregroundStyle(Palette.mutedForeground)
             Spacer()
-            Text(value).font(.body.weight(.semibold)).foregroundStyle(Palette.foreground)
+            Text(value).font(.vBody.weight(.semibold)).foregroundStyle(Palette.foreground)
         }
         .padding(.horizontal, Metric.pad)
         .padding(.vertical, 12)

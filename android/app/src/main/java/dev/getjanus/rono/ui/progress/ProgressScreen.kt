@@ -34,7 +34,7 @@ import dev.getjanus.rono.core.designsystem.theme.Spacing
 import dev.getjanus.rono.core.designsystem.theme.rono
 import dev.getjanus.rono.core.util.UiState
 import dev.getjanus.rono.core.util.formatPercent
-import dev.getjanus.rono.core.util.formatTheta
+import dev.getjanus.rono.core.util.readinessPercent
 import dev.getjanus.rono.data.progress.ProgressDto
 import dev.getjanus.rono.data.progress.TopicMasteryDto
 import dev.getjanus.rono.domain.model.MasteryLevel
@@ -94,16 +94,8 @@ private fun OverallCard(data: ProgressDto) {
             Column {
                 Eyebrow(stringResource(R.string.dash_ability))
                 Row(verticalAlignment = Alignment.Bottom) {
-                    Text(formatTheta(data.globalTheta), style = MetricLargeTextStyle, color = masteryColor(level))
-                    Spacer(Modifier.width(6.dp))
-                    if (data.globalThetaSe != null) {
-                        Text(
-                            stringResource(R.string.progress_se, formatTheta(data.globalThetaSe)),
-                            style = MaterialTheme.typography.bodySmall,
-                            color = MaterialTheme.colorScheme.onSurfaceVariant,
-                            modifier = Modifier.padding(bottom = 6.dp),
-                        )
-                    }
+                    // Plain readiness % — the raw estimate and its error margin are hidden.
+                    Text(readinessPercent(data.globalTheta), style = MetricLargeTextStyle, color = masteryColor(level))
                 }
                 Spacer(Modifier.height(4.dp))
                 Pill(text = masteryLabel(level), color = masteryColor(level))

@@ -140,7 +140,7 @@ export default function Platforms() {
               className={`relative rounded-2xl border bg-white p-8 hover:shadow-lg transition-shadow duration-200 ${platform.cardBorder}`}
             >
               {/* Status badge — every platform has a live way in now. */}
-              <div className="absolute top-6 right-6">
+              <div className="absolute top-6 end-6">
                 <span className="text-[11px] font-semibold text-emerald-600 bg-emerald-50 border border-emerald-200 px-2.5 py-1 rounded-full">
                   {t.home.platforms.statusAvailable}
                 </span>

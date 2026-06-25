@@ -8,7 +8,9 @@ package dev.getjanus.rono.core.config
  */
 enum class ApiEnvironment(val baseUrl: String) {
     PRODUCTION("https://rono.getjanus.dev"),
-    DEVELOPMENT("http://10.0.2.2:8000");
+    // localhost works on both a physical device and the emulator when paired with
+    // `adb reverse tcp:8000 tcp:8000` (maps device localhost → host machine).
+    DEVELOPMENT("http://localhost:8000");
 
     /** Full API base including the version prefix. */
     val apiBaseUrl: String get() = "$baseUrl$API_PREFIX"

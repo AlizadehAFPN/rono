@@ -24,7 +24,7 @@ export function SessionEntryCard({
     <button
       type="button"
       onClick={onClick}
-      className="block w-full rounded-xl text-left outline-none focus-visible:ring-2 focus-visible:ring-ring"
+      className="block w-full rounded-xl text-start outline-none focus-visible:ring-2 focus-visible:ring-ring"
     >
       <Card className="transition-colors hover:bg-muted/40">
         <CardContent className="flex items-center justify-between gap-3 py-4">

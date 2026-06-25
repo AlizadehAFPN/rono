@@ -17,49 +17,49 @@ const en = {
     exam: "Exam",
     responses: "Resp.",
     accuracy: "Accuracy",
-    difficulty: "Diff (b)",
-    calibration: "Calibration",
+    difficulty: "Difficulty",
+    calibration: "Readiness",
     empty: "No response data yet.",
   },
   calibration: {
-    uncalibrated: "Uncalibrated",
-    pre_set: "Expert",
-    calibrating: "Calibrating",
-    calibrated: "Calibrated",
+    uncalibrated: "Not ready",
+    pre_set: "Expert-set",
+    calibrating: "Getting ready",
+    calibrated: "Ready",
   },
   loading: "Loading…",
 };
 
 export type DashAnalyticsDict = typeof en;
 
-const tr: DashAnalyticsDict = {
-  pageTitle: "Analitik",
+const fa: DashAnalyticsDict = {
+  pageTitle: "تحلیل و آمار",
   overview: {
-    items: "Sorular",
-    activeItems: "Aktif",
-    responses: "Yanıtlar",
-    accuracy: "Ort. doğruluk",
-    users: "Üyeler",
-    sessions: "Oturumlar",
+    items: "سؤال‌ها",
+    activeItems: "فعال",
+    responses: "پاسخ‌ها",
+    accuracy: "میانگین دقت",
+    users: "اعضا",
+    sessions: "جلسه‌ها",
   },
   items: {
-    title: "Soru performansı",
-    subtitle: "En çok yanıtlanan sorular, doğruluk ve zorlukla birlikte.",
-    preview: "Soru",
-    exam: "Sınav",
-    responses: "Yanıt",
-    accuracy: "Doğruluk",
-    difficulty: "Zorluk (b)",
-    calibration: "Kalibrasyon",
-    empty: "Henüz yanıt verisi yok.",
+    title: "عملکرد سؤال‌ها",
+    subtitle: "پرپاسخ‌ترین سؤال‌ها همراه با دقت و دشواری.",
+    preview: "سؤال",
+    exam: "آزمون",
+    responses: "پاسخ",
+    accuracy: "دقت",
+    difficulty: "دشواری",
+    calibration: "وضعیت آماده‌سازی",
+    empty: "هنوز داده پاسخی نیست.",
   },
   calibration: {
-    uncalibrated: "Kalibre edilmemiş",
-    pre_set: "Uzman",
-    calibrating: "Kalibre ediliyor",
-    calibrated: "Kalibre edildi",
+    uncalibrated: "آماده‌نشده",
+    pre_set: "برآورد نویسنده",
+    calibrating: "در حال آماده‌سازی",
+    calibrated: "آماده",
   },
-  loading: "Yükleniyor…",
+  loading: "در حال بارگذاری…",
 };
 
-export const dashAnalytics = { en, tr };
+export const dashAnalytics = { en, fa };

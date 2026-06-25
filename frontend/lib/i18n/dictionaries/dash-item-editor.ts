@@ -31,8 +31,8 @@ const en = {
     partPlaceholder: "Select part…",
     partNone: "Unspecified",
     parts: {
-      basic_sciences: "Basic Sciences",
-      clinical_sciences: "Clinical Sciences",
+      basic_sciences: "General knowledge",
+      clinical_sciences: "Specialized",
     },
   },
 
@@ -84,11 +84,11 @@ const en = {
   difficulty: {
     label: "Difficulty",
     presetLabel: "Difficulty preset",
-    hint: "Sets the initial IRT difficulty (b) before calibration data is collected",
+    hint: "Sets the starting difficulty before candidate answers come in",
     descriptionPrefix: "Default is ",
     descriptionDefault: "Average",
     descriptionSuffix:
-      ". IRT calibration will refine this automatically after 30+ student responses.",
+      ". Rono fine-tunes this automatically once 30+ candidates have answered.",
     presets: {
       veryEasy: "Very Easy",
       easy: "Easy",
@@ -101,33 +101,33 @@ const en = {
       hard: "Hard",
     },
     fields: {
-      difficultyB: "Difficulty (b)",
-      discriminationA: "Discrimination (a)",
-      responsesUsed: "Responses used",
+      difficultyB: "Difficulty",
+      discriminationA: "How well it sorts answers",
+      responsesUsed: "Answers used",
     },
   },
 
-  // ── Calibration status badges ─────────────────────────────────────────────
+  // ── Question readiness status badges ──────────────────────────────────────
   calibration: {
-    uncalibrated: "Uncalibrated",
-    pre_set: "Expert estimate",
-    calibrating: "Calibrating",
-    calibrated: "IRT calibrated",
+    uncalibrated: "Not ready yet",
+    pre_set: "Author estimate",
+    calibrating: "Getting ready",
+    calibrated: "Ready",
     awaitingCalibration: (count: number) =>
-      `Awaiting calibration · ${count} response${
+      `Getting ready · ${count} answer${
         count !== 1 ? "s" : ""
       } collected`,
     expertPreset: (label: string, b: string) =>
-      `${label} — expert preset (b = ${b})`,
+      `${label} — author estimate (difficulty ${b})`,
     calibratingProgress: (count: number, current: string | null) =>
-      `Calibrating in progress · ${count} response${count !== 1 ? "s" : ""}${
-        current != null ? ` · current b = ${current}` : ""
+      `Getting ready · ${count} answer${count !== 1 ? "s" : ""}${
+        current != null ? ` · current difficulty ${current}` : ""
       }`,
   },
 
   // ── Question stem fields ──────────────────────────────────────────────────
   stem: {
-    placeholder: "A 45-year-old male presents with…",
+    placeholder: "Type the question here…",
     placeholderEdit: "Enter the question text…",
   },
 
@@ -236,235 +236,234 @@ const en = {
 
 export type DashItemEditorDict = typeof en;
 
-const tr: DashItemEditorDict = {
+const fa: DashItemEditorDict = {
   // ── Sayfa başlıkları (Topbar) ─────────────────────────────────────────────
   pageTitle: {
-    new: "Yeni soru",
-    detail: "Soru ayrıntısı",
-    edit: "Soruyu düzenle",
+    new: "سؤال جدید",
+    detail: "جزئیات سؤال",
+    edit: "ویرایش سؤال",
   },
 
   // ── Bölüm / kart başlıkları ───────────────────────────────────────────────
   sections: {
-    classification: "Sınıflandırma",
-    questionStem: "Soru kökü",
-    answerChoices: "Yanıt seçenekleri",
-    versionNote: "Sürüm notu",
-    versionHistory: "Sürüm geçmişi",
-    metadata: "Üst veriler",
-    difficulty: "Zorluk",
-    editQuestion: "Soruyu düzenle",
+    classification: "طبقه‌بندی",
+    questionStem: "متن اصلی سؤال",
+    answerChoices: "گزینه‌های پاسخ",
+    versionNote: "یادداشت نسخه",
+    versionHistory: "تاریخچه نسخه‌ها",
+    metadata: "فراداده",
+    difficulty: "دشواری",
+    editQuestion: "ویرایش سؤال",
   },
 
   // ── Sınav sınıflandırması (konudan ayrı, sınav temelli) ───────────────────
   exam: {
-    typeLabel: "Sınav",
-    typePlaceholder: "Sınav seçin…",
-    typeNone: "Belirtilmemiş",
-    partLabel: "Sınav bölümü",
-    partPlaceholder: "Bölüm seçin…",
-    partNone: "Belirtilmemiş",
+    typeLabel: "آزمون",
+    typePlaceholder: "انتخاب آزمون…",
+    typeNone: "نامشخص",
+    partLabel: "بخش آزمون",
+    partPlaceholder: "انتخاب بخش…",
+    partNone: "نامشخص",
     parts: {
-      basic_sciences: "Temel Tıp Bilimleri",
-      clinical_sciences: "Klinik Tıp Bilimleri",
+      basic_sciences: "عمومی",
+      clinical_sciences: "تخصصی",
     },
   },
 
   // ── Kaynak (sorunun kaynağı) ──────────────────────────────────────────────
   provenance: {
-    sectionLabel: "Kaynak",
-    sectionHint: "Bu sorunun kaynağı (örn. resmî bir çıkmış sınav).",
-    sourceLabel: "Kaynak",
-    sourcePlaceholder: "örn. ÖSYM",
-    sourceRefLabel: "Referans",
-    sourceRefPlaceholder: "örn. 2013-TUS İlkbahar / TTBT",
-    yearLabel: "Yıl",
-    yearPlaceholder: "örn. 2013",
-    sessionLabel: "Dönem",
-    sessionPlaceholder: "Dönem seçin…",
-    sessionNone: "Belirtilmemiş",
+    sectionLabel: "منبع",
+    sectionHint: "این سؤال از کجا آمده است (مثلاً یک آزمون رسمی پیشین).",
+    sourceLabel: "منبع",
+    sourcePlaceholder: "مثلاً ÖSYM",
+    sourceRefLabel: "مرجع",
+    sourceRefPlaceholder: "مثلاً 2013-TUS İlkbahar / TTBT",
+    yearLabel: "سال",
+    yearPlaceholder: "مثلاً 2013",
+    sessionLabel: "نوبت",
+    sessionPlaceholder: "انتخاب نوبت…",
+    sessionNone: "نامشخص",
     sessions: {
-      spring: "İlkbahar",
-      fall: "Sonbahar",
+      spring: "بهار",
+      fall: "پاییز",
     },
   },
 
   // ── Konu kademeleri ───────────────────────────────────────────────────────
   topic: {
-    label: "Konu (ders)",
-    hint: "Dersi seçin. İsteğe bağlı olarak alan ve alt alanla daraltın — seçilen en alt kademe bu soruya atanır.",
+    label: "مبحث (درس)",
+    hint: "درس را انتخاب کنید. در صورت تمایل با حوزه و زیرحوزه محدودتر کنید — عمیق‌ترین سطح انتخاب‌شده به این سؤال اختصاص می‌یابد.",
     levels: {
-      exam: "Sınav",
-      subject: "Ders",
-      domain: "Alan",
-      subdomain: "Alt alan",
+      exam: "آزمون",
+      subject: "درس",
+      domain: "حوزه",
+      subdomain: "زیرحوزه",
     },
     placeholders: {
-      exam: "Sınav seçin…",
-      subject: "Ders seçin…",
-      domain: "Alan seçin…",
-      subdomain: "Alt alan seçin…",
-      selectExamFirst: "Önce sınav seçin",
-      selectSubjectFirst: "Önce ders seçin",
-      selectDomainFirst: "Önce alan seçin",
-      noOptions: "Henüz seçenek yok",
+      exam: "انتخاب آزمون…",
+      subject: "انتخاب درس…",
+      domain: "انتخاب حوزه…",
+      subdomain: "انتخاب زیرحوزه…",
+      selectExamFirst: "ابتدا آزمون را انتخاب کنید",
+      selectSubjectFirst: "ابتدا درس را انتخاب کنید",
+      selectDomainFirst: "ابتدا حوزه را انتخاب کنید",
+      noOptions: "هنوز گزینه‌ای نیست",
     },
-    examType: "Sınav türü:",
-    noExamTypeMapping: "(exam_type eşlemesi yok)",
-    noTopicAssigned: "Atanmış konu yok",
+    examType: "نوع آزمون:",
+    noExamTypeMapping: "(نگاشت exam_type وجود ندارد)",
+    noTopicAssigned: "مبحثی اختصاص داده نشده است",
   },
 
-  // ── Zorluk ────────────────────────────────────────────────────────────────
+  // ── دشواری ────────────────────────────────────────────────────────────────
   difficulty: {
-    label: "Zorluk",
-    presetLabel: "Zorluk ön ayarı",
-    hint: "Kalibrasyon verisi toplanmadan önce başlangıç IRT zorluğunu (b) belirler",
-    descriptionPrefix: "Varsayılan değer ",
-    descriptionDefault: "Orta",
+    label: "دشواری",
+    presetLabel: "پیش‌تنظیم دشواری",
+    hint: "دشواری اولیه سؤال را پیش از رسیدن پاسخ داوطلب‌ها تعیین می‌کند",
+    descriptionPrefix: "مقدار پیش‌فرض ",
+    descriptionDefault: "متوسط",
     descriptionSuffix:
-      "'dır. IRT kalibrasyonu, 30+ öğrenci yanıtından sonra bunu otomatik olarak iyileştirir.",
+      " است. رونو این مقدار را پس از پاسخ بیش از 30 داوطلب به‌طور خودکار دقیق‌تر می‌کند.",
     presets: {
-      veryEasy: "Çok Kolay",
-      easy: "Kolay",
-      average: "Orta",
-      hard: "Zor",
-      veryHard: "Çok Zor",
+      veryEasy: "بسیار آسان",
+      easy: "آسان",
+      average: "متوسط",
+      hard: "دشوار",
+      veryHard: "بسیار دشوار",
     },
     scale: {
-      easy: "Kolay",
-      hard: "Zor",
+      easy: "آسان",
+      hard: "دشوار",
     },
     fields: {
-      difficultyB: "Zorluk (b)",
-      discriminationA: "Ayırt edicilik (a)",
-      responsesUsed: "Kullanılan yanıtlar",
+      difficultyB: "دشواری",
+      discriminationA: "میزان تشخیص",
+      responsesUsed: "پاسخ‌های استفاده‌شده",
     },
   },
 
-  // ── Kalibrasyon durum rozetleri ───────────────────────────────────────────
+  // ── نشان‌های وضعیت آماده‌سازی سؤال ─────────────────────────────────────────
   calibration: {
-    uncalibrated: "Kalibre edilmemiş",
-    pre_set: "Uzman tahmini",
-    calibrating: "Kalibre ediliyor",
-    calibrated: "IRT kalibre edildi",
+    uncalibrated: "هنوز آماده نیست",
+    pre_set: "برآورد نویسنده",
+    calibrating: "در حال آماده‌سازی",
+    calibrated: "آماده",
     awaitingCalibration: (count: number) =>
-      `Kalibrasyon bekleniyor · ${count} yanıt toplandı`,
+      `در حال آماده‌سازی · ${count} پاسخ جمع‌آوری شد`,
     expertPreset: (label: string, b: string) =>
-      `${label} — uzman ön ayarı (b = ${b})`,
+      `${label} — برآورد نویسنده (دشواری ${b})`,
     calibratingProgress: (count: number, current: string | null) =>
-      `Kalibrasyon sürüyor · ${count} yanıt${
-        current != null ? ` · mevcut b = ${current}` : ""
+      `در حال آماده‌سازی · ${count} پاسخ${
+        current != null ? ` · دشواری کنونی ${current}` : ""
       }`,
   },
 
   // ── Soru kökü alanları ────────────────────────────────────────────────────
   stem: {
-    placeholder: "45 yaşında erkek hasta şu şikâyetlerle başvuruyor…",
-    placeholderEdit: "Soru metnini girin…",
+    placeholder: "متن سؤال را اینجا بنویس…",
+    placeholderEdit: "متن سؤال را وارد کنید…",
   },
 
   // ── Açıklama alanları ─────────────────────────────────────────────────────
   explanation: {
-    overallLabel: "Genel açıklama",
-    label: "Açıklama",
-    optional: "(isteğe bağlı)",
-    placeholder: "Doğru yaklaşımı açıklayın…",
-    placeholderEdit: "Doğru cevabı açıklayın…",
+    overallLabel: "توضیح کلی",
+    label: "توضیح",
+    optional: "(اختیاری)",
+    placeholder: "رویکرد درست را توضیح دهید…",
+    placeholderEdit: "پاسخ درست را توضیح دهید…",
   },
 
   // ── Yanıt seçenekleri ─────────────────────────────────────────────────────
   options: {
-    hint: "Doğru cevabı işaretlemek için daireye tıklayın",
-    addOption: "Seçenek ekle",
-    removeOption: "Seçeneği kaldır",
-    correctAnswer: "Doğru cevap",
-    markAsCorrect: "Doğru olarak işaretle",
-    correct: "Doğru",
-    optionPlaceholder: (label: string | number) => `${label} seçeneği`,
-    contentPlaceholder: "Yanıt seçeneği metni…",
-    optionExplanationPlaceholder: "Seçenek düzeyinde açıklama (isteğe bağlı)",
-    optionExplanationPlaceholderEdit:
-      "Bu seçenek için açıklama (isteğe bağlı)…",
+    hint: "برای علامت‌گذاری پاسخ درست روی دایره کلیک کنید",
+    addOption: "افزودن گزینه",
+    removeOption: "حذف گزینه",
+    correctAnswer: "پاسخ درست",
+    markAsCorrect: "علامت‌گذاری به‌عنوان درست",
+    correct: "درست",
+    optionPlaceholder: (label: string | number) => `گزینه ${label}`,
+    contentPlaceholder: "متن گزینه پاسخ…",
+    optionExplanationPlaceholder: "توضیح در سطح گزینه (اختیاری)",
+    optionExplanationPlaceholderEdit: "توضیح برای این گزینه (اختیاری)…",
   },
 
   // ── Sürüm notu ────────────────────────────────────────────────────────────
   versionNote: {
-    label: "Sürüm notu",
-    optional: "(isteğe bağlı)",
-    placeholder: "İlk sürüm",
-    description: "Sürüm geçmişi için bu sürümde nelerin değiştiğini açıklayın",
+    label: "یادداشت نسخه",
+    optional: "(اختیاری)",
+    placeholder: "نسخه اولیه",
+    description: "برای تاریخچه نسخه‌ها توضیح دهید در این نسخه چه چیزی تغییر کرده است",
   },
 
   // ── Sürüm geçmişi ─────────────────────────────────────────────────────────
   versions: {
-    published: "Yayımlandı",
+    published: "منتشرشده",
   },
 
   // ── Üst veriler kenar çubuğu ──────────────────────────────────────────────
   metadata: {
-    status: "Durum",
-    classification: "Sınıflandırma",
-    examType: "Sınav türü",
-    type: "Tür",
-    created: "Oluşturulma",
+    status: "وضعیت",
+    classification: "طبقه‌بندی",
+    examType: "نوع آزمون",
+    type: "نوع",
+    created: "ایجادشده",
   },
 
   // ── Görüntüleme kartı boş durumu ──────────────────────────────────────────
   view: {
-    noContent: "Henüz içerik yok.",
-    addContent: "İçerik ekle",
+    noContent: "هنوز محتوایی نیست.",
+    addContent: "افزودن محتوا",
   },
 
   // ── Düğmeler ──────────────────────────────────────────────────────────────
   buttons: {
-    cancel: "İptal",
-    createQuestion: "Soru oluştur",
-    creating: "Oluşturuluyor…",
-    editQuestion: "Soruyu düzenle",
-    saveChanges: "Değişiklikleri kaydet",
-    saving: "Kaydediliyor…",
-    deleteQuestion: "Soruyu sil",
-    delete: "Sil",
-    deleting: "Siliniyor…",
-    backToQuestions: "Sorular",
+    cancel: "لغو",
+    createQuestion: "ایجاد سؤال",
+    creating: "در حال ایجاد…",
+    editQuestion: "ویرایش سؤال",
+    saveChanges: "ذخیره تغییرات",
+    saving: "در حال ذخیره…",
+    deleteQuestion: "حذف سؤال",
+    delete: "حذف",
+    deleting: "در حال حذف…",
+    backToQuestions: "سؤالات",
   },
 
   // ── Silme onay penceresi ──────────────────────────────────────────────────
   deleteDialog: {
-    title: "Soruyu sil",
-    body: "Bu soru ve tüm sürümleri kalıcı olarak silinecek.",
+    title: "حذف سؤال",
+    body: "این سؤال و تمام نسخه‌های آن برای همیشه حذف خواهند شد.",
   },
 
   // ── Yükleme / hata durumları ──────────────────────────────────────────────
   states: {
-    loadError: "Soru bulunamadı veya yüklenemedi.",
+    loadError: "سؤال یافت نشد یا بارگذاری آن ناموفق بود.",
   },
 
   // ── Bildirim mesajları ────────────────────────────────────────────────────
   toast: {
-    created: "Soru oluşturuldu",
-    createFailed: "Soru oluşturulamadı",
-    saved: "Soru kaydedildi",
-    saveFailed: "Soru kaydedilemedi",
-    statusUpdated: "Durum güncellendi",
-    updateFailed: "Güncelleme başarısız",
-    deleted: "Soru silindi",
-    deleteFailed: "Silme başarısız",
-    error: "Hata",
+    created: "سؤال ایجاد شد",
+    createFailed: "ایجاد سؤال ناموفق بود",
+    saved: "سؤال ذخیره شد",
+    saveFailed: "ذخیره سؤال ناموفق بود",
+    statusUpdated: "وضعیت به‌روزرسانی شد",
+    updateFailed: "به‌روزرسانی ناموفق بود",
+    deleted: "سؤال حذف شد",
+    deleteFailed: "حذف ناموفق بود",
+    error: "خطا",
   },
 
   // ── Doğrulama mesajları (zod) ─────────────────────────────────────────────
   validation: {
-    keyRequired: "Anahtar gereklidir",
-    optionTextRequired: "Seçenek metni gereklidir",
-    topicRequired: "Bu soruyu atamak için bir ders seçin",
-    stemMin: "Soru kökü en az 10 karakter olmalıdır",
-    optionsMin: "En az 2 seçenek gereklidir",
-    optionsMax: "En fazla 6 seçeneğe izin verilir",
-    atLeastOneCorrect: "En az bir seçenek doğru olarak işaretlenmelidir",
-    atLeastOneCorrectShort: "En az bir seçenek doğru olmalıdır",
-    yearInvalid: "4 haneli bir yıl girin",
+    keyRequired: "کلید الزامی است",
+    optionTextRequired: "متن گزینه الزامی است",
+    topicRequired: "برای اختصاص این سؤال یک درس انتخاب کنید",
+    stemMin: "متن اصلی سؤال باید حداقل 10 نویسه باشد",
+    optionsMin: "حداقل 2 گزینه لازم است",
+    optionsMax: "حداکثر 6 گزینه مجاز است",
+    atLeastOneCorrect: "حداقل یک گزینه باید به‌عنوان درست علامت‌گذاری شود",
+    atLeastOneCorrectShort: "حداقل یک گزینه باید درست باشد",
+    yearInvalid: "یک سال 4 رقمی وارد کنید",
   },
 };
 
-export const dashItemEditor = { en, tr };
+export const dashItemEditor = { en, fa };

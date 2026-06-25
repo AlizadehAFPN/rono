@@ -19,7 +19,7 @@ final class ExamRunner {
     var phase: Phase = .setup
 
     // Setup config
-    var examType = "tus"
+    var examType = "executive"
     var examPart: String? = nil
     var feedbackMode = false
 

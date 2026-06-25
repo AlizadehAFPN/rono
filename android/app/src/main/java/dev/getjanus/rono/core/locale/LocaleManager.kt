@@ -13,7 +13,7 @@ import java.util.Locale
 object LocaleManager {
     private const val PREFS = "rono_locale"
     private const val KEY_TAG = "tag"
-    const val DEFAULT_TAG = "tr"
+    const val DEFAULT_TAG = "fa"
 
     fun getTag(context: Context): String =
         context.getSharedPreferences(PREFS, Context.MODE_PRIVATE).getString(KEY_TAG, DEFAULT_TAG) ?: DEFAULT_TAG

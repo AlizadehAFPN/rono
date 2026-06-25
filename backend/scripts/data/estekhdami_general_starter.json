@@ -1,0 +1,131 @@
+{
+  "exam_type": "executive",
+  "exam_part": "general",
+  "source": "rono-sample",
+  "source_reference": "مجموعه‌ی شروع — دروس عمومی (نمونه، پیش از تولید با دفترچه‌ی رسمی بازبینی شود)",
+  "exam_year": null,
+  "exam_session": null,
+  "language": "fa",
+  "questions": [
+    {
+      "no": 1,
+      "subject": "gen-persian-qarabat",
+      "stem": "کدام واژه با «سعی» قرابت معنایی دارد؟",
+      "options": { "A": "خواهش", "B": "کوشش", "C": "آرامش", "D": "دانش" },
+      "answer": "B",
+      "explanation": "«سعی» به معنای تلاش و کوشش است؛ پس «کوشش» نزدیک‌ترین معنا را دارد."
+    },
+    {
+      "no": 2,
+      "subject": "gen-persian-vajegan",
+      "stem": "معنای واژه‌ی «بدیع» کدام است؟",
+      "options": { "A": "کهنه", "B": "زشت", "C": "نو و تازه", "D": "بزرگ" },
+      "answer": "C",
+      "explanation": "«بدیع» یعنی نو، تازه و بی‌سابقه."
+    },
+    {
+      "no": 3,
+      "subject": "gen-maaref-ahkam",
+      "stem": "نماز صبح چند رکعت است؟",
+      "options": { "A": "دو رکعت", "B": "سه رکعت", "C": "چهار رکعت", "D": "یک رکعت" },
+      "answer": "A",
+      "explanation": "نماز صبح دو رکعت است."
+    },
+    {
+      "no": 4,
+      "subject": "gen-maaref-quran",
+      "stem": "کدام سوره به «قلب قرآن» معروف است؟",
+      "options": { "A": "الرحمن", "B": "بقره", "C": "یس", "D": "فاتحه" },
+      "answer": "C",
+      "explanation": "بر پایه‌ی روایات، سوره‌ی «یس» قلب قرآن نامیده شده است."
+    },
+    {
+      "no": 5,
+      "subject": "gen-english-grammar",
+      "stem": "She ___ to school every day.",
+      "options": { "A": "go", "B": "goes", "C": "going", "D": "gone" },
+      "answer": "B",
+      "explanation": "فاعل سوم‌شخص مفرد (She) در زمان حال ساده فعل را با «s» می‌گیرد: goes."
+    },
+    {
+      "no": 6,
+      "subject": "gen-english-vocabulary",
+      "stem": "Choose the closest synonym for the word “begin”.",
+      "options": { "A": "stop", "B": "end", "C": "close", "D": "start" },
+      "answer": "D",
+      "explanation": "«begin» و «start» هر دو به معنای آغاز کردن هستند."
+    },
+    {
+      "no": 7,
+      "subject": "gen-math-arithmetic",
+      "stem": "۱۵٪ از عدد ۲۴۰ چند است؟",
+      "options": { "A": "۳۰", "B": "۳۶", "C": "۴۰", "D": "۲۴" },
+      "answer": "B",
+      "explanation": "۲۴۰ × ۰٫۱۵ = ۳۶."
+    },
+    {
+      "no": 8,
+      "subject": "gen-math-algebra",
+      "stem": "اگر ۳x + ۵ = ۲۰ باشد، مقدار x کدام است؟",
+      "options": { "A": "۴", "B": "۵", "C": "۶", "D": "۳" },
+      "answer": "B",
+      "explanation": "۳x = ۲۰ − ۵ = ۱۵؛ پس x = ۵."
+    },
+    {
+      "no": 9,
+      "subject": "gen-math-statistics",
+      "stem": "میانگین چهار عدد ۱۰، ۲۰، ۳۰ و ۴۰ چند است؟",
+      "options": { "A": "۲۰", "B": "۳۰", "C": "۲۵", "D": "۱۵" },
+      "answer": "C",
+      "explanation": "مجموع = ۱۰۰؛ میانگین = ۱۰۰ ÷ ۴ = ۲۵."
+    },
+    {
+      "no": 10,
+      "subject": "gen-aptitude-series",
+      "stem": "عدد بعدی این دنباله کدام است؟  ۲، ۴، ۸، ۱۶، ؟",
+      "options": { "A": "۲۴", "B": "۳۰", "C": "۳۲", "D": "۶۴" },
+      "answer": "C",
+      "explanation": "هر عدد دو برابر عدد قبلی است؛ پس ۱۶ × ۲ = ۳۲."
+    },
+    {
+      "no": 11,
+      "subject": "gen-ict-word",
+      "stem": "پسوند پیش‌فرض فایل‌های نرم‌افزار Word کدام است؟",
+      "options": { "A": "xlsx", "B": "docx", "C": "pptx", "D": "pdf" },
+      "answer": "B",
+      "explanation": "فایل‌های Word با پسوند docx ذخیره می‌شوند. xlsx برای Excel و pptx برای PowerPoint است."
+    },
+    {
+      "no": 12,
+      "subject": "gen-ict-windows",
+      "stem": "کلید میان‌بر «کپی» در ویندوز کدام است؟",
+      "options": { "A": "Ctrl + V", "B": "Ctrl + X", "C": "Ctrl + C", "D": "Ctrl + Z" },
+      "answer": "C",
+      "explanation": "Ctrl + C کپی، Ctrl + V چسباندن، Ctrl + X بریدن و Ctrl + Z واگرد است."
+    },
+    {
+      "no": 13,
+      "subject": "gen-general-current",
+      "stem": "جایزه‌ی «هانس کریستین اندرسن» به نویسندگان کدام حوزه‌ی ادبی اعطا می‌شود؟",
+      "options": { "A": "طنز", "B": "نمایشی", "C": "تعلیمی", "D": "کودک و نوجوان" },
+      "answer": "D",
+      "explanation": "جایزه‌ی هانس کریستین اندرسن مهم‌ترین جایزه‌ی ادبیات کودک و نوجوان است."
+    },
+    {
+      "no": 14,
+      "subject": "gen-general-iran",
+      "stem": "کوتاه‌ترین مرز زمینی ایران با کدام کشور است؟",
+      "options": { "A": "ارمنستان", "B": "ترکیه", "C": "عراق", "D": "ترکمنستان" },
+      "answer": "A",
+      "explanation": "مرز ایران و ارمنستان حدود ۳۵ کیلومتر و کوتاه‌ترین مرز زمینی ایران است."
+    },
+    {
+      "no": 15,
+      "subject": "gen-general-constitution",
+      "stem": "بر اساس قانون اساسی، عالی‌ترین مقام رسمی کشور پس از مقام رهبری کیست؟",
+      "options": { "A": "رئیس مجلس", "B": "رئیس‌جمهور", "C": "رئیس قوه قضاییه", "D": "نخست‌وزیر" },
+      "answer": "B",
+      "explanation": "طبق اصل ۱۱۳ قانون اساسی، پس از مقام رهبری، رئیس‌جمهور عالی‌ترین مقام رسمی کشور است."
+    }
+  ]
+}

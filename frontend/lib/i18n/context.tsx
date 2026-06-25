@@ -8,7 +8,7 @@ import {
   useState,
 } from "react";
 import { dictionaries, type Dictionary } from "./dictionaries";
-import { LOCALE_COOKIE, type Locale } from "./config";
+import { LOCALE_COOKIE, getDirection, type Locale } from "./config";
 
 interface I18nContextValue {
   locale: Locale;
@@ -36,7 +36,10 @@ export function I18nProvider({
       // on the next request — mirrors the theme persistence strategy.
       document.cookie = `${LOCALE_COOKIE}=${next};path=/;max-age=31536000;SameSite=Lax`;
     } catch {}
+    // Keep <html lang> and <html dir> in sync so RTL (Persian) ⇄ LTR (English)
+    // flips immediately on switch, before the next server render.
     document.documentElement.lang = next;
+    document.documentElement.dir = getDirection(next);
   }, []);
 
   const value = useMemo<I18nContextValue>(

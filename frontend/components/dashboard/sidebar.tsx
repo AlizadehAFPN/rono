@@ -277,7 +277,7 @@ export function Sidebar() {
   const close = useSidebarStore((s) => s.close);
 
   return (
-    <aside className="hidden md:flex h-full w-60 flex-col border-r bg-sidebar">
+    <aside className="hidden md:flex h-full w-60 flex-col border-e bg-sidebar">
       <SidebarInner onNavClick={close} />
     </aside>
   );

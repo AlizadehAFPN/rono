@@ -1,7 +1,27 @@
 import uuid
 from datetime import datetime
+from typing import Annotated
 
-from pydantic import BaseModel, ConfigDict, model_validator
+from pydantic import AfterValidator, BaseModel, ConfigDict, model_validator
+
+from app.core.exams import EXAM_PARTS, EXAM_TYPES
+
+
+def _check_exam_type(v: str | None) -> str | None:
+    if v is not None and v not in EXAM_TYPES:
+        raise ValueError(f"exam_type must be one of {sorted(EXAM_TYPES)} or null")
+    return v
+
+
+def _check_exam_part(v: str | None) -> str | None:
+    if v is not None and v not in EXAM_PARTS:
+        raise ValueError(f"exam_part must be one of {sorted(EXAM_PARTS)} or null")
+    return v
+
+
+# Reusable validated types — keep ItemCreate/ItemUpdate in sync without duplication.
+ExamType = Annotated[str | None, AfterValidator(_check_exam_type)]
+ExamPart = Annotated[str | None, AfterValidator(_check_exam_part)]
 
 # ---------------------------------------------------------------------------
 # Nested: options
@@ -56,6 +76,9 @@ class ItemVersionOut(BaseModel):
     content: str
     explanation: str | None
     options: list[OptionOut]
+    # Optional per-question media (e.g. [{"url": "...", "alt": "..."}]). Used by
+    # the web/PWA editor and question display to show an illustrative image.
+    media_attachments: list[dict] = []
     is_published: bool
     change_summary: str | None
     authored_by_id: uuid.UUID | None
@@ -65,6 +88,13 @@ class ItemVersionOut(BaseModel):
     model_config = ConfigDict(from_attributes=True)
 
 
+class QuestionImageOut(BaseModel):
+    """Returned by the image-upload endpoint; the URL is stored in a version's
+    media_attachments by the client when it saves the item."""
+
+    url: str
+
+
 # ---------------------------------------------------------------------------
 # Items
 # ---------------------------------------------------------------------------
@@ -72,11 +102,11 @@ class ItemVersionOut(BaseModel):
 
 class ItemCreate(BaseModel):
     item_type: str = "single_best_answer"
-    exam_type: str | None = None  # "usmle_step1" | "usmle_step2" | "usmle_step3" | "tus" | None
-    exam_part: str | None = None  # "basic_sciences" (TTBT) | "clinical_sciences" (KTBT)
-    language: str = "tr"  # ISO 639-1; single-language for now
-    source: str | None = None  # e.g. "osym"
-    source_reference: str | None = None  # e.g. "2013-TUS İlkbahar / TTBT"
+    exam_type: ExamType = None  # executive | education | bank | social_security | None
+    exam_part: ExamPart = None  # general | specialized | None
+    language: str = "fa"  # ISO 639-1; Persian content by default
+    source: str | None = None  # e.g. "sanjesh"
+    source_reference: str | None = None  # e.g. "آزمون استخدامی آموزش و پرورش ۱۴۰۱"
     exam_year: int | None = None
     exam_session: str | None = None  # "spring" | "fall"
     topic_ids: list[uuid.UUID] = []
@@ -87,8 +117,8 @@ class ItemCreate(BaseModel):
 
 class ItemUpdate(BaseModel):
     status: str | None = None
-    exam_type: str | None = None
-    exam_part: str | None = None
+    exam_type: ExamType = None
+    exam_part: ExamPart = None
     language: str | None = None
     source: str | None = None
     source_reference: str | None = None

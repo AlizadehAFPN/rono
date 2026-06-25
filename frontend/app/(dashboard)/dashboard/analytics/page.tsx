@@ -55,9 +55,9 @@ export default function AnalyticsPage() {
                 <TableHeader>
                   <TableRow>
                     <TableHead>{a.items.preview}</TableHead>
-                    <TableHead className="text-right">{a.items.responses}</TableHead>
-                    <TableHead className="text-right">{a.items.accuracy}</TableHead>
-                    <TableHead className="text-right">{a.items.difficulty}</TableHead>
+                    <TableHead className="text-end">{a.items.responses}</TableHead>
+                    <TableHead className="text-end">{a.items.accuracy}</TableHead>
+                    <TableHead className="text-end">{a.items.difficulty}</TableHead>
                     <TableHead>{a.items.calibration}</TableHead>
                   </TableRow>
                 </TableHeader>
@@ -80,13 +80,13 @@ export default function AnalyticsPage() {
                           </span>
                         )}
                       </TableCell>
-                      <TableCell className="text-right tabular-nums">
+                      <TableCell className="text-end tabular-nums">
                         {it.response_count}
                       </TableCell>
-                      <TableCell className="text-right tabular-nums">
+                      <TableCell className="text-end tabular-nums">
                         {pct(it.accuracy)}
                       </TableCell>
-                      <TableCell className="text-right tabular-nums">
+                      <TableCell className="text-end tabular-nums">
                         {it.irt_b != null ? it.irt_b.toFixed(1) : "—"}
                       </TableCell>
                       <TableCell>

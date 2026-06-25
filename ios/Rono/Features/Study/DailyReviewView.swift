@@ -54,7 +54,7 @@ struct DailyReviewView: View {
                         Haptics.tap()
                         selected = allSelected ? [] : Set(collections.map(\.topicId))
                     }
-                    .font(.caption.weight(.semibold))
+                    .font(.vCaption.weight(.semibold))
                 }
             } footer: {
                 Text(s.collectionsHint)

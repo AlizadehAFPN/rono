@@ -93,13 +93,13 @@ struct SettingsView: View {
                 VStack(alignment: .leading, spacing: 2) {
                     Text(title).foregroundStyle(Palette.foreground)
                     if let subtitle {
-                        Text(subtitle).font(.caption).foregroundStyle(Palette.mutedForeground)
+                        Text(subtitle).font(.vCaption).foregroundStyle(Palette.mutedForeground)
                     }
                 }
                 Spacer()
                 if selected {
                     Image(systemName: "checkmark")
-                        .font(.body.weight(.semibold))
+                        .font(.vBody.weight(.semibold))
                         .foregroundStyle(Palette.primary)
                         .transition(.scale.combined(with: .opacity))
                 }

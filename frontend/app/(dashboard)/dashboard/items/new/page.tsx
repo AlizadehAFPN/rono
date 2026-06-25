@@ -6,6 +6,7 @@ import { useForm, useFieldArray } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
 import { Topbar } from "@/components/dashboard/topbar";
+import { QuestionImageField } from "@/components/dashboard/question-image-field";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
@@ -144,7 +145,7 @@ function TopicLevelSelect({
         <span className={cn("size-2 shrink-0 rounded-full", dot)} />
         <span className="text-sm font-medium text-foreground/80">
           {label}
-          {required && <span className="ml-0.5 text-destructive">*</span>}
+          {required && <span className="ms-0.5 text-destructive">*</span>}
         </span>
       </div>
       <Select
@@ -246,6 +247,7 @@ export default function NewItemPage() {
   // top-level (level 0) topics; exam/part are independent fields below.
   const [selectedSubjectId, setSelectedSubjectId] = useState("");
   const [selectedDomainId, setSelectedDomainId] = useState("");
+  const [imageUrl, setImageUrl] = useState<string | null>(null);
 
   const subjects = useMemo(
     () => flatTopics.filter((t) => t.level === 0),
@@ -326,6 +328,7 @@ export default function NewItemPage() {
         version: {
           content: values.content,
           explanation: values.explanation || null,
+          media_attachments: imageUrl ? [{ url: imageUrl }] : [],
           change_summary: values.change_summary || null,
           options: values.options.map((o, i) => ({
             key: o.key,
@@ -518,7 +521,7 @@ export default function NewItemPage() {
                   </div>
 
                   {form.formState.errors.topic_id && (
-                    <p className="pl-1 pt-0.5 text-sm font-medium text-destructive">
+                    <p className="ps-1 pt-0.5 text-sm font-medium text-destructive">
                       {form.formState.errors.topic_id.message}
                     </p>
                   )}
@@ -720,6 +723,8 @@ export default function NewItemPage() {
                     </FormItem>
                   )}
                 />
+
+                <QuestionImageField value={imageUrl} onChange={setImageUrl} />
 
                 <FormField
                   control={form.control}

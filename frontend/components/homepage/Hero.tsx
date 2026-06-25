@@ -172,7 +172,7 @@ function NeuralViz() {
         letterSpacing="0.04em"
         fontFamily="system-ui, sans-serif"
       >
-        IRT
+        {t.home.hero.viz.leftTitle}
       </text>
       <text
         x="155"
@@ -183,7 +183,7 @@ function NeuralViz() {
         fillOpacity="0.6"
         fontFamily="system-ui, sans-serif"
       >
-        {t.home.hero.viz.abilityEstimation}
+        {t.home.hero.viz.leftSub}
       </text>
 
       <text
@@ -196,7 +196,7 @@ function NeuralViz() {
         letterSpacing="0.04em"
         fontFamily="system-ui, sans-serif"
       >
-        FSRS-5
+        {t.home.hero.viz.rightTitle}
       </text>
       <text
         x="325"
@@ -207,7 +207,7 @@ function NeuralViz() {
         fillOpacity="0.6"
         fontFamily="system-ui, sans-serif"
       >
-        {t.home.hero.viz.memoryScheduling}
+        {t.home.hero.viz.rightSub}
       </text>
 
       <text
@@ -220,7 +220,7 @@ function NeuralViz() {
         letterSpacing="0.1em"
         fontFamily="system-ui, sans-serif"
       >
-        {t.home.hero.viz.orchestrator}
+        {t.home.hero.viz.center}
       </text>
     </svg>
   );
@@ -284,21 +284,27 @@ export default function Hero() {
             {/* Proof bar */}
             <div className="mt-12 pt-8 border-t border-white/10 grid grid-cols-3 gap-6">
               <div>
-                <div className="text-2xl font-bold text-white">90%</div>
+                <div className="text-2xl font-bold text-white">
+                  {t.home.hero.stats.s1.value}
+                </div>
                 <div className="text-xs text-slate-500 mt-1 leading-snug">
-                  {t.home.hero.stats.retentionLabel}
+                  {t.home.hero.stats.s1.label}
                 </div>
               </div>
               <div>
-                <div className="text-2xl font-bold text-white">2PL</div>
+                <div className="text-2xl font-bold text-white">
+                  {t.home.hero.stats.s2.value}
+                </div>
                 <div className="text-xs text-slate-500 mt-1 leading-snug">
-                  {t.home.hero.stats.irtLabel}
+                  {t.home.hero.stats.s2.label}
                 </div>
               </div>
               <div>
-                <div className="text-2xl font-bold text-white">&lt;100ms</div>
+                <div className="text-2xl font-bold text-white">
+                  {t.home.hero.stats.s3.value}
+                </div>
                 <div className="text-xs text-slate-500 mt-1 leading-snug">
-                  {t.home.hero.stats.latencyLabel}
+                  {t.home.hero.stats.s3.label}
                 </div>
               </div>
             </div>

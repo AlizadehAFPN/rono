@@ -47,7 +47,7 @@ struct AuthScaffold<Content: View>: View {
                             .foregroundStyle(Palette.foreground)
                             .multilineTextAlignment(.center)
                         Text(subtitle)
-                            .font(.subheadline)
+                            .font(.vSubheadline)
                             .foregroundStyle(Palette.mutedForeground)
                             .multilineTextAlignment(.center)
                     }

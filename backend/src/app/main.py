@@ -25,11 +25,11 @@ async def lifespan(app: FastAPI):
 
 
 app = FastAPI(
-    title="Rono — Adaptive Learning API",
+    title="Rono — Employment-Exam API",
     version="0.1.0",
     description=(
-        "REST API for the Rono adaptive learning platform. "
-        "Powered by IRT (Item Response Theory) + FSRS-5 spaced repetition."
+        "REST API for Rono — a review system for Iran's employment-exam "
+        "(آزمون استخدامی) question bank."
     ),
     lifespan=lifespan,
     redirect_slashes=False,

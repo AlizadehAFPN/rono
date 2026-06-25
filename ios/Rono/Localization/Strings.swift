@@ -18,9 +18,9 @@ struct Strings: Sendable {
         common: .en, nav: .en, auth: .en, onboarding: .en, settings: .en, profile: .en,
         home: .en, study: .en, practice: .en, progress: .en
     )
-    static let tr = Strings(
-        common: .tr, nav: .tr, auth: .tr, onboarding: .tr, settings: .tr, profile: .tr,
-        home: .tr, study: .tr, practice: .tr, progress: .tr
+    static let fa = Strings(
+        common: .fa, nav: .fa, auth: .fa, onboarding: .fa, settings: .fa, profile: .fa,
+        home: .fa, study: .fa, practice: .fa, progress: .fa
     )
 
     /// Localized label for a role raw value (e.g. "institution_admin").
@@ -65,25 +65,25 @@ struct CommonStrings: Sendable {
         )
     )
 
-    static let tr = CommonStrings(
-        language: .init(label: "Dil", turkish: "Türkçe", english: "English"),
+    static let fa = CommonStrings(
+        language: .init(label: "زبان", turkish: "Türkçe", english: "English"),
         roles: [
-            "student": "Öğrenci", "content_author": "İçerik Yazarı", "instructor": "Eğitmen",
-            "coordinator": "Koordinatör", "institution_admin": "Kurum Yöneticisi",
-            "system_admin": "Sistem Yöneticisi",
+            "student": "داوطلب", "content_author": "نویسنده محتوا", "instructor": "مدرس",
+            "coordinator": "هماهنگ‌کننده", "institution_admin": "مدیر سازمان",
+            "system_admin": "مدیر سیستم",
         ],
         actions: .init(
-            save: "Kaydet", saving: "Kaydediliyor…", cancel: "İptal", delete: "Sil",
-            deleting: "Siliniyor…", edit: "Düzenle", create: "Oluştur", creating: "Oluşturuluyor…",
-            add: "Ekle", remove: "Kaldır", back: "Geri", next: "İleri", previous: "Önceki",
-            close: "Kapat", confirm: "Onayla", search: "Ara", retry: "Tekrar dene",
-            view: "Görüntüle", refresh: "Yenile", saveChanges: "Değişiklikleri kaydet",
-            loadMore: "Daha fazla yükle"
+            save: "ذخیره", saving: "در حال ذخیره…", cancel: "انصراف", delete: "حذف",
+            deleting: "در حال حذف…", edit: "ویرایش", create: "ایجاد", creating: "در حال ایجاد…",
+            add: "افزودن", remove: "حذف", back: "بازگشت", next: "بعدی", previous: "قبلی",
+            close: "بستن", confirm: "تأیید", search: "جستجو", retry: "تلاش دوباره",
+            view: "مشاهده", refresh: "بازخوانی", saveChanges: "ذخیره تغییرات",
+            loadMore: "بارگذاری بیشتر"
         ),
         states: .init(
-            loading: "Yükleniyor…", error: "Bir şeyler ters gitti.",
-            empty: "Burada henüz bir şey yok.", noResults: "Sonuç bulunamadı.",
-            required: "Zorunlu", optional: "İsteğe bağlı"
+            loading: "در حال بارگذاری…", error: "مشکلی پیش آمد.",
+            empty: "هنوز چیزی اینجا نیست.", noResults: "نتیجه‌ای یافت نشد.",
+            required: "الزامی", optional: "اختیاری"
         )
     )
 }
@@ -111,15 +111,15 @@ struct NavStrings: Sendable {
         )
     )
 
-    static let tr = NavStrings(
-        adminBadge: "Yönetici", workspace: "Çalışma Alanı", administration: "Yönetim",
-        account: "Hesap", signOut: "Çıkış yap", openMenu: "Menüyü aç", back: "Geri",
-        profile: "Profil", navigation: "Gezinme", more: "Daha fazla", learning: "Öğrenme",
-        developer: "Geliştirici", backend: "Sunucu",
+    static let fa = NavStrings(
+        adminBadge: "مدیر", workspace: "فضای کاری", administration: "مدیریت",
+        account: "حساب کاربری", signOut: "خروج", openMenu: "باز کردن منو", back: "بازگشت",
+        profile: "پروفایل", navigation: "ناوبری", more: "بیشتر", learning: "یادگیری",
+        developer: "توسعه‌دهنده", backend: "سرور",
         items: .init(
-            overview: "Panel", topics: "Konular", questions: "Sorular", study: "Çalış",
-            daily: "Günlük Tekrar", practice: "Sınav", progress: "İlerleme",
-            analytics: "Analitik", users: "Kullanıcılar", settings: "Ayarlar", profile: "Profil"
+            overview: "داشبورد", topics: "مباحث", questions: "بانک سؤال", study: "مرور",
+            daily: "مرور روزانه", practice: "آزمون آزمایشی", progress: "آمادگی من",
+            analytics: "کارنامه", users: "کاربران", settings: "تنظیمات", profile: "پروفایل"
         )
     )
 }

@@ -132,8 +132,8 @@ fun OnboardingScreen(
 
 @Composable
 private fun LanguagePill(current: AppLocale, onSet: (AppLocale) -> Unit) {
-    val next = if (current == AppLocale.TURKISH) AppLocale.ENGLISH else AppLocale.TURKISH
+    val next = if (current == AppLocale.PERSIAN) AppLocale.ENGLISH else AppLocale.PERSIAN
     TextButton(onClick = { onSet(next) }) {
-        Text(if (current == AppLocale.TURKISH) "TR" else "EN", style = MaterialTheme.typography.labelLarge)
+        Text(if (current == AppLocale.PERSIAN) "FA" else "EN", style = MaterialTheme.typography.labelLarge)
     }
 }

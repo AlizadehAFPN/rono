@@ -15,12 +15,13 @@ Delete (soft): instructor or higher.
 import uuid
 from typing import Annotated
 
-from fastapi import APIRouter, Depends, Query
+from fastapi import APIRouter, Depends, File, Query, UploadFile
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.api.deps import CurrentUser, get_current_user, get_db, require_role
 from app.core.exceptions import ForbiddenError
 from app.core.roles import Role
+from app.core.storage import save_question_image_file
 from app.schemas.items import (
     ItemCreate,
     ItemOut,
@@ -29,11 +30,33 @@ from app.schemas.items import (
     ItemVersionOut,
     ItemWithTopics,
     PaginatedItems,
+    QuestionImageOut,
 )
 from app.services import item_service
 from app.services.item_service import to_item_with_topics
 
 router = APIRouter(prefix="/items", tags=["Items"])
+
+
+# ---------------------------------------------------------------------------
+# POST /items/images — upload a question image (web/PWA), returns its URL
+# ---------------------------------------------------------------------------
+
+
+@router.post("/images", response_model=QuestionImageOut, status_code=201)
+async def upload_question_image(
+    file: UploadFile = File(...),
+    current_user: CurrentUser = Depends(require_role(Role.INSTRUCTOR)),
+    db: AsyncSession = Depends(get_db),
+) -> QuestionImageOut:
+    """Validate and store an image for a question, returning its public URL.
+
+    The client puts the returned URL into the item version's media_attachments
+    when it saves the item. Requires instructor role or higher.
+    """
+    contents = await file.read()
+    url = save_question_image_file(contents)
+    return QuestionImageOut(url=url)
 
 
 # ---------------------------------------------------------------------------
@@ -77,10 +100,10 @@ async def list_items(
     topic_id: uuid.UUID | None = Query(None, description="Filter items linked to this topic"),
     item_type: str | None = Query(None, description="Filter by item type"),
     exam_type: str | None = Query(
-        None, description="Filter by exam: usmle_step1, usmle_step2, usmle_step3, tus"
+        None, description="Filter by exam: executive | education | bank | social_security"
     ),
     exam_part: str | None = Query(
-        None, description="Filter by exam section: basic_sciences, clinical_sciences"
+        None, description="Filter by exam section: general | specialized"
     ),
     limit: int = Query(50, ge=1, le=200),
     offset: int = Query(0, ge=0),

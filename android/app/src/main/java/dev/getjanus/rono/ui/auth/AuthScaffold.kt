@@ -130,8 +130,8 @@ fun AuthScaffold(
 /** Compact globe + locale-code pill that toggles the app language. */
 @Composable
 private fun LanguagePill(current: AppLocale, onSet: (AppLocale) -> Unit) {
-    val next = if (current == AppLocale.TURKISH) AppLocale.ENGLISH else AppLocale.TURKISH
-    val code = if (current == AppLocale.TURKISH) "TR" else "EN"
+    val next = if (current == AppLocale.PERSIAN) AppLocale.ENGLISH else AppLocale.PERSIAN
+    val code = if (current == AppLocale.PERSIAN) "FA" else "EN"
     Surface(
         onClick = { onSet(next) },
         shape = CircleShape,

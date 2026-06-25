@@ -1,0 +1,53 @@
+{
+  "exam_type": "education",
+  "exam_part": "general",
+  "source": "sanjesh",
+  "source_reference": "نمونه — دفترچه عمومی آزمون استخدامی ۱۴۰۱",
+  "exam_year": 1401,
+  "exam_session": null,
+  "language": "fa",
+  "questions": [
+    {
+      "no": 1,
+      "subject": "gen-persian-qarabat",
+      "stem": "کدام گزینه با «صبور» قرابت معنایی دارد؟",
+      "options": {
+        "A": "شکیبا",
+        "B": "دلیر",
+        "C": "بخشنده",
+        "D": "هوشیار"
+      },
+      "answer": "A",
+      "explanation": "«صبور» به معنای شکیبا و بردبار است؛ پس «شکیبا» نزدیک‌ترین معنا را دارد. «دلیر» شجاع، «بخشنده» سخاوتمند و «هوشیار» باهوش است.",
+      "void": false
+    },
+    {
+      "no": 2,
+      "subject": "gen-math-arithmetic",
+      "stem": "۲۰٪ از عدد ۳۵۰ چند است؟",
+      "options": {
+        "A": "۶۰",
+        "B": "۷۰",
+        "C": "۸۰",
+        "D": "۹۰"
+      },
+      "answer": "B",
+      "explanation": "۲۰٪ یعنی ۰٫۲؛ پس ۳۵۰ × ۰٫۲ = ۷۰.",
+      "void": false
+    },
+    {
+      "no": 3,
+      "subject": "gen-ict-excel",
+      "stem": "در Excel، کدام تابع مجموع یک محدوده از سلول‌ها را محاسبه می‌کند؟",
+      "options": {
+        "A": "AVERAGE",
+        "B": "COUNT",
+        "C": "SUM",
+        "D": "MAX"
+      },
+      "answer": "C",
+      "explanation": "تابع SUM مجموع مقادیر یک محدوده را برمی‌گرداند. AVERAGE میانگین، COUNT تعداد و MAX بیشینه را می‌دهد.",
+      "void": false
+    }
+  ]
+}

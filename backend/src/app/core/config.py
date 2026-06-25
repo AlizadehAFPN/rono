@@ -19,6 +19,7 @@ class Settings(BaseSettings):
     # Backed by a persistent Docker volume in compose so it survives redeploys.
     UPLOAD_DIR: str = "/home/app/uploads"
     MAX_AVATAR_BYTES: int = 5 * 1024 * 1024  # 5 MB
+    MAX_QUESTION_IMAGE_BYTES: int = 5 * 1024 * 1024  # 5 MB — per-question image
     # Set false when serving over plain HTTP (e.g. staging ALB without TLS).
     # ECS injects this explicitly; local dev falls back to False via ENVIRONMENT check.
     COOKIE_SECURE: bool | None = None

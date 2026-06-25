@@ -37,10 +37,10 @@ struct LoginView: View {
                     Button(s.createOne) { path.append(AuthRoute.signup) }
                         .foregroundStyle(Palette.primary)
                 }
-                .font(.subheadline)
+                .font(.vSubheadline)
 
                 Button(loc.t.auth.register.title) { path.append(AuthRoute.register) }
-                    .font(.footnote)
+                    .font(.vFootnote)
                     .foregroundStyle(Palette.mutedForeground)
             }
         }

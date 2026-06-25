@@ -26,8 +26,8 @@ export default function Solution() {
           <div className="rounded-2xl border border-violet-100 bg-gradient-to-b from-violet-50/70 to-white p-8 lg:p-10">
             <div className="flex items-center gap-3 mb-6">
               <div className="w-10 h-10 rounded-full bg-violet-500 flex items-center justify-center shrink-0">
-                <span className="text-white text-xs font-bold tracking-tight">
-                  IRT
+                <span className="text-white text-base font-bold tracking-tight">
+                  ۱
                 </span>
               </div>
               <div>
@@ -65,8 +65,8 @@ export default function Solution() {
           <div className="rounded-2xl border border-violet-100 bg-gradient-to-b from-violet-50/70 to-white p-8 lg:p-10">
             <div className="flex items-center gap-3 mb-6">
               <div className="w-10 h-10 rounded-full bg-violet-500 flex items-center justify-center shrink-0">
-                <span className="text-white text-xs font-bold tracking-tight">
-                  SRS
+                <span className="text-white text-base font-bold tracking-tight">
+                  ۲
                 </span>
               </div>
               <div>

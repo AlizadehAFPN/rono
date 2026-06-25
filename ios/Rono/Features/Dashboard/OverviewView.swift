@@ -93,18 +93,15 @@ struct StudentDashboardView: View {
             VStack(spacing: Metric.pad) {
                 HStack(spacing: Metric.pad) {
                     ProgressRing(progress: max(0.06, min(norm, 1)), size: 92, lineWidth: 9, tint: color) {
-                        VStack(spacing: 0) {
-                            Text("θ").font(.system(size: 10, weight: .semibold))
-                                .foregroundStyle(Palette.mutedForeground)
-                            Text(String(format: "%.1f", d.ability.theta ?? 0))
-                                .font(.system(size: 18, weight: .bold, design: .rounded))
-                                .foregroundStyle(Palette.foreground)
-                        }
+                        // Plain readiness % — never the raw figure or any symbol.
+                        Text("\(Int((max(0, min(norm, 1)) * 100).rounded()))%")
+                            .font(.system(size: 20, weight: .bold, design: .rounded))
+                            .foregroundStyle(Palette.foreground)
                     }
                     VStack(alignment: .leading, spacing: 4) {
                         Text(h.stats.ability).eyebrowStyle()
                         Text(levelLabel)
-                            .font(.system(.title2, design: .default).weight(.bold))
+                            .font(.vTitle2.weight(.bold))
                             .foregroundStyle(Palette.foreground)
                             .lineLimit(1).minimumScaleFactor(0.7)
                     }
@@ -127,7 +124,7 @@ struct StudentDashboardView: View {
                 .foregroundStyle(Palette.foreground)
                 .lineLimit(1).minimumScaleFactor(0.7)
             Text(label)
-                .font(.caption).foregroundStyle(Palette.mutedForeground).lineLimit(1)
+                .font(.vCaption).foregroundStyle(Palette.mutedForeground).lineLimit(1)
         }
         .frame(maxWidth: .infinity)
     }
@@ -155,9 +152,9 @@ struct StudentDashboardView: View {
 
     private var emptyState: some View {
         VStack(spacing: Metric.gap) {
-            Image(systemName: "sparkles").font(.largeTitle).foregroundStyle(Palette.primary)
-            Text(h.empty.title).font(.title3.bold()).foregroundStyle(Palette.foreground)
-            Text(h.empty.body).font(.subheadline).foregroundStyle(Palette.mutedForeground)
+            Image(systemName: "sparkles").font(.vLargeTitle).foregroundStyle(Palette.primary)
+            Text(h.empty.title).font(.vTitle3.bold()).foregroundStyle(Palette.foreground)
+            Text(h.empty.body).font(.vSubheadline).foregroundStyle(Palette.mutedForeground)
                 .multilineTextAlignment(.center)
         }
         .padding(40)
@@ -206,25 +203,25 @@ private struct DestinationCard: View {
                 }
                 VStack(alignment: .leading, spacing: 2) {
                     HStack(spacing: 6) {
-                        Text(title).font(.headline)
+                        Text(title).font(.vHeadline)
                             .foregroundStyle(primary ? Palette.primaryForeground : Palette.foreground)
                         if let badge {
                             Text("\(badge)")
-                                .font(.caption.bold())
+                                .font(.vCaption.bold())
                                 .foregroundStyle(primary ? Palette.primaryForeground : Palette.primary)
                                 .padding(.horizontal, 7).padding(.vertical, 2)
                                 .background(primary ? Color.white.opacity(0.22)
                                                     : Palette.primary.opacity(0.14), in: Capsule())
                         }
                     }
-                    Text(subtitle).font(.subheadline)
+                    Text(subtitle).font(.vSubheadline)
                         .foregroundStyle(primary ? Palette.primaryForeground.opacity(0.85)
                                                  : Palette.mutedForeground)
                         .lineLimit(1)
                 }
                 Spacer(minLength: 0)
                 Image(systemName: "chevron.right")
-                    .font(.subheadline.weight(.semibold))
+                    .font(.vSubheadline.weight(.semibold))
                     .foregroundStyle(primary ? Palette.primaryForeground.opacity(0.8)
                                              : Palette.mutedForeground)
             }

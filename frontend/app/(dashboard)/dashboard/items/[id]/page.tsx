@@ -7,6 +7,7 @@ import { useForm, useFieldArray } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
 import { Topbar } from "@/components/dashboard/topbar";
+import { QuestionImageField } from "@/components/dashboard/question-image-field";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
@@ -454,6 +455,9 @@ function InlineEditCard({
   const { t } = useI18n();
   const createVersion = useCreateItemVersion();
   const updateItem = useUpdateItem();
+  const [imageUrl, setImageUrl] = useState<string | null>(
+    cv?.media_attachments?.[0]?.url ?? null,
+  );
   const canEditDifficulty =
     calibrationStatus === "uncalibrated" || calibrationStatus === "pre_set";
 
@@ -522,6 +526,7 @@ function InlineEditCard({
         data: {
           content: values.content,
           explanation: values.explanation || null,
+          media_attachments: imageUrl ? [{ url: imageUrl }] : [],
           change_summary: "Content edit",
           options: values.options.map((o, i) => ({
             key: o.key,
@@ -609,6 +614,8 @@ function InlineEditCard({
                 </FormItem>
               )}
             />
+
+            <QuestionImageField value={imageUrl} onChange={setImageUrl} />
 
             {/* Explanation */}
             <FormField
@@ -729,7 +736,7 @@ function InlineEditCard({
                       control={form.control}
                       name={`options.${index}.explanation`}
                       render={({ field: cf }) => (
-                        <FormItem className="mx-3 mb-2 ml-10">
+                        <FormItem className="mx-3 mb-2 ms-10">
                           <FormControl>
                             <Input
                               className="h-7 text-xs border-0 bg-transparent px-0 shadow-none focus-visible:ring-0 focus-visible:ring-offset-0 text-muted-foreground placeholder:text-muted-foreground/40"
@@ -817,6 +824,15 @@ function ViewCard({
                 {cv.content}
               </p>
             </div>
+
+            {cv.media_attachments?.[0]?.url && (
+              /* eslint-disable-next-line @next/next/no-img-element */
+              <img
+                src={cv.media_attachments[0].url}
+                alt=""
+                className="max-h-64 rounded-lg border border-border object-contain"
+              />
+            )}
 
             {cv.explanation && (
               <div>
@@ -970,7 +986,7 @@ export default function ItemDetailPage({
       <div className="w-full space-y-4 p-4 md:space-y-6 md:p-6">
         {/* Back navigation */}
         <div className="flex items-center gap-3">
-          <Button variant="ghost" size="sm" asChild className="-ml-2">
+          <Button variant="ghost" size="sm" asChild className="-ms-2">
             <Link href="/dashboard/items">
               <ArrowLeftIcon className="size-4" />
               {t.dashItemEditor.buttons.backToQuestions}

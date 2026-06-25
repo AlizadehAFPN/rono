@@ -49,6 +49,9 @@ function SheetContent({
           "fixed inset-y-0 z-50 flex h-full flex-col bg-background shadow-2xl",
           "data-[state=open]:animate-in data-[state=closed]:animate-out",
           "duration-300 ease-[cubic-bezier(0.4,0,0.2,1)]",
+          // `side` is an explicit physical prop, so its edge geometry stays
+          // physical (the divider faces the panel's inner edge regardless of
+          // text direction). Only the close button below uses logical insets.
           side === "left"
             ? "left-0 w-[280px] border-r border-border data-[state=open]:slide-in-from-left data-[state=closed]:slide-out-to-left"
             : "right-0 w-full sm:max-w-[500px] border-l border-border data-[state=open]:slide-in-from-right data-[state=closed]:slide-out-to-right",
@@ -59,7 +62,7 @@ function SheetContent({
         {children}
         <DialogPrimitive.Close
           className={cn(
-            "absolute right-4 top-4 z-10 flex size-7 items-center justify-center rounded-md",
+            "absolute end-4 top-4 z-10 flex size-7 items-center justify-center rounded-md",
             "text-muted-foreground transition-colors",
             "hover:bg-muted hover:text-foreground",
             "focus:outline-none focus:ring-2 focus:ring-ring",
@@ -77,7 +80,7 @@ function SheetHeader({ className, ...props }: React.ComponentProps<"div">) {
   return (
     <div
       className={cn(
-        "flex shrink-0 flex-col gap-1.5 border-b px-6 py-5 pr-14",
+        "flex shrink-0 flex-col gap-1.5 border-b px-6 py-5 pe-14",
         className,
       )}
       {...props}

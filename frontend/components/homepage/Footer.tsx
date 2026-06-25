@@ -47,7 +47,7 @@ export default function Footer() {
           </nav>
 
           {/* Copyright */}
-          <p className="text-slate-700 text-xs text-center sm:text-right">
+          <p className="text-slate-700 text-xs text-center sm:text-end">
             {t.home.footer.copyright}
             <br className="sm:hidden" /> {t.home.footer.rights}
           </p>

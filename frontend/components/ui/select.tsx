@@ -35,7 +35,7 @@ function SelectTrigger({
         "focus:outline-none focus:border-ring focus:ring-3 focus:ring-ring/50",
         "disabled:pointer-events-none disabled:cursor-not-allowed disabled:opacity-50",
         "aria-invalid:border-destructive",
-        "[&>span]:line-clamp-1 [&>span]:text-left",
+        "[&>span]:line-clamp-1 [&>span]:text-start",
         className,
       )}
       {...props}
@@ -146,14 +146,14 @@ function SelectItem({
     <SelectPrimitive.Item
       data-slot="select-item"
       className={cn(
-        "relative flex w-full cursor-default select-none items-center rounded-md py-1.5 pl-8 pr-2 text-sm outline-none",
+        "relative flex w-full cursor-default select-none items-center rounded-md py-1.5 ps-8 pe-2 text-sm outline-none",
         "focus:bg-accent focus:text-accent-foreground",
         "data-[disabled]:pointer-events-none data-[disabled]:opacity-50",
         className,
       )}
       {...props}
     >
-      <span className="absolute left-2 flex size-3.5 items-center justify-center">
+      <span className="absolute start-2 flex size-3.5 items-center justify-center">
         <SelectPrimitive.ItemIndicator>
           <CheckIcon className="size-4" />
         </SelectPrimitive.ItemIndicator>
